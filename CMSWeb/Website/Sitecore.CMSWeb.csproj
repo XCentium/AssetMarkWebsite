@@ -2056,6 +2056,8 @@
     <Content Include="js\SiteCatalyst.js" />
     <Content Include="js\site_backup.js" />
     <Content Include="js\site_old.js" />
+    <Content Include="layouts\Genworth\Sublayouts\functional\investments\Strategies.ascx" />
+    <Content Include="layouts\Genworth\Sublayouts\functional\investments\Strategy Detail.ascx" />
     <Content Include="layouts\Genworth\Sublayouts\functional\practice management\Bussiness Valuation.ascx" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Areas\ContentWithSidebar.cshtml" />
