@@ -1,0 +1,58 @@
+﻿#BarChart #nextBtn a {
+    background: url("/Shared/Images/SilderArrowNext.png") no-repeat scroll 0 0 transparent;
+    display:none;
+    height: 48px;
+    left: 945px;
+    position: relative;
+    top: -209px;
+    width: 41px;
+}
+
+#BarChart #prevBtn a {
+    background: url("/Shared/Images/SliderArrow.png") no-repeat scroll 0 0 transparent;
+    display: none;
+    height: 48px;
+    left: 0px;
+    position: relative;
+    top: -198px;
+    width: 41px;
+}
+#BarChart #barChartWrapper 
+{
+	border:1px solid #ccc;
+	width:969px !important;
+    font-family: 'Lucida Sans Unicode';
+    font-size: 11px;
+    background: none repeat scroll 0 0 #EFEFEF;
+}	
+
+ ul,  li
+ {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#BarChart #barChart 
+{
+	width:70px;
+	height:300px; 
+	position: relative;
+
+}	
+#BarChart #barChart2 
+{
+	width:70px;
+	height:300px; 
+	position: relative;
+	/*to be removed for scrollbar to be displayed */
+	margin-left:45px
+	
+
+}	
+#BarChart .barChartText
+{
+	left: -70px;
+    position: relative;
+    top: 226px;
+}	
+		

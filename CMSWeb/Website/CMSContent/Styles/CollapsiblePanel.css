@@ -1,0 +1,132 @@
+﻿.collapsibleContainer
+{
+	position: relative;
+}
+
+.collapsibleContainer .collapsibleHeader
+{
+	padding: 0 8px;
+	background: url(/CMSContent/Images/collapsiblePanel_bg.png) repeat-x;
+	border: 1px solid #999999;
+	line-height: 26px;
+	color: #333333;
+}
+
+.collapsibleContainer .collapsibleContent
+{
+	top: -1px;
+	border: 1px solid #999999;
+}
+
+.collapsibleContainer .ui-expander-header .ui-icon
+{
+	width: 13px;
+	height: 13px;
+	min-height: 13px;
+    position: relative;
+    left: 0;
+    top: 7px;
+    float: left;
+    margin-top: 0;
+    margin-right: 4px;
+}
+
+.collapsibleContainer .ui-icon-triangle-1-e
+{
+	background: url(/CMSContent/Images/collapsiblePanel_arrow_right.png) no-repeat;
+}
+
+.collapsibleContainer .ui-icon-triangle-1-s
+{
+	background: url(/CMSContent/Images/collapsiblePanel_arrow_down.png) no-repeat;
+}
+
+.collapsibleContainer .headerLabel
+{
+	margin-right: 2px;
+	font-family: 'Oswald', Arial, Sans-Serif;
+	font-size: 12px;
+}
+
+.collapsibleContainer .asOf
+{
+	font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+	font-size: 11px;
+}
+
+.collapsibleContainer .headerButtons
+{
+	position: absolute;
+	right: 0;
+	font-family: 'Cabin', Arial, Sans-Serif;
+	font-size: 10px;
+	z-index: 1;
+}
+
+.collapsibleContainer .headerButtons a,
+.collapsibleContainer .headerButtons a:hover
+{
+	color: #333333;
+	text-decoration: none;
+}
+.collapsibleContainer .headerButtons .selected
+{
+	color: #ffffff;
+}
+
+.collapsibleContainer .headerButton
+{
+	display: block;
+	float: left;
+	padding: 0 10px 0 11px;
+	line-height: 30px;
+	background: url(/CMSContent/Images/collapsiblePanel_div.png) no-repeat left;
+}
+
+.collapsibleContainer .headerButton img
+{
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+
+
+/* new collapsible css */
+ul.collapsible 
+{
+    margin: 0px;
+    padding: 0px;}
+ul.collapsible > li
+{
+    margin: 0px 0px 7px;
+    padding: 0px;
+    text-indent: 0px;
+    list-style-type: none;
+    background: transparent url(/CMSContent/Images/collapsiblePanel_bg.png) repeat-x top right;
+    display: block;}
+ul.collapsible > li > h6
+{
+    margin: 0px 10px 0px 0px;
+    padding: 5px 10px 3px;
+    border-left: 1px solid #999999;
+    display: block;
+    line-height: 20px;
+    background: transparent url(/CMSContent/Images/gridRowExpanded.png) no-repeat right center;
+    text-transform: uppercase;
+    font-family: 'Cabin', Arial, Sans-Serif;
+    font-size: 10px;
+    vertical-align: bottom;
+    cursor: pointer;
+    font-weight: normal !important;}
+ul.collapsible > li.expanded > h6
+{
+    background: transparent url(/CMSContent/Images/gridRowCollapsed.png) no-repeat right center;}
+ul.collapsible > li > div
+{
+    margin: 0px;
+    padding: 10px;
+    display: none;
+    background-color: #FFF;}
+ul.collapsible > li.expanded > divs
+{
+    display: block;}

@@ -1,0 +1,157 @@
+#Planning {
+	margin: 14px 0px 20px 5px;
+	min-height: 500px;
+}
+
+.component_item {
+	margin-bottom: 10px;
+}
+
+.grid-system.g982 #Planning .gc.c9 {
+	width: 700px;
+	padding-left: 2px;
+}
+
+.grid-system.g982 #Planning .gc.c3 {
+	margin-left: 17px;
+}
+
+#Planning .header_underline {
+	font: normal 30px arial;
+	border-bottom: 2px solid #c70;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+	margin-right: 25px;
+}
+
+#Planning h3 {
+	color: #16a;
+	font: normal 24px arial;
+}
+
+#Planning h4 {
+	color: #444;
+	font: normal 18px arial;
+}
+
+.StepLinkBottom {
+	margin-bottom: 15px;
+}
+
+#Planning .gc.c9 .gc.c4 {
+	margin-left: 30px;
+}
+
+	#Planning .gc.c9 .gc.c4.inside {
+		margin-left: 0px;
+	}
+
+body.overview #Planning #body_0_planning_0_d3d_2_0_component_list_ctl01_component_item {
+	margin-top: 97px;
+}
+
+#Planning #BottomSlidePanel .gc.c4.inside {
+	margin-left: 10px;
+}
+
+#Planning #BottomSlidePanel .gc.c4 {
+	margin-left: 3px;
+}
+
+#BottomSlidePanel {
+	height: 300px;
+	margin-top: 14px;
+}
+
+	#BottomSlidePanel .Column1 .body {
+		background-image: url('/CMSContent/Images/BottomSlidePanel/Drop_2a.png');
+		margin-left: -314px;
+	}
+
+	#BottomSlidePanel .Column2 .body {
+		background-image: url('/CMSContent/Images/BottomSlidePanel/Drop_3a.png');
+		margin-left: -630px;
+	}
+
+	#BottomSlidePanel .body {
+		background: url('/CMSContent/Images/BottomSlidePanel/Drop_1.png') no-repeat;
+		padding: 27px 48px 12px;
+		height: 160px;
+		display: none;
+		width: 850px;
+	}
+
+		#BottomSlidePanel .body img {
+			float: left;
+			margin-right: 40px;
+		}
+
+		#BottomSlidePanel .body .container {
+			margin-top: 20px;
+		}
+
+			#BottomSlidePanel .body .container p {
+				font: normal 12px/18px Arial;
+			}
+
+
+	#BottomSlidePanel .panel {
+		background: url('/CMSContent/Images/BottomSlidePanel/SlidaPanelBackground.png') no-repeat;
+		padding: 3px;
+		height: 94px;
+		cursor: pointer;
+	}
+
+		#BottomSlidePanel .panel img {
+			float: left;
+			margin-right: 20px;
+		}
+
+		#BottomSlidePanel .panel h5, #BottomSlidePanel .panel h6 {
+			font: bold 12px/18px Arial;
+			margin-right: 20px;
+		}
+
+		#BottomSlidePanel .panel h5 {
+			margin-top: 18px;
+			color: #444;
+		}
+
+		#BottomSlidePanel .panel h6 {
+			color: #07b;
+		}
+
+.planning_overview .rowContainer {
+	margin-left: 7px;
+	margin-top: 10px;
+}
+
+	.planning_overview .rowContainer .carousel_menuItems > li, .planning_overview .rowContainer .carousel_menuItems > li a {
+		height: 117px;
+		line-height: 118px;
+	}
+
+		.planning_overview .rowContainer .carousel_menuItems > li:last-child, .planning_overview .rowContainer .carousel_menuItems > li:last-child a {
+			height: 118px;
+		}
+
+	.planning_overview .rowContainer .carousel_menuItems li.active {
+		background-size: 26px 117px;
+	}
+
+	.planning_overview .rowContainer .carousel_menuItems > li:first-child > a {
+		border-top: none;
+	}
+
+
+	.planning_overview .rowContainer .promos {
+		padding: 20px 0px;
+	}
+
+.content-summary iframe {
+	margin-bottom: 15px;
+}
+
+.planning .html h5 {
+	margin: 1em 0 .2em;
+}

@@ -1,0 +1,553 @@
+﻿.EventList h1, h1.event-list { display:none;}
+.event-search h3
+{
+    font-family: 'Oswald', Arial, Sans-Serif !important;
+    font-size: 14px;
+    font-weight: normal;
+    color: #888;
+    padding: 0px 0px 10px;
+    }
+    
+.genworth-event-detail h3
+{
+    font-family: 'Oswald', Arial, Sans-Serif !important;
+    font-size: 14px;
+    font-weight: normal;
+    color: #000;
+    margin: 0px 0px 30px;
+    padding: 0px 0px 10px;
+    border-bottom: 1px solid #ccc;
+    }
+    
+.event-search {}
+
+/* 
+START GENERIC TEXT INPUT STYLES
+-------------------------
+MARKUP LOOKS LIKE THIS:
+
+<span class="text-input">
+    <input type="text">
+</span>
+*/
+
+.text-input 
+{
+    display: inline-block;
+    background: transparent url(/CMSContent/Images/text-input.png) no-repeat left top;
+    padding: 0px 0px 0px 8px;
+    margin: 0px 5px 0px 0px;
+    text-indent: 0px;
+    height: 24px;}
+.text-input input, .text-input .input
+{
+    display: block !important;
+    background: transparent url(/CMSContent/Images/text-input.png) no-repeat right top !important;
+    padding: 0px 8px 0px 0px !important;
+    margin: 0px -5px 0px 0px !important;
+    text-indent: 0px !important;
+    font-family: Arial, Sans-Serif !important;
+    color: #000;
+    font-size: 10px !important;
+    vertical-align: middle !important;
+    line-height: 24px !important;
+    height: 24px !important;
+    border: none !important;
+    font-style: normal !important;}
+    
+.text-input .input input
+{
+    background: none !important;
+}
+    
+input[example] 
+{
+    text-indent: 5px;
+    font-family: 'Cabin', Arial, Sans-Serif;
+    font-style: italic;
+    color: #888;}
+input[example].editing 
+{
+    color: #000;}
+
+/* 
+END GENERIC TEXT INPUT STYLES
+*/
+
+/* 
+START GENERIC BUTTON STYLES
+-------------------------
+MARKUP LOOKS LIKE THIS:
+
+<span class="button">
+    <input type="button" value="Button Text">
+</span>
+<span class="button">
+    <input type="submit" value="Button Text">
+</span>
+<span class="button">
+    <a>Button Text</a>
+</span>
+<span class="button">
+    <span>Button Text</span>
+</span>
+*/
+
+.button 
+{
+    display: inline-block;
+    background: transparent url(/CMSContent/Images/button.png) no-repeat left top;
+    padding: 0px 0px 0px 8px;
+    margin: 0px 5px 0px 0px;
+    text-indent: 0px;
+    height: 24px;
+    cursor: pointer;}
+.button input, .button a, .button span, .button button 
+{
+    display: block !important;
+    background: transparent url(/CMSContent/Images/button.png) no-repeat right top !important;
+    padding: 0px 8px 1px 0px !important;
+    margin: 0px -5px 0px 0px !important;
+    text-indent: 0px !important;
+    font-family: Arial, Sans-Serif !important;
+    color: #FFF !important;
+    font-size: 12px !important;
+    vertical-align: middle !important;
+    line-height: 23px !important;
+    max-height: 24px !important;
+    cursor: pointer;}
+
+.firefox .button input, .firefox .button button { height: 24px; }
+.firefox .button a, .firefox .button span { height: 23px; }
+
+/*.ie .button input, .ie .button a, .ie .button span, .ie .button button 
+{
+	height: 23px !important;}*/
+.button:hover
+{
+    background-position: bottom left !important;}
+.button:hover input, .button:hover a, .button:hover span, .button:hover button 
+{
+    background-position: bottom right !important;}
+.button input { border: none; }
+.button a { text-decoration: none;}
+.button span {}
+.button button { border: none; }
+
+
+.button-big 
+{
+    display: inline-block;
+    background: transparent url(/CMSContent/Images/button_big.png) no-repeat left top;
+    padding: 0px 0px 0px 20px;
+    margin: 0px 20px 0px 0px;
+    text-indent: 0px;
+    height: 48px;
+    cursor: pointer;}
+.button-big input, .button-big a, .button-big span, .button-big button 
+{
+    display: inline-block !important;
+    background: transparent url(/CMSContent/Images/button_big.png) no-repeat right top !important;
+    padding: 0px 20px 0px 0px !important;
+    margin: 0px -20px 0px 0px !important;
+    text-indent: 0px !important;
+    font-family: 'Oswald', Arial, Sans-Serif !important;
+    color: #FFF !important;
+    font-size: 24px !important;
+    vertical-align: middle !important;
+    line-height: 48px !important;
+    height: 48px !important;
+    cursor: pointer;}
+.button-big.gray, .button-big.gray input, .button-big.gray a, .button-big.gray span, .button-big.gray button 
+{
+	background-image: url(/CMSContent/Images/button_big_gray.png) !important;
+	color: #EEE !important;
+	cursor: default !important;}
+ 
+/* NO BIG HOVER STYLE SPECIFIED YET
+.button-big:hover
+{
+    background-position: bottom left !important;}
+.button-big:hover input, .button-big:hover a, .button-big:hover span, .button-big:hover button 
+{
+    background-position: bottom right !important;}
+*/
+
+.button-big input { border: none; }
+.button-big a { text-decoration: none;}
+.button-big span {}
+.button-big button { border: none; }
+
+/* 
+END GENERIC BUTTON STYLES
+*/
+.event-search 
+{
+    vertical-align: middle;
+    text-align: right;
+    margin: 0px 0px 30px;
+    padding: 0px 0px 10px;
+    border-bottom: 1px solid #ccc;}
+.event-search h3
+{
+    text-align: left;}
+.event-search .event-search-string
+{
+    float: left;}
+span.select-input, span.select-input * 
+{
+	vertical-align: middle;}
+.event-search .event-search-proximity
+{
+    height: 22px;}
+
+.event-search .selectBox-wrapper
+{ 
+    width: 100px;
+    text-align: left;
+}
+.ie .event-search .selectBox-wrapper
+{ 
+    position: relative;
+    top: -2px;
+}
+.event-search .selectBox-dropdown
+{ 
+    width: 73px;
+}
+.event-search .event-search-button
+{ 
+    margin-left: 10px;
+}
+
+.genworth-event-list-wrapper {}
+.genworth-event-list {
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0px;}
+.genworth-event-list li {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0px;
+    }
+.genworth-event-list {}
+.genworth-event-list .item 
+{
+    margin-top: 20px;
+    padding-bottom: 7px;
+    /*border-bottom: 1px solid #ccc;*/
+    background: transparent url(/CMSContent/Images/section_divider.png) no-repeat right bottom;
+    position: relative;
+    clear: both;}
+.genworth-event-list a {}
+.genworth-event-list img {}
+.genworth-event-list .event-title {
+    display: block;
+    font-family: 'Oswald', Arial, Sans-Serif;
+    height: 20px;
+    line-height: 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #16A;
+    padding-bottom: 5px;}
+.genworth-event-list .event-date, .genworth-event-detail .event-date
+{
+    display: block;
+    font-family: 'Cabin Bold', Arial, Sans-Serif;
+    line-height: 17px;
+    font-size: 11px;
+    font-weight: bold;
+    padding-left: 22px;
+    margin: 5px 0px 10px;
+    background: transparent url(/CMSContent/Images/calendar-icon.png) no-repeat left center;}
+.genworth-event-list .show-event-details 
+{
+    float: right;
+    display: inline-block;
+    text-decoration: underline;
+    color: #16A;
+    font-family: 'Cabin', Arial, Sans-Serif;
+    font-size: 12px;
+    line-height: 15px;
+    cursor: pointer;}
+.genworth-event-list .event-data, .genworth-event-detail .event-data
+{
+    padding-bottom: 5px;}
+.genworth-event-list .event-data dt
+{
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'Cabin Bold', Arial, Sans-Serif;
+    line-height: 15px;
+    font-size: 11px;}
+.genworth-event-detail .event-data td
+{
+    white-space: nowrap;
+    font-family: 'Cabin Bold', Arial, Sans-Serif;
+    line-height: 15px;
+    font-size: 11px;
+    padding: 0px 10px;}
+.genworth-event-detail .event-data td label
+{
+    font-weight: bold;
+    text-align: right;
+    display: block;
+    margin-right: -10px;}
+.genworth-event-list .event-data dd, .genworth-event-detail .event-data dd
+{
+    display: inline;
+    font-family: 'Cabin', Arial, Sans-Serif;
+    line-height: 15px;
+    font-size: 11px;
+    padding-right: 10px;}
+.genworth-event-detail .event-data dd
+{
+    display: block;
+    float: left;
+    width: 28%;
+    white-space: nowrap;}
+    
+.genworth-event-list .event-details
+{
+    position: relative;
+    display: none;
+    padding-top: 5px;
+    clear: left;}
+.genworth-event-detail .event-details
+{
+    clear: left;
+    padding-top: 10px;}
+.genworth-event-list .event-details p
+{
+    width: 350px;
+    float: left;}
+.genworth-event-list .event-thumb
+{
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;}
+.genworth-event-detail .event-image
+{
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #CCC;}
+.genworth-event-detail hr 
+{
+    clear: both;
+    background-color: transparent;
+    color: #FFF;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    padding: 0px;
+    margin: 10px 0px;}
+.genworth-event-detail h4 
+{
+    font-family: 'Oswald', Arial, Sans-Serif;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #16A;
+    padding-bottom: 10px;
+    }
+    
+.genworth-event-list .event-details .view-event-link
+{}
+.genworth-event-list .hide-event-details
+{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    text-decoration: underline;
+    color: #16A;
+    font-family: 'Cabin', Arial, Sans-Serif;
+    font-size: 12px;
+    line-height: 15px;
+    cursor: pointer;}
+ /*
+.genworth-event-list-foot 
+{
+    text-align: center;}
+.genworth-event-list-foot .pagination 
+{
+    position: relative;
+    margin-top: 5px;}
+.genworth-event-list-foot .previous 
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;}
+.genworth-event-list-foot .next {
+    position: absolute;
+    top: 0px;
+    right: 0px;}
+.genworth-event-list-foot ul {
+    margin: 0px auto;
+    padding: 0px;
+    text-indent: 0px;
+    display: inline;}
+.genworth-event-list-foot ul li {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0px;
+    display: inline;
+    }
+.genworth-event-list-foot li a {}
+*/
+
+
+.genworth-event-detail
+{
+    position: relative;
+    }
+.genworth-event-detail h1 
+{ 
+    }
+.genworth-event-detail .date-line 
+{
+    font-family: 'Cabin', Arial, Sans-Serif;
+    line-height: 15px;
+    font-size: 11px;
+    color: #000;
+    padding-top: 20px;
+    display: inline-block;
+    
+    }
+.genworth-event-detail .event-html 
+{
+    padding-top: 20px;
+    }
+.float-left 
+{
+    float: left; 
+    margin-right: 10px;
+    margin-bottom: 5px;}
+.float-right {float: right;}
+a.return-link 
+{
+    display: inline-block;
+    padding-left: 35px;
+    text-transform: uppercase;
+    font-family: 'Cabin', Arial, Sans-Serif;
+    line-height: 30px;
+    font-size: 16px;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent url(/CMSContent/Images/return.png) no-repeat left center;
+    margin-top: 10px;
+    }
+.genworth-event-detail .print-link 
+{
+    float: right;
+    margin: 5px 0px 10px 10px;
+    position: relative;
+    z-index: 10;}
+    
+.event-detail-sidebar {
+    font-family: 'Cabin', Arial, Sans-Serif;
+    line-height: 16px;
+    font-size: 12px;
+    padding: 10px 20px;}
+.event-detail-sidebar .register-now 
+{
+    text-align: center;}
+.event-detail-sidebar .price 
+{
+    font-size: 16px;
+    line-height: 20px;
+    }
+.event-detail-sidebar h4 
+{
+    font-family: 'Oswald', Arial, Sans-Serif;
+    line-height: 30px;
+    font-size: 16px;
+    color: #888;
+    font-weight: normal;}
+.event-detail-sidebar hr {
+    clear: both;
+    background-color: transparent;
+    color: #FFF;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    padding: 0px;
+    margin: 10px 0px;}
+.event-detail-sidebar .map 
+{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    background-color: #FFF;
+    text-align: center;}
+.event-detail-sidebar .map img 
+{
+    border: none;}
+.event-detail-sidebar .location-name 
+{
+    font-weight: bold;}
+.event-detail-sidebar .location-address 
+{
+    display: block;}
+
+.sidebar .ad {
+    font-family: 'Cabin', Arial, Sans-Serif;
+    line-height: 15px;
+    font-size: 11px;
+    margin: 0px 20px;
+    padding-top: 16px;}
+.sidebar .ad img 
+{
+    float: left;
+    margin: 0px 14px 5px 0px;
+    padding: 0px;
+    border: 1px solid #000;
+    height: 122px;
+    width: 122px;}
+.sidebar .ad h6  
+{
+    color: #16A;
+    line-height: 16px;
+    font-size: 12px;
+    padding-bottom: 2px;
+    padding-top: 9px;}
+.sidebar .ad p 
+{
+    font-size: 10px;}
+    
+.dialog label 
+{ 
+	font-size: 11px;
+	color: #444444;}
+	
+.events-location-switch .filter-results-search-block .inline-form-block
+{
+    height:22px;
+}
+	
+.events-location-switch .selectBox-wrapper
+{
+    margin-top:-5px;
+}
+
+.events-switch-links
+{
+    float:left;
+    margin-top:-25px;
+}
+
+.events-switch-links .first
+{
+    margin-right:10px;
+}
+
+.events-switch-links .active
+{
+    color:#444;
+    text-decoration:none;
+}
+
+.filter-results-table tbody tr[href].third-party:hover td 
+{
+	background: #c7c7c7 url(/CMSContent/Images/filter-results-hover-bg-gray.png) repeat-x top left;
+}

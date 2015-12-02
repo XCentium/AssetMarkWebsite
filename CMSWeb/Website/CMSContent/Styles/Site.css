@@ -1,0 +1,767 @@
+/* Element Styles
+-----------------------------------------------------------*/
+
+*
+{
+	margin: 0;
+	padding: 0;
+	outline: 0px;
+}
+
+body.iFrame 
+{
+	background: none #fff;
+	text-align: left;}
+
+header,
+footer,
+nav,
+section
+{
+	display: block;
+}
+
+p
+{
+	margin: 1em 0;
+}
+
+img
+{
+	border: 0 none transparent;
+}
+
+a
+{
+	color: #0072B8;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: #0099ff;
+	text-decoration: underline;
+}
+
+
+ul
+{
+	padding-left: 1.5em;
+}
+ol
+{
+	padding-left: 2em;
+}
+
+/* Layout Styles
+-----------------------------------------------------------*/
+
+#wrapper-inner 
+{
+	width: 990px;
+	margin: 0 auto;
+	padding: 0 30px;
+	text-align: left;
+	/*background: url(/CMSContent/Images/container_bg.png) no-repeat bottom;*/
+	background: url(/CMSContent/Images/container_bg_top.png) repeat-y center top;
+}
+#wrapper-inner.hideShadow 
+{
+	padding: 0px;}
+
+#wrapper-inner a.help-bubble
+{
+    color: #333;
+    text-decoration: none;
+}
+
+#wrapper-inner a.help-bubble:hover
+{
+    color: #333;
+    text-decoration: none;
+}
+
+.column_group 
+{
+	width: 100%;
+}
+
+.column_group:after
+{
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0;
+	content: ".";
+}
+
+.column 
+{
+	float: left;
+}
+
+/* Misc */
+
+.relative-container 
+{
+	position: relative;
+	display: block;
+}
+
+#sitecore-content, .sitecore-content
+{
+	position: relative;
+	clear: both;
+	background: #ffffff;
+	min-height: 380px;
+}
+
+div .prefill
+{
+	color: #999999;
+	font-style: italic;
+	font-size: 10px;
+}
+
+/* Global Search CSS */
+
+.searchContainer
+{
+	height: 20px;
+	background: url(/CMSContent/Images/search_bg.png) repeat-x;
+	border: 1px solid #a5a5a5;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.searchContainer.highlight
+{
+	background: url(/CMSContent/Images/search_bg_hl.png) repeat-x;
+}
+
+.searchContainer input
+{
+	position: absolute;
+	top: 4px;
+	padding: 0 0 3px 5px;
+	background: none;
+	border: 0 none transparent;
+	font-family: 'Cabin', Arial, Sans-Serif;
+	font-size: 11px;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+
+fieldset 
+{
+	border:1px solid #ddd;
+	/*padding:0 1.4em 1.4em 1.4em;*/
+	padding: 10px;
+	margin:0 0 1.5em 0;
+}
+
+legend 
+{
+	font-size:1.2em;
+	font-weight: bold;
+}
+
+textarea 
+{
+	min-height: 75px;
+}
+
+.editor-label 
+{
+	margin: 1em 0 0 0;
+}
+
+.editor-field 
+{
+	margin:0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+
+.field-validation-error
+{
+	color: #ff0000;
+}
+
+.field-validation-valid
+{
+	display: none;
+}
+
+.input-validation-error
+{
+	border: 1px solid #ff0000;
+	background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+	font-weight: bold;
+	color: #ff0000;
+}
+
+.validation-summary-valid
+{
+	display: none;
+}
+
+/* JQuery UI Datepicker */
+
+.ui-datepicker
+{
+	padding: 0;
+	width: 176px;
+	border: 0 none transparent;
+	-webkit-border-radius: 0;
+	-khtml-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ui-datepicker .ui-datepicker-title
+{
+	padding-top: 2px;
+}
+
+.ui-datepicker .ui-datepicker-header
+{
+	background: transparent url(/Shared/Images/calendarheaderbg.png) repeat-x top left;
+	border: 0 none transparent;
+	height: 24px;
+	color: #FFFFFF;
+	font-family: Tahoma, Arial, Helvetica,sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+	-webkit-border-radius: 0;
+	-khtml-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.ui-datepicker .ui-datepicker-calendar
+{
+	width: 175px;
+	/* height: 125px; */
+	margin: 0;
+	border-color: transparent #CCCCCC #CCCCCC transparent;
+	border-style: none solid solid none;
+	border-width: 0 1px 1px 0;
+	border-collapse: collapse;
+}
+
+.ui-datepicker .ui-datepicker-calendar thead
+{
+	display: none;
+}
+
+.ui-datepicker .ui-datepicker-calendar tbody, .ui-datepicker .ui-datepicker-calendar tr
+{
+	border: 0 none transparent;
+}
+
+.ui-datepicker .ui-datepicker-calendar td, .ui-datepicker .ui-datepicker-calendar td.ui-datepicker-week-end
+{
+	border-color: #CCCCCC transparent transparent #CCCCCC;
+	border-style: solid none none solid;
+	border-width: 1px 0 0 1px;
+	padding: 0;
+	width: 24px;
+	height: 24px;
+	background: transparent url(/Shared/Images/filterbarDatepickerCellBackground.png) no-repeat 100% 100%;
+}
+
+.ui-datepicker .ui-datepicker-calendar a, .ui-datepicker .ui-datepicker-calendar span,
+.ui-datepicker .ui-datepicker-calendar a.ui-state-default, .ui-datepicker .ui-datepicker-calendar span.ui-state-default
+{
+	text-align: center;
+	border: 0 none transparent;
+	background: transparent;
+	text-decoration: none;
+	color: #333333;
+	font-family: Tahoma, Arial, Helvetica,sans-serif;
+	font-size: 10px;
+	display: block;
+	padding: 0;
+	width: 24px;
+	height: 24px;
+	line-height: 24px;
+}
+
+.ui-datepicker .ui-datepicker-calendar td a.ui-state-hover
+{
+	background: transparent url(/Shared/Images/filterbarDatepickerCellBackgroundHover.png) no-repeat 100% 100%;
+}
+
+.ui-datepicker .ui-datepicker-calendar td.ui-datepicker-current-day
+{
+	background: transparent url(/Shared/Images/filterbarDatepickerCellBackgroundCurrentDay.png) no-repeat 100% 100%;
+	color: #FFFFFF;
+}
+
+.ui-datepicker .ui-datepicker-calendar td.ui-state-disabled
+{
+	opacity: 1.0;
+}
+
+.ui-datepicker .ui-datepicker-calendar td.ui-state-disabled a, .ui-datepicker .ui-datepicker-calendar td.ui-state-disabled span,
+.ui-datepicker .ui-datepicker-calendar td.ui-state-disabled a.ui-state-default, .ui-datepicker .ui-datepicker-calendar td.ui-state-disabled span.ui-state-default
+{
+	color: #999999;
+}
+
+.ui-datepicker .ui-datepicker-calendar td.ui-datepicker-current-day a, .ui-datepicker .ui-datepicker-calendar td.ui-datepicker-current-day span,
+.ui-datepicker .ui-datepicker-calendar td.ui-datepicker-current-day a.ui-state-default, .ui-datepicker .ui-datepicker-calendar td.ui-datepicker-current-day span.ui-state-default
+{
+	color: #FFFFFF;
+}
+
+.ui-datepicker .ui-datepicker-header .ui-datepicker-prev, .ui-datepicker .ui-datepicker-header .ui-datepicker-next
+{
+	border: 0 none transparent;
+	-webkit-border-radius: 0;
+	-khtml-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.ui-datepicker .ui-datepicker-header .ui-datepicker-prev-hover
+{
+	left: 2px;
+	top: 2px;
+}
+
+.ui-datepicker .ui-datepicker-header .ui-datepicker-next-hover
+{
+	right: 2px;
+	top: 2px;
+}
+
+.ui-datepicker .ui-datepicker-header .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-header .ui-datepicker-next span
+{
+}
+
+.ui-datepicker .ui-datepicker-header .ui-datepicker-prev span
+{
+	margin-left: -8px;
+	margin-top: -9px;
+	background: transparent url(/Shared/Images/filterbarDatepickerPrev.png) no-repeat 4px 2px;
+}
+
+.ui-datepicker .ui-datepicker-header .ui-datepicker-next span
+{
+	margin-left: -8px;
+	margin-top: -9px;
+	background: transparent url(/Shared/Images/filterbarDatepickerNext.png) no-repeat 5px 2px;
+}
+
+.ui-datepicker .ui-datepicker-header a.ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-header a.ui-datepicker-next
+{
+	cursor: pointer;
+	outline: none;
+}
+
+.ui-datepicker .ui-datepicker-header .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-header .ui-datepicker-next-hover
+{
+	background: none;
+	border: 0 none transparent;
+	-webkit-border-radius: 0;
+	-khtml-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.ui-datepicker .ui-datepicker-header .ui-datepicker-prev-hover span, .ui-datepicker .ui-datepicker-header .ui-datepicker-next-hover span
+{
+	background-color: #095D8F;
+}
+
+.ui-datepicker .ui-datepicker-header .ui-state-disabled.ui-datepicker-next-hover span,
+.ui-datepicker .ui-datepicker-header .ui-state-disabled.ui-datepicker-prev-hover span
+{
+	background-color:#0277bc;
+}
+
+/* Skinnables */
+
+.ui-skinnable-state-error .ui-skinnable-input-area1
+{
+    background: transparent url(/Shared/Images/inputTextBackgroundLeftError.png) no-repeat left top;
+}
+
+.ui-skinnable-state-error .ui-skinnable-input-area2
+{
+    background: transparent url(/Shared/Images/inputTextBackgroundRightError.png) no-repeat right top;
+}
+.ui-skinnable-state-focus .ui-skinnable-input-area1
+{
+    background: transparent url(/Shared/Images/inputTextBackgroundLeftFocus.png) no-repeat left top;
+}
+
+.ui-skinnable-state-focus .ui-skinnable-input-area2
+{
+    background: transparent url(/Shared/Images/inputTextBackgroundRightFocus.png) no-repeat right top;
+}
+
+.ui-skinnable-state-error .ui-skinnable-textarea-area1
+{
+    background: transparent url(/Shared/Images/textareaBackgroundTopLeftError.png) no-repeat left top;
+}
+
+.ui-skinnable-state-error .ui-skinnable-textarea-area2
+{
+    background: transparent url(/Shared/Images/textareaBackgroundTopRightError.png) no-repeat right top;
+}
+
+.ui-skinnable-state-error .ui-skinnable-textarea-area3
+{
+    background: transparent url(/Shared/Images/textareaBackgroundBottomLeftError.png) no-repeat left bottom;
+}
+
+.ui-skinnable-state-error .ui-skinnable-textarea-area4
+{
+    background: transparent url(/Shared/Images/textareaBackgroundBottomRightError.png) no-repeat right bottom;
+}
+
+.ui-skinnable-state-error .ui-skinnable-textarea-area5
+{
+    background: #FFFFFF;
+}
+
+.ui-skinnable-state-focus .ui-skinnable-textarea-area1
+{
+    background: transparent url(/Shared/Images/textareaBackgroundTopLeftFocus.png) no-repeat left top;
+}
+
+.ui-skinnable-state-focus .ui-skinnable-textarea-area2
+{
+    background: transparent url(/Shared/Images/textareaBackgroundTopRightFocus.png) no-repeat right top;
+}
+
+.ui-skinnable-state-focus .ui-skinnable-textarea-area3
+{
+    background: transparent url(/Shared/Images/textareaBackgroundBottomLeftFocus.png) no-repeat left bottom;
+}
+
+.ui-skinnable-state-focus .ui-skinnable-textarea-area4
+{
+    background: transparent url(/Shared/Images/textareaBackgroundBottomRightFocus.png) no-repeat right bottom;
+}
+
+.ui-skinnable-state-focus .ui-skinnable-textarea-area5
+{
+    background: #F8E79C;
+}
+
+.ui-autocomplete
+{
+	background-image: none;
+}
+.disclosure
+{
+	font-family: Tahoma, Arial, Helvetica,sans-serif;
+	font-size: 10px;
+}
+
+
+h5.content-title
+{
+    font: 22px 'Cardo', 'garamond', 'serif';
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: 0px;
+}
+
+div.content-summary 
+{
+    font-size: 14px !important;
+    margin-bottom: 0px;
+}
+
+.section 
+{
+    padding: 0px;
+    margin: 0px;
+}
+.section .section
+{
+    padding: 0px 20px;
+}
+.section h6
+{
+    font-size: 13px !important;
+    font-weight: normal;
+    padding: 15px 0px 0px;
+    margin: 0px;
+}
+.section p
+{
+    font-size: 11px !important;
+    padding: 15px 0px 0px;
+    margin: 0px;
+}
+.section .section h6
+{
+    padding: 5px 0px 0px;
+
+}
+.section .section p
+{
+
+    padding: 5px 0px 0px;
+}
+
+.thumbnail-container 
+{
+    margin: 0px auto;
+    text-align: center;
+}
+ul.thumbnails 
+{
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+}
+ul.thumbnails li 
+{
+    list-style-type: none;
+    text-indent: 0px;
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+}
+ul.thumbnails a 
+{
+    display: inline-block;
+    padding: 10px;
+}
+ul.thumbnails img 
+{
+    }
+.withinAside ul.thumbnails a 
+{
+    padding: 5px;
+}
+
+.withinAside 
+{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.withPadding
+{
+    padding: 10px;
+}
+.withBorder
+{
+    border: 1px solid #888;
+}
+.center
+{
+    text-align: center;
+}
+.aside 
+{
+    padding-left: 10px;
+    background: transparent url(/CMSContent/Images/aside_bg.png) repeat-y left top !important;
+}
+.aside-right 
+{
+    padding-right: 10px;
+    /*background: transparent url(/CMSContent/Images/aside_bg.png) repeat-y right top !important;*/
+    border-right:#eaeaea 2px solid;
+    padding-top:8px;
+}
+.withinAside h6, .asideBox h6
+{
+    font-size: 12px !important;
+}
+.withinAside h6
+{
+    margin: 15px 0px;
+}
+
+.withinAside blockquote
+{
+    margin: 0px 10px;
+}
+blockquote 
+{
+    background: transparent url(/CMSContent/Images/blockquote-start.png) no-repeat left top;
+    padding-top: 21px;
+    font-style: italic;
+    font-size: 11px !important;
+    text-align: left;
+}
+blockquote cite 
+{
+    background: transparent url(/CMSContent/Images/blockquote-end.png) no-repeat right top;
+    margin-top: 5px;
+    padding-top: 16px;
+    display: block;
+    text-align: right;
+    padding-right: 30px;
+}
+
+.asideBox 
+{
+    border: 2px solid #CCC;
+}
+
+.withGradient 
+{
+    height: 100%;
+	color: #fff;
+	/* For WebKit (Safari, Google Chrome etc) */
+	background: -webkit-gradient(linear, left top, left bottom, from(#00f), to(#fff));
+	/* For Mozilla/Gecko (Firefox etc) */
+	background: -moz-linear-gradient(top, #00f, #fff);
+	/* For Internet Explorer 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF0000FF, endColorstr=#FFFFFFFF);
+	/* For Internet Explorer 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FF0000FF, endColorstr=#FFFFFFFF)";
+}
+
+
+.content-footer 
+{
+    margin: 0px auto;
+    padding: 10px;
+    text-indent: 0px;
+    width: 700px;}
+.content-footer label
+{
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+    font: 12px 'Cabin', 'arial', 'sans-serif';
+    color: #888;
+    font-weight: bold;
+    padding-bottom: 5px;
+    }
+.content-footer ul 
+{
+    display: block;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0px;
+    float: left;
+    border-left: 1px solid #CCC;
+    margin-left: 15px;}
+.content-footer ul.first 
+{
+    border-left: none;
+    margin-left: 15px;
+    margin-right: 0px;}
+.content-footer ul.last 
+{
+    margin-right: 14px;}
+.content-footer ul li 
+{
+    width: 131px;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0px;
+    list-style-type: none;
+    min-height: 15px;
+    font-size: 11px;
+    line-height: 15px;
+    color: #444;
+    padding: 2px 10px;}
+.content-footer ul li.first {}
+.content-footer ul li.last {}
+.content-footer ul li a 
+{
+    display: block;
+    margin: 0px;
+    
+    text-indent: 0px;
+    font-size: 11px;
+    line-height: 15px;
+    text-decoration: none;
+    /*color: #444; removed task 1920*/  
+    }
+.content-footer ul li a:hover { text-decoration: underline; }
+.content-footer ul.first li a 
+{
+    
+    margin-left: 0px;
+    padding-left: 0px;
+    }
+    
+ hr, .hr-wrapper
+ {
+     clear: both;
+     margin: 10px 0px;
+     overflow: hidden;
+     padding: 0px;
+     height: 1px;
+     background: transparent url(/CMSContent/Images/section_divider.png) no-repeat right bottom;
+     border: none;}
+ 
+ .hr-wrapper hr 
+ {
+     display: none !important;}
+ 
+ .c9 hr, .c8 hr, .c9 .hr-wrapper, .c8 .hr-wrapper {background-position: right bottom;}
+ .sidebar hr, .aside hr, .sidebar .hr-wrapper, .aside .hr-wrapper
+ {
+     background: transparent url(/CMSContent/Images/sidebar_divider_c4.png) no-repeat center bottom;}
+ .c3 .sidebar hr, .c3 .aside hr, .c3 .sidebar .hr-wrapper, .c3 .aside .hr-wrapper
+ {
+     background: transparent url(/CMSContent/Images/sidebar_divider_c3.png) no-repeat center bottom;}
+     
+ /*.sidebar .snackbox table.event-calendar td.day,
+ .sidebar .snackbox table.event-calendar td.selected-day,
+ .sidebar .snackbox table.event-calendar td.today
+  { width: 40px !important; }*/
+ 
+ 
+ /* G115 - START SPRING STUDIO STYLES */
+table.event-calendar .today a {border:1px solid #015ea4;}
+.cal-legend {font-size:11px; margin-left:20px; margin-top:5px;}
+.cal-legend img {position:relative; top:2px;}
+ /* G115 - END SPRING STUDIO STYLES */
+ 
+ .inline-video-theater 
+ {
+     background-color: #000;
+     text-align: center;
+     padding: 100px;
+     display: none;
+     margin-top: 10px;
+     cursor: pointer;
+     position: relative;}
+ .inline-video-theater iframe 
+ {
+     margin: 0px auto;}
+ .inline-video-theater .close-button 
+ {
+ 	position: absolute;
+ 	top: 10px;
+ 	right: 10px;}
+     
+ .inline-video, .inline-video * { cursor: pointer; }
+ /*tr.inline-video:hover td { background-color: #FF9; }*/
+
+
+#nodeversion
+{
+       position: absolute;
+       right: 15px;
+       bottom: 10px;
+       color: Gray;
+}

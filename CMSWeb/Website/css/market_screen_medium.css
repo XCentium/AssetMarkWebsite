@@ -1,0 +1,1207 @@
+/* This is the style of your browser text */
+
+/********************
+ * global overrides *
+ ********************/
+
+body {
+	background-color:#d5cfc7;
+	margin:			0 0 0 0;
+	padding:		0 0 0 0;
+	text-align:		center;
+	font-family:	Arial, Helvetica, sans-serif;
+}
+img {
+	border:			0;
+}
+table {
+	border:			none;
+}
+form {
+	margin:			0 0 0 0;
+	padding:		0 0 0 0;
+}
+
+/* medium */
+p {
+		font-size: 12px;
+		margin: 0 0 12px 0;
+		padding: 0px;
+		color: #000000;
+	}
+#masterDiv {
+		width:778px;
+		margin:0px auto;
+		background-color:#ffffff;
+		text-align:left; /* for where IE ver < 6 */
+		position:		relative;
+	}
+	
+/* #page is the centered 778px wide white canvas
+   in which all rows of content will be rendered */
+#page {
+	top:			0px;
+	width:			778px;
+	margin:			0 auto;
+	padding:		0 0 20px 0;
+	background-color:#fff;
+	text-align:		left;
+	position:		relative;
+}
+/* a node is a re-usable container, used in sidebar
+   blocks and the main body, contextualy styled,
+   but this is a global starting point */
+.node {
+	font-size:		12px;
+	line-height:	16px;
+	color:			#000000;
+}
+
+/* #header is the first content row, inc. the 
+   genworth logo, language selector and search
+   field. */
+#header {
+	position:		relative;
+	width:			778px;
+	height:			114px;
+	border:			none;
+	padding:		0 0 0 0;
+	margin:			0 0 0 0;
+	color:			#666666;
+}
+#header #banner {
+	position:		absolute;
+	top:			0;
+	left:			0;
+	z-index:		0;
+}
+#header #super_nav {
+	position:		absolute;
+	top:			13px;
+	right:			22px;
+	font-size:		10px;
+}
+#header #super_nav a {
+	color:			#000;
+	text-decoration:none;
+}
+#header #super_nav a:hover {
+	color:			#000099;
+	text-decoration:underline;
+}
+#secHeader {
+	position:		relative;
+	width:			778px;
+	height:			114px;
+	border:			none;
+	padding:		0 0 0 0;
+	margin:			0 0 0 0;
+	color:			#666666;
+}
+#secHeader #banner {
+	position:		absolute;
+	top:			0;
+	left:			0;
+	z-index:		0;
+	width:			778px;
+	height:			114px;
+}
+
+#secHeader #logo {
+	position:		absolute;
+	top:			37px;
+	left:			26px;
+	z-index:		1;
+}
+
+#secHeader #super_nav {
+	position:		absolute;
+	top:			13px;
+	right:			22px;
+	font-size:		10px;
+}
+#secHeader #super_nav a {
+	color:			#000;
+	text-decoration:none;
+}
+#secHeader #super_nav a:hover {
+	color:			#000099;
+	text-decoration:underline;
+}
+#secHeader .search_input {
+	position:		absolute;
+	top:			33px;
+	right:			46px;
+	z-index:		10;
+	margin:			0 0 0 0;
+	width:			114px;
+	padding:		1px 0 2px 0;
+	font-family:	Arial, Helvetica, sans-serif;
+	font-size:		10px;
+	color:			#000000;
+}
+#secHeader .search_submit {
+	position:		absolute;
+	top:			35px;
+	right:			20px;
+	z-index:		10;
+	margin:			0 0 0 0;
+	padding:		0 0 0 0;
+}
+#secHeader .toolbar {
+	position:		absolute;
+	top:			55px;
+	right:			46px;
+	width:          114px;
+	z-index:		10;
+	margin:			0 0 0 0;
+	padding:		0 0 0 0;
+}
+/* breadcrumb and text sizer styles */
+table.breadcrumb {
+	position:		relative;
+	width:			778px;
+	border:			none;
+	padding:		0 0 0 0;
+	margin:			0 0 0 0;
+}
+td.breadcrumb {
+	width:			557px;
+	padding:		6px 0 6px 0;
+	vertical-align:	middle;
+}
+#text_sizer {
+	vertical-align: bottom;
+	margin-top: 50px;
+}
+td.text_sizer {
+	width:			100px;
+	padding:		4px 0 6px 0;
+	vertical-align: bottom;
+	text-align:		right;
+}
+td.text_sizer img {
+	margin:			0 0 0 0;
+	vertical-align: bottom;
+	
+}
+td.breadcrumb, td.text_sizer {
+	font-size:		10px;
+	color:			#747472;
+	cursor:			default;
+}
+td.breadcrumb a {
+	color:			#747472;
+	text-decoration:none;
+}
+td.breadcrumb a:hover {
+	border-bottom:	none;
+	text-decoration:underline;
+}
+
+/***************************************
+ * structural formatting declarations  *
+ ***************************************
+ .container encloses the .center_content
+ and right .sidebar
+*/
+table#body {
+	position:		relative;
+	width:			778px;
+	padding:		0 0 0 0;
+	margin:			0 0 0 0;
+}
+table#body tr td {
+	vertical-align:	top;
+}
+
+.container {
+	padding:		0 0 0 0;
+	margin:			0 0 0 0;
+	width:			557px;
+}
+.onecolumn_container {
+	padding:		0 0 0 0;
+	margin:			0 0 0 0;
+	width:			100%;
+}
+.center_content {
+	vertical-align:	top;
+}
+.main {
+	padding:		0 0 0 0;
+	background-image:url(http://www.genworth.com/content/images/border-feature.gif);
+	background-position:top;
+	background-repeat:repeat-x;
+}
+.main .sidebar {
+}
+.main .center_content {
+}
+.content_feature, 
+.content_section {
+	margin:			0 0 0 0;
+	padding:		11px 0 0 0;
+}
+.content_feature {
+
+	background-position:bottom;
+	background-repeat:repeat-x;
+}
+.noline {
+	background-image:none;
+}
+.content_feature .node,
+.content_feature .node ul li {
+	clear:			both;
+	margin:			0 0 0 0;
+	padding:		0 0 1px 0;
+	font-size:		12px;
+	line-height:	16px;
+}
+.content_section .node {
+	clear:			both;
+	margin:			0 0 0 0;
+	padding:		0 0 1px 0;
+	background-image:url(http://www.genworth.com/content/images/border-feature.gif);
+	background-position:bottom;
+	background-repeat:repeat-x;
+}
+.content_feature .node table img, 
+.content_section .node table img {
+	padding-bottom:	11px;
+}
+.content_feature img, 
+.content_section img {
+	float:			left;
+	margin:			0 15px 0 0;
+	padding:		0 0 0 0;
+}
+img.more, 
+.content_feature .node table img.more, 
+.content_section .node table img.more {
+	float:			none;
+	clear:			none;
+	margin:			0 0 -7px 0;
+	padding:		7px 0 7px 0;
+}
+
+	#contentContainer {
+		font-family: arial, sans-serif;
+		font-size: 12px;
+		color: #000000;
+		padding: 0 12px 30px 29px;
+		/*width:613px;*/
+		voice-family: "\"}\"";
+		voice-family: inherit;
+		/*width:572px;	/* This is the correct value */
+		_padding: 0 12px 30px 21px;
+		
+	}
+	
+	html>body #contentContainer {
+	
+		/*width: 572px; */
+	}
+	
+	#oneColumnContainer {
+		width:100%;
+		padding:0 12px 20px 16px;
+	}
+	
+	#breadcrumb {
+		 height: 34px; 
+		 font-size: 11px; 
+		 color: #A7A7A7;
+	}
+
+	#breadcrumb.table {
+		 font-size: 11px; 
+	}
+	
+	#breadcrumb a {
+		color: #A7A7A7;
+		text-decoration: underline;
+	}
+	
+	#breadcrumb a:hover {
+		color: #A7A7A7;
+		text-decoration: none;
+	}
+	
+	#headerContainer { vertical-align: bottom; padding-bottom: 15px; }
+
+	
+/* #footer - let's get this out of the way since
+   it's global and simple */
+#footer {
+	position:		relative;
+	width:			778px;
+	margin:			0 auto;
+	padding:		6px 0 5px;
+	border-top:		2px solid #808080;
+}
+#footer td {
+	font-size:		10px;
+	color:			#808080;
+	cursor:			default;
+}
+#footer_links a, #footer_legal a {
+	color:			#808080;
+	text-decoration:none;
+}
+#footer_links a:hover, #footer_legal a:hover {
+	text-decoration:underline;
+}
+#footer_links {
+	text-align:		left;
+}
+#footer_legal {
+	text-align:		right;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+	color: #005c97;
+}
+
+h1 {
+	font-family: "Times New Roman", Times, serif;
+	text-align: left;
+	font-size: 26px;
+	font-weight: normal;
+	padding: 0 0 0 0;
+	margin: 0 10px 1px 0;
+	color: #897255;
+}
+
+h2 {
+	padding:		0 0 0 0;
+	margin:			0 0 5px 0;
+	font-family:	Arial, Helvetica, sans-serif;
+	font-size:		16px;
+	font-weight:	bold;
+	color:			#897255;
+}
+h3 {
+	padding:		0 0 0 0;
+	margin:			0 0 4px 0;
+	font-family:	Arial, Helvetica, sans-serif;
+	font-size:		16px;
+	font-weight:	normal;
+	color:			#897255;
+}
+h3 span {
+	color:			#B07903;
+}
+h4 {
+	padding:		0;
+	margin:			0;
+	font-family:	Arial, Helvetica, sans-serif;
+	font-size:		16px;
+	color:			#666666;
+}
+h5 {
+	font-size: 16px;
+}
+
+
+
+
+
+/* PAGE TITLE */
+.headerImgLine{  
+		 background: url(../images/heading_bottom.gif) repeat-x bottom left; 
+
+ 	}
+#headerContainer {
+		 padding-bottom: 15px;
+		
+	}
+	 
+p.secIntroCopy {
+		font-size: 14px;
+		margin: 0 0 12px 0;
+		padding: 0;
+		color:#000000;
+}
+p.secIntroCopySmall {
+		font-size: 12px;
+		margin: 0 0 12px 0;
+		padding: 0;
+		color:#000000;
+}
+ul.secIntroCopy {
+		font-size: 12px;
+		color:#000000;		
+}
+li.secIntroCopy {
+		font-size: 12px;
+		color:#000000;
+		list-style-type:disc;
+		list-style-position:inside;
+		background-image:none;		
+}
+.secHeaderLink{
+		font-size: 14px;
+		margin: 0 0 4px;
+		padding: 0;
+		font-color: #000000;
+}
+.secHeaderLink a{
+		text-decoration: none;
+}
+.secHeaderLink a:visited{
+		text-decoration: none;
+}
+.secHeaderLink a:hover{
+		text-decoration: underline;
+}
+sup {
+	font-size:		9px;
+	vertical-align:	top;
+}
+select, input {
+	font-size:		11px;
+	font-family:	Arial, Helvetica, sans-serif;
+	color:			#666;
+}
+.content_feature select, 
+.content_section select {
+	margin-bottom:	11px;
+}
+.tiny {
+	font-size:		9px;
+	line-height:	14px;
+}
+.main .center_content a {
+	color:			#005c97;
+	text-decoration:none;
+}
+.main .center_content a:hover, 
+.main .sidebar a:hover {
+	border-bottom:	none;
+	text-decoration:underline;
+}
+
+.center_content ol {
+	margin:			0 0 0 0;
+	padding:		0 0 4px 30px;
+	color:			#666;
+}
+.center_content .content_feature>ol,
+.center_content .content_section>ol {
+	margin:			0 0 0 0;
+	padding:		0 0 4px 23px;
+	color:			#666;
+}
+.center_content ol li {
+	margin:			0 0 0 0;
+	padding:		0 0 7px 0;
+}
+
+.center_content ul { 
+	margin:			0; 
+	padding:		0 0 0 20px; 
+	color:			#000000; 
+	font-size: 		12px; 
+}
+.center_content ul li { 
+	font-size: 		12px; 
+	margin:			0; 
+	padding:		0 0 11px; 
+}
+.center_content ul.arrow, 
+.blocks_feature ul.arrow {
+	margin:			0 0 0 0;
+	padding:		0 0 4px 0;
+}
+.blocks_plain ul.arrow {
+	margin:			0 0 0 0;
+	padding:		0 0 10px 0;
+}
+.blocks_feature ul li, 
+.blocks_plain ul li {
+	margin:			0 0 0 0;
+	padding:		0 0 11px 15px;
+}
+.blocks_feature ul.arrow li, 
+.center_content ul.arrow li {
+	margin:			0 0 0 0;
+	padding:		0 0 7px 15px;
+}
+.blocks_plain ul.arrow li {
+	margin:			0 0 0 0;
+	padding:		0 0 1px 15px;
+}
+.center_content ul.arrow li {
+	background-image:url(http://www.genworth.com/content/images/bullet-arrow_off.gif);
+	background-position:0 3px;
+	background-repeat:no-repeat;
+	list-style-type:none;
+}
+.center_content ul.arrow li.on {
+	background-image:url(http://www.genworth.com/content/images/bullet-arrow_on.gif);
+}
+.blocks_feature ul li, 
+.blocks_plain ul li {
+	background-image:url(http://www.genworth.com/content/images/bullet-arrow_off.gif);
+	background-position:0 5px;
+	background-repeat:no-repeat;
+	list-style-type:none;
+}
+.center_content ul.arrow>li, 
+.blocks_feature ul>li, 
+.blocks_plain ul>li {
+	background-position:0 3px;
+}
+.center_content ul li a, 
+.blocks_feature ul li a, 
+.blocks_plain ul li a {
+	color:			#005c97;
+	font-family:	Arial, Helvetica, sans-serif;
+	text-decoration:none;
+}
+.center_content ul li.on a.on, 
+.center_content ul li.on a.on:hover {
+	color:			#000;
+	cursor:			default;
+	text-decoration:none;
+	border-bottom:	none;
+}
+.center_content ul li, 
+.center_content ul li a {
+	font-size:		12px;
+	line-height:	14px;
+}
+.center_content ul.tiny li, 
+.center_content ul.tiny li a {
+	font-size:		9px;
+	line-height:	14px;
+}
+.center_content ul li a:hover, 
+.blocks_feature ul li a:hover, 
+.blocks_plain ul li a:hover {
+	text-decoration:underline;
+}
+.blocks_feature ul li, 
+.blocks_feature ul li a, 
+.blocks_plain ul li, 
+.blocks_plain ul li a {
+	font-size:		12px;
+	line-height:	14px;
+}
+
+
+
+
+
+.center_content .sitemap ul li.sub, 
+.center_content ul li.sub {
+	display:		inline;
+	margin:			0 0 0 0;
+	padding:		0 0 0 0;
+	background-image:none;
+	list-style-type:none;
+	list-style-image:none;
+}
+.center_content ul li.sub ul li {
+	background-image:none;
+	list-style-type:none;
+	list-style-image:none;
+}
+
+#subPageFullContainer {
+  padding:20px 17px 20px 16px;
+}
+
+
+select.jobs {
+	margin-bottom:	4px;
+}
+select.jobslast {
+	margin-bottom:	11px;
+}
+input.jobs {
+	width:			200px;
+	padding-left:	3px;
+}
+
+.divLine1 {
+		height: 12px;
+		background: url(http://www.genworth.com/content/images/heading_bottom.gif) repeat-x center left;
+		margin: 0 0 12px 0;
+		padding: 0;
+	}
+
+
+.divLine2 {
+		height: 12px;
+		background: url(../images/heading_bottom.gif) repeat-x bottom left;;
+		margin: 0 0 12px 0;
+		padding: 0;
+	}
+
+.homeNewsCallOut {
+		border-top:1px dotted #9BB6D8; 
+		border-bottom:1px dotted #9BB6D8; 
+		background-color:#E9EFF6; 
+		padding:16px 11px 14px; 
+		margin: 35px 0;
+	}
+
+ul.arrow li {
+	background-image:url(http://www.genworth.com/content/images/bullet-arrow_off.gif);
+	background-position:0 3px;
+	background-repeat:no-repeat;
+	list-style-type:none;
+}
+
+/* color box styles (used on home page and order MI page, currently beige) */
+	.colorBoxTop { height:7px; background:url(https://www.gefinancialpro.com/images/color_box_top_edge.gif) repeat-x 50% top; position:relative; width: 207px; }
+	.colorBoxContainer {
+		background-color:#EEE7DA; 
+		border-left: 1px solid #C89A76; 
+		border-right: 1px solid #C89A76;
+		padding:5px 15px;
+		color:#000;
+		text-align:left;
+	}
+
+/* for home page colored box only */
+	#homeLeftColumn .colorBoxContainer {
+		padding:5px 10px 5px 9px;
+		color:#666666;
+		font-size:11px;
+		width:245px;
+		voice-family: "\"}\"";
+		voice-family: inherit;
+		width:224px;
+	}
+	.dummy { /* to deal with a bug in IE 5 */ }
+
+/* for colorBox on the large form page */
+	#subPageFullContainer .colorBoxContainer {
+		padding:10px 8px; 
+		color:#000;
+	}
+	.dummy { /* to deal with a bug in IE 5 */ }
+	
+/* for colorBox on the sub/secure page */
+
+	#subPageSecureContainer .colorBoxContainer {
+		padding:5px 15px !important;
+		color:#000;
+		text-align:left;
+		width:530px;
+		voice-family: "\"}\"";
+		voice-family: inherit;
+		width:498px;
+	}
+	
+	.dummy { /* to deal with a bug in IE 5 */ }
+.colorBoxBottom { 
+		background-image: url(https://www.gefinancialpro.com/images/color_box_bot_edge.gif); 
+		background-position: 0 0; 
+		height:7px; 
+		margin-bottom:15px;
+		width: 207px; 
+		}
+.colorBoxContainer h1 {
+		color:#A24E12;
+		font-size:14px;
+		line-height:16px;
+		margin:0 0 10px;
+		font-family:arial, sans-serif;
+		letter-spacing:0px;
+		text-transform:none;
+		font-weight:bold;
+	}	
+	.colorBoxDivider {
+		border-bottom: 1px solid #D0AA8A;
+		padding:10px 0;
+	}
+	
+	
+/*****************************
+ * rows; sidebars and blocks *
+ *****************************/
+img.tools {
+	margin:			2px 10px 0 0;
+}
+/* global content row styles; standard 20px
+   gutter, and gutter_sb which is used in
+   header and breadcrumb rows for an empty
+   region that replaces a sidebar and
+   both it's gutters (161+20+20=201) */
+td.gutter {
+	width:			20px;
+}
+td.gutter_sb {
+	width:			201px;
+}
+/* sidebars are a container for blocks_*>nodes
+   to be rendered */
+.sidebar {
+	width:			161px;
+}
+
+
+/* .blocks_nav is for the left nav, has
+   line seperators between ul's, and graphic
+   arrow list-markers. there's no need for
+   multiple instances so it does not use the
+   node structure and it won't adopt the common
+   .block_* styles. */
+.blocks_nav {
+	margin:			0 0 15px 0;
+	padding:		0 0 0 0;
+	background-image:url(http://www.genworth.com/content/images/border-feature.gif);
+	background-position:bottom;
+	background-repeat:repeat-x;
+}
+.blocks_nav ul {
+	margin:			0 0 0 0;
+	padding:		7px 0 7px 0;
+	background-image:url(http://www.genworth.com/content/images/border-feature.gif);
+	background-position:top;
+	background-repeat:repeat-x;
+}
+.blocks_nav ul li {
+	margin:			0 0 0 0;
+	padding:		0 0 0 15px;
+	background-image:url(http://www.genworth.com/content/images/bullet-arrow_off.gif);
+	background-position:0 4px;
+	background-repeat:no-repeat;
+	list-style-type:none;
+	font-size:		10px;
+	line-height:	14px;
+}
+.blocks_nav ul>li {
+	background-position:0 3px;
+}
+.blocks_nav ul li.on, {
+	background-image:url(http://www.genworth.com/content/images/bullet-arrow_on.gif);
+}
+.blocks_nav ul>li.on {
+	background-image:url(http://www.genworth.com/content/images/bullet-arrow_on.gif);
+	background-position:0 3px;
+}
+.blocks_nav ul li a, 
+.blocks_nav ul li.sub ul li a {
+	color:			#005c97;
+	text-decoration:none;
+}
+.blocks_nav ul li a.on, 
+.blocks_nav ul li.sub ul li a.on {
+	color:			#000;
+	cursor:			default;
+	text-decoration:none;
+}
+.blocks_nav ul li a:hover, 
+.blocks_nav ul li.sub ul li a:hover {
+	border-bottom:	none;
+	text-decoration:underline;
+}
+.blocks_nav ul li a.on:hover, 
+.blocks_nav ul li.sub ul li a.on:hover {
+	border-bottom:	none;
+	cursor:			default;
+	text-decoration:none;
+}
+.blocks_nav ul li.sub {
+	display:		inline;
+	margin:			0 0 0 0;
+	padding:		0 0 0 0;
+	background-image:none;
+	list-style-type:none;
+	list-style-image:none;
+}
+.blocks_nav ul li ul {
+	margin:			0 0 0 0;
+	padding:		2px 0 0 0;
+	background-image:none;
+}
+.blocks_nav ul li.sub ul li {
+	background-image:none;
+	list-style-type:none;
+	list-style-image:none;
+}
+.blocks_nav ul li ul li {
+	margin:			0 0 0 26px;
+	padding:		0 0 0 0;
+	background-image:none;
+	list-style-type:none;
+	list-style-image:none;
+}
+/* common .block_* styles */
+.sidebar .node a {
+	text-decoration:none;
+	color:			#005c97;
+}
+.sidebar .node p {
+	margin:			0 0 13px 0;
+	padding:		0 0 0 0;
+	font-size:		12px;
+	color:			#000000;
+}
+
+.sidebar .node p.preform {
+	margin:			0 0 7px 0;
+}
+.sidebar .node form {
+	position:		relative;
+	top:			0;
+	left:			0;
+	margin:			0 0 0 0;
+	padding:		0 0 13px 0;
+}
+.sidebar .node>form {
+	padding:		0 0 14px 0;
+}
+.sidebar .node form .search_input {
+	position:		relative;
+	top:			0;
+	left:			0;
+	width:			114px;
+	margin:			0 0 0 0;
+	padding:		1px 0 2px 0;
+	font-family:	Arial, Helvetica, sans-serif;
+	font-size:		10px;
+	color:			#666;
+}
+.sidebar .node form .search_submit {
+	position:		relative;
+	top:			2px;
+	left:			5px;
+}
+.sidebar .node form>.search_submit {
+	position:		relative;
+	top:			5px;
+	left:			5px;
+}
+/* .blocks_feature are blue headers on blue */
+.sidebar .blocks_feature {
+	padding-top:	10px;
+	padding-bottom:	5px;
+}
+.sidebar .blocks_feature .node {
+	background-color:#e9eff6;
+	padding:		13px 15px 1px;
+	margin-bottom:	10px;
+	background-image:url(http://www.genworth.com/content/images/border-feature.gif);
+	background-position:bottom;
+	background-repeat:repeat-x;
+	color:			#666;
+}
+
+/* .blocks_plain have brown headers on white */
+.sidebar .blocks_plain {
+	background-image:url(http://www.genworth.com/content/images/border-plain.gif);
+	background-position:top;
+	background-repeat:repeat-x;
+
+	font-size:		11px;
+}
+.sidebar .blocks_plain .node {
+	padding:		13px 0 1px;
+	background-image:url(http://www.genworth.com/content/images/border-plain.gif);
+	background-position:bottom;
+	background-repeat:repeat-x;
+}
+
+.sidebar table {
+	line-height:	14px;
+}
+.sidebar .blocks_plain .node h5 {
+	margin:			0 0 0 0;
+	padding:		0 0 2px 0;
+	font-weight:	bold;
+	font-size:		14px;
+	color:			#a24e12;
+}
+/* primary nav links are the top nav links. setting
+   the link to .on effectively disables the link. */
+.primary_links {
+	width:			778px;
+	background-color:#897255;
+}
+.primary_links .gutter {
+	width:			20px;
+}
+.primary_links .container {
+	/*width:			738px;*/
+	height:			32px;
+	vertical-align:	middle;
+	text-align: center;
+	font-size:		12px;
+	cursor:			default;
+}
+.primary_links a, .primary_links a:visited {
+	color:			#FFF;
+	text-decoration:none;
+}
+.primary_links a:hover {
+	color:			#e7d2ad;
+	border-bottom:	medium none;
+}
+.primary_links a.on {
+	color:			#e7d2ad;
+	text-decoration:none;
+}
+.primary_links a.on:hover {
+	color:			#e7d2ad;
+	border-bottom:	medium none;
+	cursor:			default;
+}
+.primary_links a.under {
+	color:			#e7d2ad;
+	text-decoration:none;
+}
+.primary_links a.under:hover {
+	color:			#e7d2ad;
+	border-bottom:	medium none;
+}
+.primary_links img {
+	margin:			0 13px 0 13px;
+	vertical-align:	middle;
+}
+
+/* begin leftNav styles */
+#leftNavBackground {
+	background: url(../images/misc_vertdividerdots.gif) repeat-y right;
+		
+	}
+ul#leftNav {
+		margin: 0;
+		padding: 23px 0;
+	}
+#leftNav a:visited{
+		text-decoration: none;
+		color: #897255;
+	}
+#leftNav a:hover{
+		text-decoration: underline;
+		color: #897255;
+	}
+li.firstLevel, li.firstLevelActiveSubs {
+		font-size: 12px;
+		line-height: 14px;
+		padding: 5px 0;
+		color: #897255;		
+		list-style-type: none;
+		width: 155px;
+	}
+li.firstLevelLine	{
+		font-size: 8px;
+		line-height: 2px;
+		padding: 0;
+		color: #897255;
+		background: url(../images/misc_hordividerdots.gif) repeat-x bottom right;
+		list-style-type: none;
+		width: 155px;
+	}
+li.firstLevelActive  {
+		font-size: 12px;
+		line-height: 14px;
+		padding: 5px 0;
+		color: #897255;
+		list-style-type: none;
+		width: 155px;
+	}
+li.firstLevel a, li.firstLevelActive a, li.firstLevelActiveSubs a {
+		padding: 2px 5px 2px 17px;
+		display: block;
+		text-decoration: none;
+		color: #897255;
+		background: url(../images/bullet-arrow_off.gif) no-repeat 7px 5px;
+	}
+li.firstLevel a:hover, li.firstLevelActive a:hover, li.firstLevelActiveSubs a:hover {
+		text-decoration: underline;
+	}
+li.firstLevel a {
+		background: url(../images/bullet-arrow_off.gif) no-repeat 7px 5px;
+	}
+li.firstLevelActive a {
+		background: url(../images/blt_arrow_down.gif) no-repeat 7px 5px;
+		font-weight: bold;
+	}
+li.firstLevelActiveSubs a {
+		font-weight: bold;
+		background: url(../images/blt_arrow_down.gif) no-repeat 6px 5px;
+	}
+ul.leftSubNav {
+		margin: 0 !important;
+		padding: 2px 0 2px 16px;
+	}
+li.secLevel, li.secLevelActive {
+		font-size: 12px;
+		line-height: 14px;
+		padding: 7px 0px 7px 16px;
+		color: #897255;
+		list-style: none;/*added*/
+		margin:0px 0px 0px 10px;
+	}
+li.secLevel a, li.secLevelActive a {
+		font-weight: normal;
+		padding: 2px 2px 2px 15px;
+		display: block;
+		text-decoration: none;
+		color: #897255;
+		background: url(../images/blt_small_arrow.gif) no-repeat 0px 3px;
+		list-style: none;/*added*/
+	}
+li.secLevel a:hover, li.secLevelActive a:hover {
+		text-decoration: underline;
+		list-style: none;/*added*/
+	}
+li.secLevelActive a {
+		font-weight: bold;
+		background: url(../images/blt_small_arrow_dark.gif) no-repeat 0px 6px;
+		list-style: none;/*added*/
+	}
+/*third level*/
+li.thirdLevel, li.thirdLevelActive {
+		font-size: 12px;
+		line-height: 14px;
+		padding: 7px 0px 7px 20px; 
+		color: #897255;
+		list-style: none;/*added*/
+		margin: 0 0 0 10px;
+	
+	}
+li.thirdLevel a, li.thirdLevelActive a {
+		font-weight: normal;
+		padding:2px 2px 2px 30px;
+		display: block;
+		text-decoration: none;
+		color: #897255;
+		background: url(../images/blt_small_arrow.gif) no-repeat 13px 4px;
+		list-style: none;/*added*/
+	}
+li.thirdLevel a:hover, li.thirdLevelActive a:hover {
+		text-decoration: underline;
+		list-style: none;/*added*/
+	}
+li.thirdLevelActive a {
+		font-weight: bold;
+		background: url(../images/blt_small_arrow_dark.gif) no-repeat 13px 4px;
+		list-style: none;/*added*/
+	}
+/*fourth level*/
+li.fourthLevel, li.fourthLevelActive {
+		font-size: 12px;
+		line-height: 14px;
+		padding: 7px 0px 7px 24px; 
+		color: #897255;
+		list-style: none;/*added*/
+		margin: 0 0 0 10px;
+	
+	}
+li.fourthLevel a, li.fourthLevelActive a {
+		font-weight: normal;
+		padding:2px 2px 2px 45px;
+		display: block;
+		text-decoration: none;
+		color: #897255;
+		background: url(../images/blt_small_arrow.gif) no-repeat 30px 4px;
+		list-style: none;/*added*/
+	}
+li.fourthLevel a:hover, li.fourthLevelActive a:hover {
+		text-decoration: underline;
+		list-style: none;/*added*/
+	}
+li.fourthLevelActive a {
+		font-weight: bold;
+		background: url(../images/blt_small_arrow_dark.gif) no-repeat 30px 6px;
+		list-style: none;/*added*/
+	}
+/*fifth level*/
+li.fifthLevel, li.fifthLevelActive {
+		font-size: 12px;
+		line-height: 14px;
+		padding: 7px 0px 7px 24px; 
+		color: #897255;
+		list-style: none;/*added*/
+		margin: 0 0 0 10px;
+	
+	}
+li.fifthLevel a, li.fifthLevelActive a {
+	font-weight: normal;
+	padding:2px 2px 2px 60px;
+	display: block;
+	text-decoration: none;
+	color: #897255;
+	background: url(../images/blt_small_arrow.gif) no-repeat 45px 4px;
+	list-style: none;/*added*/
+	}
+li.fifthLevel a:hover, li.fifthLevelActive a:hover {
+		text-decoration: underline;
+		list-style: none;/*added*/
+	}
+li.fifthLevelActive a {
+		font-weight: bold;
+		background: url(../images/blt_small_arrow_dark.gif) no-repeat 45px 6px;
+		list-style: none;/*added*/
+	}
+/* end leftNav styles */
+
+/* table */
+.table_sub1 { color: #666666; font-family: Arial; font-size: 9pt; font-weight: bold; padding-bottom: 8px; }
+.table_sub2 { color: #666666; font-family: Arial; font-size: 10pt; font-weight: bold; background-image: url(http://www.genworth.com/content/images/misc_hordividerdots_blue.gif); background-repeat: repeat-x; background-attachment: scroll; background-position: left bottom; padding-bottom: 10px; }
+.table_body { color: #666666; font-family: Arial; font-size: 9pt; }
+/* right column box styles (currently light blue) */
+.dummy { /* to deal with a bug in IE 5 */ }
+.rightBoxBottom { 
+		background-color:#e9eff6; 
+		height:1px; 
+		margin-bottom:15px;
+		position:relative;
+	}
+.rightBoxDivider {
+		border-bottom: 1px solid #A4C9E8;
+		padding:10px 0;
+		font-size:11px;
+		color:#000000;
+	}
+.rightBoxDivider h3 {
+		margin:0;
+	}
+
+#whatsNew {
+	background-color: #fff;
+}
+
+iframe .whatsNew {
+	display: block;
+	border: none;
+	width: 160px;
+	height: 100%;
+}
+#whatsNew a {
+	text-decoration:none;
+	color:			#005c97;
+}
+.sitemapCol {
+	padding-right: 20px;
+	margin-right: 10px;
+}
+.sitemapCol  h5, .sitemapCol  h5 a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #666;
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 12px;
+	margin-left: 0px;
+}
+#node .sitemapCol li, #node .sitemapCol li a {
+	font-size: 12px;
+	padding-top: 4px;
+	padding-right: 20px;
+	padding-bottom: 4px;
+	padding-left: 0px;
+	list-style-type: disc;
+}

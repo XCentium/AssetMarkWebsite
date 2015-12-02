@@ -1,0 +1,156 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald" />
+	<link rel="stylesheet" href="Content/Styles/de-form-styles.css" type="text/css" media="screen" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="Content/Scripts/jquery.uniform.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	  (function(){
+	    ("input:checkbox, input:radio, textarea, select").uniform();
+	  });
+	</script>
+	<script type="text/javascript" src="Content/Scripts/calc.js"></script>
+	<script type="text/javascript" src="Content/Scripts/numberformat.js"></script>
+	<script type="text/javascript" src="Content/Scripts/highcharts.js"></script>
+	<style>
+		body {
+			background-color: #cccccc;
+		}
+		#calc {
+			width: 710px;
+			background-color: #ffffff;
+		}
+		#calcResponse {
+			width: 300px;
+			float: right;
+		}
+		.clearfloat {
+			clear: both;
+			font-size: 1px;
+			height: 0;
+		}
+		.calcHeader {
+			font-family: Oswald;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+		.tableL {
+			text-align: right;
+			margin-right: 20px;
+		}
+		.calcResp1 {
+			background-color: #1a7fbd;
+			color: #ffffff;
+			padding: 4px 0 0 10px;
+			font-size: 30px;
+			font-family: Oswald;
+			margin-bottom: 0;
+		}
+		.calcResp2 {
+			background-color: #00214d;
+			color: #ffffff;
+			padding: 4px 0 0 10px;
+			font-size: 30px;
+			font-family: Oswald;
+			margin-bottom: 0;
+		}
+		.calcRespSub {
+			color: #ffffff;
+			padding: 0 0 2px 0;
+			font-size: 10px;
+		}
+		.calcResp1 label {
+			color: #ffffff;
+		}
+		.calcResp2 label {
+			color: #ffffff;
+		}
+		.inputTxt {
+			height: 25px;
+		}
+	</style>
+</head>
+<body>
+
+<div id="calc">
+	<div class="calcHeader">1QA Business Valuation Calculator</div>
+	<div id="calcResponse">
+		<div class="calcResp1">
+			<div id="bvcI">$-</div>
+			<div class="calcRespSub"><label>10 Year Cumulative Profits</label></div>
+		</div>
+		<div class="calcResp1">
+			<div id="bvcJ">$-</div>
+			<div class="calcRespSub"><label>10 Year Business Valuation</label></div>
+		</div>
+		<div class="calcResp2">
+			<div id="bvcK">$-</div>
+			<div class="calcRespSub"><label>Total Compensation</label></div>
+		</div>
+	</div>
+	<table border="0" cellspacing="5px" width="400">
+		<tr>
+			<td class="tableL"><label>Current AUM:</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','bvcA','1000000','c')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','bvcA','1000000','c')" />
+				</div>
+				<input style="height:25px;" type="text" id="bvcA" onkeyup="this.value=addCommas(stripNonNumeric(this.value))" value="25,000,000" />
+			</td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>Fee Rate:</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','bvcB','0.1','d2')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','bvcB','0.1','d2')" />
+				</div>
+				<input style="height:25px;" type="text" id="bvcB" onblur="this.value=format_number(Number(this.value),2)" value="1.00" /> <label>%</label>
+			</td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>Compound Growth Rate:</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','bvcC','1','n')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','bvcC','1','n')" />
+				</div>
+				<input style="height:25px;" type="text" id="bvcC" value="10" /> <label>%</label>
+			</td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>Profit Rate:</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','bvcD','1','n')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','bvcD','1','n')" />
+				</div>
+				<input style="height:25px;" type="text" id="bvcD" value="50" /> <label>%</label>
+			</td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>Business Valuation Rate:</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','bvcE','0.1','d')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','bvcE','0.1','d')" />
+				</div>
+				<input style="height:25px;" type="text" id="bvcE" onblur="this.value=format_number(this.value,1)" value="2.0" />
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><div class="button_container"><input type="button" value="calculate" class="formButton" onclick="bvcCalc()" /></div></td>
+		</tr>
+	</table>
+	<br class="clearfloat" />
+	<div style="margin-top:40px;">
+		<div style="height:400px;margin-top:30px;" id="bvcRevenue"></div>
+		<div style="height:400px;margin-top:30px;" id="bvcCumProfits"></div>
+		<div style="height:400px;margin-top:30px;" id="bvcProjBusVal"></div>
+	</div>
+</div>
+
+</body>
+</html>

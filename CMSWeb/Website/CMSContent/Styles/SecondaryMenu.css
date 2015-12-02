@@ -1,0 +1,80 @@
+﻿.secondaryMenuWrapper
+{
+    width: 990px;
+}
+
+.secondaryMenuContainer
+{
+    margin: 10px 14px 0px;
+}
+
+.secondaryMenu
+{
+	display: block;
+	height: 33px;
+	min-height: 33px;
+	margin: 0px;
+	padding: 0px;
+	background: url(/CMSContent/Images/secondaryMenu_bg.png) repeat-x top;
+	list-style: none;
+	color: #ffffff;
+	font-family: 'Oswald', Arial, Sans-Serif;
+	font-size: 13px;
+}
+
+.secondaryMenu li
+{
+	float: left;
+	height: 24px;
+	min-height: 24px;
+	margin: 5px 9px 0px;
+	padding: 0px 0px 0px 1px;
+	background: transparent url(/CMSContent/Images/secondaryMenu_bg.png) no-repeat left center;
+	vertical-align: middle;
+	position: relative;
+}
+
+.secondaryMenu li img
+{
+	position: absolute;
+	top: 0px;
+	left: -10px;
+}
+
+.secondaryMenu li.first img
+{
+	display: none;
+}
+
+.secondaryMenu li a
+{
+	display: inline-block;
+	padding: 0px 5px 0px 4px;
+	height: 24px;
+	min-height: 24px;
+	line-height: 24px;
+	color: #ffffff;
+	text-decoration: none !important;
+	vertical-align: middle;
+	background: transparent url(/CMSContent/Images/secondaryMenu_bg.png) no-repeat right center;
+}
+
+.secondaryMenu li a:hover
+{
+	color: #fedc41;
+	text-decoration: underline !important;
+	/*color: #000000;*/
+}
+
+
+.secondaryMenu .selected, .secondaryMenu .selected:hover
+{
+	background: url(/CMSContent/Images/secondaryMenu_down_left.png) no-repeat left;
+}
+
+.secondaryMenu .selected a, .secondaryMenu .selected a:hover
+{
+	background: url(/CMSContent/Images/secondaryMenu_down_right.png) no-repeat right;
+	text-decoration: none !important;
+	color: #333333;
+}

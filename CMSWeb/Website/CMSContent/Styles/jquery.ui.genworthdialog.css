@@ -1,0 +1,200 @@
+/* Meeting Mode { */
+.ui-dialog
+{
+    background: #fff;
+    padding: 0px;
+    border: 1px solid #333;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus
+{ 
+    background-color:transparent;
+     border:none; 
+    padding: 1px;
+}
+
+.ui-dialog .ui-dialog-content  
+{
+    background: #fff url(/CMSContent/Images/dialog_bg.gif) repeat-x right top; 
+    font-family:  Tahoma, Arial, Helvetica,sans-serif;
+    font-size: 11px; 
+    text-align:left;
+}
+
+.ui-dialog .ui-dialog-buttonpane button  
+{
+    background:#085a8b url(/CMSContent/Images/dialog_button_default.png) repeat-x right top; 
+    color:#fff; 
+    font-family: 'Oswald', Arial, Sans-Serif; 
+    font-size: 14px; 
+    border: 1px solid #085a8b
+}
+
+.ui-dialog .ui-dialog-buttonpane button.cancelButton  
+{
+    background-color:#b7b7b7; 
+    background-image:url(/CMSContent/Images/dialog_button_cancel.png); 
+    color:#666; 
+    border-color:#bbb; 
+}
+
+/* } Meeting Mode*/
+
+
+
+
+
+
+
+
+.ui-dialog .ui-skinnable-dialog-area1
+{
+    top: 0;
+    right: 10px;
+    bottom: auto;
+    left: 0;
+    height: 10px;
+    background: transparent url(/CMSContent/Images/dialogBackgroundTopLeft.png) no-repeat left top;
+}
+
+.ui-dialog .ui-skinnable-dialog-area2
+{
+    right: 0;
+    top: 1px;
+    bottom: 10px;
+    left: auto;
+    width: 10px;
+    background: transparent url(/CMSContent/Images/dialogBackgroundTopRight.png) no-repeat right top;
+}
+
+.ui-dialog .ui-skinnable-dialog-area3
+{
+    top: 10px;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    background: transparent url(/CMSContent/Images/dialogBackgroundBottomLeft.png) no-repeat left bottom;
+}
+
+.ui-dialog .ui-skinnable-dialog-area4
+{
+    top: auto;
+    right: 0px;
+    bottom: 0px;
+    left: 10px;
+    height: 10px;
+    background: transparent url(/CMSContent/Images/dialogBackgroundBottomRight.png) no-repeat right bottom;
+}
+
+.ui-dialog .ui-skinnable-dialog-area5
+{
+    top: 5px;
+    right: 5px;
+    bottom: 6px;
+    left: 5px;
+    background: transparent url(/CMSContent/Images/dialogBackground.png) repeat-x left top;
+}
+
+.ui-dialog .ui-dialog-titlebar
+{
+	height: 31px;
+	line-height: 30px;
+	font-family: 'Oswald';
+	font-size: 15px;
+	color: #FFFFFF;
+	padding: 0 10px;
+	background: transparent url(/CMSContent/Images/dialogTitlebarBackground.png) repeat-x left top;
+	border: none;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+.ui-dialog .ui-dialog-title
+{
+	margin: 0;
+	padding: 0;
+}
+
+.ui-dialog .ui-dialog-titlebar-close
+{
+	width: 14px;
+	height: 15px;
+	top: 8px;
+	right: 10px;
+	background: transparent url(/CMSContent/Images/dialogTitlebarClose.png) no-repeat center center;
+	border: none;
+	margin: 0;
+	padding: 0;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+.ui-dialog .ui-dialog-titlebar-close.ui-state-hover
+{
+	background: transparent url(/CMSContent/Images/dialogTitlebarCloseHover.png) no-repeat center center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close .ui-icon
+{
+	display: none;
+}
+
+.ui-dialog .ui-dialog-content
+{
+	padding: 10px 10px 0 10px;
+}
+
+.ui-dialog .ui-dialog-buttonpane
+{
+	/*margin: 0;
+	padding: 0;*/
+	border: none;
+	/*background: transparent;*/
+}
+/*
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset
+{
+	float: none;
+	text-align: center;
+	padding: 0 0 0 5px;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-button
+{
+	width: 98px;
+	height: 29px;
+	background: transparent url(/CMSContent/Images/dialogButton.png) no-repeat left top;
+	font-family: 'Oswald';
+	font-size: 13px;
+	line-height: 29px;
+	color: #000000;
+	border: none;
+	margin: 10px 10px 10px 0;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-button.ui-state-hover
+{
+	background: transparent url(/CMSContent/Images/dialogButtonHover.png) no-repeat left top;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-button .ui-button-text
+{
+	padding: 0;
+	margin: 0;
+}
+*/
+.ui-widget-overlay
+{
+	background: #000000;
+	opacity: 0.7;
+	filter: Alpha(Opacity=70);
+}

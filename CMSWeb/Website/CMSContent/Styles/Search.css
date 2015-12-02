@@ -1,0 +1,134 @@
+﻿/* Page-Level Search CSS */
+
+.searchbar
+{
+	background: url("/CMSContent/Images/filtergradient.gif") repeat-x scroll left top transparent;
+	border: 1px solid #999999;
+	height: 28px;
+	font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif; 
+	font-size:11px;
+	line-height: 28px;
+}
+
+#clientSearchInput
+{
+	display: block;
+	width:280px;
+	position:relative;
+	margin-top: 3px;
+	margin-left: 3px;
+	float:left;
+}
+
+#clientSearchInput input
+{
+	width: 254px;
+}
+
+.searchbar .search_container #cancel 
+{
+	background: url("/CMSContent/Images/search-close.png") no-repeat;
+	display: block;
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	top: 3px;
+	right: 5px;
+	cursor: pointer;
+}
+
+.searchbar .search_container #cancel:hover 
+{
+	background: url("/CMSContent/Images/hoversearch-close.png") no-repeat;
+	display: block;
+}
+
+.searchbar .search_container #searchbutton
+{
+	display:block;
+	width:28px;
+	height:22px;
+	position:relative;
+	top:3px;
+	left:-3px;
+	padding-top: 20px;
+	border: 0 none transparent;
+	float:left;
+	cursor: pointer;
+}
+
+.searchbar .search_container .searchbutton
+{
+    background: url("/CMSContent/Images/Searchgo.png") no-repeat;        
+}
+
+.searchbar .search_container .searchbutton-hover
+{
+	background-image: url("/CMSContent/Images/hoverSearchgo.png");
+}
+ 
+.searchbar .search_container .help
+{
+	margin-left:12px;
+	font-size:11px;
+	float:left;
+}
+
+.searchbar .recentSearches
+{
+	float:left;
+	margin-left:10px;
+	text-align:center;
+}
+
+.searchbar .recentSearches .recentSearchLinks
+{
+    text-align: left; 
+    width: 341px;
+    white-space: nowrap;  
+    overflow: hidden;  
+    text-overflow: ellipsis;  
+}
+
+.searchbar .client_search a
+{
+	color:#06578c;
+}
+ 
+.searchbar .client_search a:hover
+{
+	color:#0099ff;
+}
+ 
+.searchbar .divider
+{
+	background: url("/CMSContent/Images/searchbar_div.png") no-repeat center center;
+	display: block;
+	float: left;
+	width: 2px;
+	height: 19px;
+	margin-top: 5px;
+	margin-left: 8px;
+}
+
+/* AutoComplete */
+
+.searchbar .ui-autocomplete.ui-menu.ui-widget
+{
+	height: 300px;
+	margin-top: 3px;
+	margin-left: -6px;
+	overflow: auto;
+	background: #ffffff;
+	border: 1px solid #999999;
+	text-align: left;
+	-moz-box-shadow: 2px 2px 5px #cccccc;
+	-webkit-box-shadow: 2px 2px 5px #cccccc;
+	box-shadow: 2px 2px 5px #cccccc;
+	font-size: 11px;	
+}
+
+.searchbar .searchbar-buttons {
+    position: relative;
+    z-index: 9050;
+}

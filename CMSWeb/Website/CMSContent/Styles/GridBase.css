@@ -1,0 +1,310 @@
+﻿.grid-container .ui-corner-all 
+{
+    border: 0;
+}
+
+.grid-container 
+{
+    position: relative;
+    border: 1px solid #999999;
+    width: 968px;
+}
+
+.column_manager_container 
+{
+    position: absolute;
+    top: 2px;
+    left: 711px;
+    width: 98px;
+    height: 27px;    
+}
+
+.wijmo-wijsuperpanel-templateouterwrapper 
+{
+    position: absolute;
+}
+
+.grid-pager-container 
+{
+    height: 36px;
+}
+
+.wijmo-wijgrid .wijmo-wijgrid-header.wijmo-wijpager 
+{
+    position: absolute;
+    top: -31px;
+    right: 0px;
+}
+
+.wijmo-wijgrid-row .wijmo-wijgrid-innercell
+, .wijmo-wijgrid-headerrow .wijmo-wijgrid-innercell
+{
+    font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    font-size: 10px;
+    padding: 7px 10px;
+    background: none;
+}
+
+.wijmo-wijgrid-row .ui-state-highlight .wijmo-wijgrid-innercell 
+, .wijmo-wijgrid-row .ui-state-selected .wijmo-wijgrid-innercell 
+{
+    background: #ffffff url(/CMSContent/Images/grid-selected-row-bg.png) repeat-x top left;
+    border-left: 0 none;
+    border-right: 0 none;
+}
+
+
+.wijmo-wijgrid-row .wijmo-wijgrid-innercell
+{
+    border-bottom: 1px solid #e0e0e0;
+    border-left: 0 none;
+    border-right: 0 none;
+    height: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.wijmo-wijgrid-row .wijgridtd 
+{
+    border-left: 0 none;
+    border-right: 0 none;
+}
+
+.wijmo-wijgrid-headerrow th.wijmo-c1field 
+{
+    border-left: 0 none;
+    border-right: 0 none;
+    background: transparent;
+    border-top: 1px solid #D3D3D3;
+    border-bottom: 1px solid #D3D3D3;
+}
+
+.grid-container .button-container 
+{
+   height: 28px;
+   background: #d5d5d5 url(/CMSContent/Images/grid-searchbar-bg.png) repeat-x top left;
+   width: 968px;
+   border: 0 none;
+   border-bottom: 1px solid #999999;
+}
+
+.column_manager_container .open_button
+{
+    display: block;
+    width: 98px;
+    height: 25px;
+    background: transparent url(/CMSContent/Images/grid-customize-btn.png) no-repeat top left;
+    text-indent: -9000px;
+}
+
+.wijmo-wijgrid-headerrow
+{
+    font-size: 10px;
+    background: #ffffff url(/CMSContent/Images/grid-header-bg.png) repeat-x top left;
+}
+
+/* SuperPanel
+----------------------------------*/
+.wijmo-wijsuperpanel
+{
+    overflow: hidden;
+    outline: none;
+    background-image: none;
+}
+.wijmo-wijsuperpanel-statecontainer
+{
+    overflow: hidden;
+    position: relative;
+    zoom:1;
+}
+.wijmo-wijsuperpanel-contentwrapper
+{
+    position: absolute;
+    overflow: hidden;
+
+}
+.wijmo-wijsuperpanel-hbarcontainer, .wijmo-wijsuperpanel-vbarcontainer
+{
+    font-size: 0px;
+    border:0;
+}
+.wijmo-wijsuperpanel-templateouterwrapper
+{
+    position: relative; 
+/*    overflow:auto; */
+    zoom: 1;
+}
+
+.wijmo-wijsuperpanel-vbarcontainer .ui-state-default, .wijmo-wijsuperpanel-hbarcontainer .ui-state-default
+{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+}
+.wijmo-wijsuperpanel .wijmo-wijsuperpanel-vbarcontainer
+{
+    position: absolute;
+    width: 18px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    border: none;
+}
+.wijmo-wijsuperpanel .wijmo-wijsuperpanel-hbarcontainer
+{
+    position: absolute;
+    height: 18px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border: none;
+}
+.wijmo-wijsuperpanel-handle
+{
+    position: absolute;
+    font-size:0px;
+    overflow:hidden;
+}
+.wijmo-wijsuperpanel-handle *
+{
+    font-size:0px;
+}
+.wijmo-wijsuperpanel-helper
+{
+    border-style: dotted;
+    background: transparent;
+}
+
+.wijmo-wijsuperpanel-button
+{
+    position: absolute;
+    padding: 4px;
+}
+.wijmo-wijsuperpanel .ui-icon-gripsmall-diagonal-se
+{
+    background: none;
+    width: 7px;
+    height: 7px;
+}
+.wijmo-wijsuperpanel-hbar-buttonleft
+{
+    left: 0;
+}
+.wijmo-wijsuperpanel-hbar-buttonright
+{
+    right: 0;
+}
+.wijmo-wijsuperpanel-vbar-buttontop
+{
+    top: 0;
+}
+.wijmo-wijsuperpanel-vbar-buttonbottom
+{
+    bottom: 0;
+}
+
+.wijmo-wijsuperpanel-vbarcontainer .wijmo-wijsuperpanel-handle {
+    background:url(/CMSContent/Images/scrollbar-vertical.png) repeat-y left;
+    -moz-border-radius:12px;
+    -webkit-border-radius:12px;
+    border-radius:12px;
+    -moz-box-shadow:inset 1px 0 0 rgba(255,255,255,0.25);
+    z-index:9;
+    border-color:#a5a9ae;
+    margin:-5px 0;
+}
+
+.wijmo-wijsuperpanel-hbarcontainer .wijmo-wijsuperpanel-handle {
+    background:url(/CMSContent/Images/scrollbar-horizontal.png) repeat-x top;
+    -moz-border-radius:12px;
+    -webkit-border-radius:12px;
+    border-radius:12px;
+    -moz-box-shadow:inset 0 1px 0 rgba(255,255,255,0.25);
+    z-index:9;
+    border-color:#a5a9ae;
+    margin:0 -5px;
+}
+
+.wijmo-wijsuperpanel-vbarcontainer {
+    background:#f8f8f8;
+    -moz-box-shadow:inset 3px 0 10px rgba(0,0,0,0.25);
+    -webkit-box-shadow:inset 3px 0 10px rgba(0,0,0,0.25);
+    box-shadow:inset 3px 0 10px rgba(0,0,0,0.25);
+}
+
+.wijmo-wijsuperpanel-hbarcontainer {
+    background:#f8f8f8;
+    -moz-box-shadow:inset 0 3px 10px rgba(0,0,0,0.25);
+    -webkit-box-shadow:inset 0 3px 10px rgba(0,0,0,0.25);
+    box-shadow:inset 0 3px 10px rgba(0,0,0,0.25);
+}
+
+.wijmo-wijsuperpanel-vbarcontainer .wijmo-wijsuperpanel-handle .ui-icon,.wijmo-wijsuperpanel-hbarcontainer .wijmo-wijsuperpanel-handle .ui-icon {
+    display:none;
+}
+
+.wijmo-wijsuperpanel .wijmo-wijsuperpanel-vbarcontainer .wijmo-wijsuperpanel-vbar-buttontop {
+    background:url(/CMSContent/Images/scroller-up-arrow.png) no-repeat top;
+    border:none;
+    height:25px;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    width:18px;
+}
+
+.wijmo-wijsuperpanel .wijmo-wijsuperpanel-vbarcontainer .wijmo-wijsuperpanel-vbar-buttontop.ui-state-hover {
+    background:url(/CMSContent/Images/scroller-up-arrow_hover.png) no-repeat top;
+}
+
+.wijmo-wijsuperpanel .wijmo-wijsuperpanel-vbarcontainer .wijmo-wijsuperpanel-vbar-buttonbottom {
+    background:url(/CMSContent/Images/scroller-down-arrow.png) no-repeat bottom;
+    height:25px;
+    border:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    width:18px;
+}
+
+.wijmo-wijsuperpanel .wijmo-wijsuperpanel-vbarcontainer .wijmo-wijsuperpanel-vbar-buttonbottom.ui-state-hover {
+    background:url(/CMSContent/Images/scroller-down-arrow_hover.png) no-repeat top;
+}
+
+.wijmo-wijsuperpanel .wijmo-wijsuperpanel-hbarcontainer .wijmo-wijsuperpanel-hbar-buttonleft {
+    background:url(/CMSContent/Images/scroller-left-arrow.png) no-repeat left;
+    width:25px;
+    border:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    height:18px;
+}
+
+.wijmo-wijsuperpanel .wijmo-wijsuperpanel-hbarcontainer .wijmo-wijsuperpanel-hbar-buttonleft.ui-state-hover {
+    background:url(/CMSContent/Images/scroller-left-arrow_hover.png) no-repeat top;
+}
+
+.wijmo-wijsuperpanel .wijmo-wijsuperpanel-hbarcontainer .wijmo-wijsuperpanel-hbar-buttonright {
+    background:url(/CMSContent/Images/scroller-right-arrow.png) no-repeat right;
+    width:25px;
+    border:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    box-shadow:none;
+    height:18px;
+}
+
+.wijmo-wijsuperpanel .wijmo-wijsuperpanel-hbarcontainer .wijmo-wijsuperpanel-hbar-buttonright.ui-state-hover {
+    background:url(/CMSContent/Images/scroller-right-arrow_hover.png) no-repeat top;
+}
+
+.wijmo-wijsuperpanel .wijmo-wijsuperpanel-vbarcontainer .wijmo-wijsuperpanel-vbar-buttonbottom .ui-icon {
+    margin-top:10px;
+}
+
+.wijmo-wijsuperpanel .wijmo-wijsuperpanel-hbarcontainer .wijmo-wijsuperpanel-hbar-buttonright .ui-icon {
+    margin-left:10px;
+}
+
+.wijmo-wijmenu-horizontal .wijmo-wijmenu-link.ui-state-hover,.wijmo-wijmenu-horizontal .wijmo-wijmenu-link.ui-state-active,.wijmo-wijmenu-horizontal .wijmo-wijmenu-link.ui-state-default,.wijmo-wijmenu .wijmo-wijmenu-link.ui-state-hover,.wijmo-wijmenu .wijmo-wijmenu-link.ui-state-active {
+    border:solid 1px #587e93;
+}

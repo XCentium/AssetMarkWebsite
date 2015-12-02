@@ -1,0 +1,9 @@
+﻿@using ServerLogic.SitecoreExt
+@using MvcAssetmark.Repository
+@model RenderingModel
+@{
+    var SC = Html.Sitecore();
+    var item = Model.Item;
+}@SC.Field("Body")
+
+@SC.Field("ScriptsCSS")

@@ -1,0 +1,9 @@
+﻿@model RenderingModel
+@using Genworth.SitecoreExt
+@{
+    var SC = Html.Sitecore();
+}
+<header>
+    @SC.Field("Url", new { text = SC.Field("Image"), Class = "logo" })
+    <a href="http://www.ewealthmanager.com" target="_blank" class="wealth_cta">Go to Wealth Manager</a>
+</header>

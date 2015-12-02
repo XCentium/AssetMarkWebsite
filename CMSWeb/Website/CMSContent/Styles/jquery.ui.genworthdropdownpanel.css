@@ -1,0 +1,107 @@
+.ui-genworthdropdownpanel
+{
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.ui-genworthdropdownpanel .ui-genworthdropdownpanel-buttonContent 
+{
+    padding: 2px 10px;
+}
+
+.ui-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent
+{
+	background: transparent;
+	border: 0 none transparent;
+    padding: 5px;
+	text-align: left;
+	/* display: none; */
+}
+
+.ui-genworthdropdownpanel .ui-genworthdropdownpanel-button 
+{
+    cursor: pointer;
+}
+
+.ui-genworthdropdownpanel .ui-genworthdropdownpanel-dropdown
+{
+    position: absolute;
+    display: none;
+    background: transparent;
+    border: 0 none transparent;
+    border-radius: 0;
+    padding: 0 4px 5px 4px;
+    overflow: hidden;
+    z-index: 99999;
+}
+
+.ui-genworthdropdownpanel-selectiondisabled
+{
+    cursor: default;
+    outline: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.ui-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownbackground 
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -999;
+}
+
+.ui-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownbackground1
+{
+    top: 0;
+    right: 10px;
+    bottom: auto;
+    left: 0;
+    height: 10px;
+    background: transparent url(/CMSContent/Images/dropdownpanelDropdownBackgroundTopLeft.png) no-repeat left -4px;
+}
+
+.ui-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownbackground2
+{
+    right: 0;
+    top: 1px;
+    bottom: 10px;
+    left: auto;
+    width: 10px;
+    background: transparent url(/CMSContent/Images/dropdownpanelDropdownBackgroundTopRight.png) no-repeat right -3px;
+}
+
+.ui-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownbackground3
+{
+    top: 6px;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    background: transparent url(/CMSContent/Images/dropdownpanelDropdownBackgroundBottomLeft.png) no-repeat left bottom;
+}
+
+.ui-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownbackground4
+{
+    top: auto;
+    right: 0px;
+    bottom: 0px;
+    left: 10px;
+    height: 10px;
+    background: transparent url(/CMSContent/Images/dropdownpanelDropdownBackgroundBottomRight.png) no-repeat right bottom;
+}
+
+.ui-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownbackground5
+{
+    top: 1px;
+    right: 5px;
+    bottom: 6px;
+    left: 5px;
+    background: transparent url(/CMSContent/Images/dropdownpanelDropdownBackground.png) repeat-x left top;
+}

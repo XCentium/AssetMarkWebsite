@@ -1,0 +1,35 @@
+﻿@model List<KeyValuePair<Item, bool>>
+@using Sitecore.Data.Items
+@using Sitecore.Collections
+@{
+    var SC = Html.Sitecore();
+}
+
+<header id='header' class='inner-container'>
+	
+	<div id='logo-box'>
+		<a href='/'>
+			<h1 id='logo'>
+				AssetMark
+			</h1>
+	</a>
+	</div>
+	<nav id='nav-main'>
+		<ul>
+        <li id='nav-item-index'><a href='/retirement/'>Home</a></li>
+		@foreach (var item in Model)
+        {
+            var prop = new SafeDictionary<string>() { { "text", item.Key.GetText("Title") } };
+            if (item.Value)
+            {
+                prop.Add("Class", "active");
+            }
+            
+            
+            <li>@SC.LinkItem("URL", item.Key, prop)</li>
+        }
+		
+		</ul>
+	</nav>
+
+</header>

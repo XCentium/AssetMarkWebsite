@@ -1,0 +1,22 @@
+/** IE 7 fixes **/
+#sidebar {
+	padding-top: 15px;
+}
+
+#our-people-main HR {
+	margin: 0;
+}
+
+/*
+#lets-talk-form-container LABEL {
+	display: inline;
+}
+#lets-talk-form-container INPUT {
+	border: 1px solid #CCC;
+	width: 250px;
+	margin-bottom: 5px;
+}
+*/
+#lets-talk-form-container .form-row {
+	margin-bottom: 20px;
+}

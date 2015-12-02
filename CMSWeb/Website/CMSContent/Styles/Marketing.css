@@ -1,0 +1,314 @@
+﻿.marketing-order 
+{
+    float:left; 
+    display: inline-block; 
+    margin: 10px 15px 10px 0px;
+}
+.Marketing h6 
+{
+    line-height: 30px !important;
+    color: #16A;
+    font-family: 'Cabin', Arial, Sans-Serif !important;
+    font-size: 16px !important;
+    vertical-align: middle !important;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;}
+.Marketing h6 .title-number 
+{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    font-size: 20px ;
+    margin: 0px 10px 0px 0px;
+    padding: 0px;
+    /*background-color: #16A;*/
+    background: #16A url(/CMSContent/Images/number_bg.png) no-repeat right top;
+    color: #FFF;
+    font-family: 'Oswald', Arial, Sans-Serif;
+    text-align: center;
+    }
+
+.marketing-thumbnails center a
+{
+    padding: 2px;
+    color: #000;
+    text-decoration: none;
+    font-size: 11px;
+    vertical-align: middle;
+}
+.marketing-thumbnails center a:hover
+{
+    color: #16A;
+    text-decoration: underline;
+}
+
+.Marketing .section .section
+{
+    margin-left:20px;
+}
+
+.section img.float-left 
+{
+	float: left;
+	margin-right: 30px;}
+	
+.ModalWindowBody .selectBox-wrapper
+{ 
+    width: 500px;
+    text-align: left;
+}
+
+.ModalWindowBody .selectBox-wrapper .selectBox-background1
+{
+    top: -2px;
+	bottom: -2px;
+    height: 25px;
+    width: 370px;
+	background: transparent url(/Content/Images/sprites_shared_template.png) no-repeat 0px -425px;  
+}
+
+.ModalWindowBody .selectBox-wrapper.selectBox-hover .selectBox-background1
+{
+    top: -2px;
+	bottom: -2px;
+    height: 25px;
+    width: 370px;
+	background: transparent url(/Content/Images/sprites_shared_template.png) no-repeat 0px -455px;
+}
+
+.ModalWindowBody .selectBox-wrapper .selectBox-background2
+{
+    top: -2px;
+	bottom: -2px;
+	right: auto;
+	left: 368px;
+	width: 130px;
+	background: transparent url(/Content/Images/sprites_shared_template.png) no-repeat -263px -425px;
+}
+
+.ModalWindowBody .selectBox-wrapper.selectBox-hover .selectBox-background2
+{
+    top: -2px;
+	bottom: -2px;
+	right: auto;
+	left: 368px;
+	width: 130px;
+	background: transparent url(/Content/Images/sprites_shared_template.png) no-repeat -263px -455px;
+}
+
+.ModalWindowBody .selectBox-dropdown
+{ 
+    width: 473px;
+}
+
+.ModalWindowBody .agentSelectLabel
+{
+    display: inline-block;
+    zoom:1;
+}
+
+.ModalWindowBody .agentSelectOption .agentSelectLabel:first-child
+{
+    width: 54px;
+}
+
+.ModalWindowBody .agentSelectOption #agentSelectOptionName
+{
+    width: 330px;
+    padding: 0px 14px;
+    overflow: hidden;
+}
+
+.ModalWindowBody #loadingMessage
+{
+    display:none;
+}
+
+.ModalWindowBody .ui-dialog #loadingMessage
+{
+    text-align:center;
+}
+
+body.ModalWindowBody.ie .dialog .dialog-content
+{
+    overflow:visible;
+}
+
+.search-and-order #agentList
+{
+    display: none;
+    text-align: center;
+}
+
+.search-and-order .selectBox-wrapper
+{ 
+    width: 500px;
+    text-align: left;
+    padding-bottom: 15px;
+}
+
+.search-and-order .selectBox-wrapper .selectBox-background1
+{
+    top: -2px;
+	bottom: -2px;
+    height: 25px;
+    width: 370px;
+	background: transparent url(/Content/Images/sprites_shared_template.png) no-repeat 0px -425px;  
+}
+
+.search-and-order .selectBox-wrapper.selectBox-hover .selectBox-background1
+{
+    top: -2px;
+	bottom: -2px;
+    height: 25px;
+    width: 370px;
+	background: transparent url(/Content/Images/sprites_shared_template.png) no-repeat 0px -455px;
+}
+
+.search-and-order .selectBox-wrapper .selectBox-background2
+{
+    top: -2px;
+	bottom: -2px;
+    height: 25px;
+	right: auto;
+	left: 368px;
+	width: 130px;
+	background: transparent url(/Content/Images/sprites_shared_template.png) no-repeat -263px -425px;
+}
+
+.search-and-order .selectBox-wrapper.selectBox-hover .selectBox-background2
+{
+    top: -2px;
+	bottom: -2px;
+    height: 25px;
+	right: auto;
+	left: 368px;
+	width: 130px;
+	background: transparent url(/Content/Images/sprites_shared_template.png) no-repeat -263px -455px;
+}
+
+.search-and-order .selectBox-dropdown
+{ 
+    width: 473px;
+}
+
+.search-and-order .selectBox-dropdown-menu
+{ 
+    width: 473px;
+}
+
+.search-and-order .selectBox-dropdown-menu-list-container
+{ 
+    width: 473px;
+}
+
+.search-and-order .agentSelectOption .agentSelectLabel:first-child
+{
+    width: 54px;
+}
+
+.search-and-order .agentSelectOption #agentSelectOptionName
+{
+    width: 330px;
+    padding: 0px 14px;
+    overflow: hidden;
+}
+
+.search-and-order .agentSelectLabel
+{
+    display: inline-block;
+    zoom:1;
+}
+
+.portal .grid-system .gc 
+{
+    margin-left: 3px;
+}
+
+.portal #agentList
+{
+    display: none;
+    text-align: center;
+}
+
+.portal .selectBox-wrapper
+{ 
+    width: 500px;
+    text-align: left;
+    padding-bottom: 15px;
+}
+
+.portal .selectBox-wrapper .selectBox-background1
+{
+    top: -2px;
+	bottom: -2px;
+    height: 25px;
+    width: 370px;
+	background: transparent url(/Content/Images/sprites_shared_template.png) no-repeat 0px -425px;  
+}
+
+.portal .selectBox-wrapper.selectBox-hover .selectBox-background1
+{
+    top: -2px;
+	bottom: -2px;
+    height: 25px;
+    width: 370px;
+	background: transparent url(/Content/Images/sprites_shared_template.png) no-repeat 0px -455px;
+}
+
+.portal .selectBox-wrapper .selectBox-background2
+{
+    top: -2px;
+	bottom: -2px;
+    height: 25px;
+	right: auto;
+	left: 368px;
+	width: 130px;
+	background: transparent url(/Content/Images/sprites_shared_template.png) no-repeat -263px -425px;
+}
+
+.portal .selectBox-wrapper.selectBox-hover .selectBox-background2
+{
+    top: -2px;
+	bottom: -2px;
+    height: 25px;
+	right: auto;
+	left: 368px;
+	width: 130px;
+	background: transparent url(/Content/Images/sprites_shared_template.png) no-repeat -263px -455px;
+}
+
+.portal .selectBox-dropdown
+{ 
+    width: 473px;
+}
+
+.portal .selectBox-dropdown-menu
+{ 
+    width: 473px;
+}
+
+.portal .selectBox-dropdown-menu-list-container
+{ 
+    width: 473px;
+}
+
+.portal .agentSelectOption .agentSelectLabel:first-child
+{
+    width: 54px;
+}
+
+.portal .agentSelectOption #agentSelectOptionName
+{
+    width: 330px;
+    padding: 0px 14px;
+    overflow: hidden;
+}
+
+.portal .agentSelectLabel
+{
+    display: inline-block;
+    zoom:1;
+}

@@ -1,0 +1,10 @@
+﻿@model RenderingModel
+@{
+    var CornerColorItem = Model.Item.Fields["Corner Color"].GetItem();
+}
+<div class="sidebar-box sidebar-feature sidebar-feature-large @Html.Sitecore().Field("CssClass", CornerColorItem)">
+    <div class="sidebar-container">
+        <h4>@Html.Sitecore().Field("Title")</h4>
+        @Html.Sitecore().Placeholder("Content")
+    </div>
+</div>

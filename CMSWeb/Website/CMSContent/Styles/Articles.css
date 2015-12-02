@@ -1,0 +1,220 @@
+﻿.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+    
+ .article-search, .results-search
+ {
+     display: inline-block;
+     margin-left: 30px;
+     background: transparent url(/CMSContent/Images/Searchbg.png) no-repeat left top;
+     vertical-align: middle;}
+ .article-search input, .results-search input 
+ {
+     border: none;
+     margin: 0px;
+     padding: 0px;
+     background-color: transparent;
+     border: none;
+     height: 22px;
+     line-height: 22px;
+     font-size: 11px;
+     vertical-align: top;
+     display:inline-block;
+     text-indent: 5px;
+     font-family: 'Cabin', Arial, Sans-Serif;
+     font-style: italic;
+     color: #888;
+     }
+ .article-search input.editing, .results-search input.editing { color: #000; } 
+ .article-search a, .article-search input[type="submit"], .results-search a, .results-search input[type="submit"]
+ {
+     background: transparent url(/CMSContent/Images/Searchgo.png) no-repeat right top;
+     display:inline-block;
+     width: 28px;
+     height: 22px;
+     line-height: 22px;
+     vertical-align: top;
+     margin-right: -4px;
+     overflow: hidden;
+     text-indent: 50px;
+     cursor: pointer;}
+.article-search input[type="submit"] 
+{
+	display: none;}
+
+.genworth-article-list-wrapper {}
+.genworth-article-list-head 
+{
+    border-bottom: 1px solid #CCC;}
+.genworth-article-list-head ul 
+{
+    margin: 28px 0px 5px;
+    padding: 0px;
+    text-indent: 0px;
+    position: relative;}
+.genworth-article-list-head li 
+{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0px;
+    font-family: 'Cabin', Arial, Sans-Serif;
+    line-height: 15px;
+    font-size: 11px;
+    color: #333333;
+    letter-spacing: 1px;
+    }
+.genworth-article-list-head a 
+{
+    text-decoration: none;
+    color: #333333;}
+.genworth-article-list-head .article-title {}
+
+.sortable 
+{
+    padding-left: 15px !important;
+    background: transparent none no-repeat left center;}
+.sortable.ascending 
+{
+    background-image: url(/CMSContent/Images/gridHeader_arrow_up.png);}
+.sortable.descending
+{
+    background-image: url(/CMSContent/Images/gridHeader_arrow_down.png);
+}
+
+.genworth-article-list-head .article-date 
+{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: inline-block;
+}
+
+.article{
+    width: 100%;
+    float: left;
+    clear: both;
+    background: transparent url(/CMSContent/Images/section_divider.png) no-repeat right bottom;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.article-thumb 
+{
+    float: left;
+    margin-right: 15px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+
+.article-title-box {
+    width: 90%; 
+    float: left;
+}
+
+.article-title {
+    font-size: 16px;
+}
+
+.article-date-box{
+    width: 10%; 
+    float: right;
+    vertical-align: bottom;
+    text-align: right;
+}
+
+.article-date {
+    font-size: 11px;
+    color: #333333;
+}
+
+.article-summary {
+    width: 100%;
+    float: left;
+    padding-top: 10px;
+    font-size: 11px;
+    line-height: 1.5em;
+}
+
+.genworth-list-foot 
+{
+    text-align: center;}
+.genworth-list-foot .pagination 
+{
+    position: relative;
+    margin-top: 5px;}
+.genworth-list-foot .previous 
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;}
+.genworth-list-foot .next {
+    position: absolute;
+    top: 0px;
+    right: 0px;}
+.genworth-list-foot ul {
+    margin: 0px auto;
+    padding: 0px;
+    text-indent: 0px;
+    display: inline;}
+.genworth-list-foot ul li {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    text-indent: 0px;
+    display: inline;
+    }
+.genworth-list-foot li a {}
+
+.genworth-article-detail 
+{
+    /*border-bottom: 1px solid #CCC;
+    background: transparent url(/CMSContent/Images/section_divider.png) no-repeat right bottom;*/
+    }
+.genworth-article-detail h1 
+{ 
+    }
+.genworth-article-detail .date-line 
+{
+    font-family: 'Cabin', Arial, Sans-Serif;
+    line-height: 15px;
+    font-size: 11px;
+    color: #000;
+    padding-top: 20px;
+    
+    }
+.genworth-article-detail .article-html 
+{
+    padding-top: 20px;
+    }
+.float-left 
+{
+    float: left; 
+    margin-right: 10px;
+    margin-bottom: 5px;}
+.float-right {float: left;}
+a.return-link 
+{
+    display: inline-block;
+    padding-left: 35px;
+    text-transform: uppercase;
+    font-family: 'Cabin', Arial, Sans-Serif;
+    line-height: 30px;
+    font-size: 16px;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent url(/CMSContent/Images/return.png) no-repeat left center;
+    margin-top: 10px;
+    }
+    
+    

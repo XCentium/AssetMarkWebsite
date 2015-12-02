@@ -1,0 +1,317 @@
+﻿.filterbar
+{
+	border: 1px solid #999999;
+	height: 28px;
+	background: transparent url(/CMSContent/Images/searchbarBackground.png) repeat-x;
+	text-align: left;
+	line-height: normal;
+}
+
+.filterbar .filterby 
+{
+	width: 49px;
+	float: left;
+	display: block;
+	background: transparent;
+	color: #333333;
+	font-family: 'Oswald';
+	font-size: 12px;
+	line-height: 12px;
+	padding: 8px 10px 8px 12px;
+	text-align: center;
+	cursor: default;
+	outline: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.filterbar-genworthdropdownpanel
+{
+	width: 266px;
+	border: 0 none transparent;
+	border-left: 1px solid #999999;
+	background: transparent;
+	z-index: 9100;
+	line-height: normal;
+	display: block;
+	float: left;
+	margin-left: -1px;
+	-webkit-border-radius: 0;
+	-khtml-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.filterbar-genworthdropdownpanel.ui-genworthdropdownpanel-dropdownShowing
+{
+	background: transparent url(/CMSContent/Images/filterbarDropdownButtonBackgroundActive.png) repeat-x;
+}
+
+.filterbar-genworthdropdownpanel .ui-genworthdropdownpanel-buttonContent
+{
+	height: 22px;
+	color: #666666;
+	text-align: left;
+	padding: 3px 10px 3px 23px;
+	line-height: 22px;
+	background: transparent url(/CMSContent/Images/filterbarArrowUp.png) no-repeat 11px 8px;
+	outline: none;
+	text-decoration: none;
+}
+
+.filterbar-genworthdropdownpanel.ui-genworthdropdownpanel-dropdownShowing .ui-genworthdropdownpanel-buttonContent 
+{
+	color: #FFFFFF;
+	background: transparent url(/CMSContent/Images/filterbarArrowDown.png) no-repeat 7px 10px;
+}
+
+.filterbar-genworthdropdownpanel .ui-genworthdropdownpanel-buttonContent .title 
+{
+	font-family: 'Oswald';
+	font-size: 12px;
+}
+
+.filterbar-genworthdropdownpanel .ui-genworthdropdownpanel-buttonContent .results, .filterbar-genworthdropdownpanel .ui-genworthdropdownpanel-buttonContent .asOf
+{
+	font-family: 'Lucida Sans Unicode';
+	font-size: 11px;
+}     
+
+.filterbar-genworthdropdownpanel .ui-genworthdropdownpanel-buttonContent .length 
+{
+	font-family: 'Oswald';
+	font-size: 11px;
+}
+
+.filterbar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent
+{
+	background: transparent;
+	border: 0 none transparent;
+	padding: 10px 10px 10px 12px;
+	text-align: left;
+}
+
+.filterbar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent .filter-overlay
+{
+	position: absolute;
+	width: auto;
+	height: auto;
+	top: 1px;
+	left: 5px;
+	right: 5px;
+	bottom: 6px;
+	background: transparent url(/CMSContent/Images/filterDisabledOverlay.png) repeat-x;
+	z-index: 100;
+	display: none;
+}
+
+.filterbar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent .filter-progressoverlay
+{
+	position: absolute;
+	width: auto;
+	height: auto;
+	top: 1px;
+	left: 5px;
+	right: 5px;
+	bottom: 6px;
+	background: transparent url(/CMSContent/Images/blue_spinner.gif) no-repeat center center;
+	z-index: 101;
+	display: none;
+}
+
+.filterbar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent .title
+{
+	font-size: 11px;
+	font-family: 'Cabin';
+	color: #666666;
+	padding-bottom: 4px;
+}
+
+.filterbar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent .checkboxLabel
+{
+	font-family: 'Cabin';
+	font-size: 11px;
+	color: #000000;
+}
+
+.filterbar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent .checkboxAllContainer
+{
+	background: transparent url(/CMSContent/Images/searchbarCustomizeHorizontalDiv.png) no-repeat center bottom;
+	padding-bottom: 4px;
+	margin-bottom: 4px;
+}
+
+.filterbar .resetfilters 
+{
+	width: 95px;
+	height: 24px;
+	display: block;
+	float: left;
+	border-left: 1px solid #999999;
+	padding: 2px 2px 2px 2px;
+	cursor: default;
+	outline: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	margin-left: -1px;
+}
+
+.filterbar .resetfilters .button
+{
+	font-family: 'Oswald';
+	font-size: 13px;
+	width: 95px;
+	height: 24px;
+	color: #FFFFFF;
+	background: transparent url(/CMSContent/Images/filterbarButton.png) no-repeat left top;
+	text-decoration: none;
+	outline: none;
+	display: block;
+	cursor: pointer;
+	text-align: center;
+	line-height: 24px;
+	margin: 0;
+}
+
+.filterbar .resetfilters .button:hover
+{
+	background: transparent url(/CMSContent/Images/filterbarButtonOver.png) no-repeat left top;
+}
+
+.filterbar .filterbar-genworthdropdownpanel-calendar .ui-genworthdropdownpanel-buttonContent
+{
+}
+
+.filterbar-genworthdropdownpanel-calendar .ui-genworthdropdownpanel-buttonContent .dateInput
+{
+	width: 66px;
+	height: 22px;
+	line-height: 22px;
+	font-family: 'Lucida Sans Unicode';
+	font-size: 10px;
+	border: 0 none transparent;
+	margin: 0;
+	padding: 0 3px;
+	background: transparent url(/CMSContent/Images/dateStates_Over.png) no-repeat left top;
+	vertical-align: top;
+	*vertical-align: middle; /* IE7 */
+	text-align: left;
+}
+
+.filterbar-genworthdropdownpanel-calendar .ui-genworthdropdownpanel-buttonContent .dateInput.datefocus
+{
+	background: transparent url(/CMSContent/Images/dateStates_Selected.png) no-repeat left top;
+}
+
+.filterbar-genworthdropdownpanel-calendar .ui-genworthdropdownpanel-buttonContent .dateInput.error
+{
+
+	background:url("/CMSContent/Images/dateStates_Alert.png") no-repeat bottom; 
+	color: #FF0000;
+}
+
+.filterbar-genworthdropdownpanel-calendar .ui-genworthdropdownpanel-buttonContent  .dateInput.error #date
+{
+	color: #FF0000;
+}
+
+.filterbar-genworthdropdownpanel-calendar .ui-genworthdropdownpanel-buttonContent .arrow,
+.filterbar-genworthdropdownpanel-calendar .ui-genworthdropdownpanel-buttonContent .title,
+.filterbar-genworthdropdownpanel-calendar .ui-genworthdropdownpanel-buttonContent .asOf
+{
+	line-height: 22px;
+}
+
+.filterbar .filterbar-genworthdropdownpanel-calendar .ui-genworthdropdownpanel-dropdownContent
+{
+	padding: 15px 10px 15px 10px;
+}
+
+.filterbar  label.error 
+{
+	background: transparent url("/CMSContent/Images/error-layer.png") top left no-repeat; 
+	padding-left: 16px; 
+	-webkit-padding-start: 7px;
+	margin-left: 81px;
+	width:100px;
+	height:50px;
+	position:relative;
+	margin-top:-74px;  
+	display:block;
+	color:#fff;
+	font-family: 'Lucida Sans Unicode';
+	font-size: 11px ;
+	line-height:18px;
+}
+
+/* RangeFilter */
+
+.filterbar-genworthdropdownpanel-range .ui-genworthdropdownpanel-buttonContent .textRange
+{
+	background: url(/CMSContent/Images/date_Range_TextBox.png) no-repeat scroll left top transparent;
+	border: 0 none transparent;
+	font-family: 'Lucida Sans Unicode';
+	font-size: 10px;
+	height: 22px;
+	line-height: 22px;
+	margin: 0;
+	padding: 0 3px;
+	text-align: left;
+	vertical-align: top;
+	width: 199px;
+}
+
+.filterbar-genworthdropdownpanel-range .ui-genworthdropdownpanel-dropdownContent .range-values
+{
+	color: #000000;
+	font-family: 'Cabin';
+	font-size: 11px;
+	cursor: pointer;
+	cursor: hand;
+	padding-top: 7px;
+}
+
+.filterbar-genworthdropdownpanel-range .ui-genworthdropdownpanel-dropdownContent .focus 
+{
+	background-color: #0277bc;
+	color: #FFFFFF;
+}
+
+.filterbar-1 .resetfilters
+{
+	padding-left: 532px;
+}
+
+.filterbar-2 .resetfilters
+{
+	padding-left: 266px;
+}
+
+.filterbar-4 .filterby 
+{
+	width: 43px;    
+}
+
+.filterbar-4 .filterbar-genworthdropdownpanel
+{
+	width: 201px;
+}
+
+
+
+.filter-bar-wrapper {}
+.filter-bar-wrapper > ul {}
+.filter-bar-wrapper > ul > li {}
+.filter-bar-wrapper > ul > li > span {}
+.filter-bar-wrapper > ul > li > ul {}
+.filter-bar-wrapper > ul > li > ul > li {}
+.filter-bar-wrapper > ul > li > ul > li > span {}
+.filter-bar-wrapper > ul > li > ul > li > label {}
+.filter-bar-wrapper > ul > li > ul > li > input {}
+.filter-bar-wrapper > ul > li > ul > li > .hr-wrapper {}

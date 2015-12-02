@@ -1,0 +1,99 @@
+.ui-skinnable
+{
+	position: relative;
+	zoom: 1;
+	z-index: 0;
+}
+
+.ui-skinnable-wrapper
+{
+	display: inline-block;
+    /* IE7 inline-block fix */
+    zoom: 1;
+    *display: inline;
+}
+
+.ui-skinnable-area
+{
+    position: absolute;
+	zoom: 1;
+	width: auto;
+	height: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+/* Default skins for childless elements */
+
+.ui-skinnable-textarea .ui-skinnable-textarea-area1
+{
+    top: 0;
+    right: 10px;
+    bottom: auto;
+    left: 0;
+    height: 20px;
+    background: transparent url(/Shared/Images/textareaBackgroundTopLeft.png) no-repeat left top;
+}
+
+.ui-skinnable-textarea .ui-skinnable-textarea-area2
+{
+    right: 0;
+    top: 0;
+    bottom: 10px;
+    left: auto;
+    width: 10px;
+    background: transparent url(/Shared/Images/textareaBackgroundTopRight.png) no-repeat right top;
+}
+
+.ui-skinnable-textarea .ui-skinnable-textarea-area3
+{
+    top: 20px;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    background: transparent url(/Shared/Images/textareaBackgroundBottomLeft.png) no-repeat left bottom;
+}
+
+.ui-skinnable-textarea .ui-skinnable-textarea-area4
+{
+    top: auto;
+    right: 0px;
+    bottom: 0px;
+    left: 10px;
+    height: 10px;
+    background: transparent url(/Shared/Images/textareaBackgroundBottomRight.png) no-repeat right bottom;
+}
+
+.ui-skinnable-textarea .ui-skinnable-textarea-area5
+{
+    top: 20px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    background: #FFFFFF;
+}
+
+.ui-skinnable-input .ui-skinnable-input-area1
+{
+	top: 0;
+    right: 5px;
+	bottom: 0;
+	left: 0;
+	width: auto;
+	height: auto;
+    background: transparent url(/Shared/Images/inputTextBackgroundLeft.png) no-repeat left top;
+}
+
+.ui-skinnable-input .ui-skinnable-input-area2
+{
+	top: 0;
+	right: 0;
+	bottom: 0;
+    left: auto;
+    width: 5px;
+	height: auto;
+    background: transparent url(/Shared/Images/inputTextBackgroundRight.png) no-repeat right top;
+}

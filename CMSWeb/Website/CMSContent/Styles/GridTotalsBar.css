@@ -1,0 +1,60 @@
+﻿.grid-totals-bar
+{
+    width: 968px; 
+    height: 34px; 
+    margin-top: 10px; 
+    background: url(/Shared/Images/gridTotalsBackground.png) repeat 0 -1px; 
+    border: 1px solid #999; 
+    position: relative; 
+    overflow: hidden;
+}
+
+.grid-totals-bar .label 
+{ 
+    width: 297px; 
+    height: 34px; 
+    line-height: 34px; 
+    text-align: right; 
+    float:left; 
+    color: #666; 
+    font-family: 'Oswald'; 
+    font-size: 12px; 
+}
+
+.grid-totals-bar .totals
+{
+    width: 661px; 
+    height: 34px; 
+    line-height: 34px; 
+    float: left; 
+    overflow: hidden; 
+    position: relative;
+    margin-left:10px; 
+    background: #09578D; 
+    color: #fff; 
+    font-size: 12px;
+}
+
+.grid-totals-bar .totals .total1
+{
+    position: absolute; 
+    left: 10px; 
+}
+
+.grid-totals-bar .totals .total2
+{
+    position: absolute; 
+    left: 312px; 
+}
+
+.grid-totals-bar .totals .total3
+{
+    position: absolute; 
+    left: 433px; 
+}
+
+.grid-totals-bar .totals .total4
+{
+    position: absolute; 
+    left: 549px; 
+}

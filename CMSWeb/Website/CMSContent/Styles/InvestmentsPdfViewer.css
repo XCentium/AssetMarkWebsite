@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.pdf_viewer1 {
+width: 709px;
+border:0;
+float:left
+}
+.pdf_list {
+float:left;
+width:231px
+}
+.dialog-content h3 {
+font-family: 'Oswald', Arial, Sans-Serif;
+font-size: 14px;
+color:#000000
+}

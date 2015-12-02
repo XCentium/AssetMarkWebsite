@@ -1,0 +1,56 @@
+﻿.secondaryMenu
+{
+	display: block;
+	/* position: relative; *//* this causes the list to show above the client header dropdown in IE7, despite the drop down having a z-index of 99999... -eric */
+	height: 24px;
+	min-height: 24px;
+	margin: 0;
+	padding: 5px;
+	background: url(/Content/Images/blueInset_bg.png) repeat-x top;
+	list-style: none;
+	color: #ffffff;
+	font-family: 'Oswald', Arial, Sans-Serif;
+	font-size: 13px;
+}
+
+.secondaryMenu li
+{
+	float: left;
+	height: 24px;
+	min-height: 24px;
+	margin: 0;
+	padding: 0 0 0 1px;
+	background: url(/Content/Images/secondaryMenu_div.png) no-repeat left;
+}
+
+.secondaryMenu .first
+{
+	background: none;
+}
+
+.secondaryMenu li a
+{
+	display: block;
+	height: 24px;
+	min-height: 24px;
+	padding: 0 15px 0 14px;
+	line-height: 24px;
+	color: #ffffff;
+}
+
+.secondaryMenu li:hover a
+{
+	color: #fedc41;
+}
+
+
+.secondaryMenu .selected, .secondaryMenu .selected:hover
+{
+	background: url(/Content/Images/secondaryMenu_down_left.png) no-repeat left;
+}
+
+.secondaryMenu .selected a, .secondaryMenu .selected:hover a
+{
+	background: url(/Content/Images/secondaryMenu_down_right.png) no-repeat right;
+	color: #333333;
+}

@@ -1,0 +1,11 @@
+﻿@using ServerLogic.SitecoreExt
+@using MvcAssetmark.Repository
+@model RenderingModel
+@{
+    var SC = Html.Sitecore();
+    var item = Model.Item;
+}
+<div class="feature-sidebar">
+    @SC.Field("Body")
+    <p class="feature-link">@SC.ContentLink(item, "Link URL", "Link Title")</p>
+</div>

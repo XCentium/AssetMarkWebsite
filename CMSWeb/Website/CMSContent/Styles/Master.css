@@ -1,0 +1,493 @@
+html 
+{
+    background:#1b5e8b url(/Content/Images/bg_html.png);
+    height:100%;
+}
+body
+{
+	background: transparent url(/Content/Images/bg.png) repeat-x;
+	text-align: center;
+	font-family: 'Arial','Helvetica','Sans-Serif';
+	font-size: .85em;
+	min-height:100%;
+}
+
+/* Main Menu */
+
+#mainMenuWrapper {
+	POSITION: relative; 
+	PADDING-BOTTOM: 0px; 
+	MARGIN: 0px; 
+	MIN-HEIGHT: 42px; 
+	PADDING-LEFT: 9px; 
+	PADDING-RIGHT: 0px; 
+	BACKGROUND: url(/Content/Images/mainMenu_bg.png) repeat-x; 	
+	HEIGHT: 42px; 
+	PADDING-TOP: 0px;
+	padding: 0 0 0 9px;
+}
+#mainMenuContainer {
+	POSITION: relative; 
+	PADDING-BOTTOM: 0px; 
+	MARGIN: 0px; 
+	MIN-HEIGHT: 42px; 
+	PADDING-LEFT: 0px; 
+	WIDTH: 100%; 
+	PADDING-RIGHT: 0px; 
+	DISPLAY: table; 
+	BACKGROUND: url(/Content/Images/mainMenu_border.png) no-repeat 4px 6px; 
+	HEIGHT: 42px; 
+	PADDING-TOP: 0px
+}
+#mainMenu {
+	/*PADDING-BOTTOM: 0px;*/ 
+	LIST-STYLE-TYPE: none; 
+	MARGIN: 0px; 
+	MIN-HEIGHT: 28px; 
+	/*PADDING-LEFT: 0px; 
+	PADDING-RIGHT: 0px;*/ 
+	/*DISPLAY: table-row;*/ 
+	/*FONT-FAMILY: "Oswald", Arial, Sans-Serif;*/
+	FONT-FAMILY: Tahoma,Arial,Sans-Serif; 
+	BACKGROUND: url(/Content/Images/mainMenu_border.png) no-repeat center center; 
+	BACKGROUND: none transparent scroll repeat 0% 0%; 
+	HEIGHT: 28px; 
+	COLOR: #333333; 
+	FONT-SIZE: 13px; 
+	LIST-STYLE-IMAGE: none; 
+	/*PADDING-TOP: 0px;*/
+	padding: 0 0 0 7px;
+}
+#mainMenu LI 
+{
+    PADDING: 0 0 0 0;
+	DISPLAY: block; 
+	BACKGROUND: url(/Content/Images/mainMenu_div_left.png) no-repeat left center; 
+	VERTICAL-ALIGN: middle; 
+	CURSOR: pointer;
+	float: left;
+	margin: 7px 0px 0px;
+}
+#mainMenu LI.first 
+{   
+	BACKGROUND-IMAGE: none
+}
+
+ #mainMenu li.first img
+{
+    margin-top:7px;
+}
+
+#mainMenu LI A {
+	POSITION: relative; 
+	TEXT-ALIGN: center; 
+	LINE-HEIGHT: 28px; 
+	DISPLAY: block; 
+	WHITE-SPACE: nowrap; 
+	BACKGROUND: url(/Content/Images/mainMenu_div_right.png) no-repeat right bottom; 
+	HEIGHT: 28px; COLOR: #333333; 	
+	VERTICAL-ALIGN: middle; 
+	TEXT-DECORATION: none; 
+	PADDING: 0 8px;
+}
+#mainMenu LI.disabled:hover {
+	BACKGROUND: none transparent scroll repeat 0% 0%
+}
+#mainMenu LI.last A {
+	BACKGROUND-IMAGE: none; 
+	DISPLAY: block
+}
+#mainMenu .last-left {
+	DISPLAY: none
+}
+#mainMenu A SPAN {
+	DISPLAY: inline-block
+}
+#mainMenu .iconSpan {	
+	BACKGROUND: no-repeat center center; 
+	HEIGHT: 28px; 
+	CURSOR: pointer
+}
+#mainMenu .iconLinkTitle {
+	DISPLAY: none !important
+}
+#mainMenu .homeIcon 
+{    
+	BACKGROUND-IMAGE: url(../Images/icon_home.png) !important
+}
+#mainMenu LI:hover .homeIcon {
+	BACKGROUND-IMAGE: url(../Images/icon_home_hl.png) !important
+}
+#mainMenu .selected .homeIcon {
+	BACKGROUND-IMAGE: url(../Images/icon_home_hl.png) !important
+}
+#mainMenu .wizardIcon {
+	BACKGROUND-IMAGE: url(../Images/icon_wand.png) !important
+}
+#mainMenu LI:hover .wizardIcon {
+	BACKGROUND-IMAGE: url(../Images/icon_wand_hl.png) !important
+}
+#mainMenu .selected .wizardIcon {
+	BACKGROUND-IMAGE: url(../Images/icon_wand_hl.png) !important
+}
+#mainMenu LI:hover {
+	BACKGROUND-IMAGE: url(/Content/Images/mainMenu_hover_left.png)
+}
+#mainMenu LI.first:hover {
+	BACKGROUND-IMAGE: url(/Content/Images/mainMenu_hover_left_first.png)
+}
+#mainMenu LI:hover A {
+	BACKGROUND-IMAGE: url(/Content/Images/mainMenu_hover_right.png); WHITE-SPACE: nowrap; COLOR: #ffffff
+}
+#mainMenu LI.last:hover A {
+	BACKGROUND-IMAGE: url(/Content/Images/mainMenu_hover_right_last.png)
+}
+#mainMenu .selected {
+	BACKGROUND-IMAGE: url(/Content/Images/mainMenu_down_left.png) !important
+}
+#mainMenu .selected:hover {
+	BACKGROUND-IMAGE: url(/Content/Images/mainMenu_down_left.png) !important
+}
+#mainMenu LI.selected.first {
+	BACKGROUND-IMAGE: url(/Content/Images/mainMenu_down_left_first.png)
+}
+#mainMenu LI.selected.first:hover {
+	BACKGROUND-IMAGE: url(/Content/Images/mainMenu_down_left_first.png)
+}
+#mainMenu LI.selected.last A {
+	BACKGROUND-IMAGE: url(/Content/Images/mainMenu_down_right_last.png)
+}
+#mainMenu LI.selected.last:hover A {
+	BACKGROUND-IMAGE: url(/Content/Images/mainMenu_down_right_last.png)
+}
+#mainMenu .selected A {
+	BACKGROUND-IMAGE: url(/Content/Images/mainMenu_down_right.png); COLOR: #ffffff
+}
+#mainMenu .selected:hover A {
+	BACKGROUND-IMAGE: url(/Content/Images/mainMenu_down_right.png); COLOR: #ffffff
+}
+SPAN.count {
+	TEXT-ALIGN: center; 
+	PADDING-LEFT: 9px; 
+	DISPLAY: inline-block; 	
+	BACKGROUND: no-repeat left center; 
+	VERTICAL-ALIGN: middle; 
+	CURSOR: pointer; 
+	MARGIN-RIGHT: 0px
+}
+SPAN.count-value {
+	TEXT-ALIGN: center; 
+	TEXT-INDENT: -2px; 
+	PADDING-RIGHT: 7px; 
+	DISPLAY: inline-block; 	
+	BACKGROUND: no-repeat right center; 
+	COLOR: #000000; 
+	VERTICAL-ALIGN: middle
+}
+#mainMenu SPAN.count {
+	POSITION: relative; LINE-HEIGHT: 28px; VERTICAL-ALIGN: middle; TOP: -2px; RIGHT: 3px
+}
+#mainMenu SPAN.count .count-value {
+	PADDING-BOTTOM: 1px; LINE-HEIGHT: 27px; FLOAT: left; VERTICAL-ALIGN: middle
+}
+SPAN.orange.count {
+	BACKGROUND-IMAGE: url(/Content/Images/countIndicator_orange_left.png)
+}
+SPAN.orange.count .count-value {
+	BACKGROUND-IMAGE: url(/Content/Images/countIndicator_orange_right_full.png); COLOR: #ffffff; font-family: Arial, sans-serif; font-size: 10px; font-weight:bold;
+}
+SPAN.blue.count {
+	BACKGROUND-IMAGE: url(/Content/Images/countIndicator_Blue.png); COLOR: #ffffff
+}
+SPAN.white.count {
+	BACKGROUND-IMAGE: url(/Content/Images/countIndicator_White.png); COLOR: #2d2d2d
+}
+.countIndicator {
+	MIN-WIDTH: 20px; TEXT-ALIGN: center; PADDING-BOTTOM: 0px; LINE-HEIGHT: 20px; MARGIN: -3px 0px 0px; MIN-HEIGHT: 20px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; ZOOM: 1; DISPLAY: inline-block; FONT-FAMILY: Arial, Sans-Serif; BACKGROUND-POSITION: center 50%; HEIGHT: 20px; COLOR: #ffffff; FONT-SIZE: 10px; VERTICAL-ALIGN: middle; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+.countIndicatorCap {
+	MIN-WIDTH: 10px; LINE-HEIGHT: 20px; MARGIN-TOP: -3px; MIN-HEIGHT: 20px; ZOOM: 1; DISPLAY: inline-block; HEIGHT: 20px; VERTICAL-ALIGN: middle
+}
+.whiteCountIndicator {
+	COLOR: #2d2d2d
+}
+
+/* Count Indicator */
+
+.countIndicator, #container #mainMenuContainer #mainMenu li .countIndicator
+{
+	background-position: center center;
+    background-repeat: no-repeat;
+    color: #FFFFFF;
+    display: inline-block;
+    font-family: Arial,sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    height: 20px;
+    line-height: 19px;
+    min-height: 20px;
+    min-width: 20px;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+	/* IE7 inline-block fix */
+	zoom: 1;
+	*display: inline;
+}
+
+
+.isIE9 #mainMenuContainer #mainMenu li .countIndicator 
+{
+    margin-top:-2px; 
+}
+.isIE8 #mainMenuContainer #mainMenu li .countIndicator 
+{
+    font-size:11px; 
+}
+.isIE7 #mainMenuContainer #mainMenu li .countIndicator 
+{
+    margin-top:-2px; 
+}
+
+
+/*
+#mainMenu li .countIndicator.blueCountIndicator {background-position:0px -17px !important;}
+#mainMenu li .countIndicator.orangeCountIndicator {background-position:-20px -17px !important;}
+*/
+
+.countIndicatorCap
+{
+	display: inline-block;
+	height: 20px;
+	min-height: 20px;
+	line-height: 20px;
+	min-width: 10px;
+	vertical-align: middle;
+	margin-top: -3px;
+	/* IE7 inline-block fix */
+	zoom: 1;
+	*display: inline;
+}
+
+.whiteCountIndicator
+{
+    color: #2D2D2D;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    min-height: 20px;
+    margin-top: -3px;
+    padding-bottom: 2px;
+}
+
+#mainMenu .iconLinkTitle {
+    display: none !important;
+}
+#mainMenu .homeIcon {
+    background-image: url("/Content/Images/icon_home.png") !important;
+}
+#mainMenu li:hover .homeIcon, #mainMenu .selected .homeIcon {
+    background-image: url("/Content/Images/icon_home_hl.png") !important;
+}
+#mainMenu .wizardIcon {
+    background-image: url("/Content/Images/icon_wand.png") !important;
+}
+#mainMenu li:hover .wizardIcon, #mainMenu .selected .wizardIcon {
+    background-image: url("/Content/Images/icon_wand_hl.png") !important;
+}
+
+#mainMenu a span {
+    display: inline-block;
+}
+#mainMenu .iconSpan {
+    background: none no-repeat scroll center center transparent;
+    cursor: pointer;
+    height: 28px;
+    width: 14px;
+}
+
+
+/* Footer */
+
+
+.footer
+{
+	position: relative;
+	height: 52px;
+	min-height: 52px;
+	background: #063b67 url(/Content/Images/footer_bg.png);
+	font-family: Tahoma, Arial, Helvetica,sans-serif;
+	font-size: 10px;
+	color: #dddddd;
+}
+
+.footer a
+{
+	color: #ffffff;
+	line-height:10px;
+}
+
+.footer ul
+{
+	position: absolute;
+	left: 1px;
+	top: 10px;
+	list-style: none;
+    padding-left: 1.5em;
+}
+
+.footer li
+{
+	float: left;
+	padding: 0 10px;
+	border-left: 1px solid #ffffff;
+	line-height:10px;
+}
+
+.footer li.first
+{
+	border-left: none;
+	padding-left: 0;
+}
+
+#copyright
+{
+	position: absolute;
+	left: 15px;
+	bottom: 10px;
+	clear: both;
+}
+
+#logofooter
+{
+       position: absolute;
+       top  : 20px;
+       right: 10px;
+       bottom: 10px;
+       color: Gray;
+       vertical-align:middle;
+        /*float:right;       */
+}
+
+/* Header */
+
+div.header
+{
+	position: relative;
+	min-height: 60px;
+	max-height: 110px;
+	background: #ffffff url(/Content/Images/header_bg.png) repeat-y right;
+}
+
+#logoContainer
+{
+    width:200px;
+    padding:5px 0px 0px 20px;
+}
+
+#logo
+{
+	margin: auto;
+	max-height:70px;
+	max-width:180px;
+}
+
+div.header .headerText
+{
+	font-family: 'Cabin', Arial, Sans-Serif; 
+	font-size: 10px;
+	color: #666666;
+}
+
+div.header .headerText a
+{
+	color: #0072B8;
+}
+
+div.header .headerText a:hover
+{
+	color: #0098fe;
+	text-decoration: underline;
+}
+
+div.header .headerList
+{
+	list-style: none;
+}
+
+div.header .headerList li
+{
+	float: left;
+	padding:0px 3px 0px 0px;
+	/*padding-right: 3px;*/
+}
+
+#welcomeText, #agentCompanyText
+{
+	position: absolute;
+	left: 210px;
+	bottom: 23px;
+}
+
+.header.justclient #welcomeText {
+     bottom: 37px;
+}
+
+#userMenu
+{
+	position: absolute;
+	left: 210px;
+	bottom: 9px;
+	padding: 0;
+}
+
+#headerSearch
+{
+	position: absolute;
+	right: 9px;
+	bottom: 30px;
+	width: 181px;
+}
+
+#headerSearch input
+{
+	width: 153px;
+}
+
+#headerSearch a
+{
+	position: absolute;
+	right: 4px;
+	top: 3px;
+}
+
+#subMenu
+{
+	position: absolute;
+	right: 70px;
+	bottom: 9px;
+	padding: 0;
+}
+
+.onOffSwitch
+{
+	position: absolute;
+	right: 9px;
+	bottom: 7px;
+	width: 54px;
+	height: 16px;
+	background: url(/Content/Images/sprites_shared_template.png) no-repeat -110px -85px;
+	cursor: pointer;
+}
+
+.onOffButton
+{
+	width: 30px;/*54px;*/
+	height: 16px;
+	background:  url(/Content/Images/sprites_shared_template.png) no-repeat -165px -85px !important;
+}
+
+.onOffButton:hover
+{
+	background: url(/Content/Images/sprites_shared_template.png) no-repeat -165px -101px !important;
+}

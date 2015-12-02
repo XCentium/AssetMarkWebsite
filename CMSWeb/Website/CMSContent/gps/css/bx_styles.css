@@ -1,0 +1,17 @@
+/* @override http://localhost/bxslider_v3_plugin/css/styles.css */
+
+/*
+ * To change the color scheme of slider change each 
+ * background property for each of the five styles below
+ */
+
+
+/*pager links*/
+.bx-pager a {
+	margin-right: 5px;
+	color: #fff;
+	padding: 0px 10px 0px 10px;
+	font-size: 12px;
+	zoom:1;
+	color:transparent;
+}

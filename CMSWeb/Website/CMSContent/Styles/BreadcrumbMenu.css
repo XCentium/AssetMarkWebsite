@@ -1,0 +1,106 @@
+﻿#genworth-breadcrumb {
+	width: 970px;
+	background: #0870AF url(/CMSContent/Images/breadcrumbBackground.png) repeat-x left top;
+	color: #FFFFFF;
+	font-family: Arial;
+	font-size: 12px;
+	padding: 10px 10px 10px 10px;
+	position: relative;
+	overflow: hidden;
+	min-height: 20px;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-collapsed-container {
+	position: absolute;
+	height: 20px;
+	width: 970px;
+}
+
+#genworth-breadcrumb a {
+	color: #FFFFFF;
+}
+
+#genworth-breadcrumb a:hover {
+	color: #FEDE41;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-current {
+	font-weight: bold;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-breadcrumbs-container {
+	position: relative;
+	padding-left: 12px;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-breadcrumbs {
+	line-height: 20px;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-aboutbutton, #genworth-breadcrumb.genworth-breadcrumb-collapsed .genworth-breadcrumb-aboutbutton {
+	position: absolute;
+	right: 10px;
+	bottom: 12px;
+	width: 81px;
+	height: 17px;
+	background: transparent url(/CMSContent/Images/breadcrumbAboutButton.png) no-repeat center center;
+	display: block;
+	outline: none;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-aboutbutton:hover {
+	background: transparent url(/CMSContent/Images/breadcrumbAboutButtonOver.png) no-repeat center center;
+}
+
+#genworth-breadcrumb.genworth-breadcrumb-expanded .genworth-breadcrumb-aboutbutton {
+	display: none;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-intro-title-container {
+	float: left;
+	margin-right: -320px;
+	padding: 10px 10px 20px 10px;
+	min-width: 100px;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-intro-title {
+	display: inline;
+	white-space: nowrap;
+	font-family: Cardo;
+	font-size: 25px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #FFFFFF;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-intro-container {
+	margin-left: 320px;
+	padding: 20px 120px 20px 40px;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-intro {
+	font-family: Arial;
+	font-size: 14px;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-closebutton, #genworth-breadcrumb.genworth-breadcrumb-collapsed .genworth-breadcrumb-closebutton {
+	position: absolute;
+	right: 10px;
+	bottom: 12px;
+	width: 46px;
+	height: 17px;
+	background: transparent url(/CMSContent/Images/breadcrumbCloseButton.png) no-repeat center center;
+	display: none;
+	outline: none;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-closebutton:hover {
+	background: transparent url(/CMSContent/Images/breadcrumbCloseButtonOver.png) no-repeat center center;
+}
+
+#genworth-breadcrumb.genworth-breadcrumb-expanded .genworth-breadcrumb-closebutton {
+	display: block;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-expanded-container {
+	display: none;
+}

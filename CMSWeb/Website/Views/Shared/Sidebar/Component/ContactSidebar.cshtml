@@ -1,0 +1,24 @@
+﻿@using ServerLogic.SitecoreExt
+@using MvcAssetmark.Repository
+@model RenderingModel
+@{
+    var SC = Html.Sitecore();
+    var item = Model.Item;
+}
+<div id="sidebar-contact">
+    <div class="sidebar-banner-internal">
+
+        <a href="/practice/lets-talk/"><img src="/img/feature-banner-hands.jpg" width="182" height="64" alt="Contact Us"></a>
+    </div>
+
+    <p class="contact-hours">
+        @SC.Field("Contact Schedule", item)
+    </p>
+    <p class="contact-link contact-phone">
+
+        <a href="tel:@SC.Field("Phone Number", item)">@SC.Field("Phone Title", item)</a>
+    </p>
+    <p class="contact-link contact-mail">
+        @SC.ContentLink(item,"Contact Link", "Contact Text")
+    </p>
+</div>

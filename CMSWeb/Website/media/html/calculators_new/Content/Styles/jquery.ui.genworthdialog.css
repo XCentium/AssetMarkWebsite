@@ -1,0 +1,158 @@
+.ui-dialog
+{
+	background: transparent;
+	padding: 5px;
+	border: none;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+.ui-dialog .ui-skinnable-dialog-area1
+{
+    top: 0;
+    right: 10px;
+    bottom: auto;
+    left: 0;
+    height: 10px;
+    background: transparent url(/Shared/Images/dialogBackgroundTopLeft.png) no-repeat left top;
+}
+
+.ui-dialog .ui-skinnable-dialog-area2
+{
+    right: 0;
+    top: 1px;
+    bottom: 10px;
+    left: auto;
+    width: 10px;
+    background: transparent url(/Shared/Images/dialogBackgroundTopRight.png) no-repeat right top;
+}
+
+.ui-dialog .ui-skinnable-dialog-area3
+{
+    top: 10px;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    background: transparent url(/Shared/Images/dialogBackgroundBottomLeft.png) no-repeat left bottom;
+}
+
+.ui-dialog .ui-skinnable-dialog-area4
+{
+    top: auto;
+    right: 0px;
+    bottom: 0px;
+    left: 10px;
+    height: 10px;
+    background: transparent url(/Shared/Images/dialogBackgroundBottomRight.png) no-repeat right bottom;
+}
+
+.ui-dialog .ui-skinnable-dialog-area5
+{
+    top: 5px;
+    right: 5px;
+    bottom: 6px;
+    left: 5px;
+    background: transparent url(/Shared/Images/dialogBackground.png) repeat-x left top;
+}
+
+.ui-dialog .ui-dialog-titlebar
+{
+	height: 31px;
+	line-height: 30px;
+	font-family: 'Oswald';
+	font-size: 15px;
+	color: #FFFFFF;
+	padding: 0 10px;
+	background: transparent url(/Shared/Images/dialogTitlebarBackground.png) repeat-x left top;
+	border: none;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+.ui-dialog .ui-dialog-title
+{
+	margin: 0;
+	padding: 0;
+}
+
+.ui-dialog .ui-dialog-titlebar-close
+{
+	width: 14px;
+	height: 15px;
+	top: 8px;
+	right: 10px;
+	background: transparent url(/Shared/Images/dialogTitlebarClose.png) no-repeat center center;
+	border: none;
+	margin: 0;
+	padding: 0;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+.ui-dialog .ui-dialog-titlebar-close.ui-state-hover
+{
+	background: transparent url(/Shared/Images/dialogTitlebarCloseHover.png) no-repeat center center;
+}
+
+.ui-dialog .ui-dialog-titlebar-close .ui-icon
+{
+	display: none;
+}
+
+.ui-dialog .ui-dialog-content
+{
+	padding: 10px 10px 0 10px;
+}
+
+.ui-dialog .ui-dialog-buttonpane
+{
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: transparent;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset
+{
+	float: none;
+	text-align: center;
+	padding: 0 0 0 5px;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-button
+{
+	width: 98px;
+	height: 29px;
+	background: transparent url(/Shared/Images/dialogButton.png) no-repeat left top;
+	font-family: 'Oswald';
+	font-size: 13px;
+	line-height: 29px;
+	color: #FFFFFF;
+	border: none;
+	margin: 10px 10px 10px 0;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-button.ui-state-hover
+{
+	background: transparent url(/Shared/Images/dialogButtonHover.png) no-repeat left top;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-button .ui-button-text
+{
+	padding: 0;
+	margin: 0;
+}
+
+.ui-widget-overlay
+{
+	background: #000000;
+	opacity: 0.7;
+	filter: Alpha(Opacity=70);
+}

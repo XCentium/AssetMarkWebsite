@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6158326D-076B-4BF7-A2BD-A3A309B6295A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DocumentProcessor</RootNamespace>
+    <AssemblyName>GFWM.App.RCTool.Processor</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Manatee.Json">
+      <HintPath>..\..\ThirdPartyAssemblies\Manatee.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Manatee.StateMachine">
+      <HintPath>..\..\ThirdPartyAssemblies\Manatee.StateMachine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Kernel">
+      <HintPath>..\..\ThirdPartyAssemblies\Sitecore.Kernel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Logging">
+      <HintPath>..\..\ThirdPartyAssemblies\Sitecore.Logging.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="sitecore.nexus">
+      <HintPath>..\..\ThirdPartyAssemblies\sitecore.nexus.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\RCToolFileGenerator.cs" />
+    <Compile Include="Format\IDataFormatProvider.cs" />
+    <Compile Include="Format\JsonProvider.cs" />
+    <Compile Include="Format\XmlProvider.cs" />
+    <Compile Include="Helpers\GuidedPortfoliosBuilder.cs" />
+    <Compile Include="Helpers\AssetAllocationBuilder.cs" />
+    <Compile Include="Helpers\GenericTextBuilder.cs" />
+    <Compile Include="Helpers\PdfTemplatesBuilder.cs" />
+    <Compile Include="Helpers\PortfolioBuilder.cs" />
+    <Compile Include="Helpers\QuarterlyInvestmentReviewBuilder.cs" />
+    <Compile Include="Helpers\RcToolsHelper.cs" />
+    <Compile Include="Mapping\DocumentMapBase.cs" />
+    <Compile Include="Mapping\Map.cs" />
+    <Compile Include="Mapping\MapBase.cs" />
+    <Compile Include="Mapping\DataMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategies\IndexStrategy.cs" />
+    <Compile Include="Strategies\MockDataStrategy.cs" />
+    <Compile Include="Strategies\NonSecureMockDataStrategy.cs" />
+    <Compile Include="Strategies\QueryStrategy.cs" />
+    <Compile Include="Strategies\StrategyBase.cs" />
+    <Compile Include="Strategies\SecureMockDataStrategy.cs" />
+    <Compile Include="Strategies\DataStrategyBase.cs" />
+    <Compile Include="Utilities\DataSerialization.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\cl_CSVParsing\cl_CSVParsing.csproj">
+      <Project>{c0c54e0e-ace6-4f06-95fa-4dc3ca74b6e3}</Project>
+      <Name>cl_CSVParsing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\cl_Sitecore\cl_Sitecore.csproj">
+      <Project>{E90661C3-042B-452F-91AF-F029F5D34D09}</Project>
+      <Name>cl_Sitecore</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\DocumentEntities\DocumentEntities.csproj">
+      <Project>{349420F4-8058-4FCC-834A-9EE8A0B66449}</Project>
+      <Name>DocumentEntities</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

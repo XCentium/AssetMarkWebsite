@@ -1,0 +1,510 @@
+.toptxt {
+font-size: 11px;
+line-height: 14px;
+/*padding: 10px 0 18px 0;*/
+}
+.toptxt-afp {
+font-size: 11px;
+line-height: 14px;
+padding: 20px 0 18px 0;
+}
+.toptxt-left {
+float:left;
+margin-bottom: 20px;
+font-size: 12px;
+}
+.toptxt-right {
+float:right;
+font-size: 12px;
+width: 140px;
+line-height: 16px;
+}
+.admin_block, .form_block {
+font-family: Arial, Sans-Serif;
+font-size: 11px;
+padding-bottom: 10px;
+background:none;
+color:#000
+}
+.sidebar .admin_block { margin-bottom: 0 }
+/*
+.form_block label {
+float:left;
+width: 100px;
+height: 24px;
+line-height: 24px;
+vertical-align:middle !important;
+}
+*/
+.inline-form-block 
+{
+    display: block;
+    margin: 5px 0px;}
+.inline-form-block .float-left 
+{
+    line-height: 24px;
+    margin-bottom: 0px;}
+.inline-form-block * 
+{
+    vertical-align: middle;
+    zoom: 1;}
+.form_block label 
+{
+    display: inline-block;
+    padding: 2px 5px;}
+.inline-form-block select 
+{
+    margin-right: 10px;}
+label.after 
+{
+    padding-left: 5px;}
+    
+.form-list 
+{
+    margin: 0px;
+    padding: 0px 0px 10px;
+    text-indent: 0px;
+    width: auto;
+    float: left;
+    clear: left;}
+.form-list li 
+{
+    margin: 0px;
+    padding: 5px 0px;
+    text-indent: 0px;
+    list-style-type: none;
+    width: auto;}
+.form-list li.submit 
+{
+    padding-top: 5px;
+    margin-top: 20px;
+    border-top: 1px solid #CCC;
+    text-align: right;}
+.form-list label 
+{
+    display: inline-block;
+    min-width: 120px;
+    margin-right: 10px;}
+.form-list select 
+{
+    min-width: 180px;}
+.inline-form-block.radio-group label 
+{
+    margin-right: 30px;
+    min-width: 50px;}
+.inline-form-block.radio-group 
+{
+    line-height: 24px;}
+    
+    
+.admin_block h2, .toptxt h2 {
+font-family: 'Oswald', Arial, Sans-Serif;
+font-size: 18px;
+padding: 0 0 10px 0 !important;
+margin: 0;
+background:none;
+color:#000 !important;
+text-transform: none !important;
+}
+.admin_block h4 {
+font-family: 'Lucida Sans', Arial, Sans-Serif;
+font-size: 11px;
+padding: 0px 0px 5px !important;
+margin: 0;
+background:none;
+color:#000 !important
+}
+.admin_block ul 
+{
+    padding-bottom: 10px;}
+.admin_block ul li
+{
+    padding-top: 2px;
+    padding-bottom: 2px;}
+ul.link-list, ul.noicon {
+list-style: none;
+padding: 0px 0px 10px;
+}
+ul.link-list li {
+background: transparent none left center no-repeat;
+padding: 5px 0 5px 25px;
+}
+
+/* CR G107 */
+.admin_block ul.link-list li  
+{
+	background-image: none !important;
+	padding: 2px 0px !important;}
+
+ul.link-list li.pdf {
+background-image: url(/CMSContent/Images/icon_pdf.png);
+}
+ul.link-list li.xls {
+background-image: url(/CMSContent/Images/icon_spreadsheet.png);
+}
+ul.link-list li.doc {
+background-image: url(/CMSContent/Images/icon_doc.png);
+}
+ul.link-list li.video {
+background-image: url(/CMSContent/Images/icon_video.png);
+}
+ul.link-list li.html {
+background-image: url(/CMSContent/Images/icon_htm.png);
+}
+ul.link-list li.form {
+background-image: url(/CMSContent/Images/icon_html.png);
+}
+ul.link-list li.ppt {
+background-image: url(/CMSContent/Images/icon_ppt.png);
+}
+.noicon li {
+background:none !important;
+padding: 5px 0 5px 0 !important;
+}
+.side-afp { margin-top: 20px }
+.greylist {
+margin: 0;
+padding: 0
+}
+.greytable {
+border-collapse:collapse;
+margin:0;
+padding:0
+}
+.greytable td {
+padding: 8px !important;
+background: #eaeaea !important;
+border-bottom:#999 1px solid;
+}
+.greytable th {
+padding: 8px 0px 4px !important;
+font-family: 'Oswald', Arial, Sans-Serif;
+font-weight: normal;
+font-size: 12px;
+white-space: nowrap;
+}
+.greytable .left {  }
+.greytable .date {
+text-align: center;
+}
+.greytable .last td { border-bottom: none; }
+.greybox {
+margin: 10px 0;
+padding: 10px;
+background: #eaeaea;
+font-size: 11px;
+vertical-align:middle;
+}
+.aside-thin {
+background: none !important;
+border-left:#eaeaea 1px solid;
+padding-left: 10px;
+}
+.aside {
+background: none !important;
+border-left:#eaeaea 3px solid;
+padding-left: 10px;
+}
+.admin-mid {
+width: 365px !important;
+padding-left: 29px;
+}
+/*
+.radio * {
+float:left;
+vertical-align:middle !important;
+height: 24px;
+line-height: 24px
+}
+.radio label { padding: 0 0 0 12px !important; }
+.afp-bottom {
+font-size: 11px;
+padding: 12px;
+border-top: #eaeaea 3px solid;
+width: 320px
+}
+*/
+.afp-bottom .label {
+padding-right: 25px;
+height: 24px;
+line-height: 24px
+}
+.greybox .horizit {
+float:left;
+width: 110px
+}
+.greybox .horizit label { width: 75px }
+.greybox #drops {
+float: left;
+padding-top: 14px
+}
+.help_link {
+padding-left:5px;
+width:15px;
+display:inline-block;
+float:right;
+line-height: 16px
+}
+.dropdown {
+float:left;
+margin-right: 12px
+}
+a.back 
+{
+    font-weight: bold;}
+.wire-instructions td
+{
+	padding-right: 10px;
+}
+
+.article-sidebar .archive_link
+{
+    font-family: 'Oswald', Arial, Sans-Serif;
+    font-size: 14px;
+}
+
+.article-sidebar
+{
+    padding-right:30px;
+    margin-top:6px;
+    margin-bottom:15px;
+}
+
+.article-sidebar .article_item
+{
+    margin-bottom:15px;
+}
+
+.article-sidebar >.article_item:last-of-type
+{
+    margin-bottom:5px;
+}
+
+.article-sidebar .article_item p:last-child
+{
+    margin-bottom:0px;
+}
+
+.article-sidebar .article_item > a
+{
+    font-weight:bold;
+   text-transform:uppercase;
+}
+
+.administration .article-summary
+{
+    margin-bottom:20px;
+}
+
+.administration h3, .administration .article-summary h3 a, .administration .content-title, .article-sidebar h3
+{
+    font-family: 'Oswald', Arial, Sans-Serif;
+    font-size: 18px;
+    padding: 0 0 10px 0;
+    margin: 0;
+    background:none;
+    color:#000;
+    text-transform:capitalize;
+}
+
+.administration .article-summary h3 a
+{
+    text-transform:uppercase;
+}
+
+.article-sidebar h4 a
+{
+    font-weight:normal;
+    font-size:12px;
+}
+
+.contact_tip {
+	margin-top: 50px;
+}
+
+	.contact_tip p, .contact_tip a {
+		font:normal 18px/1.5em 'Oswald', Arial, Sans-Serif;
+		margin-bottom: 10px;
+		padding-left: 34px;
+		display: block;
+		background: #fff url("/CMSContent/Images/phone.jpg") no-repeat 5px 2px;
+		min-height: 32px;
+	}
+
+	.contact_tip > a {
+		background-image: url("/CMSContent/Images/bulb.jpg");
+		background-position-x: 3px;
+	}
+
+.article_leftsidebar > div.c3 {
+	margin-top: 150px;
+}
+
+.back-link {
+	float: right;
+	font-family: 'Oswald', Arial, Sans-Serif;
+	font-size: 14px;
+	margin-right: 10px;
+	margin-top: 20px;
+}
+
+.rmdReport
+{
+    width:862px;
+    margin:30px 44px;
+}
+
+    .rmdReport h2
+    {
+        color: #fff;
+        background: #147;
+        font-family: 'Oswald', Arial, Sans-Serif;
+        font-size:18px;
+        height: 27px;
+        padding-top: 0px;
+    }
+
+    .rmdReport #gw-dialog-close-p
+    {
+        text-align:center;
+        margin-top:20px;
+    }
+
+.rmdReportContainer
+{
+    margin:0px 10px;
+}
+
+.rmdReport #body_0_PDF, .rmdReport #body_0_Excel
+{
+    margin-right:10px;
+    width:107px;
+    height:28px;
+    background:url('/CMSContent/Images/excelButton.jpg') no-repeat;
+    display:block;
+    float:left;
+}
+
+.rmdReport #body_0_PDF
+{
+    background-image:url('/CMSContent/Images/PdfButton.jpg');
+}
+
+.rmdReport #body_0_Excel.disable
+{
+    background-image:url('/CMSContent/Images/excelButton_disable.jpg');
+}
+
+.rmdReport #body_0_PDF.disable
+{
+    background-image:url('/CMSContent/Images/PdfButton_disable.jpg');
+}
+
+.rmdReport .rmdReportRadioListContent
+{
+    border:10px solid #ddd;
+    border-width:10px 0px;
+    padding:15px;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+
+    .rmdReport .rmdReportRadioListContent p
+    {
+        font-weight:bold;
+    }
+
+    .rmdReport .rmdReportRadioListContent > div
+    {
+        margin-bottom:10px;
+    }
+
+.rmdRadioButtonList
+{
+    padding-left:0px;
+}
+
+.rmdRadioButtonList li
+{
+    display:block;
+    float:left;
+    width:220px;
+    margin-right:20px;
+    font:bold 11px/1.5em Tahoma;
+}
+
+.rmdRadioButtonList li input
+{
+    float:left;
+    display: block;
+    margin-top:3px;
+    cursor:pointer;
+}
+
+.rmdRadioButtonList li label
+{
+    width:190px;
+    margin-left:5px;
+    float:left;
+    display: block;
+    cursor:pointer;
+}
+
+html, body.ModalWindowBody
+{
+    height:100%;
+}
+
+.RmdReportLinkContainer h4
+{
+    font-family: 'Oswald', Arial, Sans-Serif;
+    font-size: 18px;
+    color: #333;
+    line-height:20px;
+}
+
+.RmdReportLinkContainer{
+	padding:30px 0px;
+}
+
+.RmdReportLinkContainer .linkImage{
+	float:left;
+}
+
+.RmdReportLinkContainer .RmdReportLinkContent{
+	float:left;
+	width:150px;
+	margin-left:10px;
+}
+
+    .RmdReportLinkContainer a:hover
+    {
+        text-decoration:none;
+    }
+
+        .RmdReportLinkContainer a:hover h4
+        {
+            color:#0072B8;
+        }
+
+.CalculatorGroupContainer
+{
+    margin-top:20px;
+}
+    .CalculatorGroupContainer h3
+    {
+        padding-bottom:10px;
+    }
+    .CalculatorGroupContainer .CalculatorGroupLinks
+    {
+        background:#eee;
+    }
+	
+	.CalculatorGroupContainer .CalculatorGroupLinks a{
+		display:block;
+		float:left;
+		width:170px;
+		padding:22px 10px 22px 57px;
+        background: url('/CMSContent/Images/tax_resources_calculator.png') no-repeat 15px 12px;
+        font-weight:bold;
+	}

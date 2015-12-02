@@ -1,0 +1,61 @@
+.ui-genworthtooltip
+{
+	z-index: 9999;
+	max-width: 400px;
+	min-width: 24px;
+	min-height: 36px;
+	background: transparent;
+	border: 0 none transparent;
+	font-family: 'Lucida Sans Unicode';
+	font-size: 11px;
+	font-weight: normal;
+	color: #FFFFFF;
+	padding: 14px 19px 29px 19px;
+	box-shadow: none;
+	border-radius: 0;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.ui-skinnable-tooltip .ui-skinnable-tooltip-area1
+{
+    top: 0;
+    right: 13px;
+    bottom: 23px;
+    left: 0;
+    background: transparent url(/Shared/Images/tooltipBackgroundTopLeft.png) no-repeat left top;
+}
+
+.ui-skinnable-tooltip .ui-skinnable-tooltip-area2
+{
+    right: 0;
+    top: 0;
+    bottom: 23px;
+    left: auto;
+    width: 13px;
+    background: transparent url(/Shared/Images/tooltipBackgroundTopRight.png) no-repeat right top;
+}
+
+.ui-skinnable-tooltip .ui-skinnable-tooltip-area3
+{
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: 13px;
+	height: 23px;
+    background: transparent url(/Shared/Images/tooltipBackgroundBottomRight.png) no-repeat right bottom;
+}
+
+.ui-skinnable-tooltip .ui-skinnable-tooltip-area4
+{
+    top: auto;
+    right: 13px;
+    bottom: 0px;
+    left: 0;
+    height: 23px;
+    background: transparent url(/Shared/Images/tooltipBackgroundBottomLeft.png) no-repeat left bottom;
+}

@@ -1,0 +1,34 @@
+﻿@using Sitecore.Presentation
+@using Sitecore.Mvc.Analytics.Extensions
+@{
+    Layout = null;
+    var SC = Html.Sitecore();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@SC.Field("title")</title>
+
+    @SC.Field("HeadScriptsCSS")
+    
+    <link rel="icon"
+          type="image/ico"
+          href="/img/AssetMark_Icon_16.ico">
+    
+    @Html.Sitecore().VisitorIdentification()
+
+</head>
+
+@{
+    var contextItem = RenderingContext.Current.ContextItem;
+    var parentItem = contextItem.Parent;
+    string CssClass = string.Format("{0} {1}", contextItem.Name, parentItem.Name);
+}
+
+<body class="@CssClass">
+
+    @Html.Sitecore().Placeholder("Container")
+
+</body>
+</html>

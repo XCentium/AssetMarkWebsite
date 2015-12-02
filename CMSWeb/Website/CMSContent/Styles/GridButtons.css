@@ -1,0 +1,230 @@
+﻿.gridbuttonsBar
+{	
+	height: 28px;
+	line-height: 28px;
+	font-family:'Lucida Sans Unicode', 'Lucida Grande', 'sans-serif'; 
+	font-size: 11px;	
+}
+
+.gridbuttonsBar .gridbuttonsBar-buttons {
+    position: relative;
+    z-index: 9050;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel {
+    border: 0 none transparent;
+	background: none;
+	z-index: 9050;
+	line-height: normal;
+	display: block;
+	position: absolute;
+	top: 0;
+	-webkit-border-radius: 0;
+	-khtml-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize {
+	right: 157px;
+	background: transparent url(/CMSContent/Images/searchBarCustomizeSeparator.png) no-repeat left 7px;
+	z-index: 9002;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-print {
+	right: 88px;
+	background: transparent url(/CMSContent/Images/searchBarCustomizeSeparator.png) no-repeat left 7px;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-download {
+	right: 0;
+	background: transparent url(/CMSContent/Images/searchBarCustomizeSeparator.png) no-repeat left 7px;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize.ui-genworthdropdownpanel-dropdownShowing {
+	background: transparent url(/CMSContent/Images/searchBarCustomizeButtonBackgroundActive.png);
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-print.ui-genworthdropdownpanel-dropdownShowing {
+	background: transparent url(/CMSContent/Images/searchBarPrintButtonBackgroundActive.png);
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-download.ui-genworthdropdownpanel-dropdownShowing {
+	background: transparent url(/CMSContent/Images/searchBarDownloadButtonBackgroundActive.png);
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdown {
+	background: transparent;
+	border: 0 none transparent;
+	border-radius: 0;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-download .ui-genworthdropdownpanel-dropdown {
+	margin-right: -1px;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel .ui-genworthdropdownpanel-buttonContent {
+	font-family: 'Lucida Sans Unicode';
+	font-size: 10px;
+	color: #333333;
+	text-align: left;
+	padding: 10px 10px 10px 10px;
+	line-height: 10px;
+	background: transparent url(/CMSContent/Images/searchBarCustomizeIcon.png) no-repeat 11px 7px;
+	outline: none;
+	text-decoration: none;
+}
+
+/* .gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel .ui-genworthdropdownpanel-buttonContent:hover,  */
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel.ui-genworthdropdownpanel-dropdownShowing .ui-genworthdropdownpanel-buttonContent {
+	color: #FFFFFF;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize .ui-genworthdropdownpanel-buttonContent {
+	width: 68px;
+	height: 8px;
+	background: transparent url(/CMSContent/Images/searchBarCustomizeIcon.png) no-repeat 11px 7px;
+	padding: 10px 0 10px 32px;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-print .ui-genworthdropdownpanel-buttonContent {
+	width: 36px;
+	height: 8px;
+	background: transparent url(/CMSContent/Images/searchBarPrintIcon.png) no-repeat 10px 7px;
+	padding: 10px 0 10px 33px;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-download .ui-genworthdropdownpanel-buttonContent {
+	width: 59px;
+	height: 8px;
+	background: transparent url(/CMSContent/Images/searchBarDownloadIcon.png) no-repeat 9px 6px;
+	padding: 10px 0 10px 29px;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent {
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize .ui-genworthdropdownpanel-dropdownContent 
+{
+	width: 245px;
+	/* height: 235px; */
+	padding: 10px 15px 10px 15px;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-print .ui-genworthdropdownpanel-dropdownContent 
+{
+	width: 117px;
+	/* height: 59px; */
+	padding: 10px 15px 10px 15px;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-download .ui-genworthdropdownpanel-dropdownContent 
+{
+	width: 97px;
+	/* height: 109px; */
+	padding: 10px 15px 10px 15px;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent {
+	text-align: left;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent .downloadTitle,
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent .printTitle,
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent .customizeTitle {
+	font-size: 11px;
+	font-family: 'Cabin';
+	color: #666666;
+	padding-bottom: 4px;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent .downloadOption,
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel .ui-genworthdropdownpanel-dropdownContent .printOption {
+	display: block;
+	font-family: 'Lucida Sans Unicode';
+	font-size: 11px;
+	color: #1066B2;
+	text-decoration: underline;
+	outline: none;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize .ui-genworthdropdownpanel-dropdownContent .customizeAllReset {
+	padding: 0 0 4px 0;
+	background: transparent url(/CMSContent/Images/searchBarCustomizeHorizontalDiv.png) no-repeat left bottom;
+	margin-bottom: 8px;
+	margin-top: 4px;
+	height: 18px;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize .ui-genworthdropdownpanel-dropdownContent .customizeButtons {
+	background: transparent url(/CMSContent/Images/searchBarCustomizeHorizontalDiv.png) no-repeat left top;
+	text-align: center;
+	height: 34px;
+	width: 245px;
+	padding-left: 27px;
+	margin-top: 4px;
+	clear: both;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize .ui-genworthdropdownpanel-dropdownContent .customizeButton {
+	float: left;
+	font-family: 'Oswald';
+	font-size: 13px;
+	width: 95px;
+	height: 24px;
+	margin: 10px 1px 0 1px;
+	color: #FFFFFF;
+	background: transparent url(/CMSContent/Images/searchBarButton.png) no-repeat left top;
+	text-decoration: none;
+	outline: none;
+	display: block;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize .ui-genworthdropdownpanel-dropdownContent .customizeButton:hover {
+	background: transparent url(/CMSContent/Images/searchBarButtonOver.png) no-repeat left top;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize .ui-genworthdropdownpanel-dropdownContent .customizeCheckboxContainer 
+{
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize .ui-genworthdropdownpanel-dropdownContent .customizeAllReset .customizeCheckboxContainer 
+{
+    float: left;
+    width: 70px;
+}
+/*
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize .ui-genworthdropdownpanel-dropdownContent .customizeOptions
+{
+    height: 150px;
+}
+*/
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize .ui-genworthdropdownpanel-dropdownContent .customizeAllReset .customizeCheckbox
+{
+    margin-right: 4px;
+    margin-top: 1px;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize .ui-genworthdropdownpanel-dropdownContent .customizeCheckbox
+{
+    margin-right: 8px;
+    margin-top: 2px;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize .ui-genworthdropdownpanel-dropdownContent .customizeCheckboxLabel
+{
+	font-family: 'Cabin';
+	font-size: 11px;
+	color: #000000;
+}
+
+.gridbuttonsBar .gridbuttonsBar-genworthdropdownpanel-customize .ui-genworthdropdownpanel-dropdownContent .customizeReset 
+{
+    float: left;
+    padding-left: 10px;
+	color: #1066B2;
+	font-size: 11px;
+	font-family: 'Lucida Sans Unicode';
+	text-decoration: underline;
+	background: transparent url(/CMSContent/Images/searchBarCustomizeSeparator.png) no-repeat left center;
+}

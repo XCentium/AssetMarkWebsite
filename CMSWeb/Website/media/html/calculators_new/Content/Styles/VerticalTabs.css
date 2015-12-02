@@ -1,0 +1,74 @@
+﻿.vertical-tabs
+{       
+    width: 968px;
+    overflow: hidden;
+    background: transparent url(/Shared/Images/vertical-tabs-bg.png) repeat-y top left;
+    border: 1px solid #999;    
+}
+
+.vertical-tabs .tabs
+{
+    width: 158px;
+    padding-left: 0;
+    float: left;    
+    background: #E1E1E1;
+}
+
+.vertical-tabs .tabs li
+{
+    list-style: none;
+    background: transparent url(/Shared/Images/vertical-tabs-tab-bg.png) no-repeat bottom left;           
+    display: block;
+    width: 147px;
+    padding: 10px 10px 10px 0;    
+    text-align: right;    
+    font: 11px 'Lucida Sans', 'arial', 'sans-serif';  
+    cursor: pointer;  
+}    
+
+.vertical-tabs .tabs li.active
+{
+    color: #1066B2;
+    background: transparent url(/Shared/Images/vertical-tabs-active-tab-bg.png) no-repeat bottom left;           
+}
+
+.vertical-tabs .tab-content
+{
+    float: left;
+    width: 690px;
+    min-height: 350px;
+    overflow: hidden;
+    padding: 20px 30px 20px 70px;
+    display: none;
+}
+
+.vertical-tabs .col-wrapper
+{
+    width: 100%;
+    overflow: hidden;
+}
+
+.vertical-tabs .col-wrapper .left-col
+{
+    float: left;
+    width: 250px;     
+}
+
+.vertical-tabs .col-wrapper .right-col
+{
+    float: left;   
+    padding: 28px 0 0 20px;    
+}
+
+.vertical-tabs .tab-content h3.heading
+{
+    padding-bottom: 5px;
+    font: 17px 'Oswald', 'arial', 'sans-serif';
+    color: #0B6CA5;
+    background: transparent url(/Shared/Images/header-underline.png) repeat-x bottom left;           
+}
+
+.vertical-tabs .tab-content p
+{
+    font: 11px 'Lucida Sans', 'arial', 'sans-serif';    
+}

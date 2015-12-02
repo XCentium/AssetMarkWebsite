@@ -1,0 +1,81 @@
+﻿.box-chart-wrapper
+{
+    width: 250px;
+}
+
+.box-chart 
+{  
+    width: 100%;
+    overflow: hidden;    
+}
+
+.box-chart .box
+{
+    width: 117px;
+    height: 117px; 
+    position: relative;
+    margin: 0 2px 2px 0;
+    float: left;
+}
+
+.box-chart .box h6
+{
+    font: bold 12px 'Lucida Sans', 'arial', 'sans-serif';  
+    line-height: 12px; 
+    color: #fff; 
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    margin: 0;
+}    
+
+.box-chart .box span
+{
+   font: 46px 'Oswald', 'arial', 'sans-serif';
+   line-height: 46px;
+   color: #fff;
+   position: absolute;
+   bottom: 10px;
+   left: 10px;
+}
+
+.box-chart .box1 
+{ 
+    background: #1A7CB9;         
+}
+
+.box-chart .box2
+{
+    background: #0A4B73;    
+}
+
+.box-chart .box3
+{
+    background: #E18907;   
+    clear: left; 
+}
+
+.box-chart .box4
+{
+    background: #D45A25;    
+}
+
+.box-chart .box5
+{
+    background: #A5A6A4;    
+    clear: left;
+    margin-top: 15px;
+    width: 235px;
+    height: 60px;
+}
+
+.box-chart .box5 h6
+{
+    top: 18px;
+    left: 83px;    
+}
+
+.box-chart .box5 span
+{    
+    bottom: 12px;
+}

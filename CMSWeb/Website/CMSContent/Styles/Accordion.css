@@ -1,0 +1,87 @@
+﻿.ui-accordion
+{
+    margin-top: 10px;    
+}
+
+.ui-accordion .ui-widget-content
+{
+	background-image: none;
+}
+
+.ui-accordion .ui-accordion-content 
+{     
+    padding: 0; 
+    overflow: hidden;    
+    border: 1px solid #999;    
+}
+
+.ui-accordion .ui-accordion-content .ui-jqgrid
+{     
+    border-style: none;
+}
+
+.ui-accordion .ui-accordion-header 
+{
+	background: url("/CMSContent/Images/filtergradient.gif") repeat-x scroll left top transparent;
+	border: 1px solid #999;
+	height: 28px;
+	line-height: 28px;	
+	position: relative;
+	padding-left: 12px;	
+}
+
+.ui-accordion .ui-accordion-header a 
+{
+	padding: 7px 0 0 10px;
+	color: #222;
+	font: 12px 'Oswald', 'arial', 'sans-serif';
+}
+
+.ui-accordion .ui-accordion-header .ui-icon-triangle-1-e
+{
+    width: 7px;
+    height: 11px;
+    margin-top: -6px;
+    background: transparent url(/CMSContent/Images/accordion-triangle-collapsed.png) no-repeat top left;       
+}
+
+.ui-accordion .ui-accordion-header .ui-icon-triangle-1-s 
+{
+    width: 12px;
+    height: 7px;    
+    margin-top: -3px;
+    background: transparent url(/CMSContent/Images/accordion-triangle-expanded.png) no-repeat top left;       
+}
+
+.ui-accordion a span.small 
+{
+    font: 11px 'Lucida Sans', 'arial', 'sans-serif';    
+    margin-left: 2px;
+}    
+
+.ui-accordion .ui-corner-top, .ui-accordion .ui-corner-bottom, .ui-accordion .ui-corner-all 
+{
+   border-radius: 0;
+}
+
+.ui-accordion .ui-jqgrid-sdiv
+{
+    min-height: 35px;
+}    
+
+/* Disabled State */
+
+.ui-accordion-disabled
+{
+    opacity: 1;
+}
+
+.ui-accordion .ui-accordion-disabled .ui-icon-triangle-1-e, .ui-accordion .ui-accordion-disabled .ui-icon-triangle-1-e
+{
+    background: none;
+}
+
+.ui-accordion-disabled .ui-accordion-header a
+{
+    opacity: .35;
+}

@@ -1,0 +1,66 @@
+﻿@model RenderingModel
+@using Genworth.SitecoreExt
+@using MvcAssetmark.Repository
+@using MvcAssetmark.Models.Navigation
+
+@{
+    var children = Model.Item.GetChildrenOfTemplate("Media Article Link");
+    children.Sort((a, b) => b.Fields["Article Date"].Value.CompareTo(a.Fields["Article Date"].Value));
+    int itemsPerPage = Convert.ToInt32(Model.Item.Fields["Items per Page"].Value);
+    var items = children.Take(itemsPerPage);
+    var moreItems = children.Skip(itemsPerPage);
+    var SC = Html.Sitecore();
+}
+
+<section id="news-media" class="highlight-box news-box">
+    <div id="news-media-close" class="news-box-close" style="display: none;">
+        <a href="#">X</a>
+    </div>
+
+    <a name="media"></a>
+    <h3>@SC.Field("Title")</h3>
+
+    <!--table so content can be migrated as is-->
+    <!-- feature rows -->
+    <table id="news-media-table-featured" class="news-table-featured news-table-links">
+
+        <tbody>
+            @foreach (var item in items)
+            {
+                <tr class="table_body">
+                    <td class="table-first-col">@SC.Field("Article Date", item, new { format = "MM/dd/yyyy" })</td>
+                    <td>@SC.Field("URL", item, new { target = "_blank", text = item.DisplayName })</td>
+                    <td class="table-last-col"><em>@SC.Field("Source", item)</em></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- rows hidden by default -->
+    <div id="news-media-table-container" class="news-table-container">
+        <table id="news-media-table" class="news-table news-table-links" width="100%">
+
+
+            <tbody>
+
+                @foreach (var item in moreItems)
+                {
+                    <tr class="table_body">
+                        <td class="table-first-col">@SC.Field("Article Date", item, new { format = "MM/dd/yyyy" })</td>
+                        <td>@SC.Field("URL", item, new { target = "_blank", text = item.DisplayName })</td>
+                        <td class="table-last-col"><em>@SC.Field("Source", item)</em></td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div><!-- .news-table-container -->
+    @if (moreItems.Count() > 0)
+    {
+        <div id="news-media-more" class="news-box-more" style="display: block;">
+            <a href="#"><u>More</u> &gt;</a>
+        </div>
+    }
+
+</section>

@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cl_CSVParsing", "cl_CSVParsing\cl_CSVParsing.csproj", "{C0C54E0E-ACE6-4F06-95FA-4DC3CA74B6E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cl_Linq", "cl_Linq\cl_Linq.csproj", "{A468FD0D-5F8D-455D-9581-4447C503F969}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cl_QueryString", "cl_QueryString\cl_QueryString.csproj", "{8BAFB201-2649-4F04-AE98-A83B5FD6143D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cl_Sitecore", "cl_Sitecore\cl_Sitecore.csproj", "{E90661C3-042B-452F-91AF-F029F5D34D09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cl_Wcf", "cl_Wcf\cl_Wcf.csproj", "{AA1187F9-06EB-47DD-B564-DD7356DC63B3}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://wmtfs:8080/tfs/defaultcollection
+		SccProjectUniqueName0 = cl_CSVParsing\\cl_CSVParsing.csproj
+		SccProjectName0 = cl_CSVParsing
+		SccAuxPath0 = http://wmtfs:8080/tfs/defaultcollection
+		SccLocalPath0 = cl_CSVParsing
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = cl_Linq\\cl_Linq.csproj
+		SccProjectName1 = cl_Linq
+		SccAuxPath1 = http://wmtfs:8080/tfs/defaultcollection
+		SccLocalPath1 = cl_Linq
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = cl_QueryString\\cl_QueryString.csproj
+		SccProjectName2 = cl_QueryString
+		SccAuxPath2 = http://wmtfs:8080/tfs/defaultcollection
+		SccLocalPath2 = cl_QueryString
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName3 = cl_Sitecore\\cl_Sitecore.csproj
+		SccProjectName3 = cl_Sitecore
+		SccAuxPath3 = http://wmtfs:8080/tfs/defaultcollection
+		SccLocalPath3 = cl_Sitecore
+		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName4 = cl_Wcf\\cl_Wcf.csproj
+		SccProjectName4 = cl_Wcf
+		SccAuxPath4 = http://wmtfs:8080/tfs/defaultcollection
+		SccLocalPath4 = cl_Wcf
+		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0C54E0E-ACE6-4F06-95FA-4DC3CA74B6E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C54E0E-ACE6-4F06-95FA-4DC3CA74B6E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C54E0E-ACE6-4F06-95FA-4DC3CA74B6E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C54E0E-ACE6-4F06-95FA-4DC3CA74B6E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A468FD0D-5F8D-455D-9581-4447C503F969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A468FD0D-5F8D-455D-9581-4447C503F969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A468FD0D-5F8D-455D-9581-4447C503F969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A468FD0D-5F8D-455D-9581-4447C503F969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BAFB201-2649-4F04-AE98-A83B5FD6143D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BAFB201-2649-4F04-AE98-A83B5FD6143D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BAFB201-2649-4F04-AE98-A83B5FD6143D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BAFB201-2649-4F04-AE98-A83B5FD6143D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90661C3-042B-452F-91AF-F029F5D34D09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90661C3-042B-452F-91AF-F029F5D34D09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90661C3-042B-452F-91AF-F029F5D34D09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90661C3-042B-452F-91AF-F029F5D34D09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA1187F9-06EB-47DD-B564-DD7356DC63B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA1187F9-06EB-47DD-B564-DD7356DC63B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA1187F9-06EB-47DD-B564-DD7356DC63B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA1187F9-06EB-47DD-B564-DD7356DC63B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

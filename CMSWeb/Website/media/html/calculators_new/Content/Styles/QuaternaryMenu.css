@@ -1,0 +1,47 @@
+﻿.quaternaryMenu
+{
+	height: 20px;
+	min-height: 20px;
+	margin: 0 0 10px 0;
+	padding: 0;
+	list-style: none;
+	color: #5792c3;
+	font-family: Arial, Sans-Serif;
+	font-size: 12px;
+}
+
+.quaternaryMenu li
+{
+	float: left;
+	height: 20px;
+	min-height: 20px;
+	margin: 0;
+	padding: 0;
+	background: url(/Content/Images/tertiaryMenu_div.png) no-repeat right;
+}
+
+.quaternaryMenu li a
+{
+	padding: 0 10px;
+	line-height: 20px;
+	text-align: center;
+	color: #5792c3;
+}
+
+.quaternaryMenu li.first a
+{
+	background: url(/Content/Images/tertiaryMenu_div.png) no-repeat left;
+}
+
+.quaternaryMenu li:hover a
+{
+	color: #0099ff;
+	text-decoration: underline;
+}
+
+.quaternaryMenu .selected a, .quaternaryMenu .selected:hover a
+{
+	color: #333;
+	font-weight: bold;
+	text-decoration: none;
+}

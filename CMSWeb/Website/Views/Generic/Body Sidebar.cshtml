@@ -1,0 +1,15 @@
+﻿@using ServerLogic.SitecoreExt
+@using MvcAssetmark.Repository
+@model RenderingModel
+@{
+    var SC = Html.Sitecore();
+}
+<section>
+    @SC.Field("Body")
+
+    <aside class="@SC.Field("CssClassSidebar")">
+        @SC.Placeholder("Sidebar")
+    </aside>
+    <div class="clear"></div>
+</section>
+@SC.Field("ScriptsCSS")

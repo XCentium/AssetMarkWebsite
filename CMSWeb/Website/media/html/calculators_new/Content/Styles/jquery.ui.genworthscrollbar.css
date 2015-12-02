@@ -1,0 +1,194 @@
+.ui-genworthscrollbar-vertical .ui-genworthscrollbar-track {
+    width: 15px;
+}
+
+.ui-genworthscrollbar-vertical .ui-genworthscrollbar-track1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url(/CMSContent/Images/scrollBarTrackVerticalTop.png) no-repeat center top;
+}
+
+.ui-genworthscrollbar-vertical .ui-genworthscrollbar-track2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url(/CMSContent/Images/scrollBarTrackVerticalBottom.png) no-repeat center bottom;
+}
+
+.ui-genworthscrollbar-vertical .ui-genworthscrollbar-track3 {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    bottom: 10px;
+    right: 0;
+    background: url(/CMSContent/Images/scrollBarTrackVerticalMiddle.png) repeat-y center top;
+}
+
+.ui-genworthscrollbar-vertical .ui-genworthscrollbar-slider {
+}
+
+.ui-genworthscrollbar-horizontal .ui-genworthscrollbar-track {
+    height: 15px;
+}
+
+.ui-genworthscrollbar-horizontal .ui-genworthscrollbar-track1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url(/CMSContent/Images/scrollBarTrackHorizontalLeft.png) no-repeat left center;
+}
+
+.ui-genworthscrollbar-horizontal .ui-genworthscrollbar-track2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url(/CMSContent/Images/scrollBarTrackHorizontalRight.png) no-repeat right center;
+}
+
+.ui-genworthscrollbar-horizontal .ui-genworthscrollbar-track3 {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    bottom: 0;
+    right: 10px;
+    background: url(/CMSContent/Images/scrollBarTrackHorizontalMiddle.png) repeat-x left center;
+}
+
+.ui-genworthscrollbar-horizontal .ui-genworthscrollbar-slider {
+}
+
+.ui-genworthscrollbar {
+    background: none;
+    border: 0 none transparent;
+    /* border-radius: 0; */
+    overflow: hidden;
+    position: relative;
+}
+
+.ui-genworthscrollbar .ui-genworthscrollbar-inner {
+    position: absolute;
+    overflow: hidden;
+}
+
+.ui-genworthscrollbar-vertical .ui-genworthscrollbar-inner {
+    top: 0;
+    bottom: 0;
+    width: 15px;
+}
+
+.ui-genworthscrollbar-horizontal .ui-genworthscrollbar-inner {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 15px;
+}
+
+.ui-genworthscrollbar .ui-genworthscrollbar-slider {
+    background: none;
+    border: 0 none transparent;
+}
+
+.ui-genworthscrollbar-vertical {
+    min-height: 100px;
+    width: 15px;
+}
+
+.ui-genworthscrollbar-horizontal {
+    min-width: 100px;
+    height: 15px;
+}
+
+.ui-genworthscrollbar .ui-slider {
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow:none;
+}
+
+.ui-genworthscrollbar .ui-slider .ui-slider-handle {
+    border: 0 none transparent;
+    padding: 0;
+    outline: none;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow:none;
+}
+
+.ui-genworthscrollbar .ui-slider-vertical {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 42px;
+    bottom: 42px;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow:none;
+}
+
+.ui-genworthscrollbar .ui-slider-vertical .ui-slider-handle {
+    background: url(/CMSContent/Images/scrollBarThumbVerticalUp.png) no-repeat -1px 0 !important;
+    width: 15px;
+    height: 84px;
+    margin: 0 0 -42px 0;
+    left: 0;
+}
+
+.ui-genworthscrollbar .ui-slider-vertical .ui-slider-handle.ui-state-hover {
+    background: url(/CMSContent/Images/scrollBarThumbVerticalOver.png) no-repeat -1px 0 !important;
+}
+
+.ui-genworthscrollbar .ui-slider-vertical .ui-slider-handle.ui-state-active {
+    background: url(/CMSContent/Images/scrollBarThumbVerticalDown.png) no-repeat -1px 0 !important;
+}
+
+.ui-genworthscrollbar .ui-slider-horizontal {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 42px;
+    right: 42px;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow:none;
+}
+
+.ui-genworthscrollbar .ui-slider-horizontal .ui-slider-handle {
+    background: url(/CMSContent/Images/scrollBarThumbHorizontalUp.png) no-repeat -1px 0 !important;
+    width: 84px;
+    height: 15px;
+    margin: 0 0 0 -42px;
+    top: 0;
+}
+
+.ui-genworthscrollbar .ui-slider-horizontal .ui-slider-handle.ui-state-hover {
+    background: url(/CMSContent/Images/scrollBarThumbHorizontalOver.png) no-repeat -1px 0 !important;
+}
+
+.ui-genworthscrollbar .ui-slider-horizontal .ui-slider-handle.ui-state-active {
+    background: url(/CMSContent/Images/scrollBarThumbHorizontalDown.png) no-repeat -1px 0 !important;
+}
+

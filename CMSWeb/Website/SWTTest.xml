@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Account SWT="5F0C68C4-D33E-CDFA-ABA7-8CFE330BFF33" SSOGuid="5F0C68C4-D33E-CDFA-ABA7-8CFE330BFF33">	
+	<MeetingMode Enabled="False"/>
+	<UserTypes>
+		<UserType Name="T5"/>		
+	</UserTypes>
+	<UserLevels>
+    <!--<UserLevel Name="6" />-->
+    <UserLevel Name="UL1"/>
+		<UserLevel Name="UL2"/>		
+	</UserLevels>
+	<Products>
+		<Product Name="CMA"/>
+		<Product Name="P4"/>
+	</Products>
+	<Custodians>
+		<Custodian Name="C1"/>
+		<Custodian Name="C3"/>
+	</Custodians>
+	<Channels>
+		<Channel Name="CH1"/>
+		<Channel Name="CH2"/>
+	</Channels>
+	<Advisors>
+		<Advisor Name="AG7337"/>
+		<Advisor Name="Advisor 2"/>
+		<Advisor Name="Advisor 3"/>
+	</Advisors>
+	<ClientInvestmentOptions>
+		<CurrentOptions>
+			<ClientInvestmentOption HasInvestmentManagerFee="1" StrategistCode="ALTEG" AssetAllocationId="" SolutionTypeId="CMA" ></ClientInvestmentOption> <!-- Strategist-->
+			<ClientInvestmentOption HasInvestmentManagerFee="0" StrategistCode="GSAM" AssetAllocationId="Tactical-Constrained" SolutionTypeId="DS"></ClientInvestmentOption>  <!-- Strategist-->
+			<ClientInvestmentOption HasInvestmentManagerFee="1" StrategistCode="EVI"  AssetAllocationId="" SolutionTypeId=""></ClientInvestmentOption>   <!-- Manager & Strategist-->
+			<ClientInvestmentOption HasInvestmentManagerFee="1" StrategistCode="LLR" AssetAllocationId="" SolutionTypeId=""></ClientInvestmentOption>   <!-- Manager -->
+			<ClientInvestmentOption HasInvestmentManagerFee="0" StrategistCode="PIMCO" AssetAllocationId="" SolutionTypeId=""></ClientInvestmentOption> <!-- Manager -->
+		</CurrentOptions>
+		<AdditionalOptions>
+			<ClientInvestmentOption HasInvestmentManagerFee="0" StrategistCode="WMC" AssetAllocationId="" SolutionTypeId=""></ClientInvestmentOption>  <!-- Manager -->
+			<ClientInvestmentOption HasInvestmentManagerFee="1" StrategistCode="CAL" AssetAllocationId="Strategic" SolutionTypeId="MF"></ClientInvestmentOption>  <!-- Strategist-->
+			<ClientInvestmentOption HasInvestmentManagerFee="0" StrategistCode="JPM" AssetAllocationId="Absolute-Return" SolutionTypeId="MF"></ClientInvestmentOption>  <!-- Strategist-->
+		</AdditionalOptions>
+	</ClientInvestmentOptions>
+	<ManagerStrategistPrivileges>
+		<ManagerStrategistPrivilege Name="180601"/>
+		<ManagerStrategistPrivilege Name="180602"/>
+		<ManagerStrategistPrivilege Name="180603"/>
+	</ManagerStrategistPrivileges>
+  <PcStatusList>
+    <PcStatus Name="Gold"/>
+  </PcStatusList>
+</Account>

@@ -1,0 +1,107 @@
+.grid-pager .selectBox-wrapper {
+	width: 55px;
+}
+
+.grid-pager .selectBox-dropdown {
+	width: 27px;
+	min-width: 27px;
+	text-align: right;
+}
+
+.grid-pager .selectBox-dropdown .selectBox-label {
+	padding: 0;
+}
+
+.grid-pager .selectBox-options-list li {
+	padding-right: 0px;
+}
+
+.grid-pager .selectBox-options-list li a {
+	text-align: right;
+	padding-right: 25px;
+}
+
+.grid-pager .selectBox-options-hasscrollbar .selectBox-options-list li {
+	padding-right: 0;
+}
+
+.grid-pager .selectBox-options-hasscrollbar .selectBox-options-list li a {
+	padding-right: 4px;
+}
+
+.grid-pager {
+	width: 100%; /* 966px; */
+	height: 22px;
+	text-align: right;
+	padding: 6px 0;
+	line-height: 22px;
+	font-family: 'Lucida Sans Unicode';
+	font-size: 11px;
+}
+
+.grid-pager .viewall {
+	outline: none;
+}
+
+.grid-pager .pagesize-box {
+	display: inline-block;
+	vertical-align: top;
+	*vertical-align: middle; /* IE7 */
+	/* IE7 inline-block fix */
+	zoom: 1;
+	*display: inline;
+}
+
+.grid-pager .prev-arrow {
+	display: inline-block;
+	width: 7px;
+	height: 22px;
+	background: transparent url(/Shared/Images/gridPagerPrevArrow.png) no-repeat center center;
+	outline: none;
+	vertical-align: top;
+	*vertical-align: middle; /* IE7 */
+	/* IE7 inline-block fix */
+	zoom: 1;
+	*display: inline;
+}
+
+.grid-pager .next-arrow {
+	display: inline-block;
+	width: 7px;
+	height: 22px;
+	background: transparent url(/Shared/Images/gridPagerNextArrow.png) no-repeat center center;
+	outline: none;
+	vertical-align: top;
+	*vertical-align: middle; /* IE7 */
+	/* IE7 inline-block fix */
+	zoom: 1;
+	*display: inline;
+}
+
+.grid-pager .page-input {
+	width: 22px;
+	height: 22px;
+	background: transparent url(/Shared/Images/gridPagerInputBackground.png) no-repeat right top;
+	border: 0 none transparent;
+	margin: 0;
+	font-family: 'Lucida Sans Unicode';
+	font-size: 11px;
+	line-height: 22px;
+	text-align: center;
+	vertical-align: top;
+	*vertical-align: middle; /* IE7 */
+}
+
+.grid-pager .page-input.ui-state-active {
+	background: transparent url(/Shared/Images/gridPagerInputBackgroundOver.png) no-repeat right top;
+}
+
+.grid-pager .text 
+{
+	cursor: default;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}

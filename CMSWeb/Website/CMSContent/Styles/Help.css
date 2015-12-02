@@ -1,0 +1,353 @@
+﻿.help-header 
+{
+    padding: 17px 0px 7px;}
+.help-header h1 
+{
+    float: left;
+    width: 190px;
+    line-height: 40px;
+    font-size: 24px;}
+.help-header p 
+{
+    margin: 5px;
+    vertical-align: middle;
+    line-height: 15px;
+    font-size: 11px;}
+.help-block {}
+.helb-block tbody
+{
+    position: relative;}
+.topic-list 
+{
+    margin: 0px;
+    padding: 0px;
+    }
+/*
+.help-block table .topic-list 
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;}
+.help-block table tr.first td {position: relative; height: 20px;}
+*/
+.topic-list ul 
+{
+    margin: 0px;
+    padding: 0px;
+    padding-left:15px;}
+.topic-list li 
+{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;}
+.topic-list li.first {}
+.topic-list li.last {}
+.topic-list>li {}
+.topic-list>li.first {}
+.topic-list>li.last {}
+.topic-list>li>li {}
+.topic-list>li>li.first {}
+.topic-list>li>li.last {}
+.topic-list a 
+{
+    font-size: 11px;
+    text-decoration: none;}
+.topic-list>li>a 
+{
+    font-weight:bold;
+    text-decoration: underline;}
+.topic-list a:hover 
+{
+    text-decoration: underline;}
+.topic-list li.selected>a 
+{
+    text-decoration: none;
+    color: #000;}
+
+.topic-thumbnails 
+{}
+.topic-thumbnails li {
+    text-align: center;;}
+.topic-thumbnails h6
+{
+    font-size: 14px;
+    padding-bottom: 2px;
+    text-align: center;
+    text-transform:uppercase;}
+.topic-thumbnails a 
+{
+    padding: 0px !important;}
+.topic-thumbnails img 
+{
+    text-align: center;
+    display: block;
+    margin: 0px auto;
+    width: 150px;
+    height: 90px;}
+.topic-thumbnails p 
+{
+    padding: 0px;
+    text-align: center;}
+
+.help-block .faq 
+{
+    border-top: 3px solid #EAEAEA;}
+.help-block .faq h3 
+{
+    padding-top: 17px;
+    font: bold 14px/1.2em "Lucida Sans Unicode";
+    color: #000;
+    padding-bottom: 14px;
+    letter-spacing: -1px;
+    text-transform: none;}
+.help-block .faq .c3 h3 
+{
+    font: bold 12px/1.2em "Lucida Sans Unicode";
+    padding-top: 18px;
+    padding-bottom: 21px;}
+.help-block .faq .c3 p 
+{
+    line-height: 15px;}
+.help-block .faq dl {}
+.help-block .faq dl dt 
+{
+    padding-top: 20px;
+    font: bold 12px/1.2em "Lucida Sans Unicode";}
+.help-block .faq dl dt a 
+{
+    font-weight: bold;}
+.help-block .faq dl dt a:hover {}
+.help-block .faq dl dd 
+{
+    padding-top: 12px;}
+.help-block .faq .html {}
+.help-block .faq .html p 
+{
+    padding-right: 20px;}
+.help-block .faq .html a {}
+.help-block .faq .html a:hover {}
+
+/* THESE GLOSSARY STYLES ARE OUTDATED
+.help-block .faq {}
+.help-block .faq .category {white-space: nowrap;}
+.help-block .faq .category a {}
+.help-block .faq .category a:hover {}
+.help-block .faq .question {white-space: nowrap;}
+.help-block .faq .answer 
+{}
+.help-block .faq .answer 
+{}
+.help-block .faq .answer .more 
+{
+    float: right;
+    display: none;
+    cursor: pointer;
+    padding: 0px 5px;
+    color: #16A;
+    text-decoration: underline;}
+.help-block .faq .minimized .more 
+{
+    display: inline-block;}
+.help-block .faq .answer.minimized > div 
+{
+    position: relative;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	-webkit-text-overflow: ellipsis;
+	overflow: hidden;
+	height: 15px;
+	max-height: 15px;
+    }
+.help-block .faq .answer > div {}
+.help-block .faq .answer p {}
+*/
+
+
+
+.help-block .glossary 
+{
+    border-top: 3px solid #EAEAEA;}
+.help-block .glossary h3 
+{
+    padding-top: 17px;
+    font: bold 14px/1.2em "Lucida Sans Unicode";
+    color: #000;
+    padding-bottom: 14px;
+    letter-spacing: -1px;
+    text-transform: none;}
+.help-block .glossary .c3 h3 
+{
+    font: bold 12px/1.2em "Lucida Sans Unicode";
+    padding-top: 18px;
+    padding-bottom: 21px;}
+.help-block .glossary .c3 p 
+{
+    line-height: 15px;}
+.help-block .glossary dl {}
+.help-block .glossary dl dt 
+{
+    padding-top: 20px;
+    font: bold 12px/1.2em "Lucida Sans Unicode";}
+.help-block .glossary dl dt a 
+{
+    font-weight: bold;}
+.help-block .glossary dl dt a:hover {}
+.help-block .glossary dl dd 
+{
+    padding-top: 12px;}
+.help-block .glossary .html {}
+.help-block .glossary .html p 
+{
+    padding-right: 20px;}
+.help-block .glossary .html a {}
+.help-block .glossary .html a:hover {}
+
+/* THESE GLOSSARY STYLES ARE OUTDATED
+.help-block .glossary .term {white-space: nowrap;}
+.help-block .glossary .term a {}
+.help-block .glossary .term a:hover {}
+.help-block .glossary .definition 
+{}
+.help-block .glossary .definition 
+{}
+.help-block .glossary .definition .more 
+{
+    float: right;
+    display: none;
+    cursor: pointer;
+    padding: 0px 5px;
+    color: #16A;
+    text-decoration: underline;}
+.help-block .glossary .minimized .more 
+{
+    display: inline-block;}
+.help-block .glossary .definition.minimized > div 
+{
+    position: relative;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	-webkit-text-overflow: ellipsis;
+	overflow: hidden;
+	height: 15px;
+	max-height: 15px;
+    }
+.help-block .glossary .definition > div {}
+.help-block .glossary .definition p {}
+*/
+
+.help-block .document-list td.doc-icon 
+{
+    text-align: right;
+    background-image: none !important;}
+.help-block table.document-list td 
+{
+    padding: 0px 10px;
+    position: relative;}
+.help-block table.document-list td div 
+{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 440px;
+	}
+.ie .help-block table.document-list td div 
+{
+	position: absolute;
+	top: 0px;
+	left: 10px;
+	}
+.help-block .document-list .doc-length {}
+
+.help-block table th 
+{
+    background: transparent url(/CMSContent/Images/collapsiblePanel_bg.png) repeat-x bottom left;
+    font-size: 11px;
+    height: 28px;
+    padding: 0px 10px;
+    vertical-align: middle;
+    font-weight: normal;
+    color: #444;
+    text-align: left;}
+.help-block table th.first 
+{
+    background: transparent url(/CMSContent/Images/collapsiblePanel_bg.png) repeat-x top left;}
+.help-block table th.last 
+{
+    border-right: 1px solid #999;}
+.help-block table td 
+{
+    vertical-align: top;
+    padding: 5px 10px;
+    font-size: 11px;
+    line-height: 15px;}
+.help-block table.document-list td 
+{
+    padding: 0px 10px;}
+
+.search-block 
+{
+    position: relative;
+    padding: 6px 10px 14px;}
+.search-block .search
+{
+    position: relative;
+    margin-left: 5px;
+    margin-right: 50px;}
+.search-block .search input[type="text"] 
+{
+    padding-right: 24px;}
+.search-block .search img 
+{
+    height: 15px !important;
+    width: 14px !important;
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    margin: 0px !important;
+    padding: 0px !important;
+    display: inline-block;}
+.search-block .focus img 
+{
+    display: none;}
+.search-block .search input[type="image"] 
+{
+    height: 15px !important;
+    width: 14px !important;
+    background: none !important;
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    margin: 0px !important;
+    padding: 0px !important;
+    display: none !important;}
+.search-block .focus input[type="image"] 
+{
+    display: inline-block !important;}
+.help-block .search-by-letter 
+{
+    padding-left: 3px;}
+.help-block .search-by-letter a 
+{
+    display: inline-block;
+    margin-left: 3px;
+    font-weight: bold;
+    letter-spacing: .08em;} 
+.help-block .search-by-letter a.selected 
+{
+    text-decoration: none;
+    color: #000;
+    padding: 0px 2px;} 
+.search-by-letter .no-results 
+{
+    text-decoration: none;
+    color: #888;
+    padding: 0px 2px;} 
+.help-block .search-by-letter a.last 
+{
+    margin-left: 17px;} 
+    
+.help-search .text-input input[type="text"] 
+{ 
+    padding: 0px 0px 0px 0px !important;
+    margin-right:18px !important;
+}

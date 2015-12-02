@@ -1,0 +1,25 @@
+﻿@model RenderingModel
+@using Genworth.SitecoreExt
+@using MvcAssetmark.Repository
+@using MvcAssetmark.Models.Navigation
+
+@{
+    var collection = Model.Item.GetChildrenOfTemplate("Description Link");
+    var SC = Html.Sitecore();
+}
+<section id="news-events" class="highlight-box news-box">
+
+    <a name="insights"></a><h3>@SC.Field("Title")</h3>
+    @foreach (var item in collection)
+    {
+        <div class="news-event">
+            <div class="news-event-details">
+                <p>
+                    <strong>@SC.Field("URL", item, new { text = item.DisplayName, target = "_blank"})</strong>
+                    <br>@SC.Field("Link Description", item)
+                    <br>@SC.Field("URL", item, new { target = "_blank" })
+                </p>
+            </div>
+        </div><!--news-event-->
+    }
+</section>

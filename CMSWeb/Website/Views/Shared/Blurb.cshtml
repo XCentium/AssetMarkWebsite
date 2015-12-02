@@ -1,0 +1,8 @@
+﻿@model RenderingModel
+@using Genworth.SitecoreExt
+@using MvcAssetmark.Repository
+@using MvcAssetmark.Models.Navigation
+
+<section id="@Model.Rendering.Parameters["ID"]" class="@Model.Rendering.Parameters["CssClass"]">
+    @Html.Sitecore().Field("Blurb")
+</section>

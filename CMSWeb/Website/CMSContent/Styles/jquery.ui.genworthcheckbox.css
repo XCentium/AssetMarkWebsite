@@ -1,0 +1,34 @@
+.ui-genworthcheckbox, .ui-genworthcheckbox.ui-state-default {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background: transparent url(/CMSContent/Images/checkbox.png) no-repeat 0px 0px;
+	border: none;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	vertical-align: middle;
+	/* IE7 inline-block fix */
+	zoom: 1;
+	*display: inline;
+}
+
+.ui-genworthcheckbox.ui-state-hover {
+	background-position: -16px 0px;
+}
+
+.ui-genworthcheckbox.ui-state-checked {
+	background-position: 0px -16px;
+}
+
+.ui-genworthcheckbox.ui-state-checked.ui-state-hover {
+	background-position: -16px -16px;
+}
+
+.ui-genworthcheckbox.ui-state-disabled {
+	background-position: 0px -32px;
+}
+
+.ui-genworthcheckbox.ui-state-checked.ui-state-disabled {
+	background-position: 0px -48px;
+}

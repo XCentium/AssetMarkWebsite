@@ -1,0 +1,32 @@
+﻿@using Sitecore.Mvc.Presentation
+@using Sitecore.Mvc
+@using Sitecore.Data.Items
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>@Html.Sitecore().CurrentItem.DisplayName</title>
+    <link href="/css/HelloWorld/default.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="MainPanel">  
+      <div id="CenterColumn">
+          <nav>
+              <ul>
+                  <li>
+                      <a href="/">Home</a>
+                  </li>
+                  <li>
+                      <a href="/sample-1">Sample 1</a>
+                  </li>
+                  <li>
+                      <a href="/sample-2">Sample 2</a>
+                  </li>
+              </ul>
+          </nav>
+          @Html.Sitecore().Placeholder("page")
+      </div>  
+  </div>
+</body>
+</html>

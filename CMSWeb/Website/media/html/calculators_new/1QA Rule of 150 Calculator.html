@@ -1,0 +1,106 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
+	<link rel="stylesheet" href="Content/Styles/de-form-styles.css" type="text/css" media="screen">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="Content/Scripts/jquery.uniform.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	  (function(){
+	    ("input:checkbox, input:radio, textarea, select").uniform();
+	  });
+	</script>
+	<script type="text/javascript" src="Content/Scripts/calc.js"></script>
+	<script type="text/javascript" src="Content/Scripts/numberformat.js"></script>
+	<script type="text/javascript" src="Content/Scripts/highcharts.js"></script>
+	<style>
+		body {
+			background-color: #cccccc;
+		}
+		input {
+			height: 115%;
+		}
+		#calc {
+			width: 710px;
+			background-color: #ffffff;
+		}
+		#ruleDiv {
+			margin-top:40px;
+		}
+		.clearfloat {
+			clear: both;
+			font-size: 1px;
+			height: 0;
+		}
+		.calcHeader {
+			font-family: Oswald;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+		.tableL {
+			text-align: right;
+			margin-right: 20px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+
+<div id="calc">
+	<div class="calcHeader">1QA Expense Calculator</div>
+	<table border=0 cellspacing="5px">
+		<tr>
+			<td class="tableL"><label>Number of Existing Ideal Clients:</label></td>
+			<td style="font-weight:bold;width:185px;">
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','ruleA','1','n')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','ruleA','1','n')" />
+				</div>
+				<input style="height:25px;" type="text" id="ruleA" value="75" />
+			</td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>Target Number of Ideal Clients:</label></td>
+			<td style="font-weight:bold;">
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','ruleB','1','n')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','ruleB','1','n')" />
+				</div>
+				<input style="height:25px;" type="text" id="ruleB" value="150" />
+			</td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>Client Facing Activities Goal:</label></td>
+			<td style="font-weight:bold;">
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','ruleC','1','n')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','ruleC','1','n')" />
+				</div>
+				<input style="height:25px;" type="text" id="ruleC" value="60" /><label>%</label>
+			</td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>Client Relationship Management:</label></td>
+			<td class="tableL"><label><span id="ruleD"></span></label></td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>Business Development:</label></td>
+			<td class="tableL"><label><span id="ruleE"></span></label></td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>Business & Operations Management:</label></td>
+			<td class="tableL"><label><span id="ruleF"></span></label></td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>Total:</label></td>
+			<td class="tableL"><span id="ruleG"><label>100%</label></span></td>
+		</tr>
+		<tr>
+			<td align="right"></td>
+			<td><div class="button_container"><input type="button" value="calculate" class="formButton" onclick="updateRuleDEF()" /></div></td>
+		</tr>
+	</table>
+	<div id="ruleDiv"></div>
+</div>
+
+</body>
+</html>

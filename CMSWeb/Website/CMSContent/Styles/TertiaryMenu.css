@@ -1,0 +1,48 @@
+﻿.tertiaryMenu
+{
+	display: block;
+	height: 40px;
+	min-height: 40px;
+	margin: 0;
+	padding: 15px 0 0 0;
+	list-style: none;
+	color: #5792c3;
+	font-family: Arial, Sans-Serif;
+	font-size: 15px;
+}
+
+.tertiaryMenu li
+{
+	float: left;
+	height: 40px;
+	min-height: 40px;
+	margin: 0;
+	padding: 0;
+	background: url(/CMSContent/Images/tertiaryMenu_div.png) no-repeat right;
+}
+
+.tertiaryMenu li a
+{
+	padding: 0 10px;
+	line-height: 40px;
+	text-align: center;
+	color: #5792c3;
+}
+
+.tertiaryMenu li.first a
+{
+	background: url(/CMSContent/Images/tertiaryMenu_div.png) no-repeat left;
+}
+
+.tertiaryMenu li:hover a
+{
+	color: #0099ff;
+	text-decoration: underline;
+}
+
+.tertiaryMenu .selected a, .tertiaryMenu .selected:hover a
+{
+	color: #333333;
+	font-weight: bold;
+	text-decoration: none;
+}

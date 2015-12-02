@@ -1,0 +1,120 @@
+﻿.grid-system.g982 > .gc > .sidebar.white-bar
+{
+    background:#fff;
+    width:225px;
+}
+.verticalTabs, .verticalTabs ul,  .verticalTabs li
+{
+	margin: 0px;
+	padding: 0px;
+	text-indent: 0px;
+	list-style-type: none;
+	font-size: 12px;
+	font-family: Arial,sans-serif;
+}
+.verticalTabs 
+{
+	padding-top: 10px;
+}
+.verticalTabs li a span.linkText
+{
+	padding: 10px 2px 10px 20px;
+	display:block;
+	border-bottom:1px solid #ddd;
+}
+.verticalTabs li a 
+{
+	text-decoration: none;
+	display: block;
+	padding: 0px;
+	color: #007EBB;
+	font-weight: bold;
+	padding-right:12px;
+	overflow:hidden;
+}
+.verticalTabs li.selected > a
+{
+    position:relative;
+}
+.verticalTabs li.selected > a > img.selectedArrow
+{
+    display:block;
+    position:absolute;
+    top:0px;
+    left:0px;
+    z-index:2;
+    height: 100%;
+    width: 100%;
+}
+.verticalTabs li.selected > a > .linkText
+{
+    z-index:3;
+	position:relative;
+}
+.verticalTabs li img.selectedArrow
+{
+    display:none;
+}
+.verticalTabs li a:hover 
+{
+	color: #4abde8;
+}
+.verticalTabs li.selected > a,
+.verticalTabs li.selected > a:hover 
+{
+	color: #444;
+}
+.verticalTabs .summary  
+{
+	background: none !important;
+    display: none;
+}
+.verticalTabs li > ul > li a > span.linkText
+{
+    padding-left:40px;
+}
+.verticalTabs li span.icon
+{
+    display:none;
+}
+
+    .verticalTabs li.hasChildren > a span.icon
+    {
+        background: transparent url("/CMSContent/Images/bat-sprites.png") repeat scroll -18px -1px;
+        display: inline-block;
+        height: 13px;
+        margin-left: 5px;
+        vertical-align: middle;
+        width: 14px;
+        padding-left:0px;
+    }
+
+    .verticalTabs li.collapsed > a span.icon
+    {
+        background-position: -42px -41px;
+        margin-left: 10px;
+        width: 10px;
+    }
+
+    .verticalTabs li.collapsed > ul
+    {
+        display:none;
+    }
+
+.verticalTabs li.selected > a span.icon
+{
+    background-position: -37px -2px;
+}
+    .verticalTabs li.selected.collapsed > a span.icon
+    {
+        background-position: -60px -41px;
+    }
+
+
+.sidebar.white-bar .col-gradient {
+    background: url("/CMSContent/Images/sec-nav-gradient-bg.png") no-repeat scroll 0 0 transparent;
+    border: 1px solid #DDD;
+    border-width: 1px 0 0;
+    height: 268px;
+    width: 213px;
+}

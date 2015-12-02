@@ -1,0 +1,11 @@
+﻿.ui-jqgrid .ui-jqgrid-btable td,
+.ui-jqgrid .ui-jqgrid-btable tr.jqgrow td,
+.ui-jqgrid .ui-jqgrid-btable tr.ui-row-ltr td {
+	cursor: default;
+}
+
+.ui-jqgrid .ui-jqgrid-btable.ui-jqgrid-clickablerows td,
+.ui-jqgrid .ui-jqgrid-btable.ui-jqgrid-clickablerows tr.jqgrow td,
+.ui-jqgrid .ui-jqgrid-btable.ui-jqgrid-clickablerows tr.ui-row-ltr td {
+	cursor: pointer;
+}

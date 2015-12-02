@@ -1,0 +1,27 @@
+﻿@model HeaderModel
+@using Genworth.SitecoreExt
+@using MvcAssetmark.Repository
+@using MvcAssetmark.Models.Navigation
+
+<header>
+    <nav id='nav-top'>
+        <div id='nav-top-container' class='container'>
+            <ul>
+                @foreach (var item in Model.MenuItemCollection)
+                {
+                    var cssClass = "";
+                    if (item.Selected) { cssClass = "nav-top-active"; }
+
+                    <li class='nav-top-item @cssClass'><a href="@item.Url">@item.Name</a></li>
+                }
+                @foreach (var item in Model.ImageLinkCollection)
+                {
+                    <li class="nav-top-item">@Html.Sitecore().ImageLink(item)</li>
+                }
+            </ul>
+        </div>
+    </nav>
+    <div class='container'>
+        @Html.Sitecore().ImageLink(Model.HomeLink)
+    </div>
+</header>

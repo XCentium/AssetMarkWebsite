@@ -1,0 +1,177 @@
+﻿html.ModalWindowHtml{
+   background: #fff;
+}
+
+body.ModalWindowBody 
+{
+    background: none;
+    text-align: left;
+    height: 100%;
+    width: 100%;
+}
+body.ModalWindowBody form
+{
+    height: 100%;
+    width: 100%;
+}
+.modal-window-wrapper 
+{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+}
+.modal-window-background
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    zoom: 1;
+    filter: alpha(opacity=50);
+    opacity: 0.5;/**/
+}
+.modal-window
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+.dialog-wrapper 
+{
+    width: 100%;
+    height: 100%;
+    }
+.dialog 
+{
+    
+    margin: 0px;
+    /*top: 150px;*/
+    background-color: #EEE;
+    height: 100%;
+    /*padding: 1px;  using padding for border, due to height 100% & ID */
+    /*
+    box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 1); 
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+    border:1px solid rgba(0,0,0, 0.8); 
+    */
+    position: relative;}
+.modal-window-wrapper .dialog 
+{
+    top: 150px;
+    margin: 0px auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 1); 
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 1);}
+    
+.dialog .dialog-close 
+{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    background: transparent url(/CMSContent/Images/dialogTitlebarClose.png) no-repeat center center;
+    cursor: pointer;}
+    
+.dialog h2 
+{
+    font-family: 'Oswald', Arial, Sans-Serif;
+    height: 25px;
+    line-height: 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #FFF !important;
+    font-weight: normal;
+    background: #16A none;
+    margin: 0px !important;
+    padding: 5px;
+    text-transform: capitalize;}
+.dialog .dialog-content 
+{
+    padding: 10px 20px;
+    background-color: #EEE;}
+.stretchy-dialog-content 
+{
+	overflow: hidden !important;}
+.dialog .stretchy 
+{
+	overflow: auto;
+	height: 100px;
+	/*background-color: #F9F9F9;*/}
+.dialog .stretchy.withIframe 
+{
+	overflow: hidden;}
+.dialog .stretchy iframe 
+{
+	height: 100%;
+	width: 98%;}
+.dialog .pdf-viewer 
+{
+    padding: 5px;}
+.dialog .dialog-content h3
+{
+    font-family: 'Cabin', Arial, Sans-Serif;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #444;}
+.dialog div.submit
+{
+    text-align: center;}
+    
+#sb-wrapper-inner #sb-body, html { height: 100%; }
+
+.dialog-aside {}
+.dialog-aside * 
+{
+	font: normal 11px/1.5em normal Tahoma, Sans-Serif;}
+.dialog-aside h3 
+{
+	color: #000 !important;}
+.dialog-aside h4
+{
+	color: #000 !important;
+	font-weight: bold !important;}
+.dialog-aside ul 
+{
+	margin: 0px;
+	padding: 0px;
+	text-indent: 0px;}
+.dialog-aside li 
+{
+	margin: 0px;
+	padding: 0px;
+	text-indent: 0px;
+	list-style-type: none;}
+.dialog-aside a {}
+.dialog-aside li a 
+{
+	display: block;
+	padding-left: 21px;
+	background-position: left top;
+	background-repeat: no-repeat; 
+	padding-bottom: 5px;}
+	
+
+#gw-dialog-close-trigger 
+{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    background: transparent url(/CMSContent/Images/dialogTitlebarClose.png) no-repeat center center;
+    cursor: pointer;}
+#gw-dialog-close-trigger:hover {}
+#gw-dialog-close-trigger span { display: none;}

@@ -1,0 +1,12 @@
+﻿@model RenderingModel
+
+@using Genworth.SitecoreExt
+
+@{
+    var SC = Html.Sitecore();
+}
+<header>
+    <div class='container'>
+        @Html.Sitecore().ImageLink(SC.CurrentItem)
+    </div>
+</header>

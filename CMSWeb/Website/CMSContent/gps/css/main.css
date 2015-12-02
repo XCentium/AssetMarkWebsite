@@ -1,0 +1,638 @@
+body {
+	margin:0;
+	font-family:Arial;
+	font-size:14px;
+	color:#666;
+}
+
+img {
+	border:0;
+}
+
+.clear {
+	clear:both;
+}
+
+header {
+	width:910px;
+	margin:12px auto 0 auto;
+}
+
+header .logo {
+	float:left;
+}
+
+    header .logo img {
+        margin-top:-14px;
+    }
+
+header .wealth_cta {
+	background:url('../img/wealth_cta_bg.gif') no-repeat 0 0;
+	width:170px;
+	height:28px;
+	color:#464646;
+	line-height:28px;
+	text-indent:-99999px;
+	margin-top:18px;
+}
+
+header .wealth_cta {
+	float:right;
+}
+
+nav {
+	clear:both;
+	position:relative;
+	top:22px;
+	line-height:25px;
+	font-size:10px;
+	text-transform:uppercase;
+	color:#6bb1e2;
+	font-weight:bold;
+} 
+
+nav .nav_container {
+	
+}
+
+nav .main_nav {
+	background:url('../img/bg_nav.gif') repeat-x 0 0;
+	height:25px;
+	margin-bottom:0;
+}
+
+nav .main_nav a {
+	color:#fff;
+	text-decoration:none;
+}
+
+nav .main_nav a:hover, nav .main_nav a.active {
+	color:#999;
+}
+
+nav .main_nav ul, nav .sub_nav ul {
+	padding-left:0;
+	width:910px;
+	margin:0 auto;
+}
+
+nav .sub_nav {
+	margin:0 auto;
+	width:910px;
+	height:25px;
+	position:relative;
+	left:-10px;
+	padding-left:20px;
+	border-bottom:1px solid #ccc;
+}
+
+nav .sub_nav a {
+	color:#666;
+	text-decoration:none;
+}
+
+nav .sub_nav a:hover, nav .sub_nav a.active {
+	color:#2779b8;
+}
+
+nav .pipe {
+	padding:0 8px;
+}
+
+nav li:last-child .pipe {
+	display:none;
+}
+
+nav ul {
+	list-style-type:none;
+}
+
+nav ul li {
+	float:left;
+}
+
+section {
+	position:relative;
+	top:22px;
+	clear:both;
+	width:910px;
+	margin:0 auto;
+	padding-bottom:50px;
+}
+
+
+section article {
+	width:600px;
+	float:left;
+	padding: 20px 30px 100px 20px;
+	min-height:400px;
+}
+
+.one_column section article {
+	width:800px;
+	padding:0 30px 100px 20px;
+}
+
+article a:hover {
+	text-decoration: underline;
+}
+
+h1 {
+	font-weight:normal;
+	color:#2779b8;
+	font-size:34px;
+	margin:12px 0 0 0;
+}
+
+h2 {
+	font-size:16px;
+	color:#2779b8;
+}
+
+h3 {
+	font-size:14px;
+	margin:0;
+	padding-bottom: 8px;
+}
+
+p a {
+	color:#0066cc;
+	text-decoration:none;
+}
+
+
+.cta {
+	color:#2779b8;
+	text-decoration:none;
+}
+
+aside {
+	float:right;
+	width:233px;
+	background:#5f94b9;
+	padding-bottom:50px;
+	min-height:570px;
+}
+
+.long {
+	min-height:800px;
+}
+
+sup {
+	font-size:8px;
+}
+
+footer {
+	border-top:1px solid #ccc;
+	clear:both;
+	font-size:12px;
+	color:#666;
+	width:990px;
+	margin:0 auto;
+	padding:0 70px 0 20px;
+}
+
+section .portfolio {
+	margin-bottom:15px;
+}
+
+section .portfolio .headline {
+	font-size:14px;
+	margin:0;
+	font-weight:bold;
+	text-decoration: none;
+	color: #666666;
+}
+
+.portfolio a:hover {
+	text-decoration: underline;
+}
+
+section .portfolio .headline .note {
+	font-weight:normal;
+}
+
+
+section .portfolio p {
+	margin:0;
+}
+
+.level_0 .hero {
+	width:910px;
+	margin:0 auto;
+	position:relative;
+	top:22px;
+}
+
+aside .resources, aside .other {
+	color:#fff;
+	font-size:16px;
+	font-weight:bold;
+	position:relative;
+	top:20px;
+	left:15px;
+	margin-right: 28px;
+}
+aside .other {
+	padding-top:40px;
+}
+
+aside .resources a, aside .other a {
+	color:#fff;
+	font-size:13.4px;
+	display:block;
+	text-decoration:none;
+	font-weight:normal;
+	padding-top:3px;
+}
+aside .resources a:hover, aside .other a:hover {
+	text-decoration: underline;
+}
+aside .resources a.video {
+	margin-top:10px;
+}
+aside .address {
+	font-size:14px;
+	padding-top:180px;
+	padding-left:13px;
+	padding-right:10px;
+	color:#fff;
+}
+aside .address .company {
+	font-weight: bold;
+}
+
+.level_1 h2 {
+	font-size:20px;
+}
+
+.level_1 h3 {
+	color:#000;
+}
+
+.level_1 h3 .note {
+	font-weight:normal;
+}
+
+.level_0 .solutions .solution img {
+	float:left;
+	margin-bottom:110px;
+}
+
+.level_0 .solutions .solution .copy {
+	width:375px;
+	float:right;
+}
+
+.level_0 .solutions .solution .copy p {
+	margin-top:0;
+}
+
+.level_0 .solutions .solution .copy a {
+	color:#0066cc;
+	text-decoration:none;
+}
+.level_0 .solutions .solution .copy a:hover {
+	text-decoration: underline;
+}
+
+/*************** page specific styles **************/
+/* home page */
+.home footer {
+	margin-top:18px;
+}
+
+.home .buckets .bucket {
+	width:286px;
+	height:215px;
+	float:left;
+	margin-right:25px;
+}
+
+.home .buckets .bucket h2 {
+	text-transform:uppercase;
+	border-bottom:3px solid #fff;
+	padding:0 0 0 20px;
+	margin:0;
+	line-height:40px;
+}
+
+.home .buckets .bucket p {
+	color:#464646;
+	padding:15px 75px 25px 20px;
+	margin:0;
+}
+
+.home .buckets .bucket a {
+	text-decoration:none;
+	padding:0 0 0 20px;
+	margin:0;
+	font-weight:bold;
+}
+
+.home .buckets .bucket.one {
+	background:#aed2e3 url('../img/home/blue_triangle.png') no-repeat 95% 95%;
+}
+
+.home .buckets .bucket.one h2 {
+	color:#16375d;
+}
+
+.home .buckets .bucket.one a {
+	color:#2779b8;
+}
+
+.home .buckets .bucket.two {
+	background:#c4e17e url('../img/home/green_triangle.png') no-repeat 95% 95%;
+}
+
+.home .buckets .bucket.two h2 {
+	color:#134634;
+}
+
+.home .buckets .bucket.two a {
+	color:#057e3a;
+}
+
+.home .buckets .bucket.three {
+	background:#fbd068 url('../img/home/orange_triangle.png') no-repeat 95% 95%;
+	margin-right:0;
+}
+
+.home .buckets .bucket.three h2 {
+	color:#5a2222;
+}
+
+.home .buckets .bucket.three a {
+	color:#ef6a2d;
+}
+
+/* contact form */
+.form input {
+  width: 200px;
+  height: 15px;
+  margin-bottom: 15px;
+  color: #666666;
+  vertical-align: middle;
+}
+.form select {
+  margin-bottom: 15px;
+  color: #666666;
+}
+.form #field6 {
+  width: 10px;
+  margin-bottom: 7px;
+  font-size: 14px;
+  padding: 0;
+}
+.form #field7 {
+  width: 170px;
+  height: 36px;
+  padding-top: 10px;
+}
+.form p {
+  margin: 0;
+  text-transform:uppercase;
+  color: #999999;
+}
+.form span {
+  font-size: 10px;
+  text-transform:none;
+}
+
+/* contact form (end) */
+
+/* Marketing Materials page */
+
+.client_materials {
+	
+}
+
+.client_materials h2 {
+	color:#000;
+	margin-bottom:0;
+}
+
+.client_materials section p {
+	margin:0 0 10px 0;
+}
+
+.client_materials .materials {
+	width:300px;
+	float:left;
+	margin-right:100px;
+}
+
+.client_materials .materials .material {
+	clear:both;
+	font-weight:bold;
+	color:#666;
+	padding-bottom:60px;
+}
+
+.client_materials .materials .material a {
+	font-weight:normal;
+	color:#0066cc;
+	text-decoration:none;
+}
+
+.client_materials .materials .material p {
+	margin:0;
+}
+
+.client_materials .materials .material img {
+	margin-right:10px;
+	float:left;
+}
+
+.client_materials .materials .material img .copy {
+	float:left;
+}
+.client_materials .materials .material .copy a:hover{
+	text-decoration: underline;
+}
+
+
+/* comparison chart page */
+.comparison {
+	border-collapse: collapse;
+	margin-top: 20px;
+	color: #666666;
+	font-size:13px;
+}
+.comparison td {
+	padding-left: 10px;
+	padding-right:10px;
+	border-right: 5px solid white;
+}
+.comparison td sup {
+	font-size:8px;
+}
+.comparison td.align_right {
+	text-align:right
+}
+.comparison tr {
+	background: #d9d6d3;
+	height:40px;
+	vertical-align: middle;
+	border-bottom: 5px solid white;
+}
+.comparison .select{ 
+	background: #aed2e3; 
+}
+.comparison th {
+	background: #13417b;
+	text-align: left;
+	color: #ffffff;
+	border-right: 5px solid white;
+	text-transform:uppercase;
+	height: 37px; 
+	font-weight: bold;
+}
+.disclaimer {
+	font-size: 10px;
+	color: #999999;
+	width: 752px;
+}
+.disclaimer a {
+	font-size: 12px;
+	color: #ef6a2d;
+	float: right;
+	padding-right: 5px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/* comparison chart page (end) */
+
+/* product page(s) DoubleLine legal */
+
+.legal {
+	font-size:10px;
+	color:#898989;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+/* solutions and select solutions page */
+
+.body_bullet li {
+	margin-bottom:10px;
+}
+
+/* home: slideshow */
+.slider {
+	height:329px;
+}
+.slider .bx-wrapper {
+	height:309px;
+	width:910px !important;
+	float:left;
+}
+.slider .slideshow {
+	color:#fff;
+	height:309px;
+}
+
+.slider .slideshow .slide {
+	position: absolute;
+	z-index:1;
+}
+
+.slider .slideshow .slide .copy {
+	position: absolute;
+	top:25px;
+	left:40px;
+	z-index:2;
+}
+
+.slider .slideshow .slide .arrows {
+	position: absolute;
+	top:20px;
+	left:430px;
+	z-index:2;
+}
+
+.slider .slideshow .slide .link {
+	position: absolute;
+	top:0px;
+	right:0px;
+	z-index:2;
+}
+
+.home .slider .bx-pager {
+    height: 22px;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    width: 867px;
+	padding-left:42px;
+	padding-top:8px;
+    z-index: 2;
+    top:-29px;
+    background-color: #000;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+}
+
+.home .slider .bx-window {
+    height:308px !important;
+    position:relative;
+    z-index:0;
+    width:909px !important;
+}
+
+.slider .bx-pager a {  /* this is pretty ghetto - i guess chrome on diff platforms renders diff sometimes */
+    margin-right: 5px;
+    background:url("../img/home/pager.png") no-repeat scroll 0 0 transparent;
+}
+
+.slider .bx-pager .pager-active, .bx-pager a:hover {
+    background:url("../img/home/pager.png") no-repeat scroll 0 -19px transparent;
+}
+/* home: slideshow (end) */
+
+/* contact modal */
+
+/* contact modal (end) */
+#cboxOverlay {
+	
+}
+
+#cboxTopLeft, #cboxTopCenter, #cboxTopRight, #cboxMiddleLeft, #cboxMiddleRight, #cboxBottomLeft, #cboxBottomCenter, #cboxBottomRight {
+	background:none !important;
+}
+
+.contact_modal .modal_left {
+	width:552px;
+	float:left;
+}
+
+.contact_modal h2 {
+	font-weight:normal;
+	color:#2779b8;
+	font-size:34px;
+	margin-left:30px;
+	margin-bottom:0;
+}
+
+.contact_modal p {
+	margin-left:30px;
+}
+
+.contact_modal .modal_right {
+	width:212px;
+	background:#5f94b9;
+	color:#fff;
+	float:right;
+}
+
+a.back {
+	position:absolute;
+	right:0;
+	top:50px;
+	text-decoration:none;
+	font-weight:bold;
+	color:#ef6a2d;
+	font-size:12px;
+}

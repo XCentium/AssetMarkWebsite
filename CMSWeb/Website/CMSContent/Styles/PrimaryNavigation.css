@@ -1,0 +1,161 @@
+﻿/* Main Menu */
+
+#mainMenuWrapper
+{
+	position: relative;
+	height: 42px;
+	min-height: 42px;
+	margin: 0px;
+	padding: 0px 14px;
+	background: url(/CMSContent/Images/mainMenu_bg.png) repeat-x;
+}
+
+
+#mainMenuContainer
+{
+	position: relative;
+	height: 42px;
+	min-height: 42px;
+	margin: 0px;
+	padding: 0px;
+	background: transparent url(/CMSContent/Images/mainMenu_border.png) no-repeat center center;
+	display: table;
+	width: 100%;
+}
+
+#mainMenu
+{   
+    display: block;
+	height: 28px;
+	min-height: 28px;
+	margin: 7px 5px 0px;
+	padding: 0;
+	background: transparent;
+	list-style: none;
+	color: #333333;
+	font-family: Tahoma, Arial, Sans-Serif;
+	font-size: 13px;
+}
+
+#mainMenu li
+{
+	display: block;
+	cursor: pointer;
+	background: transparent url(/CMSContent/Images/mainMenu_div_left.png) no-repeat left center;
+	vertical-align: middle;
+	float: left;
+}
+#mainMenu li.first
+{
+    background-image: none;
+}
+
+#mainMenu li a
+{
+	padding: 0px 8px 0px 3px;
+	margin-left: 5px;
+	text-decoration: none;
+	height: 28px;
+	line-height: 28px;
+	vertical-align: middle;
+	text-align: center;
+	background: url(/CMSContent/Images/mainMenu_div_right.png) no-repeat right bottom;
+	color: #333333;
+	position: relative;
+	display: block;
+	white-space:nowrap;
+}
+
+#mainMenu li.disabled:hover
+{
+	background: none;
+}
+
+#mainMenu li.last a
+{
+    background-image: none;
+    display:block;
+}
+#mainMenu .last-left
+{
+    display:none;
+}
+
+#mainMenu a span
+{
+	display: inline-block;
+}
+
+#mainMenu .iconSpan
+{
+    background: transparent none no-repeat center center;
+    width: 14px;
+    height: 28px;
+    cursor: pointer;
+}
+
+#mainMenu .iconLinkTitle
+{
+    display: none !important;
+}
+#mainMenu .homeIcon
+{
+    background-image: url(/CMSContent/Images/icon_home.png) !important;
+}
+#mainMenu li:hover .homeIcon, #mainMenu .selected .homeIcon
+{
+    background-image: url(/CMSContent/Images/icon_home_hl.png) !important;
+}
+#mainMenu .wizardIcon
+{
+    background-image: url(/CMSContent/Images/icon_wand.png) !important;
+}
+#mainMenu li:hover .wizardIcon, #mainMenu .selected .wizardIcon
+{
+    background-image: url(/CMSContent/Images/icon_wand_hl.png) !important;
+}
+
+#mainMenu li.first
+{
+}
+#mainMenu li:hover
+{
+	background-image: url(/CMSContent/Images/mainMenu_hover_left.png);
+}
+#mainMenu li.first:hover
+{
+	/*background-image: url(/CMSContent/Images/mainMenu_hover_left_first.png);*/
+}
+
+#mainMenu li:hover a
+{
+	background-image: url(/CMSContent/Images/mainMenu_hover_right.png);
+	color: #ffffff;
+	white-space: nowrap;
+}
+#mainMenu li.last:hover a
+{
+	/*background-image: url(/CMSContent/Images/mainMenu_hover_right_last.png);*/
+}
+
+#mainMenu .selected, #mainMenu .selected:hover
+{
+	background-image: url(/CMSContent/Images/mainMenu_down_left.png) !important;
+}
+
+#mainMenu li.first.selected, #mainMenu li.first.selected:hover
+{
+	background-image: url(/CMSContent/Images/mainMenu_down_left_first.png);
+}
+#mainMenu li.last.selected a, #mainMenu li.last.selected:hover a
+{
+	background-image: url(/CMSContent/Images/mainMenu_down_right_last.png);
+}
+
+#mainMenu .selected a, #mainMenu .selected:hover a
+{
+	background-image: url(/CMSContent/Images/mainMenu_down_right.png);
+	color: #ffffff;
+}
+
+

@@ -1,0 +1,76 @@
+﻿@using Sitecore.Presentation
+@using Sitecore.Mvc.Analytics.Extensions
+@using MvcAssetmark.Repository
+
+@model RenderingModel
+
+@{
+    Layout = null;
+    var SC = Html.Sitecore();
+    
+    var contextItem = RenderingContext.Current.ContextItem;
+    var parentItem = contextItem.Parent;
+    string CssClass = string.Format("{0} {1}", contextItem.Name, parentItem.Name);
+
+    System.Func<Sitecore.Data.Items.Item, Sitecore.Data.Items.Item, string> titleFunc = (rootItem, currentItem) =>
+    {
+        var title = rootItem.GetText("title");
+        if (currentItem != null)
+        {
+            title += " &ndash; " + currentItem.GetText("title");
+        }
+        return title;
+    };
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="AssetMark: Leading strategic provider of investment and consulting solutions for independent advisors. We work collaboratively to help your clients achieve financial independence.">
+    <title>@SC.LayoutTitle(titleFunc)</title>
+
+
+    <link href='/css/main.css' type="text/css" rel="stylesheet">
+    <!--[if lte IE 8]>
+    <link href='/css/IE8.css' type="text/css" rel="stylesheet">
+    <![endif]-->
+    <!--[if lte IE 7]>
+    <link href='/css/IE7.css' type="text/css" rel="stylesheet">
+    <![endif]-->
+
+    <script type='text/javascript' src='/js/libs.js'></script>
+    <!--
+    <script type='text/javascript' src='/js/modernizr.custom.79084.js'></script>
+    <script type='text/javascript' src='/js/jquery-1.10.1.min.js'></script>
+    <script type='text/javascript' src='/js/jquery-browser.js'></script>
+    <script type='text/javascript' src='/js/jquery-scrollto.js'></script>
+    <script type='text/javascript' src='/js/jquery.lightbox_me.js'></script>
+    <script type='text/javascript' src='/js/jquery.bookblock.js'></script>
+    -->
+    <!--[if lt IE 10]>
+    <script type="text/javascript" src="/js/PIE.js"></script>
+    <![endif]-->
+    <script type='text/javascript' src='/js/site.js'></script>
+    <script type='text/javascript' src='/js/SiteCatalyst.js'></script>
+
+
+    <link rel="icon"
+          type="image/ico"
+          href="/img/AssetMark_Icon_16.ico">
+    
+    @SC.VisitorIdentification()
+
+</head>
+
+<body class="@CssClass">
+
+    @SC.Placeholder("Header")
+
+    @SC.Placeholder("Container")
+
+    @SC.Placeholder("Footer")
+
+</body>
+</html>

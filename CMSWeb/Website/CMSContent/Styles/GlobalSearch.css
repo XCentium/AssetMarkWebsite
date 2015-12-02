@@ -1,0 +1,31 @@
+#globalSearchOptions .ui-autocomplete
+{
+    font-family: Arial,Sans-Serif;
+    font-size: 10px;
+    text-align:left;
+    width: 350px;
+    height: 65px;
+    background: #ffffff url('/CMSContent/Images/suggestions.png') no-repeat right top; 
+}
+
+#globalSearchOptions .ui-menu-item a {
+    display: block;
+    line-height: 0.9;
+    padding: 0.2em 0.4em;
+    text-decoration: none;
+}
+
+#globalSearchOptions .ui-state-hover, 
+.ui-widget-content .ui-state-hover
+{ 
+    border: 1px solid #999999/*{borderColorHover}*/; 
+    background-color: #66CCFF; 
+    font-weight: normal/*{fwDefault}*/;
+    color: #212121/*{fcHover}*/; 
+}
+
+#headerSearch #searchButton
+{
+    width:auto;
+    right:5px;
+}

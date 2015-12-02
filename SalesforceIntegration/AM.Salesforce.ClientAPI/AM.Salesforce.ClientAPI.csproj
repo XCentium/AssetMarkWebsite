@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6E0454CA-167E-43BC-8F15-6746782F7524}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AM.Salesforce.ClientAPI</RootNamespace>
+    <AssemblyName>AM.Salesforce.ClientAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdPartyAssemblies\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Chatter\ChatterClient.cs" />
+    <Compile Include="Chatter\IChatterClient.cs" />
+    <Compile Include="Chatter\Models\Actor.cs" />
+    <Compile Include="Chatter\Models\Address.cs" />
+    <Compile Include="Chatter\Models\Attachment.cs" />
+    <Compile Include="Chatter\Models\Capabilities.cs" />
+    <Compile Include="Chatter\Models\CapabilitiesContent.cs" />
+    <Compile Include="Chatter\Models\ChatterActivity.cs" />
+    <Compile Include="Chatter\Models\ChatterDocument.cs" />
+    <Compile Include="Chatter\Models\ChatterFeeds.cs" />
+    <Compile Include="Chatter\Models\ChatterInfluence.cs" />
+    <Compile Include="Chatter\Models\ClientInfo.cs" />
+    <Compile Include="Chatter\Models\Comment.cs" />
+    <Compile Include="Chatter\Models\CommentPage.cs" />
+    <Compile Include="Chatter\Models\Document.cs" />
+    <Compile Include="Chatter\Models\FeedBody.cs" />
+    <Compile Include="Chatter\Models\FeedElement.cs" />
+    <Compile Include="Chatter\Models\FeedItem.cs" />
+    <Compile Include="Chatter\Models\FeedItemInput.cs" />
+    <Compile Include="Chatter\Models\FeedItemPage.cs" />
+    <Compile Include="Chatter\Models\FeedItemPreambleMessageBody.cs" />
+    <Compile Include="Chatter\Models\FeedItemTopics.cs" />
+    <Compile Include="Chatter\Models\FileShareItem.cs" />
+    <Compile Include="Chatter\Models\FileShareList.cs" />
+    <Compile Include="Chatter\Models\FollowingCounts.cs" />
+    <Compile Include="Chatter\Models\Group.cs" />
+    <Compile Include="Chatter\Models\GroupDetail.cs" />
+    <Compile Include="Chatter\Models\GroupInformation.cs" />
+    <Compile Include="Chatter\Models\GroupPage.cs" />
+    <Compile Include="Chatter\Models\Like.cs" />
+    <Compile Include="Chatter\Models\LikePage.cs" />
+    <Compile Include="Chatter\Models\LikesMessage.cs" />
+    <Compile Include="Chatter\Models\MessageBodyInput.cs" />
+    <Compile Include="Chatter\Models\MessageSegment.cs" />
+    <Compile Include="Chatter\Models\MessageSegmentInput.cs" />
+    <Compile Include="Chatter\Models\ModerationFlags.cs" />
+    <Compile Include="Chatter\Models\Motif.cs" />
+    <Compile Include="Chatter\Models\MySubscription.cs" />
+    <Compile Include="Chatter\Models\PhoneNumber.cs" />
+    <Compile Include="Chatter\Models\Photo.cs" />
+    <Compile Include="Chatter\Models\Reference.cs" />
+    <Compile Include="Chatter\Models\SharedFeedItemInput.cs" />
+    <Compile Include="Chatter\Models\Topic.cs" />
+    <Compile Include="Chatter\Models\TopicCollection.cs" />
+    <Compile Include="Chatter\Models\UserDetail.cs" />
+    <Compile Include="Chatter\Models\UserPage.cs" />
+    <Compile Include="Chatter\Models\UserSummary.cs" />
+    <Compile Include="Common\Attributes\CreateableAttribute.cs" />
+    <Compile Include="Common\Attributes\UpdateableAttribute.cs" />
+    <Compile Include="Common\AuthenticationClient.cs" />
+    <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\Content\ByteArrayContentBuilder.cs" />
+    <Compile Include="Common\Content\IContentBuilder.cs" />
+    <Compile Include="Common\Content\StreamContentBuilder.cs" />
+    <Compile Include="Common\Content\StringContentBuilder.cs" />
+    <Compile Include="Common\Content\UrlEncodedContentBuilder.cs" />
+    <Compile Include="Common\ForceAuthException.cs" />
+    <Compile Include="Common\ForceException.cs" />
+    <Compile Include="Common\IAuthenticationClient.cs" />
+    <Compile Include="Common\IForceException.cs" />
+    <Compile Include="Common\IServiceHttpClient.cs" />
+    <Compile Include="Common\Models\AuthErrorResponse.cs" />
+    <Compile Include="Common\Models\AuthToken.cs" />
+    <Compile Include="Common\Models\DescribeGlobalResult.cs" />
+    <Compile Include="Common\Models\DisplayTypes.cs" />
+    <Compile Include="Common\Models\Error.cs" />
+    <Compile Include="Common\Models\ErrorResponse.cs" />
+    <Compile Include="Common\Models\ErrorResponses.cs" />
+    <Compile Include="Common\Models\Fields.cs" />
+    <Compile Include="Common\Models\MultipartFormDataObject.cs" />
+    <Compile Include="Common\Models\QueryResult.cs" />
+    <Compile Include="Common\Models\ResponseTypes.cs" />
+    <Compile Include="Common\Models\SuccessResponse.cs" />
+    <Compile Include="Common\Models\UserInfo.cs" />
+    <Compile Include="Common\Serializer\CreateableContractResolver.cs" />
+    <Compile Include="Common\Serializer\UpdateableContractResolver.cs" />
+    <Compile Include="Common\ServiceHttpClient.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

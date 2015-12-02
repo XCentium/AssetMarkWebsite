@@ -1,0 +1,177 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald">
+	<link rel="stylesheet" href="Content/Styles/de-form-styles.css" type="text/css" media="screen">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="inc/jquery.uniform.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	  (function(){
+	    ("input:checkbox, input:radio, textarea, select").uniform();
+	  });
+	</script>
+	<script type="text/javascript" src="Content/Scripts/calc.js"></script>
+	<script type="text/javascript" src="Content/Scripts/numberformat.js"></script>
+	<script type="text/javascript" src="Content/Scripts/highcharts.js"></script>
+	<style>
+		body {
+			background-color: #cccccc;
+		}
+		#calc {
+			width: 710px;
+			background-color: #ffffff;
+		}
+		.clearfloat {
+			clear: both;
+			font-size: 1px;
+			height: 0;
+		}
+		.calcHeader {
+			font-family: Oswald;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+		.tableL {
+			text-align: right;
+			margin-right: 20px;
+		}
+	</style>
+</head>
+<body>
+
+<div id="calc">
+	<div class="calcHeader">1QA Milestone Calculator</div>
+	<table border=0 cellspacing="5px">
+		<tr>
+			<td class="tableL"><label>Current Number of Clients:</label></td>
+			<td width="190px">
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','mileA','1','n')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','mileA','1','n')" />
+				</div>
+				<input style="height:25px;" type="text" id="mileA" value="50" />
+			</td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>Current Average AUM per Client:</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','mileB','10000','c')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','mileB','10000','c')" />
+				</div>
+				<input style="height:25px;" type="text" id="mileB" onkeyup="this.value=addCommas(stripNonNumeric(this.value))" value="200,000" />
+			</td>
+		</tr>
+		<tr>
+			<td style="font-weight:bold;text-align:right;"><label>Current Assets Under Management:</label></td>
+			<td style="font-weight:bold;text-align:right;"><span id="mileC"></span></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><div class="button_container"><input type="button" value="calculate" class="formButton" onclick="updateMileC()" /></div></td>
+		</tr>
+		<tr><td colspan="2"><br /><h3>Internal Growth</h3></td></tr>
+		<tr>
+			<td class="tableL"><label>Projected Net Investment Growth of AUM:</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','mileD','0.5','d2')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','mileD','0.5','d2')" />
+				</div>
+				<input style="height:25px;" type="text" id="mileD" value="3.50" /><label>%</label>
+				</td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>Projected Rate of Annual Net Client Contributions:</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','mileE','0.5','d2')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','mileE','0.5','d2')" />
+				</div>
+				<input style="height:25px;" type="text" id="mileE" value="5.00" /><label>%</label>
+			</td>
+		</tr>
+		<tr>
+			<td style="font-weight:bold;text-align:right;"><label>Estimated Assets in 3 Years:</label></td>
+			<td style="font-weight:bold;text-align:right;"><span id="mileF"></span></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><div class="button_container"><input type="button" value="calculate" class="formButton" onclick="updateMileF()" /></div></td>
+		</tr>
+		<tr><td colspan="2"><br /><h3>Assets from New Clients</h3></td></tr>
+		<tr>
+			<td class="tableL"><label>Number of New Clients:</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','mileG','1','n')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','mileG','1','n')" />
+				</div>
+				<input style="height:25px;" type="text" id="mileG" value="25" />
+			</td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>Average AUM per New Client:</label></td>
+			<td class="tableL"><span id="mileH"></span></td>
+		</tr>
+		<tr>
+			<td style="font-weight:bold;text-align:right;"><label>Estimated Assets in 3 Years:</label></td>
+			<td style="font-weight:bold;text-align:right;"><span id="mileI"></span></td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<td style="font-weight:bold;text-align:right;"><label>Milestone Target:</label></td>
+			<td style="font-weight:bold;">
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','mileJ','1000000','c')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','mileJ','1000000','c')" />
+				</div>
+				<input style="height:25px;" type="text" id="mileJ" value="25,000,000" />
+			</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<td class="tableL"><label>Projected Net Fee Rate:</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','mileK','0.05','d2')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','mileK','0.05','d2')" />
+				</div>
+				<input style="height:25px;" type="text" id="mileK" value="1.50" /><label>%</label>
+			</td>
+		</tr>
+		<tr>
+			<td style="font-weight:bold;text-align:right;"><label>Projected Revenue:</label></td>
+			<td style="font-weight:bold;text-align:right;"><span id="mileL"></span></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><div class="button_container"><input type="button" value="calculate" class="formButton" onclick="updateMileHI();updateMileL()" /></div></td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<td class="tableL"><label>Projected Expense Rate:</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','mileM','1','d2')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','mileM','1','d2')" />
+				</div>
+				<input style="height:25px;" type="text" id="mileM" value="40.00" /><label>%</label>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><div class="button_container"><input type="button" value="calculate" class="formButton" onclick="updateMileNO()" /></div></td>
+		</tr>
+		<tr>
+			<td style="font-weight:bold;text-align:right;"><label>Business Expenses Projection:</label></td>
+			<td style="font-weight:bold;text-align:right;"><span id="mileN"></span></td>
+		</tr>
+		<tr>
+			<td style="font-weight:bold;text-align:right;"><label>Projected Profit:</label></td>
+			<td style="font-weight:bold;text-align:right;"><span id="mileO"></span></td>
+		</tr>
+	</table>
+</div>
+
+</body>
+</html>

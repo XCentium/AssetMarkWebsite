@@ -1,0 +1,411 @@
+﻿body {
+}
+
+/*tree navigation*/
+ul.tree-navigation
+{
+}
+ul.tree-navigation li
+{
+	text-align:right;
+	list-style:none;
+	font-family: 'Oswald', Arial, Sans-Serif;
+	font-size: 11px;
+	background-image:url(/CMSContent/Images/Secondary-Bottom-Border.png);
+	background-repeat:no-repeat;
+	background-position:bottom right;
+	padding-bottom:13px;
+}
+ul.tree-navigation li a
+{
+	padding-right:14px;
+}
+#wrapper ul.tree-navigation li a,
+ul.tree-navigation li a
+{
+	text-decoration:none;
+}
+ul.tree-navigation > li a
+{
+    color:#16a;
+}
+ul.tree-navigation > li.selected
+{
+	background-image:url(/CMSContent/Images/Top-Selected-Background.png);
+	background-position:top left;
+}
+ul.tree-navigation > li
+{
+	margin-bottom:4px;
+	font-size: 13px;
+	background-image:none;
+	padding-bottom:6px;
+	padding-top:7px;
+}
+ul.tree-navigation li li a
+{
+    color:#777;
+}
+ul.tree-navigation li li
+{
+	margin-left:10px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+/*general content and grid layout*/
+#sitecore-content, .sitecore-content
+{
+	padding-top:14px;
+}
+
+#wrapper
+{
+	margin:0px;
+	padding:0px;
+}
+
+#wrapper h2
+{
+    color:#d71;
+    /*text-transform:uppercase;*/
+    padding: 0px 13px;
+}
+
+div.latest-news
+{
+	margin-top:24px;
+}
+
+.grid-system.g982 > .gc > .sidebar
+{
+    background-color:#e1e1e1;
+}
+.grid-system.g982 > .gc > .sidebar.right
+{
+    margin-right: -14px;
+}
+.grid-system.g982 > .gc > .sidebar.left
+{
+    margin-left: -14px;
+}
+
+
+/*
+.grid-system.g982x > .c4 > .sidebar
+{
+    width:328px;
+}
+.grid-system.g982x > .c3 > .sidebar
+{
+    width:261px;
+}
+
+.grid-system.g982 div.gc.c4.sidebar
+{
+	background-color:#eee;
+	width:328px;
+	margin-right:-4px;
+}
+.grid-system.g982 div.gc.c4.sidebar > div
+{
+	margin:10px;
+}
+
+*/
+
+
+/*event calendar*/
+#wrapper .event-calendar a
+{
+	text-decoration:none;
+}
+table.event-calendar th
+{
+	font-weight:normal;
+	font: normal 11px/1.5em "Lucida Sans Unicode";
+}
+table.event-calendar a
+{
+	font: normal 11px/1.5em "Lucida Sans Unicode";
+}
+table.event-calendar .day-header
+{
+	background-image:url("/CMSContent/Images/day-header-background.png");
+	height:15px;
+	border:none;
+}
+table.event-calendar .selected-day a
+{		
+	display:block;
+	height:15px;	
+	font-weight:bold;
+}
+table.event-calendar .day a
+{
+    display:block;
+	height:25px;
+	line-height:25px;
+}
+table.event-calendar .today a, body.home table.event-calendar .today a 
+{
+    display:block;
+	height:25px;
+	line-height:25px;
+	border: 1px solid #0C395E;
+}
+
+
+/******************************************/
+
+table.event-calendar .selected-day_future a
+{  	
+	display:block;
+	font-weight:bold;
+}
+table.event-calendar .selected-day_past a
+{	
+	display:block;
+	height:15px;
+	font-weight:bold;
+}
+table.event-calendar .selected-today a
+{
+    display:block;
+	height:25px;
+	line-height:25px;	
+	font-weight:bold;
+	font: normal 11px/1.5em bold "Lucida Sans Unicode";
+}
+
+/**********************************************/
+table.event-calendar .selected-day_future
+{	
+	background: #BED9E8 url("/CMSContent/Images/cal-future.png") repeat-x center bottom;
+	
+}
+table.event-calendar .selected-day_past
+{	
+	background: #DDDDDD;
+}
+table.event-calendar .selected-today
+{
+	background: url("/CMSContent/Images/day-background.png") repeat-x center bottom;	
+}
+
+/**********************************************/
+table.event-calendar .todayArchive
+{
+    height:25px;
+    line-height: 15px;
+    border: 1px solid #0C395E !important;
+	font: 11px/1.5em "Lucida Sans Unicode";	
+	background-image: url("/CMSContent/Images/day-background.png");
+}
+table.event-calendar .restofThem-today
+{
+    height:25px;
+    line-height: 15px;	        
+    
+    border: 1px solid #0C395E !important;
+	font: 11px/1.5em "Lucida Sans Unicode";	
+	background-image: url("/CMSContent/Images/day-background.png");
+}
+table.event-calendar .day
+{
+	background-image:url("/CMSContent/Images/day-background.png");
+}
+table.event-calendar .selected-day
+{   
+    background: url("/CMSContent/Images/day-background.png") repeat-x center bottom;     
+}
+table.event-calendar .day_future
+{	
+	background: #BED9E8 url("/CMSContent/Images/cal-future.png") repeat-x center bottom;
+}
+table.event-calendar .day_past
+{	
+	background: #DDDDDD;
+}
+table.event-calendar .non-selectable-day
+{
+    font: 11px/1.5em "Lucida Sans Unicode";
+    background-image:url("/CMSContent/Images/day-background.png");
+}
+
+
+table.event-calendar .title
+{
+	font-family: 'Oswald', Arial, Sans-Serif;
+	font-size: 12px;
+	background-image:url("/CMSContent/Images/header-background.png");
+	height:21px;
+	border:1px solid #0061A2;
+	margin: -1px !important;
+	width: 274px !important;
+}
+table.event-calendar .next-prev-selector
+{
+	text-align:center;
+}
+table.event-calendar .next-prev-selector a
+{
+	display:block;
+	width:100%px;
+	height:20px;
+	line-height:20px;
+}
+table.event-calendar .next-prev-selector a:hover
+{
+	font-weight:bold;
+}
+
+/*snackbox*/
+div.snackbox
+{
+    padding: 16px 13px 6px;
+}
+#wrapper div.snackbox > h4,
+div.snackbox > h4
+{
+	color:#242424;
+	font-weight: normal;
+	font-family: Arial, Sans-Serif;
+	font-size: 11px;	
+}
+div.snackbox > h4
+{
+	padding: 8px 9px 7px;
+	background-color:#D2D2D2;
+	background-image:url("/CMSContent/Images/head-background.png");
+	background-repeat:repeat-x;
+	border:1px solid #999999;
+}
+h4.upcoming-events 
+{
+	font-size:15px !important;
+	padding: 6px 9px 5px !important;}
+div.snackbox > div
+{
+	padding:6px;
+	background-color:#FFFFFF;
+	border:1px solid #CECECE;
+	border-top:none;
+	background-image:url("/CMSContent/Images/body-background.png");
+	background-repeat:repeat-x;
+}
+
+/*margins*/
+.margin-bottom.small
+{
+	margin-bottom:10px;
+}
+.margin-bottom.medium
+{
+	margin-bottom:30px;
+}
+.margin-bottom.large
+{
+	margin-bottom:60px;
+}
+
+/*horizontal rule*/
+hr
+{
+}
+
+/*photos*/
+div.photo
+{
+	float:left;
+	margin-right:10px;
+}
+
+.print-link 
+{
+    display: inline-block;
+    padding-left: 21px;
+    background: transparent url(/CMSContent/Images/icon_print.png) no-repeat left center;
+    color: #16A;
+    font-size: 12px;
+    line-height: 16px;}
+.spreadsheet-link 
+{
+    display: inline-block;
+    padding-left: 21px;
+    background: transparent url(/CMSContent/Images/icon_spreadsheet.png) no-repeat left center;
+    color: #16A;
+    font-size: 12px;
+    line-height: 16px;}
+.help-link 
+{
+    display: inline-block;
+    padding-right: 21px;
+    background: transparent url(/CMSContent/Images/icon_help.png) no-repeat right center;
+    color: #16A;
+    font-size: 12px;
+    line-height: 16px;}
+.meta-head 
+{
+    padding-bottom: 30px;}
+.meta-head a 
+{
+    font-size: 12px;
+    line-height: 16px;}
+
+a.button, input.formButton, button.formButton {
+	display: block;
+	outline: none;
+	border: none;
+	background: url(../images/blue-btn-right.png) repeat-x center bottom;
+	font-family: 'Oswald', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+	font-weight: normal;
+	width: auto;
+	height: 20px;
+	overflow: visible;
+	font-size: 14px;
+	color: #fff;
+	text-shadow: 0 -1px 0 #004268;
+	text-align: center;
+	padding: 1px 13px 3px 12px;
+	text-decoration: none;
+	cursor: pointer;
+}			
+	
+input.formButton, button.formButton {
+	height: 24px;
+	padding-top: 0px;
+}
+	
+.button_container.secondary { background: url(../images/grey-btn-left.png) no-repeat }
+
+.secondary a.formButton, .secondary input.formButton, .secondary button.formButton {
+	color: #676767;
+	text-shadow: 0 1px 0 #dbdbdb;
+	background: url(../images/grey-btn-right.png) top right;
+}
+
+.button-gray
+{
+    display: block;
+	outline: none;
+	border: none;
+	background: url(../images/button-gray.png) repeat-x center bottom;
+	font-family: 'Oswald', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+	font-weight: normal;
+	width: auto;
+	height: 20px;
+	overflow: visible;
+	font-size: 14px;
+	color: #fff;
+	text-shadow: 0 -1px 0 #004268;
+	text-align: center;
+	padding: 1px 13px 3px 12px;
+	text-decoration: none;
+	cursor: pointer;
+		height: 24px;
+	padding-top: 0px;
+}
+
+
+ 

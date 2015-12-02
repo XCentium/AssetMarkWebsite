@@ -1,0 +1,12 @@
+﻿@using ServerLogic.SitecoreExt
+@using MvcAssetmark.Repository
+@model RenderingModel
+@{
+    var SC = Html.Sitecore();
+    var items = Model.Item.GetChildrenAndItemsOfTemplate("SideBar Component");
+}
+
+@foreach (var item in items)
+{
+    @SC.Field("Sidabar Body", item)
+}

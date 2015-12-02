@@ -1,0 +1,54 @@
+﻿.icon,
+.filter-results-table tbody tr td a.icon, span.icon, a.icon
+{
+	padding-left: 25px;
+	background: transparent none no-repeat left center;
+	height: 21px;
+	line-height: 21px;
+	display: inline-block;}
+.pdf-icon,
+.filter-results-table tbody tr td a.pdf-icon, span.pdf-icon, a.pdf-icon
+{
+	background-image: url(/CMSContent/Images/icon_pdf.png);}
+.doc-icon,
+.filter-results-table tbody tr td a.doc-icon, span.doc-icon, a.doc-icon
+{
+	background-image: url(/CMSContent/Images/icon_doc.png);}
+.html-icon,
+.filter-results-table tbody tr td a.html-icon, span.html-icon, a.html-icon
+{
+	background-image: url(/CMSContent/Images/icon_htm.png);}
+.form-icon,
+.filter-results-table tbody tr td a.form-icon, span.form-icon, a.form-icon
+{
+	background-image: url(/CMSContent/Images/icon_form.png);}
+.xls-icon,
+.filter-results-table tbody tr td a.xls-icon, span.xls-icon, a.xls-icon
+{
+	background-image: url(/CMSContent/Images/icon_spreadsheet.png);}
+.print-icon,
+.filter-results-table tbody tr td a.print-icon, span.print-icon, a.print-icon
+{
+	background-image: url(/CMSContent/Images/icon_print.png);}
+.download-icon,
+.filter-results-table tbody tr td a.download-icon, span.download-icon, a.download-icon
+{
+	background-image: url(/CMSContent/Images/icon_download.png);}
+.customize-icon,
+.filter-results-table tbody tr td a.customize-icon, span.customize-icon, a.customize-icon
+{
+	background-image: url(/CMSContent/Images/icon_customize.png);}
+.video-icon,
+.filter-results-table tbody tr td a.video-icon, span.video-icon, a.video-icon
+{
+	background-image: url(/CMSContent/Images/icon_video.png);}
+.ppt-icon,
+.filter-results-table tbody tr td a.ppt-icon, span.ppt-icon, a.ppt-icon
+{
+	background-image: url(/CMSContent/Images/icon_ppt.png);}
+.htm-icon,
+.filter-results-table tbody tr td a.htm-icon, span.htm-icon, a.htm-icon,
+.html-icon,
+.filter-results-table tbody tr td a.html-icon, span.html-icon, a.html-icon
+{
+	background-image: url(/CMSContent/Images/icon_htm.png);}

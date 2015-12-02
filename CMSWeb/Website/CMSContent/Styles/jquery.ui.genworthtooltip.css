@@ -1,0 +1,66 @@
+.ui-genworthtooltip
+{
+	z-index: 9999;
+	max-width: 350px;
+	min-width: 24px;
+	height: auto;
+	background: transparent;
+	border: 0 none transparent;
+	font-family: Tahoma, Arial, Helvetica,sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	text-align: left;
+	color: #333;
+	padding: 14px 19px 29px 19px;
+	box-shadow: none;
+	-webkit-border-radius: 0;
+	-khtml-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	
+}
+
+.ui-skinnable-tooltip .ui-skinnable-tooltip-area1
+{
+    top: 0;
+    right: 10px;
+    bottom: 23px;
+    left: 0;
+    background: transparent url(/CMSContent/Images/tooltipBackgroundTopLeftWhite.png) no-repeat left top;
+}
+
+.ui-skinnable-tooltip .ui-skinnable-tooltip-area2
+{
+    right: 0;
+    top: 0;
+    bottom: 23px;
+    left: auto;
+    width: 10px;
+    background: transparent url(/CMSContent/Images/tooltipBackgroundTopRightWhite.png) no-repeat right top;
+}
+
+.ui-skinnable-tooltip .ui-skinnable-tooltip-area3
+{
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: 10px;
+	height: 23px;
+    background: transparent url(/CMSContent/Images/tooltipBackgroundBottomRightWhite.png) no-repeat right bottom;
+}
+
+.ui-skinnable-tooltip .ui-skinnable-tooltip-area4
+{
+    top: auto;
+    right: 10px;
+    bottom: 0px;
+    left: 0;
+    height: 23px;
+    background: transparent url(/CMSContent/Images/tooltipBackgroundBottomLeftWhite.png) no-repeat left bottom;
+}

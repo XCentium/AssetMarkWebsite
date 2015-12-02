@@ -1,0 +1,24 @@
+﻿@using ServerLogic.SitecoreExt
+@using MvcAssetmark.Repository
+@model RenderingModel
+@{
+    var SC = Html.Sitecore();
+    var item = Model.Item;
+    var collection = item.GetMultilistItems("Items");
+}
+<div class="news-insights-sidebar">
+    <div class="sidebar-banner-internal">
+        @SC.ImageLink(item, "Image URL")
+    </div>
+
+
+    <ul>
+        @foreach (var linkItem in collection)
+        {
+            <li>@SC.Field("URL", linkItem, new { target = "_blank", text = linkItem.DisplayName })</li>
+        }
+    </ul>
+
+
+
+</div>

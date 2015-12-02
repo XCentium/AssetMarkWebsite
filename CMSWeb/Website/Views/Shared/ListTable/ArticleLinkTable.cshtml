@@ -1,0 +1,63 @@
+﻿@model RenderingModel
+@using Genworth.SitecoreExt
+@using MvcAssetmark.Repository
+@using MvcAssetmark.Models.Navigation
+
+@{
+    var children = Model.Item.GetChildrenOfTemplate("Article Link");
+    children.Sort((a, b) => b.Fields["Article Date"].Value.CompareTo(a.Fields["Article Date"].Value));
+    int itemsPerPage = Convert.ToInt32(Model.Item.Fields["Items per Page"].Value);
+    var items = children.Take(itemsPerPage);
+    var moreItems = children.Skip(itemsPerPage);
+    var SC = Html.Sitecore();
+}
+
+<section id="news-pr" class="highlight-box news-box">
+    <div id="news-pr-close" class="news-box-close">
+        <a href="#">X</a>
+    </div>
+
+    <h3>@SC.Field("Title")</h3>
+
+    <table id="news-pr-table-featured" class="news-table-featured news-table-links">
+        <tbody>
+            <tr class="table_sub2">
+                <td class="table-first-col">Date</td>
+                <td>Press Release</td>
+
+            </tr>
+            @foreach (var item in items)
+            {
+                <tr class="table_body">
+                    <td class="table-first-col">@SC.Field("Article Date", item, new { format = "MM/dd/yyyy" })</td>
+                    <td>@SC.Field("URL", item, new { target = "_blank", text = item.DisplayName })</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+    <!-- rows hidden by default -->
+    <div id="news-pr-table-container" class="news-table-container">
+        <table id="news-pr-table" class="news-table news-table-links">
+            <tbody>
+                @foreach (var item in moreItems)
+                {
+                    <tr class="table_body">
+                        <td class="table-first-col">@SC.Field("Article Date", item, new { format = "MM/dd/yyyy" })</td>
+                        <td>@SC.Field("URL", item, new { target = "_blank", text = item.DisplayName })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+    @if (moreItems.Count() > 0)
+    {
+        <div id="news-pr-more" class="news-box-more">
+            <a href="#"><u>More</u> &gt;</a>
+        </div>
+    }
+</section>
+

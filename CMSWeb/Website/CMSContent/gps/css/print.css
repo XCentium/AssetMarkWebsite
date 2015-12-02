@@ -1,0 +1,32 @@
+section article {
+	height:auto !important;
+}
+
+.wealth_cta, .client_info, nav, a.compare, .header, .subhead, a.details, a.print, .main_nav  {
+	display:none !important;
+}
+
+table, caption, td, th {
+	text-align:left !important;
+	font-size:13px !important;
+}
+
+th {
+	padding-right:10px !important;
+}
+
+.results_container h2 {
+	font-size:16px !important;
+}
+
+.ui-state-active {
+	font-weight:bold !important;
+}
+
+p {
+	font-size:13px !important;
+}
+
+.legal {
+	font-size:10px !important;
+}

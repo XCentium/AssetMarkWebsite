@@ -1,0 +1,16 @@
+﻿@using ServerLogic.SitecoreExt
+@using MvcAssetmark.Repository
+@model RenderingModel
+@{
+    var SC = Html.Sitecore();
+}
+<center>
+    <section class="page-text" style="width:700px">
+        <div class="summary">
+            @SC.Field("Summary")
+        </div>
+        <div style="text-align:left">
+            @SC.Field("Body")
+        </div>
+    </section>
+</center>

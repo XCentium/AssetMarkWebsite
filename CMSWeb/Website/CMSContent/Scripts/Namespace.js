@@ -1,0 +1,1 @@
+﻿function Namespace(s) { var a = s.split('.'), o = window; for (var i = 0; i < a.length; i++) { o[a[i]] = o[a[i]] || {}; o = o[a[i]]; } return o; }

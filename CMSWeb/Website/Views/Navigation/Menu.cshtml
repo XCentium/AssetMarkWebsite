@@ -1,0 +1,39 @@
+﻿@using MvcAssetmark.Models.Navigation
+@model MenuModel
+<nav id="nav-main">
+    <ul id="nav-main-items">
+        <li id="nav-main-people" class="nav-main-item nav-main-people unit unit-menu"><a href="/people/important-things/" data-navlink="1">Our People and Our Values</a></li>
+        <li id="nav-main-together" class="nav-main-item nav-main-together unit unit-menu"><a href="/together/three-sixty-support/" data-navlink="2">Purpose-Built Investments</a></li>
+        <li id="nav-main-practice" class="nav-main-item nav-main-practice nav-main-item-last unit unit-menu"><a href="/practice/our-complete-offering/" data-navlink="3">Our Complete Offering</a></li>
+    </ul>
+
+    <div id="nav-subnavs">
+        <nav id="nav-sub-people" class="nav-sub nav-sub-people" style="">
+            <div class="nav-sub-content">
+                <ul>
+                    <li class="nav-sub-item nav-important-things"><a href="/people/important-things/">What We Believe</a></li>
+                    <li class="nav-sub-item nav-how-we-started"><a href="/people/how-we-started/">About AssetMark</a></li>
+                    <li class="nav-sub-item nav-our-people"><a href="/people/our-people/">Our Team</a></li>
+                </ul>
+                <div class="nav-sub-close">X</div>
+                <div class="nav-sub-headline">
+                    <p>We've learned that making a difference means leading people confidently toward their dreams. We understand what it takes, and give you the support to make it possible.</p>
+                </div>
+            </div>
+        </nav>
+
+        <nav id="nav-sub-together" class="nav-sub nav-sub-together" style="">
+            <div class="nav-sub-content">
+                <ul>
+                    <li class="nav-sub-item nav-three-sixty-support"><a href="/together/investment-philosophy/">Investment Philosophy</a></li>
+                    <li class="nav-sub-item nav-platform-and-you"><a href="/together/strategists/">Strategists</a></li>
+                    <li class="nav-sub-item nav-ewealthmanager"><a href="/together/guided-portfolios/">Guided Portfolios</a></li>
+                </ul>
+                <div class="nav-sub-close">X</div>
+                <div class="nav-sub-headline">
+                    <p>Our investment choices prepare you to guide clients through market ups and downs. Diversification is the key. You can provide it by using portfolio recommendations from our hand-picked strategists or preconfigured solutions aligned to client goals. </p>
+                </div>
+            </div>
+        </nav>
+    </div>
+</nav>

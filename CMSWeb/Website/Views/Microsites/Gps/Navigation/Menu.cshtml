@@ -1,0 +1,24 @@
+﻿@model List<KeyValuePair<Item, bool>>
+@using Sitecore.Data.Items
+@using Sitecore.Collections
+@{
+    var SC = Html.Sitecore();
+}
+
+<nav>
+    <div class="nav_container">
+        <div class="main_nav">
+            <ul>
+@foreach (var item in Model)
+{
+    var prop = new SafeDictionary<string>();
+    if (item.Value) {
+        prop = new SafeDictionary<string>{ { "Class" , "active" }};
+    }
+                <li>@SC.LinkDisplayName("URL", item.Key, prop)<span class="pipe">|</span></li>
+}
+            </ul>
+        </div>
+        @SC.Placeholder("sub_menu")
+    </div>
+</nav>

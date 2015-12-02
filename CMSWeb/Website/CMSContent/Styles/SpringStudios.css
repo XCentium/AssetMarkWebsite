@@ -1,0 +1,73 @@
+﻿/* Spring Studio Styles */
+
+/* Global styles */
+a {text-decoration:none;}
+a:hover {text-decoration:underline;}
+.g-text {color:#666666 !important;}
+
+/* Contact us page */
+.contactus table td.w65 {width:65%; padding-right:30px;}
+.contactus table td img {margin-top:10px;}
+.contactus table td p {margin:0px;}
+.contactus .PageContentHeading {font-weight:bold;}
+.contactus .content_name {font-size:11px;}
+
+/* Admin pages */
+.administration .secondaryMenuContainer, .practicemanagement .secondaryMenuContainer {margin-top:0px;}
+.administration .AdminTertiaryMenu {margin-top:3px;}
+.administration ul {padding-bottom:0px;}
+.administration ul#header_0_content_2_uTertiaryMenu {margin-left:23px;}
+.administration ul#header_0_content_2_uTertiaryMenu.AdminTertiaryMenu li a {text-align:left; font-size:13px;}
+.administration .toptxt {padding:0px;}
+.administration .admin_block h2, .toptxt h2 {padding-bottom:0px !important;}
+.administration ul.link-list li {padding: 0 0 5px 25px;}
+
+.administration #BodyContent {padding-top:0px;}
+.administration .left {text-align:left;}
+.administration .sidebar.aside.withFullTopPadding {padding-top: 20px !important;}
+
+.administration #Content > .grid-system > .gc {padding-bottom:0px !important;}
+
+#lblCaption, #UpdatePanel1 td {color:#222 !important; font-family: Lucida Sans Unicode; font-size:11px !important;}
+
+.administration table#Table1 td, .administration table#Table2 td, .administration table#Table3 td, .administration table#Table4 td {padding:3px 0px;}
+.administration table#Table1 td.datacell, .administration table#Table2 td.datacell, .administration table#Table3 td.datacell, .administration table#Table4 td.datacell {width:31%; font-size:8pt !important; font-family: Tahoma,Arial,Helvetica,sans-serif;} 
+.administration table#Table1 tr.greycell td, .administration table#Table2 tr.greycell td, .administration table#Table3 tr.greycell td, .administration table#Table4 tr.greycell td {background:#eaeaea;}
+.administration table#Table1 td input, .administration table#Table2 td input, .administration table#Table3 td input, .administration table#Table4 td input {}
+.administration .dataheader td {font-weight:bold;}
+.administration .dataheader td span {font-weight:normal;}
+
+/* Practice Management */
+.practicemanagement #sitecore-content, .sitecore-content {padding-top:0px;}
+.practicemanagement .secondaryMenuContainer {margin:0px;}
+.practicemanagement .verticalTabs {padding-top:9px; border-bottom:2px solid #929191; }
+.practicemanagement .verticalTabs li {text-align:left;}
+.practicemanagement .verticalTabs a {padding:11px 5px 7px 30px !important;}
+.practicemanagement .verticalTabs a:hover {text-decoration:none !important;}
+.practicemanagement .verticalTabs li {margin:0px; padding:0px;}
+.practicemanagement .verticalTabs li a {margin:0px; background: url('/CMSContent/Images/nav-bak.png') 0px 160px; display:block; color:#1d1e1e; font-weight:bold; font-family: 'Oswald',Arial,Sans-Serif; font-size:11px;}
+.practicemanagement .verticalTabs li.selected a {background: url('/CMSContent/Images/nav-bak.png') 0px 80px;}
+.practicemanagement .verticalTabs li.selected {background:none;}
+
+.practicemanagement .verticalTabs li ul {margin:0px; padding:0px;}
+.practicemanagement .verticalTabs li ul li a, .practicemanagement .verticalTabs li.selected ul li a {background:#e1e2e2; background: url('/CMSContent/Images/nav-bak-l2.png'); font-weight:normal; padding-left:40px !important;}
+.practicemanagement .verticalTabs li ul li a:hover {background: url('/CMSContent/Images/nav-bak-l2.png') center bottom; color:#fff; text-decoration:none !important;}
+.practicemanagement .verticalTabs li ul li.l2-selected a {background: url('/CMSContent/Images/nav-bak-l2.png') 1162px bottom; color:#fff;}
+.practicemanagement .verticalTabs li ul li.l2-selected ul li a  {background:#e1e2e2; background: url('/CMSContent/Images/nav-bak-l2.png'); color:#1d1e1e;}
+.practicemanagement .verticalTabs li ul li.l2-subs a {background: url('/CMSContent/Images/nav-bak-l2.png') 776px top;}
+.practicemanagement .verticalTabs li ul li.l2-subs a:hover {background: url('/CMSContent/Images/nav-bak-l2.png') 776px bottom;}
+
+.practicemanagement .verticalTabs li ul li ul li.l3 a {padding-left:50px !important; background: url('/CMSContent/Images/nav-bak-l2.png') 1548px top;}
+.practicemanagement .verticalTabs li ul li ul li.l3 a:hover {padding-left:50px !important; background: url('/CMSContent/Images/nav-bak-l2.png') 385px bottom;}
+
+/* Home */
+body.home p.promo-note, body.home div.promo-note, body.home div.promo-note p {line-height: 16px !important; font-size:12px !important;}
+body.home .sidebar div.promo-note {margin-left:139px; font-size:10px; line-height: 1.25em;}
+body.home  h2 {color:#666666 !important; text-transform: none; font-size:17px; }
+body.home  div.latest-news {margin-top:5px;}
+body.home  table.event-calendar .today a {border:1px solid #015ea4;}
+body.home  .cal-legend {font-size:11px; margin-left:20px; margin-top:5px;}
+body.home  .cal-legend img {position:relative; top:2px;}
+body.home div.snackbox > h4, div.snackbox > h4 {font-size:15px;}
+body.home .latest-news h2 {letter-spacing: 0px;}
+body.home p, .html p {font-size:12px !important;}

@@ -1,0 +1,22 @@
+﻿@model List<KeyValuePair<Item, bool>>
+@using Sitecore.Data.Items
+@using Sitecore.Collections
+@{
+    var SC = Html.Sitecore();
+}
+
+
+<div class="sub_nav">
+    <ul>
+        @foreach (var kvp in Model)
+        {
+            var item = kvp.Key;
+            var cssClass = string.Empty;
+            if (kvp.Value)
+            {
+                cssClass = "active";
+            }
+            <li><a class="@cssClass" href="@item.GetURL()">@item.DisplayName</a><span class="pipe">|</span></li>
+        }
+    </ul>
+</div>

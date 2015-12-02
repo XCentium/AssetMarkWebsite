@@ -1,0 +1,295 @@
+﻿/*
+
+Breadcrumb {
+
+*/
+
+.bodyContent
+{
+    padding:0px;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-breadcrumbs-container
+{
+    padding-left:5px;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-collapsed-container
+{
+    height:25px;
+    position:relative;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-breadcrumbs img
+{
+    vertical-align:middle;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-breadcrumbs .alert
+{
+    margin-left:10px;
+}
+
+#genworth-breadcrumb .genworth-breadcrumb-closebutton
+{
+    display:inline;
+}
+
+/*
+
+} Breadcrumb
+
+Home {
+
+*/
+
+#wrapper
+{
+    padding:15px 0px 0px 10px;
+}
+
+h1
+{
+    color:#16a;
+    font: normal 24px Arial;
+    font-weight: normal;
+    position: relative;
+    top: -1px;
+}
+
+h2
+{
+    color:#d71;
+    font: normal 14px/30px Arial;
+    text-transform:uppercase;
+    background: #eee url("/CMSContent/Images/Home/HomeH2Bg.png") repeat-x top left;
+    padding: 3px 13px 1px;
+    margin-bottom:22px;
+}
+
+.latest-news h2 
+{
+    color:#d71;
+    text-transform:uppercase;
+    letter-spacing: -1px;}
+
+h3
+{
+    color:#16a;
+    font: normal 16px/1.2em Georgia;
+    text-transform:capitalize;
+}
+
+h4
+{
+    color:#777;
+    font: bold 13px/1em Tahoma;
+    text-transform:capitalize;
+}
+
+h5
+{
+    color:#16a;
+    font: bold 11px/1.5em Tahoma;
+    padding-bottom:5px;
+}
+
+a
+{
+    text-decoration:underline;
+}
+
+.html 
+{
+    font: normal 11px/1.5em;
+    color: #444;
+}
+
+p, .html p
+{
+    font: normal 11px/1.5em Tahoma;
+    margin: 0px;    
+    margin-bottom: 1em;
+    color: #444;
+    /*padding-right:10px;*/
+}
+.html ul, .aside ul, .html ol, .aside ol
+{
+    font: normal 11px/1.5em Tahoma;
+    margin-bottom: 1em;
+    color: #444;
+    /*padding-right:10px;*/
+}
+.html ul li, .aside ul li, .html ol li, .aside ol li
+{
+    font: normal 11px/1.5em Tahoma;
+    color: #444;
+    /*padding-right:10px;*/
+}
+
+.header-note
+{
+    color:#555;
+    font: bold 11px Cabin;
+    margin-bottom:20px;
+    padding-top: 1px;
+    letter-spacing: 1px;
+}
+
+p.promo-note, div.promo-note, div.promo-note p
+{
+    font-size:10px !important;
+    line-height:1.25em !important;
+}
+
+p.promo 
+{
+    margin-bottom: 2px;}
+.promo img 
+{
+    margin: 0px;
+    padding: 0px;
+    display: block;}
+.promo a 
+{
+    border: 3px solid #d4d4d4;
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;}
+
+.home-panel-small
+{
+    margin-bottom:20px;
+}
+
+.home-panel-large
+{
+    margin-bottom:60px;
+}
+
+#home-main-right, #home-main-left
+{
+    float:left;
+}
+
+/*
+
+Home Main Right
+{
+
+*/
+
+#home-main-right
+{
+    background-color:#eee;
+    padding:10px;
+}
+
+#home-main-right .home-panel-left
+{
+    float:left;
+    width:128px;
+}
+
+#home-main-right .saling-rowing
+{
+    margin:8px 10px;
+}
+
+#home-main-right ul.home-panel-menu , #home-main-right .home-panel-menu li
+{
+    list-style:none;
+    margin:0px;
+    padding:0px;
+}
+
+#home-main-right ul.home-panel-menu
+{
+    margin-top:5px;
+}
+
+#home-main-right ul.home-panel-menu li
+{
+    padding-top:2px;    
+}
+
+#home-main-right ul.home-panel-menu a
+{
+    font-size:12px;
+}
+
+/*
+
+}
+Home Main Right
+
+Home Main Left
+{
+
+*/
+
+#home-main-left
+{
+    width:674px;
+}
+
+#home-main-left .home-panel-left
+{
+    width:317px;
+    margin-right:20px;
+    float:left;
+    min-height:100px;
+}
+
+#home-main-left .home-panel-news
+{
+    padding-bottom:10px;
+    border-bottom:1px solid #ddd;
+    margin-right:15px;
+}
+
+#home-main-left .home-panel-news .home-panel-left
+{
+    width:300px;
+}
+
+/*
+
+} Home Main Left
+
+*/
+
+.clear-position
+{
+    clear:both;
+}
+
+/*
+
+} Home
+
+*/
+.latest-news h3 {margin-bottom: 6px;}
+.latest-news .header-note {margin-bottom: 13px;}
+.home-read-me 
+{
+    display: block;
+    padding: 0px;
+    margin: 14px 0px 3px;
+    line-height: 34px;
+    position: relative;
+    height: 34px;
+    left: -4px;}
+.home-read-me img 
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;}
+
+.extra-indent 
+{
+    padding-left: 13px;}
+.extra-indent p 
+{
+    margin-top: 2px;
+    margin-bottom: 16px;}

@@ -1,0 +1,173 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oswald" />
+	<link rel="stylesheet" href="Content/Styles/de-form-styles.css" type="text/css" media="screen" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="Content/Scripts/jquery.uniform.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	  (function(){
+	    ("input:checkbox, input:radio, textarea, select").uniform();
+	  });
+	</script>
+	<script type="text/javascript" src="Content/Scripts/calc.js"></script>
+	<script type="text/javascript" src="Content/Scripts/numberformat.js"></script>
+	<script type="text/javascript" src="Content/Scripts/highcharts.js"></script>
+	<style>
+		body {
+			background-color: #cccccc;
+		}
+		#calc {
+			width: 710px;
+			background-color: #ffffff;
+		}
+		#calcResponse {
+			width: 300px;
+			float: right;
+		}
+		.clearfloat {
+			clear: both;
+			font-size: 1px;
+			height: 0;
+		}
+		.calcHeader {
+			font-family: Oswald;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+		.tableL {
+			text-align: right;
+			margin-right: 20px;
+		}
+		.calcResp1 {
+			background-color: #1a7fbd;
+			color: #ffffff;
+			padding: 4px 0 0 10px;
+			font-size: 30px;
+			font-family: Oswald;
+			margin-bottom: 0;
+		}
+		.calcResp2 {
+			background-color: #00214d;
+			color: #ffffff;
+			padding: 4px 0 0 10px;
+			font-size: 30px;
+			font-family: Oswald;
+			margin-bottom: 0;
+		}
+		.calcRespSub {
+			color: #ffffff;
+			padding: 0 0 2px 0;
+			font-size: 10px;
+		}
+		.calcResp1 label {
+			color: #ffffff;
+		}
+		.calcResp2 label {
+			color: #ffffff;
+		}
+	</style>
+</head>
+<body>
+
+<div id="calc">
+	<div class="calcHeader">1QA Efficient Frontier Calculator</div>
+	<table border=0 cellspacing="5px">
+		<tr>
+			<td style="font-weight:bold;width:115px;text-align:center;"><label>AUM</label></td>
+			<td style="font-weight:bold;text-align:center;width:175px;"><label>Clients</label></td>
+			<td style="font-weight:bold;text-align:center;"><label>Average AUM</label></td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>10,000,000</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','efcA','1','n');updateEF(10000000,'efcA','efcAavg');" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','efcA','1','n');updateEF(10000000,'efcA','efcAavg');" />
+				</div>
+				<input style="height:25px;" type="text" id="efcA" onkeyup="updateEF(10000000,'efcA','efcAavg')" value="50" />
+			</td>
+			<td class="tableL"><label><span id="efcAavg"></span></label></td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>25,000,000</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','efcB','1','n');updateEF(25000000,'efcB','efcBavg');" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','efcB','1','n');updateEF(25000000,'efcB','efcBavg');" />
+				</div>
+			<input style="height:25px;" type="text" id="efcB" onkeyup="updateEF(25000000,'efcB','efcBavg')" value="75" /></td>
+			<td class="tableL"><label><span id="efcBavg"></span></label></td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>50,000,000</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','efcC','1','n');updateEF(50000000,'efcC','efcCavg');" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','efcC','1','n');updateEF(50000000,'efcC','efcCavg');" />
+				</div>
+				<input style="height:25px;" type="text" id="efcC" onkeyup="updateEF(50000000,'efcC','efcCavg')" value="100" />
+			</td>
+			<td class="tableL"><label><span id="efcCavg"></span></label></td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>75,000,000</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','efcD','1','n');updateEF(75000000,'efcD','efcDavg');" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','efcD','1','n');updateEF(75000000,'efcD','efcDavg');" />
+				</div>
+				<input style="height:25px;" type="text" id="efcD" onkeyup="updateEF(75000000,'efcD','efcDavg')" value="125" />
+			</td>
+			<td class="tableL"><label><span id="efcDavg"></span></label></td>
+		</tr>
+		<tr>
+			<td class="tableL"><label>100,000,000</label></td>
+			<td>
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','efcE','1','n');updateEF(100000000,'efcE','efcEavg');" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','efcE','1','n');updateEF(100000000,'efcE','efcEavg');" />
+				</div>
+				<input style="height:25px;" type="text" id="efcE" onkeyup="updateEF(100000000,'efcE','efcEavg')" value="150" />
+			</td>
+			<td class="tableL"><label><span id="efcEavg"></span></label></td>
+		</tr>
+		<tr>
+			<td colspan="3"><h3>Current Position</h3></td>
+		</tr>
+		<tr>
+			<td class="tableL" style="font-weight:bold;"><label>AUM</label></td>
+			<td colspan="2">
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','efcF','1000000','c')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','efcF','1000000','c')" />
+				</div>
+				<input style="height:25px;" type="text" id="efcF" onkeyup="this.value=addCommas(stripNonNumeric(this.value))" value="15,000,000" />
+			</td>
+		</tr>
+		<tr>
+			<td class="tableL" style="font-weight:bold;"><label>Clients</label></td>
+			<td colspan="2">
+				<div style="float:left;width:18px;font-size:10px;">
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_up.gif" border="0" onclick="adjustField('up','efcG','1','n')" /><br />
+					<img style="margin:1px;padding:0;cursor:pointer;" src="Content/Images/calc_down.gif" border="0" onclick="adjustField('down','efcG','1','n')" />
+				</div>
+				<input style="height:25px;" type="text" id="efcG" value="90" />
+			</td>
+		</tr>
+		<tr>
+			<td class="tableL" style="font-weight:bold;"><label>Average AUM</label></td>
+			<td class="tableL" style="font-weight:bold;"><label><span id="efcFavg"></span></label></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td align="right"></td>
+			<td colspan="2"><div class="button_container"><input type="button" value="calculate" class="formButton" onclick="updateEF2()" /></div></td>
+		</tr>
+	</table>
+	
+	<div id="scatterplot" style="height:600px;"></div>
+	
+</div>
+
+</body>
+</html>

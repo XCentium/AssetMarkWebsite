@@ -1,0 +1,193 @@
+﻿/* 
+
+Version 2
+
+*/
+
+
+.verticalTabRow 
+{
+    margin-left: 0px !important;
+    background: transparent url(/CMSContent/Images/vertical-tabs-bg.png) repeat-y left top;
+}
+.verticalTabRow.withAside 
+{
+    background-image: url(/CMSContent/Images/vertical-tabs-bg-with-aside.png);
+}
+
+.verticalTabColumn 
+    {
+    background-color: #e1e1e1; 
+    margin-left: 0px !important; 
+    width: 247px !important;
+    }
+.verticalTabContainer 
+{
+    text-align: right;
+    }
+.verticalTabs 
+{
+    margin: 0px;
+    padding: 65px 0px 0px;
+    text-indent: 0px;
+    }
+    
+.verticalTabs li ul
+{
+    margin: 0px -5px 0px;
+    padding: 0px;
+    text-indent: 0px;
+    background-color: #e1e1e1; 
+    }
+.verticalTabs li.summary {
+    margin-left: 14px;
+    text-align: left;
+    margin-top: -65px;
+    padding-top: 10px;
+    
+    }
+    .verticalTabs li.summary p.nav-title
+    {
+        margin-bottom:3em;
+        font-weight: 600;
+	text-align: right;
+    }
+.verticalTabs>li {
+    margin-left: 10px;/**/
+    font: 11px 'Oswald', 'arial', 'sans-serif';
+    font-weight: normal !important;
+    /*letter-spacing: 1px;*/
+    }
+.verticalTabs li {
+    list-style-type: none;
+    text-align: right;
+    padding-right: 5px;
+    }
+.verticalTabs li li {
+    background-color: #e1e1e1;
+    margin-left: 0px;
+    font: 10px 'Lucida Sans', 'arial', 'sans-serif';
+    /*border-bottom: 1px solid #aaa;*/
+    background: transparent url(/CMSContent/Images/sidebar_subnav_divider.png) no-repeat right bottom;
+    }
+.verticalTabs li li li {
+    border-bottom: none;
+    background: none;
+    padding-right: 10px;
+    }
+.verticalTabs li.selected {
+    background: #FFF url(/CMSContent/Images/vertical-tabs-active-tab-bg.png) no-repeat top left;  
+    }
+.verticalTabs a 
+{
+    display: inline-block;
+    background: transparent;  
+    color: #3981be;
+    text-decoration: none !important;
+    padding: 5px 10px;
+    margin: 5px 0px 0px;
+    white-space: nowrap;
+    font-weight: bold;
+    }
+.verticalTabs li li a 
+{
+    color: #444;
+    padding: 3px 10px;
+    font-weight: normal;
+    }
+.verticalTabs li li li a {
+    color: #888;
+    }
+.verticalTabs a:hover 
+{
+    text-decoration: underline !important;
+    }
+.verticalTabs a 
+{
+    /*background: #FFF url(/CMSContent/Images/vertical-tabs-active-tab-bg.png) no-repeat bottom left;*/
+    
+    }
+
+
+
+
+
+/*
+
+Version 1
+
+.vertical-tabs
+{       
+    width: 968px;
+    overflow: hidden;
+    background: transparent url(/CMSContent/Images/vertical-tabs-bg.png) repeat-y top left;
+    border: 1px solid #999;    
+}
+
+.vertical-tabs .tabs
+{
+    width: 158px;
+    padding-left: 0;
+    float: left;    
+    background: #E1E1E1;
+}
+
+.vertical-tabs .tabs li
+{
+    list-style: none;
+    background: transparent url(/CMSContent/Images/vertical-tabs-tab-bg.png) no-repeat bottom left;           
+    display: block;
+    width: 147px;
+    padding: 10px 10px 10px 0;    
+    text-align: right;    
+    font: 11px 'Lucida Sans', 'arial', 'sans-serif';  
+    cursor: pointer;  
+}    
+
+.vertical-tabs .tabs li.active
+{
+    color: #1066B2;
+    background: transparent url(/CMSContent/Images/vertical-tabs-active-tab-bg.png) no-repeat bottom left;           
+}
+
+.vertical-tabs .tab-content
+{
+    float: left;
+    width: 690px;
+    min-height: 350px;
+    overflow: hidden;
+    padding: 20px 30px 20px 70px;
+    display: none;
+}
+
+.vertical-tabs .col-wrapper
+{
+    width: 100%;
+    overflow: hidden;
+}
+
+.vertical-tabs .col-wrapper .left-col
+{
+    float: left;
+    width: 250px;     
+}
+
+.vertical-tabs .col-wrapper .right-col
+{
+    float: left;   
+    padding: 28px 0 0 20px;    
+}
+
+.vertical-tabs .tab-content h3.heading
+{
+    padding-bottom: 5px;
+    font: 17px 'Oswald', 'arial', 'sans-serif';
+    color: #0B6CA5;
+    background: transparent url(/CMSContent/Images/header-underline.png) repeat-x bottom left;           
+}
+
+.vertical-tabs .tab-content p
+{
+    font: 11px 'Lucida Sans', 'arial', 'sans-serif';    
+}
+*/

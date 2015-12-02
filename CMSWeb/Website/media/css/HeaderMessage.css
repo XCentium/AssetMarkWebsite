@@ -1,0 +1,79 @@
+﻿#genworth-message-wrapper 
+{
+	width: 990px;
+	height: 40px;
+	vertical-align: middle;
+	background: #0870AF url(/CMSContent/Images/breadcrumbBackground.png) repeat-x left top;
+	font: normal 12px/1.5em "Lucida Sans Unicode";
+}
+#genworth-message-container 
+{
+	padding: 8px 14px 7px;
+	vertical-align: middle;
+}
+#genworth-message-wrapper span, #genworth-message-wrapper img
+{
+	vertical-align: middle;
+}
+#genworth-message-data 
+{
+	display: none;
+}
+#genworth-message-nav 
+{
+	width: 50px;
+}
+#genworth-message-nav-left, #genworth-message-nav-right 
+{
+	cursor: pointer;
+}
+#genworth-message 
+{
+	width: 912px;
+}
+#genworth-message-wrapper span 
+{
+	display: inline-block;
+}
+#genworth-message-cap-left 
+{
+	width: 3px;
+	height: 25px;
+	background: transparent url(../img/HeaderMessage/LeftMessageCap.png) no-repeat left top;
+}
+#genworth-message.alert #genworth-message-cap-left 
+{
+	background-image: url(../img/HeaderMessage//LeftMessageCap_Alert.png);
+}
+#genworth-message-text-container
+{
+	width: 906px;
+	height: 25px;
+	background: transparent none repeat-x left top;
+}
+#genworth-message.alert #genworth-message-text-container 
+{
+	background-image: url(../img/HeaderMessage//MessageTextBackground_Alert.png);
+}
+#genworth-message-text 
+{
+	width: 886px;
+	height: 25px;
+	background: transparent none no-repeat left center;
+	text-indent: 20px;
+	line-height: 25px;
+}
+#genworth-message.alert #genworth-message-text 
+{
+	background-image: url(../img/HeaderMessage//MessageIcon_Alert.png);
+}
+#genworth-message-cap-right 
+{
+	width: 3px;
+	height: 25px;
+	background: transparent url(../img/HeaderMessage/RightMessageCap.png) no-repeat left top;
+}
+#genworth-message.alert #genworth-message-cap-right 
+{
+	background-image: url(../img/HeaderMessage/RightMessageCap_Alert.png);
+}
