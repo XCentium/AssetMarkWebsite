@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="AM_STAGEQ" xmlns="http://schemas.microsoft.com/linqtosql/mapping/2007">
+	<Function Name="dbo.SendEmailByTemplate" Method="SendEmailByTemplate">
+		<Parameter Name="fromAddress" Parameter="@FromAddress" DbType="VarChar(500)" />
+		<Parameter Name="fromName" Parameter="@FromName" DbType="VarChar(200)" />
+		<Parameter Name="bCCRecipients" Parameter="@BCCRecipients" DbType="VarChar(8000)" />
+		<Parameter Name="cCRecipients" Parameter="@CCRecipients" DbType="VarChar(8000)" />
+		<Parameter Name="recipients" Parameter="@Recipients" DbType="VarChar(8000)" />
+		<Parameter Name="subject" Parameter="@Subject" DbType="VarChar(250)" />
+		<Parameter Name="body" Parameter="@Body" DbType="NText" />
+		<Parameter Name="contentTypeCD" Parameter="@ContentTypeCD" DbType="Int" />
+		<Parameter Name="templateId" Parameter="@TemplateId" DbType="Int" />
+		<Parameter Name="templateItems" Parameter="@TemplateItems" DbType="VarChar(8000)" />
+		<Parameter Name="sendAfterDate" Parameter="@SendAfterDate" DbType="DateTime" />
+		<ElementType Name="Genworth.SitecoreExt.MailSender.ContentID">
+			<Column Name="Content_ID" Member="Value" DbType="Int" />
+		</ElementType>
+		<ElementType Name="Genworth.SitecoreExt.MailSender.MailQID">
+			<Column Name="Mail_QID" Member="Value" DbType="Int" />
+		</ElementType>
+		<ElementType Name="Genworth.SitecoreExt.MailSender.ContactID">
+			<Column Name="Contact_ID" Member="Value" DbType="Int" />
+		</ElementType>
+		<ElementType Name="Genworth.SitecoreExt.MailSender.ValueID">
+			<Column Name="VALUE_ID" Member="Value" DbType="Int" />
+		</ElementType>
+	</Function>
+
+
+	<Function Name="dbo.MailQ_SendEmailToMultipleRecipients" Method="SendEmailWithOutTemplate">
+		<Parameter Name="fromAddress" Parameter="@FromAddress" DbType="VarChar(500)" />
+		<Parameter Name="fromName" Parameter="@FromName" DbType="VarChar(200)" />
+		<Parameter Name="bCCRecipients" Parameter="@BCCRecipients" DbType="VarChar(8000)" />
+		<Parameter Name="cCRecipients" Parameter="@CCRecipients" DbType="VarChar(8000)" />
+		<Parameter Name="recipients" Parameter="@Recipients" DbType="VarChar(8000)" />
+		<Parameter Name="subject" Parameter="@Subject" DbType="VarChar(250)" />
+		<Parameter Name="body" Parameter="@Body" DbType="NText" />
+		<Parameter Name="contentTypeCD" Parameter="@ContentTypeCD" DbType="Int" />
+		<ElementType Name="Genworth.SitecoreExt.MailSender.ContentID">
+			<Column Name="Content_ID" Member="Value" DbType="Int" />
+		</ElementType>
+		<ElementType Name="Genworth.SitecoreExt.MailSender.MailQID">
+			<Column Name="Mail_QID" Member="Value" DbType="Int" />
+		</ElementType>
+		<ElementType Name="Genworth.SitecoreExt.MailSender.ContactID">
+			<Column Name="Contact_ID" Member="Value" DbType="Int" />
+		</ElementType>
+	</Function>
+</Database>

@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B927907E-107C-463E-A86F-CC6E5D68D520}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Genworth.SitecoreExt</RootNamespace>
+    <AssemblyName>Genworth.SitecoreExt</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="bcprov-jdk15-1.44">
+      <HintPath>..\ThirdPartyAssemblies\bcprov-jdk15-1.44.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="commons-logging">
+      <HintPath>..\ThirdPartyAssemblies\commons-logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="fontbox-1.7.0">
+      <HintPath>..\ThirdPartyAssemblies\fontbox-1.7.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GFWM.App.GlobalSearch.Entities">
+      <HintPath>..\..\..\packages\eWM\GFWM.Common.GlobalSearch\GFWM.App.GlobalSearch.Entities\$(Configuration)\GFWM.App.GlobalSearch.Entities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GFWM.App.Shared.Entity">
+      <HintPath>..\..\..\packages\eWM\GFWM.Shared\GFWM.App.Shared.Entity\$(Configuration)\GFWM.App.Shared.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="GFWM.Common.AUM.Entities">
+      <HintPath>..\..\..\packages\eWM\GFWM.Common.AUM\GFWM.Common.AUM.Entities\$(Configuration)\GFWM.Common.AUM.Entities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GFWM.Common.Preference.Entities">
+      <HintPath>..\..\..\packages\eWM\GFWM.App.Preference.Service\GFWM.Common.Preference.Entities\$(Configuration)\GFWM.Common.Preference.Entities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GFWM.Common.State.Entities">
+      <HintPath>..\..\..\packages\eWM\GFWM.App.State.Services\GFWM.Common.State.Entities\$(Configuration)\GFWM.Common.State.Entities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GFWM.Common.UserProfile.Entities">
+      <HintPath>..\..\..\packages\eWM\GFWM.App.UserProfile.Service\GFWM.Common.UserProfile.Entities\$(Configuration)\GFWM.Common.UserProfile.Entities.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GFWM.Security.STS.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\eWM\GFWM.Security.SWT.Common\GFWM.Security.SWT.Entity\$(Configuration)\GFWM.Security.STS.Entity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GFWM.Shared.Cache">
+      <HintPath>..\..\..\packages\eWM\GFWM.Shared\GFWM.Shared.Cache\$(Configuration)\GFWM.Shared.Cache.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GFWM.Shared.Entity">
+      <HintPath>..\..\..\packages\eWM\GFWM.Shared\GFWM.Shared.Entity\$(Configuration)\GFWM.Shared.Entity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GFWM.Shared.ServiceRequest">
+      <HintPath>..\..\..\packages\eWM\GFWM.Shared\GFWM.Shared.ServiceRequest\$(Configuration)\GFWM.Shared.ServiceRequest.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GFWM.Shared.ServiceRequestFactory">
+      <HintPath>..\..\..\packages\eWM\GFWM.Shared\GFWM.Shared.ServiceRequestFactory\$(Configuration)\GFWM.Shared.ServiceRequestFactory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core">
+      <HintPath>..\ThirdPartyAssemblies\IKVM.OpenJDK.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Security">
+      <HintPath>..\ThirdPartyAssemblies\IKVM.OpenJDK.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.SwingAWT">
+      <HintPath>..\ThirdPartyAssemblies\IKVM.OpenJDK.SwingAWT.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Text">
+      <HintPath>..\ThirdPartyAssemblies\IKVM.OpenJDK.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Util">
+      <HintPath>..\ThirdPartyAssemblies\IKVM.OpenJDK.Util.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.Runtime">
+      <HintPath>..\ThirdPartyAssemblies\IKVM.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Lucene.Net, Version=3.0.3.0, Culture=neutral, PublicKeyToken=85089178b9ac3181, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyAssemblies\Lucene.Net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyAssemblies\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="pdfbox-1.7.0">
+      <HintPath>..\ThirdPartyAssemblies\pdfbox-1.7.0.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sitecore.Analytics">
+      <HintPath>..\ThirdPartyAssemblies\Sitecore.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ContentSearch">
+      <HintPath>..\ThirdPartyAssemblies\Sitecore.ContentSearch.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.ContentSearch.Linq">
+      <HintPath>..\ThirdPartyAssemblies\Sitecore.ContentSearch.Linq.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.ContentSearch.Linq.Lucene">
+      <HintPath>..\ThirdPartyAssemblies\Sitecore.ContentSearch.Linq.Lucene.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.ContentSearch.LuceneProvider">
+      <HintPath>..\ThirdPartyAssemblies\Sitecore.ContentSearch.LuceneProvider.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Kernel">
+      <HintPath>..\ThirdPartyAssemblies\Sitecore.Kernel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Sitecore.Logging">
+      <HintPath>..\ThirdPartyAssemblies\Sitecore.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Mvc">
+      <HintPath>..\ThirdPartyAssemblies\Sitecore.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Mvc.Analytics">
+      <HintPath>..\ThirdPartyAssemblies\Sitecore.Mvc.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\UpdateNotificationTemplate.cs" />
+    <Compile Include="Constants\Administration.cs" />
+    <Compile Include="Constants\Email.cs" />
+    <Compile Include="Constants\Navigation.cs" />
+    <Compile Include="Constants\Omniture.cs" />
+    <Compile Include="Constants\Page.cs" />
+    <Compile Include="Constants\Policies.cs" />
+    <Compile Include="CustomDataProvider\RemoteClientEventQueue.cs" />
+    <Compile Include="DocImporter\AdvisorManagerFactSheetImporter.cs" />
+    <Compile Include="DocImporter\ExpenseRatioImporter.cs" />
+    <Compile Include="DocImporter\FactSheetImporter.cs" />
+    <Compile Include="DocImporter\ManagerCommentaryImporter.cs" />
+    <Compile Include="DocImporter\MonthlyPerformanceImporter.cs" />
+    <Compile Include="DocImporter\StrategistCommentaryImporter.cs" />
+    <Compile Include="Helpers\GridHelper.cs" />
+    <Compile Include="Helpers\HtmlHeaderHelper.cs" />
+    <Compile Include="Helpers\HtmlTableHelper.cs" />
+    <Compile Include="Helpers\InvestmentHelper.cs" />
+    <Compile Include="Helpers\ItemHelper.cs" />
+    <Compile Include="Helpers\NavigationLogic.cs" />
+    <Compile Include="Helpers\OmnitureHelper.cs" />
+    <Compile Include="Helpers\PDFExtractorHelper.cs" />
+    <Compile Include="Constants\Documents.cs" />
+    <Compile Include="Constants\Event.cs" />
+    <Compile Include="Constants\HelpCenter.cs" />
+    <Compile Include="Constants\Investments.cs" />
+    <Compile Include="Constants\Marketing.cs" />
+    <Compile Include="Constants\NewsArchive.cs" />
+    <Compile Include="Constants\Security.cs" />
+    <Compile Include="Constants\Settings.cs" />
+    <Compile Include="CustomDataProvider\GenMembershipProvider.cs" />
+    <Compile Include="CustomDataProvider\GenProfileProvider.cs" />
+    <Compile Include="Helpers\EventHelper.cs" />
+    <Compile Include="Helpers\HelpCenterLogic.cs" />
+    <Compile Include="Helpers\HTMLIntegrationLogic.cs" />
+    <Compile Include="Helpers\MarketingLogic.cs" />
+    <Compile Include="Helpers\NewsArchiveLogic.cs" />
+    <Compile Include="Helpers\PostPublishCacheClearer.cs" />
+    <Compile Include="Helpers\PracticeManagementHelper.cs" />
+    <Compile Include="Helpers\SearchLogic.cs" />
+    <Compile Include="MailSender\MailQProvider.cs" />
+    <Compile Include="MailSender\MailQResults.cs" />
+    <Compile Include="MailSender\MailQDataContext.cs" />
+    <Compile Include="MarketingCollateral\Configuration\ChangeToExtendedMediaTemplates\ChangeToExtendedMediaTemplateData.cs" />
+    <Compile Include="MarketingCollateral\Configuration\ChangeToExtendedMediaTemplates\ChangeToExtendedMediaTemplateSection.cs" />
+    <Compile Include="MarketingCollateral\Configuration\ChangeToExtendedMediaTemplates\ExtendedMediaTemplate.cs" />
+    <Compile Include="MarketingCollateral\Configuration\ChangeToExtendedMediaTemplates\ExtendedMediaTemplateCollection.cs" />
+    <Compile Include="MarketingCollateral\Configuration\ContentItemTemplatesWithFiles\DocumentContentItemTemplate.cs" />
+    <Compile Include="MarketingCollateral\Configuration\ContentItemTemplatesWithFiles\DocumentContentItemTemplateCollection.cs" />
+    <Compile Include="MarketingCollateral\Configuration\ContentItemTemplatesWithFiles\DocumentContentItemTemplateSection.cs" />
+    <Compile Include="MarketingCollateral\Configuration\Importers\ImporterAdaptor.cs" />
+    <Compile Include="MarketingCollateral\Configuration\Importers\ImporterAdaptorCollection.cs" />
+    <Compile Include="MarketingCollateral\Configuration\Importers\RepositoryProperty.cs" />
+    <Compile Include="MarketingCollateral\Configuration\Importers\RepositoryPropertyCollection.cs" />
+    <Compile Include="MarketingCollateral\Configuration\Importers\RepositorySection.cs" />
+    <Compile Include="MarketingCollateral\Configuration\Importers\SectionGroup.cs" />
+    <Compile Include="MarketingCollateral\Entities\BaseRepository.cs" />
+    <Compile Include="MarketingCollateral\Entities\MarketingCollaborationResponse.cs" />
+    <Compile Include="MarketingCollateral\Entities\MarketingCollateralItem.cs" />
+    <Compile Include="MarketingCollateral\Entities\MarketingCollateralMessage.cs" />
+    <Compile Include="MarketingCollateral\Entities\MarketingPortalRepository.cs" />
+    <Compile Include="MarketingCollateral\Entities\RepositoryData.cs" />
+    <Compile Include="MarketingCollateral\Entities\RepositoryName.cs" />
+    <Compile Include="MarketingCollateral\Entities\RepositoryType.cs" />
+    <Compile Include="MarketingCollateral\Entities\SalesforceRepository.cs" />
+    <Compile Include="MarketingCollateral\Entities\SitecoreRepository.cs" />
+    <Compile Include="MarketingCollateral\ImporterHelper.cs" />
+    <Compile Include="MarketingCollateral\Log\MarketingCollateralLog.cs" />
+    <Compile Include="Marketing\Controller.cs" />
+    <Compile Include="Marketing\DataMapper.cs" />
+    <Compile Include="Marketing\HtmlHelper.cs" />
+    <Compile Include="Marketing\MarcomCentralDataMapper.cs" />
+    <Compile Include="Marketing\MarcomCentralServiceClient.cs" />
+    <Compile Include="Marketing\RequestBuilder.cs" />
+    <Compile Include="Marketing\Request\AuxField.cs" />
+    <Compile Include="Marketing\Request\ImpersonatingUserData.cs" />
+    <Compile Include="Marketing\Request\PhysicalAddressData.cs" />
+    <Compile Include="Marketing\Request\StandardRegisterLoginData.cs" />
+    <Compile Include="Marketing\ServiceClient.cs" />
+    <Compile Include="MediaContent\ExternalMediaHandler.cs" />
+    <Compile Include="Pipelines\HttpRequest\MimeTypeResolver.cs" />
+    <Compile Include="Pipelines\HttpRequest\AuthorizationResolver.cs" />
+    <Compile Include="Pipelines\Response\CustomizeRendering\Analytics\SelectVariation.cs" />
+    <Compile Include="Pipelines\Response\CustomizeRendering\ExperienceEditor\SelectVariation.cs" />
+    <Compile Include="Pipelines\Upload\ChangedMediaTemplate.cs" />
+    <Compile Include="Pipelines\Upload\ChangeTemplate.cs" />
+    <Compile Include="Providers\IJsonProvider.cs" />
+    <Compile Include="Providers\IColumnsProvider.cs" />
+    <Compile Include="ScheduledTasks\AdvisorManagerFactSheetTask.cs" />
+    <Compile Include="ScheduledTasks\ExpenseRatioImportTask.cs" />
+    <Compile Include="ScheduledTasks\FactSheetImportTask.cs" />
+    <Compile Include="ScheduledTasks\IImportable.cs" />
+    <Compile Include="ScheduledTasks\IPublishable.cs" />
+    <Compile Include="ScheduledTasks\MarketingUtilityStatusTask.cs" />
+    <Compile Include="ScheduledTasks\ManagerCommentaryTask.cs" />
+    <Compile Include="ScheduledTasks\MonthlyPerformanceImportTask.cs" />
+    <Compile Include="ScheduledTasks\SitecorePublisherTask.cs" />
+    <Compile Include="ScheduledTasks\StrategistCommentaryTask.cs" />
+    <Compile Include="ScheduledTasks\DailyTimeRangeTaskBase.cs" />
+    <Compile Include="Search\ComputedFields\ArticleType.cs" />
+    <Compile Include="Search\ComputedFields\ConstantValue.cs" />
+    <Compile Include="Search\ComputedFields\CustodianId.cs" />
+    <Compile Include="Search\ComputedFields\CustodianNameList.cs" />
+    <Compile Include="Search\ComputedFields\DocumentAllocationApproachId.cs" />
+    <Compile Include="Search\ComputedFields\DocumentAllocationApproachName.cs" />
+    <Compile Include="Search\ComputedFields\DocumentCategoryIcon.cs" />
+    <Compile Include="Search\ComputedFields\DocumentCategoryName.cs" />
+    <Compile Include="Search\ComputedFields\DocumentFileMediaPath.cs" />
+    <Compile Include="Search\ComputedFields\DocumentCategoryId.cs" />
+    <Compile Include="Search\ComputedFields\DocumentManagerId.cs" />
+    <Compile Include="Search\ComputedFields\DocumentManagerName.cs" />
+    <Compile Include="Search\ComputedFields\DocumentSolutionType.cs" />
+    <Compile Include="Search\ComputedFields\DocumentSolutionTypeId.cs" />
+    <Compile Include="Search\ComputedFields\DocumentSourceId.cs" />
+    <Compile Include="Search\ComputedFields\DocumentSourceName.cs" />
+    <Compile Include="Search\ComputedFields\DocumentStrategistId.cs" />
+    <Compile Include="Search\ComputedFields\DocumentStrategistName.cs" />
+    <Compile Include="Search\ComputedFields\DocumentTargetAudience.cs" />
+    <Compile Include="Search\ComputedFields\DocumentURL.cs" />
+    <Compile Include="Search\ComputedFields\EventArchiveURL.cs" />
+    <Compile Include="Search\ComputedFields\EventPCStatus.cs" />
+    <Compile Include="Search\ComputedFields\EventType.cs" />
+    <Compile Include="Search\ComputedFields\EventURL.cs" />
+    <Compile Include="Search\ComputedFields\FileExtension.cs" />
+    <Compile Include="Search\ComputedFields\FileMIMEType.cs" />
+    <Compile Include="Search\ComputedFields\GlossaryPrefix.cs" />
+    <Compile Include="Search\ComputedFields\IsAMHosted.cs" />
+    <Compile Include="Search\ComputedFields\IsIMAManager.cs" />
+    <Compile Include="Search\ComputedFields\IsManagerSelect.cs" />
+    <Compile Include="Search\ComputedFields\ItemID.cs" />
+    <Compile Include="Search\ComputedFields\ItemShortID.cs" />
+    <Compile Include="Search\ComputedFields\ItemNavigationPath.cs" />
+    <Compile Include="Search\ComputedFields\ManagerConstantValue.cs" />
+    <Compile Include="Search\ComputedFields\ManagerId.cs" />
+    <Compile Include="Search\ComputedFields\ManagerName.cs" />
+    <Compile Include="Search\ComputedFields\OmnitureId.cs" />
+    <Compile Include="Search\ComputedFields\PDFContent.cs" />
+    <Compile Include="Search\ComputedFields\ProfileSheetPath.cs" />
+    <Compile Include="Search\ComputedFields\StrategyStatusName.cs" />
+    <Compile Include="Search\ComputedFields\StrategyStyle.cs" />
+    <Compile Include="Search\IndexingUtility.cs" />
+    <Compile Include="Search\LuceneSettings.cs" />
+    <Compile Include="Security\Authorization.cs" />
+    <Compile Include="Security\GenAccessRight.cs" />
+    <Compile Include="Security\GenAuthorizationHelper.cs" />
+    <Compile Include="Security\GenWebAuthorizationProvider.cs" />
+    <Compile Include="Security\SessionExpiredException.cs" />
+    <Compile Include="Services\Cache\GenCacheManagerService.cs" />
+    <Compile Include="Services\Content\AuthoringContentItemService.cs" />
+    <Compile Include="Services\Content\ContentDataItem.cs" />
+    <Compile Include="Services\Content\ContentSecurity.cs" />
+    <Compile Include="Services\Content\FieldDataItem.cs" />
+    <Compile Include="Services\Content\GenHelpContentService.cs" />
+    <Compile Include="Services\Content\IAuthoringContentItemService.cs" />
+    <Compile Include="Services\Content\INavigationContentService.cs" />
+    <Compile Include="Services\Content\IContentItemService.cs" />
+    <Compile Include="Services\Content\NavigationContentService.cs" />
+    <Compile Include="Services\Content\NavigationItem.cs" />
+    <Compile Include="Services\Content\ContentItemService.cs" />
+    <Compile Include="Services\Content\SitecoreUserItem.cs" />
+    <Compile Include="Services\Content\TreeDataItem.cs" />
+    <Compile Include="Services\Contracts\Data\BooleanClauseContract.cs" />
+    <Compile Include="Services\Contracts\Data\BooleanQueryContract.cs" />
+    <Compile Include="Services\Contracts\Data\HelpTextContract.cs" />
+    <Compile Include="Services\Contracts\Data\MultiFieldQueryContract.cs" />
+    <Compile Include="Services\Contracts\Data\ResultSort.cs" />
+    <Compile Include="Services\Contracts\Service\IGenCacheManagerService.cs" />
+    <Compile Include="Services\Contracts\Service\IGenHelpContentService.cs" />
+    <Compile Include="Services\Eventing\GenEventingService.cs" />
+    <Compile Include="Services\Eventing\GenEventingServiceProxy.cs" />
+    <Compile Include="Services\Eventing\IGenEventingService.cs" />
+    <Compile Include="Services\Eventing\ProxyEventQueueQuery.cs" />
+    <Compile Include="Services\Eventing\ProxyQueuedEvent.cs" />
+    <Compile Include="Services\Eventing\SqlEventQueueWrapper.cs" />
+    <Compile Include="Services\Eventing\ProxyTimeStamp.cs" />
+    <Compile Include="Services\Events\EventsArchive.cs" />
+    <Compile Include="Services\Events\EventSearch.cs" />
+    <Compile Include="Services\Events\EventsWebinar.cs" />
+    <Compile Include="Services\Events\EventsInPerson.cs" />
+    <Compile Include="Services\Events\EventDataItem.cs" />
+    <Compile Include="Services\Events\EventsAll.cs" />
+    <Compile Include="Services\Events\EventsBase.cs" />
+    <Compile Include="Services\Events\EventsService.cs" />
+    <Compile Include="Services\Events\IEventsService.cs" />
+    <Compile Include="Services\Investments\ModelPortfolioResult.cs" />
+    <Compile Include="Services\Investments\ResearchClientView.cs" />
+    <Compile Include="Services\Investments\ResultBase.cs" />
+    <Compile Include="Services\Marketing\IMarketingCollateralService.cs" />
+    <Compile Include="Services\Marketing\IMarketingService.cs" />
+    <Compile Include="Services\Marketing\MarketingCollateralDocumentItem.cs" />
+    <Compile Include="Services\Marketing\MarketingCollateralRootDataItem.cs" />
+    <Compile Include="Services\Marketing\MarketingCollateralService.cs" />
+    <Compile Include="Services\Marketing\MarketingDataItem.cs" />
+    <Compile Include="Services\Marketing\MarketingService.cs" />
+    <Compile Include="Services\Policies\IPoliciesService.cs" />
+    <Compile Include="Services\Investments\Filter.cs" />
+    <Compile Include="Services\Investments\FilterGroup.cs" />
+    <Compile Include="Services\Investments\IInvestmentsSearch.cs" />
+    <Compile Include="Services\Investments\IManagerSearchService.cs" />
+    <Compile Include="Services\Investments\InvestmentsSearchBase.cs" />
+    <Compile Include="Services\Investments\ItemCache.cs" />
+    <Compile Include="Services\Investments\ManagerSearch.cs" />
+    <Compile Include="Services\Investments\ManagerSearchService.cs" />
+    <Compile Include="Services\Investments\ModelPortfolio.cs" />
+    <Compile Include="Services\Investments\Research.cs" />
+    <Compile Include="Services\Investments\IResearchService.cs" />
+    <Compile Include="Services\Investments\ResearchService.cs" />
+    <Compile Include="Services\Investments\Result.cs" />
+    <Compile Include="Services\Investments\ResultSort.cs" />
+    <Compile Include="Services\Investments\Search.cs" />
+    <Compile Include="Services\Policies\PoliciesService.cs" />
+    <Compile Include="Services\Policies\Policy.cs" />
+    <Compile Include="Services\Providers\GenProfileProviderService.cs" />
+    <Compile Include="Services\Documents\Document.cs" />
+    <Compile Include="Services\Documents\DocumentService.cs" />
+    <Compile Include="Services\Documents\IDocumentService.cs" />
+    <Compile Include="Services\Proxies\GenCacheManagerServiceProxy.cs" />
+    <Compile Include="Services\Proxies\GenHelpContentServiceProxy.cs" />
+    <Compile Include="Services\Proxies\GenProfileProviderServiceProxy.cs" />
+    <Compile Include="CustomDataProvider\GenRoleProvider.cs" />
+    <Compile Include="Security\GenAppAuthorizationProvider.cs" />
+    <Compile Include="CustomDataProvider\GenSqlServerClientDataStoreProvider.cs" />
+    <Compile Include="CustomDataProvider\GenSqlServerRolesInRolesProvider.cs" />
+    <Compile Include="Services\Contracts\Service\IGenProfileProviderService.cs" />
+    <Compile Include="ItemExtension.cs" />
+    <Compile Include="Services\Contracts\Data\ProfilePropertyAttributeContract.cs" />
+    <Compile Include="Services\Contracts\Data\ProfilePropertyContract.cs" />
+    <Compile Include="Services\Contracts\Data\ProfilePropertyValueContract.cs" />
+    <Compile Include="Services\Providers\GenContentService.cs" />
+    <Compile Include="Services\Proxies\GenContentServiceProxy.cs" />
+    <Compile Include="CustomDataProvider\GenDataProvider.cs" />
+    <Compile Include="Services\Contracts\Service\IGenContentService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Contracts\Data\FieldContract.cs" />
+    <Compile Include="Services\Contracts\Data\ItemDefinitionContract.cs" />
+    <Compile Include="Services\Contracts\Data\LanguageContract.cs" />
+    <Compile Include="Services\Contracts\Data\VersionContract.cs" />
+    <Compile Include="Services\Contracts\Data\VersionUriContract.cs" />
+    <Compile Include="Services\Providers\GenSqlServerClientDataStoreService.cs" />
+    <Compile Include="Services\Contracts\Service\IGenSqlServerClientDataStoreService.cs" />
+    <Compile Include="Services\Proxies\GenSearchServiceProxy.cs" />
+    <Compile Include="Services\Proxies\GenSqlServerClientDataStoreServiceProxy.cs" />
+    <Compile Include="Services\Contracts\Service\ISearchService.cs" />
+    <Compile Include="Services\Search\GenSearchService.cs" />
+    <!--    <Compile Include="Tasks\LuceneReIndex.cs" /> -->
+    <Compile Include="Utilities\BundleHelper.cs" />
+    <Compile Include="Utilities\ContentEditorHelper.cs" />
+    <Compile Include="Utilities\DataSerialization.cs" />
+    <Compile Include="Utilities\FtpClient.cs" />
+    <Compile Include="Utilities\GenworthPaginator.cs" />
+    <Compile Include="Utilities\GenworthQueryString.cs" />
+    <Compile Include="Utilities\Geography.cs" />
+    <Compile Include="Providers\IGridProvider.cs" />
+    <Compile Include="Utilities\GridComponent\GridCell.cs" />
+    <Compile Include="Utilities\GridComponent\GridRow.cs" />
+    <Compile Include="Utilities\GridComponent\GridTable.cs" />
+    <Compile Include="Utilities\IDataFormatProvider.cs" />
+    <Compile Include="Utilities\Maps.cs" />
+    <Compile Include="Utilities\Paginator.cs" />
+    <Compile Include="Utilities\ProfileServiceSerialization.cs" />
+    <Compile Include="Utilities\SerializationHelper.cs" />
+    <Compile Include="Utilities\SitecorePublisher.cs" />
+    <Compile Include="Utilities\Web.cs" />
+    <Compile Include="Utilities\XmlDataFormatProvider.cs" />
+    <Compile Include="Validators\FeatureArticleValidator.cs" />
+    <Compile Include="WorkFlows\AdvancedWorkflow.cs" />
+    <Compile Include="WorkFlows\AdvancedWorkflowProvider.cs" />
+    <Compile Include="WorkFlows\PublishActionHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\cl_Linq\cl_Linq.csproj">
+      <Project>{A468FD0D-5F8D-455D-9581-4447C503F969}</Project>
+      <Name>cl_Linq</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\cl_QueryString\cl_QueryString.csproj">
+      <Project>{8BAFB201-2649-4F04-AE98-A83B5FD6143D}</Project>
+      <Name>cl_QueryString</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\cl_Sitecore\cl_Sitecore.csproj">
+      <Project>{E90661C3-042B-452F-91AF-F029F5D34D09}</Project>
+      <Name>cl_Sitecore</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\SalesforceIntegration\AM.Salesforce.ClientAPI\AM.Salesforce.ClientAPI.csproj">
+      <Project>{6e0454ca-167e-43bc-8f15-6746782f7524}</Project>
+      <Name>AM.Salesforce.ClientAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MarketingCollateral\Configuration\ChangeToExtendedMediaTemplates\ChangeToExtendedMediaTemplateDataCollection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MailSender\MailQMapping.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
