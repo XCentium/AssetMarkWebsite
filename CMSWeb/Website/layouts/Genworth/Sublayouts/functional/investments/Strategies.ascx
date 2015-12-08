@@ -112,6 +112,7 @@
 	line-height: 26px;
 	text-align: center;
 	margin: 0;
+	margin-bottom: 5px;
 	border: 1px solid rgb(194, 194, 194);
 	border-radius: 2px;
 	padding: 0 15px;
@@ -124,6 +125,10 @@
 
 .strategySection .filterToolbarButton:hover {
 	background: linear-gradient(to bottom, #ffffff, rgb(250,250,250) 35%, rgb(247,247,247) 50%, rgb(243,243,243) 75%);
+}
+
+.strategySection .filterList {
+	margin-left: 100px;
 }
 
 .strategySection .filterList .filterToolbarButton {
@@ -151,6 +156,12 @@
 .strategySection .filterPanel {
 	margin-left: 10px;
 	margin-right: 415px;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.strategySection .filterStrategySplit.open .filterPanel {
+	opacity: 0.4;
 }
 
 .strategySection .strategyPanel {
@@ -160,6 +171,12 @@
 	right: -4px;
 	width: 387px;
 	height: calc(100% - 100px);
+	-webkit-transition: width 0.5s;
+	transition: width 0.5s;
+}
+
+.strategySection .filterStrategySplit.open .strategyPanel {
+	width: 850px;
 }
 
 .strategySection .strategyPanelContent {
@@ -295,6 +312,7 @@
 
 .strategySection .strategyListColumnFavorite {
 	width: 64px;
+	text-align: right;
 }
 
 .strategySection .strategyListBody .strategyListColumnStrategy {
@@ -372,130 +390,47 @@
 	width: 450px;
 }
 
+.strategySection .strategyFavoriteButton {
+	display: inline-block;
+	background: rgb(206, 206, 206);
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+	width: 36px;
+	font-size: 7px;
+	line-height: 14px;
+	border-radius: 1px;
+	font-weight: bold;
+	margin: 2px 0;
+	cursor: pointer;
+}
+
+.strategySection .strategyFavoriteButton.selected {
+	background: rgb(2, 123, 54);
+}
+
+.strategySection .strategyFavoriteButton .strategySave {
+	display: inline;
+}
+
+.strategySection .strategyFavoriteButton.selected .strategySave {
+	display: none;
+}
+
+.strategySection .strategyFavoriteButton .strategySaved {
+	display: none;
+}
+
+.strategySection .strategyFavoriteButton.selected .strategySaved {
+	display: inline;
+}
+
 </style>
-<script language="javascript" type="text/javascript">
-
-ServerData = <%= ServerData() %>;
-
-function cloneTemplate(query) {
-	var copy = $(query).clone();
-	copy.removeClass("template");
-	return copy;
-}
-
-function toStringWithThousandSep(v) {
-	var text = Math.round(v).toString();
-	for (var i = 3; i < text.length; i += 4) {
-		text = text.substr(0, text.length - i) + "," + text.substr(text.length - i);
-	}
-	return text;
-}
-
-var strategyFilters = [];
-
-function updateStategyList() {
-	var body = $(".strategyListBody");
-	body.empty();
-
-	var count = 0;
-	ServerData.strategies.forEach(function (strategy) {
-		var skip = false;
-		strategyFilters.forEach(function (filter) { if (!filter(strategy)) skip = true; });
-		if (skip) return;
-		count++;
-
-		var item = cloneTemplate(".strategyListRow.template");
-		$(".strategyListColumnColor", item).attr("style", "background-color:rgb(177,214,234)");
-		//$(".strategyListColumnColor", item).attr("style", "background-color:rgb(255,199,112)");
-		$(".strategyDetailLink", item).text(strategy.name);
-		$(".strategyDetailLink", item).attr('href', ServerData.detailUrl + "?Document=" + strategy.id);
-		$(".strategyListColumnMin", item).text(toStringWithThousandSep(strategy.min));
-		body.append(item);
-	});
-
-	$(".strategyCount").text(count);
-}
-
-function updateFilterList() {
-	strategyFilters = [];
-
-	var filters = $(".filterGroupItems");
-	filters.empty();
-
-	ServerData.filterGroups.forEach(function (filterGroup) {
-		var groupItem = cloneTemplate(".filterGroup.template");
-		$(".filterTitle", groupItem).text(filterGroup.name);
-
-		filterGroup.controls.forEach(function (control) {
-			var controlItem = null;
-			switch (control.type) {
-			case "Investment Approach Control":
-				controlItem = cloneTemplate(".filterApproachControl.template");
-				break;
-			case "Risk Profile Control":
-				controlItem = cloneTemplate(".filterRiskProfileControl.template");
-				break;
-			case "Fee Control":
-				controlItem = cloneTemplate(".filterFeeControl.template");
-				break;
-			case "Checkbox Control":
-				controlItem = cloneTemplate(".filterCheckboxControl.template");
-				$(".filterCheckboxLabel", controlItem).text(control.name);
-
-				var checked = false;
-				$("input[type='checkbox']", controlItem).on('click', function () {
-					checked = !checked;
-					updateStategyList();
-				});
-
-				strategyFilters.push(function (strategy) {
-					return !checked || strategy[control.field] == "1";
-				});
-
-				break;
-			}
-
-			if (controlItem != null) {
-				$(".filterControls", groupItem).append(controlItem);
-			}
-		});
-
-		filters.append(groupItem);
-	});
-}
-
-</script>
 
 <div class="strategySection">
-
 	<div class="filterToolbar">
-		<div class="filterToolbarButton">Clear Filters</div>
-		<div class="filterList">
-			<div class="filterToolbarButton">
-				<svg width="12px" height="12px" viewBox="0 0 12 12">
-					<circle cx="6" cy="6" r="6" fill="rgb(115,173,86)" />
-					<line x1="3" y1="3" x2="9" y2="9" stroke="rgb(1,123,56)" stroke-width="1" />
-					<line x1="3" y1="9" x2="9" y2="3" stroke="rgb(1,123,56)" stroke-width="1" />
-				</svg>
-				<span class="filterToolbarButtonTitle">Core</span>
-			</div>
-			<div class="filterToolbarButton">
-				<svg width="12px" height="12px" viewBox="0 0 12 12">
-					<circle cx="6" cy="6" r="6" fill="rgb(115,173,86)" />
-					<line x1="3" y1="3" x2="9" y2="9" stroke="rgb(1,123,56)" stroke-width="1" />
-					<line x1="3" y1="9" x2="9" y2="3" stroke="rgb(1,123,56)" stroke-width="1" />
-				</svg>
-				<span class="filterToolbarButtonTitle">Equity Alternatives</span>
-			</div>
-			<div class="filterToolbarButton">
-				<svg width="12px" height="12px" viewBox="0 0 12 12">
-					<circle cx="6" cy="6" r="6" fill="rgb(115,173,86)" />
-					<line x1="3" y1="3" x2="9" y2="9" stroke="rgb(1,123,56)" stroke-width="1" />
-					<line x1="3" y1="9" x2="9" y2="3" stroke="rgb(1,123,56)" stroke-width="1" />
-				</svg>
-				<span class="filterToolbarButtonTitle">Blended ETFs/Mutual Funds</span>
-			</div>
-		</div>
+		<div class="filterToolbarButton" id="strategyClearFilters">Clear Filters</div>
+		<div class="filterList"></div>
 		<div style="clear:both"></div>
 		<div class="filterToolbarButton template">
 			<svg width="12px" height="12px" viewBox="0 0 12 12">
@@ -582,7 +517,7 @@ function updateFilterList() {
 			</div>
 		</div>
 		<div class="strategyPanel">
-			<div class="strategyOpener">
+			<div class="strategyOpener" id="strategyOpener">
 				<svg width="20px" height="217px" viewBox="0 0 40 434">
 					<path d="M 40 0 L 0 40 L 0 394 L 40 434 z" fill="rgb(188,188,188)" />
 					<path d="M 16 127 L 24 119 L 24 135 z" fill="rgb(127,127,127)" />
@@ -593,7 +528,7 @@ function updateFilterList() {
 			<div class="strategyPanelContent">
 			<div class="strategyToolbar">
 				<div class="strategySummary"><b><span class="strategyCount">0</span></b> Strategies</div>
-				<div class="strategySearch"><input type="search" placeholder="Search Strategies" /></div>
+				<div class="strategySearch"><input id="strategySearchField" type="search" placeholder="Search Strategies" /></div>
 			</div>
 			<div class="strategyList">
 				<div class="strategyListHeader">
@@ -607,7 +542,12 @@ function updateFilterList() {
 				<div class="strategyListRow template">
 					<div class="strategyListColumn strategyListColumnColor"></div>
 					<div class="strategyListColumn strategyListColumnStrategy"><a class="strategyDetailLink"></a></div>
-					<div class="strategyListColumn strategyListColumnFavorite"></div>
+					<div class="strategyListColumn strategyListColumnFavorite">
+						<div class="strategyFavoriteButton">
+							<span class="strategySave">Save</span>
+							<span class="strategySaved">Saved</span>
+						</div>
+					</div>
 					<div class="strategyListColumn strategyListColumnMin"></div>
 					<div style="clear:both"></div>
 				</div>
@@ -616,11 +556,170 @@ function updateFilterList() {
 		</div>
 		<div style="clear:both"></div>
 	</div>
-
-
 </div>
 <script language="javascript" type="text/javascript">
-	// This stuff should really go to $(document).ready(function () { ... }), but errors in other parts of the website prevents that from firing.
-	updateFilterList();
+
+ServerData = <%= ServerData() %>;
+
+function cloneTemplate(query) {
+	var copy = $(query).clone();
+	copy.removeClass("template");
+	return copy;
+}
+
+function toStringWithThousandSep(v) {
+	var text = Math.round(v).toString();
+	for (var i = 3; i < text.length; i += 4) {
+		text = text.substr(0, text.length - i) + "," + text.substr(text.length - i);
+	}
+	return text;
+}
+
+var strategyFilters = [];
+
+function updateStategyList() {
+	var body = $(".strategyListBody");
+	body.empty();
+
+	var searchText = $("#strategySearchField").val().toLowerCase();
+
+	var count = 0;
+	ServerData.strategies.forEach(function (strategy) {
+		if (searchText.length > 1 && strategy.name.toLowerCase().indexOf(searchText) == -1) return;
+
+		var skip = false;
+		strategyFilters.forEach(function (filter) { if (!filter(strategy)) skip = true; });
+		if (skip) return;
+
+		count++;
+
+		var item = cloneTemplate(".strategyListRow.template");
+		$(".strategyListColumnColor", item).attr("style", "background-color:rgb(177,214,234)");
+		//$(".strategyListColumnColor", item).attr("style", "background-color:rgb(255,199,112)");
+		$(".strategyDetailLink", item).text(strategy.name);
+		$(".strategyDetailLink", item).attr('href', ServerData.detailUrl + "?Document=" + strategy.id);
+		$(".strategyListColumnMin", item).text(toStringWithThousandSep(strategy.min));
+
+		if (strategy.favorite) {
+			$(".strategyFavoriteButton", item).addClass("selected");
+		}
+
+		$(".strategyFavoriteButton", item).on('click', function() {
+			if (strategy.favorite) {
+				strategy.favorite = false;
+				$(this).removeClass("selected");
+			}
+			else {
+				strategy.favorite = true;
+				$(this).addClass("selected");
+			}
+		});
+
+		body.append(item);
+	});
+
+	$(".strategyCount").text(count);
+}
+
+function createFilterList() {
+	strategyFilters = [];
+
+	var filters = $(".filterGroupItems");
+	filters.empty();
+
+	ServerData.filterGroups.forEach(function (filterGroup) {
+		var groupItem = cloneTemplate(".filterGroup.template");
+		$(".filterTitle", groupItem).text(filterGroup.name);
+
+		filterGroup.controls.forEach(function (control) {
+			var controlItem = null;
+			switch (control.type) {
+			case "Investment Approach Control":
+				controlItem = cloneTemplate(".filterApproachControl.template");
+				break;
+			case "Risk Profile Control":
+				controlItem = cloneTemplate(".filterRiskProfileControl.template");
+				break;
+			case "Fee Control":
+				controlItem = cloneTemplate(".filterFeeControl.template");
+				break;
+			case "Checkbox Control":
+				controlItem = cloneTemplate(".filterCheckboxControl.template");
+				$(".filterCheckboxLabel", controlItem).text(control.name);
+
+				var checkboxInput = $("input[type='checkbox']", controlItem);
+				var checked = checkboxInput.get(0).checked;
+
+				var activeFilter = {
+					name: control.name,
+					clear: function() {
+						checkboxInput.get(0).checked = false;
+						checked = false;
+					},
+				};
+
+				checkboxInput.on('change', function () {
+					checked = this.checked;
+					if (checked) {
+						addActiveFilter(activeFilter);
+					}
+					else {
+						removeActiveFilter(activeFilter);
+					}
+					updateStategyList();
+				});
+
+				strategyFilters.push(function (strategy) {
+					return !checked || strategy[control.field] == "1";
+				});
+				break;
+			}
+
+			if (controlItem != null) {
+				$(".filterControls", groupItem).append(controlItem);
+			}
+		});
+
+		filters.append(groupItem);
+	});
+}
+
+var activeFilters = [];
+
+function addActiveFilter(filter) {
+	filter.button = cloneTemplate(".filterToolbarButton.template");
+	$(".filterToolbarButtonTitle", filter.button).text(filter.name);
+	filter.button.on('click', function() { removeActiveFilter(filter); });
+	$(".filterList").append(filter.button);
+	activeFilters.push(filter);
+}
+
+function removeActiveFilter(filter) {
+	if (filter.button) {
+		filter.button.remove();
+	}
+	var index = activeFilters.indexOf(filter);
+	if (index != -1) activeFilters.splice(index, 1);
+	filter.clear();
 	updateStategyList();
+}
+
+function clearActiveFilters() {
+	$(".filterList").empty();
+	activeFilters.forEach(function(filter) { filter.clear(); });
+	activeFilters = [];
+	updateStategyList();
+}
+
+function toggleStrategyOpener() {
+	$(".strategySection .filterStrategySplit").toggleClass("open");
+}
+
+$("#strategyClearFilters").on('click', clearActiveFilters);
+$("#strategySearchField").on('input', updateStategyList);
+$("#strategyOpener").on('click', toggleStrategyOpener);
+
+createFilterList();
+updateStategyList();
+
 </script>
