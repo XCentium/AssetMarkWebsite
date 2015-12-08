@@ -13,10 +13,6 @@
 <%@ Import Namespace="Newtonsoft.Json.Linq" %>
 
 <script runat="server">
-	//private bool bMoreResearch;
-	private string sManagerOrStrategistParameter;
-	private string sAllocationApproachParameter;
-
 	protected override void OnLoad(EventArgs e)
 	{
 		base.OnLoad(e);
@@ -29,16 +25,20 @@
 	private void BindData()
 	{
 		// get the allocation approach in case there is one (GPS doesn't have one, for instance)
-		string sAllocationApproach;
-		sAllocationApproachParameter = !String.IsNullOrWhiteSpace(sAllocationApproach = Request.QueryString[Genworth.SitecoreExt.Constants.Investments.QueryParameters.AllocationApproach]) ?
-			String.Format("&{0}={1}", Genworth.SitecoreExt.Constants.Investments.QueryParameters.AllocationApproach, sAllocationApproach) : String.Empty;
+		//string sAllocationApproach;
+		//var sAllocationApproachParameter = !String.IsNullOrWhiteSpace(sAllocationApproach = Request.QueryString[Genworth.SitecoreExt.Constants.Investments.QueryParameters.AllocationApproach]) ?
+		//	String.Format("&{0}={1}", Genworth.SitecoreExt.Constants.Investments.QueryParameters.AllocationApproach, sAllocationApproach) : String.Empty;
 
 		// Get the document
 		var document = ContextExtension.CurrentDatabase.GetItem((Request.QueryString["Document"] ?? string.Empty).Trim());
 		if (document == null)
 			return;
 
+		lHeaderTitle.Text = Server.HtmlEncode(document.DisplayName);
+		lHeaderSubTitle.Text = Server.HtmlEncode("Tactical Strategies - Enhanced Return Focus");
+
 		// Get the manager or strategist associated with this item
+		string sManagerOrStrategistParameter = "";
 		var owner = document.Axes.GetAncestors().GetItemsOfTemplate(new string[] { "Manager", "Strategist" }).FirstOrDefault();
 		if (owner != null)
 		{
@@ -77,92 +77,51 @@
 			}
 		}
 
+		sResearch.Text = "Go to Archived Research";
+		dResearch.Attributes.Add("data-url", String.Format("{0}?{1}", Genworth.SitecoreExt.Constants.Investments.Items.ResearchItem.GetURL(), sManagerOrStrategistParameter));
 	}
 
-	private void BindResearch(IEnumerable<Result> oResults)
+	private void BindResearch(IEnumerable<Result> documents)
 	{
-		SortedDictionary<string, List<Result>> oCategorizedResults;
-		DateTime dDate;
-		
-		//create a list to hold categorized results
-		oCategorizedResults = new SortedDictionary<string, List<Result>>();
-		
-		//get the distinct categories
-		oResults.Select(oDocument => oDocument.Category).Distinct().ToList().ForEach(sCategory =>
-		{
-			//create a category in the categorized results list
-			if (!String.IsNullOrWhiteSpace(sCategory))
-				oCategorizedResults.Add(sCategory, new List<Result>());
-		});
+		var items = new List<Tuple<string, Result>>();
 
-		//loop over the documents
-		foreach (Result oResult in oResults.OrderByDescending(oResult => DateTime.TryParse(oResult.Date, out dDate) ? dDate.ToString("yyyyMMddTHHmmss") : string.Empty))
+		foreach (Item categoryItem in ContextExtension.CurrentItem.Axes.GetChild("Categories").Children)
 		{
-			if (!String.IsNullOrWhiteSpace(oResult.Category))
-				oCategorizedResults[oResult.Category].Add(oResult);
+			DateTime dDate;
+
+			var categoryName = categoryItem["Name"];
+			var categoryValue = categoryItem["Category"];
+			
+			var categoryDocs = documents.Where(doc => doc.Category == categoryValue);
+			var categoryDoc = categoryDocs.OrderByDescending(oResult => DateTime.TryParse(oResult.Date, out dDate) ? dDate.ToString("yyyyMMddTHHmmss") : string.Empty).FirstOrDefault();
+			if (categoryDoc != null)
+				items.Add(new Tuple<string, Result>(categoryName, categoryDoc));
 		}
 
-		//select the documents by type
-		rCategories.DataSource = oCategorizedResults;
+		rCategories.DataSource = items;
 		rCategories.ItemDataBound += new RepeaterItemEventHandler(rCategories_ItemDataBound);
 		rCategories.DataBind();
 	}
 
 	private void rCategories_ItemDataBound(object sender, RepeaterItemEventArgs e)
 	{
-		KeyValuePair<string, List<Result>> oCategoryResults;
-		HyperLink hTitle;
-		Repeater rDocuments;
-		string sCategoryCleanCode;
-		
-		oCategoryResults = (KeyValuePair<string, List<Result>>)e.Item.DataItem;
-		hTitle = (HyperLink)e.Item.FindControl("hTitle");
-		rDocuments = (Repeater)e.Item.FindControl("rDocuments");
-		hTitle.Text = oCategoryResults.Key;
-        sCategoryCleanCode = Genworth.SitecoreExt.Services.Investments.Filter.Option.CodeCleaner.Replace(oCategoryResults.Key, string.Empty).ToLower();
+		var item = (Tuple<string, Result>)e.Item.DataItem;
+		string itemName = item.Item1;
+		string itemPath = string.IsNullOrWhiteSpace(item.Item2.sUrl) ? item.Item2.Path : item.Item2.sUrl;
+		string itemExt = item.Item2.Extension;
 
-		bool seeAllLink = oCategoryResults.Value.Count > Genworth.SitecoreExt.Constants.Investments.MaxSideResearchItemsPerCategory;
-		hTitle.Visible = true;
-		if (seeAllLink)
-		{
-			hTitle.NavigateUrl = String.Format("{0}?{1}&category={2}{3}",
-													Genworth.SitecoreExt.Constants.Investments.Items.ResearchItem.GetURL(),
-													sManagerOrStrategistParameter,
-													sCategoryCleanCode,
-													sAllocationApproachParameter ?? String.Empty);
-			hTitle.Target = "_top";
-		}
-		
-		rDocuments.DataSource = oCategoryResults.Value.Take(Genworth.SitecoreExt.Constants.Investments.MaxSideResearchItemsPerCategory);
-		rDocuments.ItemDataBound += new RepeaterItemEventHandler(rDocuments_ItemDataBound);
-		rDocuments.DataBind();
-	}
+		var dCategory = (HtmlGenericControl)e.Item.FindControl("dCategory");
+		dCategory.Attributes.Add("data-url", itemPath);
+		dCategory.Attributes.Add("data-extension", itemExt);
+		if (e.Item.ItemIndex == 0)
+			dCategory.Attributes["class"] = dCategory.Attributes["class"] + " selected";
 
-	private void rDocuments_ItemDataBound(object sender, RepeaterItemEventArgs e)
-	{
-		Result oResult;
-		HyperLink hDocument;
-		HtmlGenericControl liItem;
-		Item contentItem;
+		var sCategory = (Literal)e.Item.FindControl("sCategory");
+		sCategory.Text = Server.HtmlEncode(itemName);
 
-		liItem = (HtmlGenericControl)e.Item.FindControl("liItem");
-		liItem.Visible = e.Item.ItemIndex < Genworth.SitecoreExt.Constants.Investments.MaxSideResearchItemsPerCategory;
-
-		if (liItem.Visible)
-		{
-			oResult = (Result)e.Item.DataItem;
-			hDocument = (HyperLink)e.Item.FindControl("hDocument");
-			hDocument.Text = oResult.Title;
-			string itemPath = string.IsNullOrWhiteSpace(oResult.sUrl) ? oResult.Path : oResult.sUrl;
-			hDocument.Attributes.Add("href", itemPath);
-			//hDocument.CssClass = string.Format("{0}-icon", oResult.Extension);
-
-			hDocument.Target = "_blank";
-			
-			contentItem = ContextExtension.CurrentDatabase.GetItem(ItemHelper.FormatId(oResult.Id));
-			//Set omniture tag
-			contentItem.ConfigureOmnitureControl(ContextExtension.CurrentItem, hDocument);
-		}
+		//Set omniture tag
+		//var contentItem = ContextExtension.CurrentDatabase.GetItem(ItemHelper.FormatId(item.Item2.Id));
+		//contentItem.ConfigureOmnitureControl(ContextExtension.CurrentItem, dCategory);
 	}
 
 	private void BindPDF(Item oDocument)
@@ -376,8 +335,6 @@
 }
 
 </style>
-<script language="javascript" type="text/javascript">
-</script>
 
 <div class="strategyDetail">
 
@@ -385,12 +342,24 @@
 		<div class="detailHeaderBack">&lt; Back</div>
 		<div class="detailHeaderTitleArea">
 			<div class="detailHeaderTitle">
-				<div class="detailHeaderLine1">AssetMark Global Market Trend</div>
-				<div class="detailHeaderLine2">Tactical Strategies - Enhanced Return Focus</div>
+				<div class="detailHeaderLine1"><asp:Literal ID="lHeaderTitle" runat="server" /></div>
+				<div class="detailHeaderLine2"><asp:Literal ID="lHeaderSubTitle" runat="server" /></div>
 			</div>
 			<div class="detailSavedButton">Saved</div>
 		</div>
 		<div class="detailHeaderTableArea">
+			<asp:Repeater ID="rTable" runat="server">
+				<ItemTemplate>
+					<table>
+						<asp:Repeater ID="rTableRow" runat="server">
+							<ItemTemplate>
+								<td><asp:Literal ID="lRowName" runat="server" />:</td>
+								<td><asp:Literal ID="lRowValue" runat="server" /></td>
+							</ItemTemplate>
+						</asp:Repeater>
+					</table>
+				</ItemTemplate>
+			</asp:Repeater>
 			<table>
 				<tr>
 					<td>Investment Objective:</td>
@@ -434,64 +403,35 @@
 	</div>
 	<div class="detailBody">
 		<div class="detailSidebar">
-			<div class="sidebarRow selected">
-				<span class="sidebarRowTitle">Fact Sheet</span>
-				<div class="sidebarRowArrow"></div>
-			</div>
-			<div class="sidebarRow">
-				<span class="sidebarRowTitle">Performance</span>
-				<div class="sidebarRowArrow"></div>
-			</div>
-			<div class="sidebarRow">
-				<span class="sidebarRowTitle">Commentary</span>
-				<div class="sidebarRowArrow"></div>
-			</div>
-			<div class="sidebarRow">
-				<span class="sidebarRowTitle">Market &amp;<br/>Economic Updates</span>
-				<div class="sidebarRowArrow"></div>
-			</div>
-			<div class="sidebarRow">
-				<span class="sidebarRowTitle">Reallocations</span>
-				<div class="sidebarRowArrow"></div>
-			</div>
-			<div class="sidebarRow">
-				<span class="sidebarRowTitle">Expense Ratios</span>
-				<div class="sidebarRowArrow"></div>
-			</div>
-			<div class="sidebarRow">
-				<span class="sidebarRowTitle">Portfolio Information</span>
-				<div class="sidebarRowArrow"></div>
-			</div>
-			<div class="sidebarRow">
-				<span class="sidebarRowTitle">Strategist Information</span>
-				<div class="sidebarRowArrow"></div>
-			</div>
-			<div class="sidebarRow">
-				<span class="sidebarRowTitle">Strategist Video</span>
-				<div class="sidebarRowArrow"></div>
-			</div>
-			<div class="sidebarRow">
-				<span class="sidebarRowTitle">Go to Archived Research</span>
-				<div class="sidebarRowArrow"></div>
-			</div>
 			<asp:Repeater ID="rCategories" runat="server">
 				<ItemTemplate>
-					<div class="sidebarRow">
-						<span class="sidebarRowTitle">Category: <asp:HyperLink ID="hTitle" runat="server" Visible="false" /></span>
+					<div class="sidebarRow" ID="dCategory" runat="server">
+						<span class="sidebarRowTitle"><asp:Literal ID="sCategory" runat="server" /></span>
 						<div class="sidebarRowArrow"></div>
 					</div>
-					<asp:Repeater ID="rDocuments" runat="server">
-						<ItemTemplate>
-							<div class="sidebarRow">
-								<span class="sidebarRowTitle" runat="server" id="liItem">Doc: <asp:HyperLink ID="hDocument" runat="server" /></span>
-								<div class="sidebarRowArrow"></div>
-							</div>
-						</ItemTemplate>
-					</asp:Repeater>
 				</ItemTemplate>
 			</asp:Repeater>
+			<div class="sidebarRow" ID="dResearch" runat="server">
+				<span class="sidebarRowTitle"><asp:Literal ID="sResearch" runat="server" /></span>
+				<div class="sidebarRowArrow"></div>
+			</div>
 		</div>
 		<div class="detailDocument"><asp:Literal ID="lPDF" runat="server" /></div>
 		<div style="clear: both"></div>
 	</div>
 </div>
+
+<script language="javascript" type="text/javascript">
+$(".strategyDetail .sidebarRow").on('click', function (e) {
+	var url = $(this).attr("data-url");
+	var ext = $(this).attr("data-extension");
+	if (ext != undefined && ext.toLowerCase() == "pdf") {
+		$(".strategyDetail .sidebarRow").removeClass("selected");
+		$(this).addClass("selected");
+		$(".detailDocument object").attr("data", url);
+	}
+	else {
+		window.location.href = url;
+	}
+});
+</script>
