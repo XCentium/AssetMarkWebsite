@@ -23,6 +23,61 @@
 
 	private void BindData()
 	{
+		// bind product link
+		var oProductLinkItem = Genworth.SitecoreExt.Constants.Investments.Items.ProductLink;
+		if (oProductLinkItem != null)
+		{
+			oProductLinkItem.ConfigureHyperlink(hProductLink);
+			hProductLink.Text = oProductLinkItem.DisplayName;
+			hProductLink.Visible = true;
+
+			//Set Omniture tags
+			oProductLinkItem.ConfigureOmnitureControl(ContextExtension.CurrentItem, hProductLink);
+		}
+	}
+
+	private List<Tuple<string,string>> filterFields;
+
+	private JArray BuildFilterGroups(Item item)
+	{
+		var filterGroups = new JArray();
+		foreach (Item groupItem in item.Children)
+		{
+			dynamic group = new JObject();
+			group.name = groupItem["Name"];
+
+			if (groupItem.TemplateName == "Filter Rollout")
+			{
+				group.groups = BuildFilterGroups(groupItem);
+			}
+			else
+			{
+				var controls = new JArray();
+				foreach (Item controlItem in groupItem.Children)
+				{
+					dynamic control = new JObject();
+					control.type = controlItem.TemplateName;
+					if (controlItem.TemplateName == "Checkbox Control")
+					{
+						InternalLinkField fieldLink = controlItem.GetField("Field");
+						var target = fieldLink.TargetItem;
+						if (target == null)
+							continue;
+
+						var field = new Tuple<string,string>(target.Parent.Name, target.Name);
+						filterFields.Add(field);
+
+						control.name = controlItem["Name"];
+						control.field = field.Item1 + "/" + field.Item2;
+					}
+					controls.Add(control);
+				}
+
+				group.controls = controls;
+			}
+			filterGroups.Add(group);
+		}
+		return filterGroups;
 	}
 
 	private string ServerData()
@@ -35,37 +90,9 @@
 		detailItem.ConfigureHyperlink(olink);
 		var detailUrl = olink.NavigateUrl;
 
-		var filterFields = new List<Tuple<string,string>>();
+		filterFields = new List<Tuple<string,string>>();
 
-		var filterGroups = new JArray();
-		foreach (Item groupItem in ContextExtension.CurrentItem.Axes.GetChild("Filters").Children)
-		{
-			var controls = new JArray();
-			foreach (Item controlItem in groupItem.Children)
-			{
-				dynamic control = new JObject();
-				control.type = controlItem.TemplateName;
-				if (controlItem.TemplateName == "Checkbox Control")
-				{
-					InternalLinkField fieldLink = controlItem.GetField("Field");
-					var target = fieldLink.TargetItem;
-					if (target == null)
-						continue;
-
-					var field = new Tuple<string,string>(target.Parent.Name, target.Name);
-					filterFields.Add(field);
-
-					control.name = controlItem["Name"];
-					control.field = field.Item1 + "/" + field.Item2;
-				}
-				controls.Add(control);
-			}
-
-			dynamic group = new JObject();
-			group.name = groupItem["Name"];
-			group.controls = controls;
-			filterGroups.Add(group);
-		}
+		var filterGroups = BuildFilterGroups(ContextExtension.CurrentItem.Axes.GetChild("Filters"));
 
 		var strategies = new JArray();
 		foreach (Item item in strategistsItem.Axes.SelectItems("descendant::*[@@TemplateName='Solution']"))
@@ -73,7 +100,11 @@
 			dynamic strategy = new JObject();
 			strategy.id = item.ID.ToString();
 			strategy.name = item.DisplayName;
-			strategy.min = 0.0;
+			strategy.min = 50000;
+			strategy.riskProfile = "P2, P3, P4";
+			strategy.fee = 0.67;
+			strategy.investmentVehicle = "ETF";
+			strategy.investmentProvider = "Strategist";
 
 			foreach (var field in filterFields)
 			{
@@ -94,10 +125,18 @@
 <style type="text/css">
 
 .strategySection {
+	position: relative;
 }
 
 .strategySection .template {
 	display: none !important;
+}
+
+.strategySection .limitations {
+	position: absolute;
+	right: 10px;
+	top: 0;
+	font-size: 11px;
 }
 
 .strategySection .filterToolbar {
@@ -211,6 +250,40 @@
 	float: left;
 }
 
+.strategySection .filterRollout {
+}
+
+.strategySection .filterRolloutTitle {
+	font-size: 8px;
+	font-weight: bold;
+	line-height: 10px;
+	padding: 10px 0;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.strategySection .filterRolloutIcon {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.strategySection .filterRolloutIcon g {
+	transform: rotate(180deg);
+	transition: transform 0.5s;
+}
+
+.strategySection .filterRollout.open .filterRolloutIcon g {
+	transform: rotate(0deg);
+}
+
+.strategySection .filterRolloutGroupItems {
+	display: none;
+}
+
+.strategySection .filterRollout.open .filterRolloutGroupItems {
+	display: block;
+}
+
 .strategySection .filterControls {
 	float: left;
 	width: calc(100% - 92px);
@@ -256,24 +329,30 @@
 	border: 1px solid #ededed;
 	height: calc(100% - 44px);
 	position: relative;
+	overflow-x: hidden;
 }
 
 .strategySection .strategyListHeader {
 	position: absolute;
 	top: 6px;
-	width: 100%;
+	width: 848px;
 	height: 22px;
 	font-weight: bold;
 	text-transform: uppercase;
 }
 
-.strategySection .strategyListBody {
+.strategySection .strategyListScrollArea {
 	position: absolute;
 	top: 28px;
 	width: 100%;
 	height: calc(100% - 28px);
+	overflow-x: hidden;
 	overflow-y: scroll;
 	background: white;
+}
+
+.strategySection .strategyListBody {
+	width: 848px;
 }
 
 .strategySection .strategyListRow {
@@ -302,16 +381,42 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	cursor: pointer;
+}
+
+.strategySection .strategyListColumnFavorite {
+	width: 64px;
+	text-align: right;
 }
 
 .strategySection .strategyListColumnMin {
 	width: 60px;
 	padding: 0 5px;
 	text-align: right;
+	transition: width 0.5s;
 }
 
-.strategySection .strategyListColumnFavorite {
-	width: 64px;
+.strategySection .filterStrategySplit.open .strategyListColumnMin {
+	width: 100px;
+}
+
+.strategySection .strategyListColumnRiskProfile {
+	width: 100px;
+	text-align: right;
+}
+
+.strategySection .strategyListColumnFee {
+	width: 100px;
+	text-align: right;
+}
+
+.strategySection .strategyListColumnVehicle {
+	width: 100px;
+	text-align: right;
+}
+
+.strategySection .strategyListColumnProvider {
+	width: 100px;
 	text-align: right;
 }
 
@@ -321,6 +426,11 @@
 
 .strategySection .strategyListHeader .strategyListColumnMin {
 	text-align: right;
+}
+
+.strategySection .strategyListColumnMinAmount {
+	display: inline-block;
+	min-width: 37px;
 }
 
 .strategySection .filterApproachControl {
@@ -428,6 +538,7 @@
 </style>
 
 <div class="strategySection">
+	<div class="limitations"><asp:HyperLink ID="hProductLink" runat="server" Visible="false"></asp:HyperLink></div>
 	<div class="filterToolbar">
 		<div class="filterToolbarButton" id="strategyClearFilters">Clear Filters</div>
 		<div class="filterList"></div>
@@ -447,6 +558,16 @@
 			<div class="filterGroup template">
 				<div class="filterTitle"></div>
 				<div class="filterControls"></div>
+				<div style="clear:both"></div>
+			</div>
+			<div class="filterRollout template">
+				<div class="filterRolloutTitle">
+					<span class="filterRolloutTitleText"></span>
+					<svg class="filterRolloutIcon" width="16px" height="8px" viewBox="-8 -4 16 8">
+						<g><path d="M 0 -2 L 4 2 L -4 2 z" fill="rgb(1,125,187)" /></g>
+					</svg>
+				</div>
+				<div class="filterRolloutGroupItems"></div>
 				<div style="clear:both"></div>
 			</div>
 			<div class="filterApproachControl template">
@@ -535,10 +656,16 @@
 					<div class="strategyListColumn strategyListColumnColor"></div>
 					<div class="strategyListColumn strategyListColumnStrategy"><br/>Strategy</div>
 					<div class="strategyListColumn strategyListColumnFavorite"><br/>Favorites</div>
-					<div class="strategyListColumn strategyListColumnMin">Investment Minimum</div>
+					<div class="strategyListColumn strategyListColumnMin">Investment<br/>Minimum</div>
+					<div class="strategyListColumn strategyListColumnRiskProfile">Risk<br/>Profile</div>
+					<div class="strategyListColumn strategyListColumnFee">Platform<br/>Fee</div>
+					<div class="strategyListColumn strategyListColumnVehicle">Investment<br/>Vehicle</div>
+					<div class="strategyListColumn strategyListColumnProvider">Investment<br/>Provider</div>
 					<div style="clear:both"></div>
 				</div>
-				<div class="strategyListBody"></div>
+				<div class="strategyListScrollArea">
+					<div class="strategyListBody"></div>
+				</div>
 				<div class="strategyListRow template">
 					<div class="strategyListColumn strategyListColumnColor"></div>
 					<div class="strategyListColumn strategyListColumnStrategy"><a class="strategyDetailLink"></a></div>
@@ -548,7 +675,13 @@
 							<span class="strategySaved">Saved</span>
 						</div>
 					</div>
-					<div class="strategyListColumn strategyListColumnMin"></div>
+					<div class="strategyListColumn strategyListColumnMin">
+						$<span class="strategyListColumnMinAmount"></span>
+					</div>
+					<div class="strategyListColumn strategyListColumnRiskProfile"></div>
+					<div class="strategyListColumn strategyListColumnFee"></div>
+					<div class="strategyListColumn strategyListColumnVehicle"></div>
+					<div class="strategyListColumn strategyListColumnProvider"></div>
 					<div style="clear:both"></div>
 				</div>
 			</div>
@@ -577,6 +710,19 @@ function toStringWithThousandSep(v) {
 
 var strategyFilters = [];
 
+function sortAndUpdateStrategyList() {
+	var reverse = $(".strategyListHeader .strategyListColumnStrategy").hasClass("reverseOrder");
+
+	if (!reverse) {
+		ServerData.strategies.sort(function (a, b) { if (a.name < b.name) return -1; else if (a.name > b.name) return 1; else return 0; });
+	}
+	else {
+		ServerData.strategies.sort(function (a, b) { if (a.name > b.name) return -1; else if (a.name < b.name) return 1; else return 0; });
+	}
+
+	updateStategyList();
+}
+
 function updateStategyList() {
 	var body = $(".strategyListBody");
 	body.empty();
@@ -598,7 +744,11 @@ function updateStategyList() {
 		//$(".strategyListColumnColor", item).attr("style", "background-color:rgb(255,199,112)");
 		$(".strategyDetailLink", item).text(strategy.name);
 		$(".strategyDetailLink", item).attr('href', ServerData.detailUrl + "?Document=" + strategy.id);
-		$(".strategyListColumnMin", item).text(toStringWithThousandSep(strategy.min));
+		$(".strategyListColumnMinAmount", item).text(toStringWithThousandSep(strategy.min));
+		$(".strategyListColumnRiskProfile", item).text(strategy.riskProfile);
+		$(".strategyListColumnFee", item).text(strategy.fee.toFixed(2) + "%");
+		$(".strategyListColumnVehicle", item).text(strategy.investmentVehicle);
+		$(".strategyListColumnProvider", item).text(strategy.investmentProvider);
 
 		if (strategy.favorite) {
 			$(".strategyFavoriteButton", item).addClass("selected");
@@ -624,64 +774,78 @@ function updateStategyList() {
 function createFilterList() {
 	strategyFilters = [];
 
+	function createFilterGroup(filtersDiv, filterGroup) {
+		if (filterGroup.controls) {
+			var groupItem = cloneTemplate(".filterGroup.template");
+			$(".filterTitle", groupItem).text(filterGroup.name);
+
+			filterGroup.controls.forEach(function (control) {
+				var controlItem = null;
+				switch (control.type) {
+				case "Investment Approach Control":
+					controlItem = cloneTemplate(".filterApproachControl.template");
+					break;
+				case "Risk Profile Control":
+					controlItem = cloneTemplate(".filterRiskProfileControl.template");
+					break;
+				case "Fee Control":
+					controlItem = cloneTemplate(".filterFeeControl.template");
+					break;
+				case "Checkbox Control":
+					controlItem = cloneTemplate(".filterCheckboxControl.template");
+					$(".filterCheckboxLabel", controlItem).text(control.name);
+
+					var checkboxInput = $("input[type='checkbox']", controlItem);
+					var checked = checkboxInput.get(0).checked;
+
+					var activeFilter = {
+						name: control.name,
+						clear: function() {
+							checkboxInput.get(0).checked = false;
+							checked = false;
+						},
+					};
+
+					checkboxInput.on('change', function () {
+						checked = this.checked;
+						if (checked) {
+							addActiveFilter(activeFilter);
+						}
+						else {
+							removeActiveFilter(activeFilter);
+						}
+						updateStategyList();
+					});
+
+					strategyFilters.push(function (strategy) {
+						return !checked || strategy[control.field] == "1";
+					});
+					break;
+				}
+
+				if (controlItem != null) {
+					$(".filterControls", groupItem).append(controlItem);
+				}
+			});
+
+			filtersDiv.append(groupItem);
+		}
+		else {
+			var groupRollout = cloneTemplate(".filterRollout.template");
+			var rolloutFilters = $(".filterRolloutGroupItems", groupRollout);
+			$(".filterRolloutTitleText", groupRollout).text(filterGroup.name);
+			$(".filterRolloutTitle", groupRollout).on('click', function() {
+				$(this).parent().toggleClass('open');
+			});
+			filterGroup.groups.forEach(function (item) { createFilterGroup(rolloutFilters, item); });
+			filtersDiv.append(groupRollout);
+		}
+	}
+
 	var filters = $(".filterGroupItems");
 	filters.empty();
 
-	ServerData.filterGroups.forEach(function (filterGroup) {
-		var groupItem = cloneTemplate(".filterGroup.template");
-		$(".filterTitle", groupItem).text(filterGroup.name);
-
-		filterGroup.controls.forEach(function (control) {
-			var controlItem = null;
-			switch (control.type) {
-			case "Investment Approach Control":
-				controlItem = cloneTemplate(".filterApproachControl.template");
-				break;
-			case "Risk Profile Control":
-				controlItem = cloneTemplate(".filterRiskProfileControl.template");
-				break;
-			case "Fee Control":
-				controlItem = cloneTemplate(".filterFeeControl.template");
-				break;
-			case "Checkbox Control":
-				controlItem = cloneTemplate(".filterCheckboxControl.template");
-				$(".filterCheckboxLabel", controlItem).text(control.name);
-
-				var checkboxInput = $("input[type='checkbox']", controlItem);
-				var checked = checkboxInput.get(0).checked;
-
-				var activeFilter = {
-					name: control.name,
-					clear: function() {
-						checkboxInput.get(0).checked = false;
-						checked = false;
-					},
-				};
-
-				checkboxInput.on('change', function () {
-					checked = this.checked;
-					if (checked) {
-						addActiveFilter(activeFilter);
-					}
-					else {
-						removeActiveFilter(activeFilter);
-					}
-					updateStategyList();
-				});
-
-				strategyFilters.push(function (strategy) {
-					return !checked || strategy[control.field] == "1";
-				});
-				break;
-			}
-
-			if (controlItem != null) {
-				$(".filterControls", groupItem).append(controlItem);
-			}
-		});
-
-		filters.append(groupItem);
-	});
+	ServerData.filterGroups.forEach(function (item) { createFilterGroup(filters, item); });
 }
 
 var activeFilters = [];
@@ -715,11 +879,17 @@ function toggleStrategyOpener() {
 	$(".strategySection .filterStrategySplit").toggleClass("open");
 }
 
+function toggleSortOrder() {
+	$(this).toggleClass("reverseOrder");
+	sortAndUpdateStrategyList();
+}
+
 $("#strategyClearFilters").on('click', clearActiveFilters);
 $("#strategySearchField").on('input', updateStategyList);
 $("#strategyOpener").on('click', toggleStrategyOpener);
+$(".strategyListHeader .strategyListColumnStrategy").on('click', toggleSortOrder);
 
 createFilterList();
-updateStategyList();
+sortAndUpdateStrategyList();
 
 </script>
