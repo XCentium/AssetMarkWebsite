@@ -98,8 +98,12 @@
 		foreach (Item item in strategistsItem.Axes.SelectItems("descendant::*[@@TemplateName='Solution']"))
 		{
 			dynamic strategy = new JObject();
+
 			strategy.id = item.ID.ToString();
 			strategy.name = item.DisplayName;
+			strategy.modelSetTypeId = item["ModelSetTypeId"];
+			strategy.strategistCode = item["StrategistCode"];
+
 			strategy.min = 50000;
 			strategy.riskProfile = "P2, P3, P4";
 			strategy.fee = 0.67;
@@ -694,6 +698,162 @@
 
 ServerData = <%= ServerData() %>;
 
+
+function sliderControl() {
+
+    var gray1 = "rgb(203,205,199)";
+    var gray2 = "rgb(101,101,101)";
+    var gray3 = "rgb(180,180,180)";
+    var green = "rgb(0,124,56)";
+    var white = "white";
+
+    var minPos = 118;
+    var maxPos = 332;
+
+    function createSvgElement(tagName, attributes) {
+        var e = document.createElementNS("http://www.w3.org/2000/svg", tagName);
+        if (tagName == "svg") {
+            e.setAttributeNS("http://www.w3.org/2000/xmlns/", "xmlns:xlink", "http://www.w3.org/1999/xlink");
+        }
+        if (attributes != undefined) {
+            for (var key in attributes) {
+                e.setAttribute(key, attributes[key]);
+            }
+        }
+        return e;
+    }
+
+    var svg = createSvgElement("svg", { width: "450px", height: "52px", viewBox: "0 0 450 52" });
+    var feeBars = svg.appendChild(createSvgElement("g"));
+    for (var i = 0; i < 30; i++) {
+        var width = 12;
+        var x = 25 + i * width;
+        var value = Math.random() * 20;
+        var feeBar = feeBars.appendChild(createSvgElement("rect", { x: x, y: 22 - Math.max(value, 0), width: width + 1, height: Math.abs(value) + 1, fill: gray1 }));
+    }
+    var baseline = svg.appendChild(createSvgElement("rect", { x: 0, y: 22, width: 450, height: 2, fill: gray1 }));
+    var rangeBar = svg.appendChild(createSvgElement("rect", { x: minPos, y: 22, width: maxPos - minPos, height: 2, fill: green }));
+
+    for (var i = 0; i < 6; i++) {
+        var x = 11 + i * 80;
+        var crossline = svg.appendChild(createSvgElement("rect", { x: x, y: 15, width: 1, height: 17, fill: gray2 }));
+        var text = svg.appendChild(createSvgElement("text", { x: x + 1, y: 49, "font-size": 8, fill: "black", "text-anchor": "middle", style: "cursor: default" }));
+        text.appendChild(document.createTextNode((i * 0.25).toFixed(2) + "%"));
+    }
+
+    var minCircle = svg.appendChild(createSvgElement("circle", { cx: minPos, cy: 23, r: 10, fill: white, stroke: gray3, "stroke-width": 1 }));
+    var maxCircle = svg.appendChild(createSvgElement("circle", { cx: maxPos, cy: 23, r: 10, fill: white, stroke: gray3, "stroke-width": 1 }));
+
+    // Block cursor selection if user misclicks
+    svg.addEventListener("mousedown", function (e) { e.preventDefault(); });
+    svg.addEventListener("mouseup", function (e) { e.preventDefault(); });
+
+    function handleCircleInput(circle, moveBeginHandler, moveHandler) {
+        var startValue = 0;
+        var delta = 0;
+
+        circle.addEventListener("mousedown", function (e) {
+            function mouseMove(e) {
+                e.stopPropagation();
+
+                delta += e.movementX;
+                moveHandler(startValue + delta);
+            }
+
+            function mouseUp(e) {
+                e.stopPropagation();
+                document.body.removeEventListener("mousemove", mouseMove, true);
+                document.body.removeEventListener("mouseup", mouseUp, true);
+            }
+
+            e.stopPropagation();
+            e.preventDefault();
+            document.body.addEventListener("mousemove", mouseMove, true);
+            document.body.addEventListener("mouseup", mouseUp, true);
+
+            delta = 0;
+            startValue = moveBeginHandler();
+        });
+    }
+
+    function updateRange() {
+        minCircle.setAttribute("cx", minPos);
+        maxCircle.setAttribute("cx", maxPos);
+        rangeBar.setAttribute("x", minPos);
+        rangeBar.setAttribute("width", maxPos - minPos);
+    }
+
+    handleCircleInput(minCircle, function () {
+        return minPos;
+    }, function (pos) {
+        minPos = Math.max(Math.min(pos, maxPos - 20), 11);
+        updateRange();
+    });
+
+    handleCircleInput(maxCircle, function () {
+        return maxPos;
+    }, function (pos) {
+        maxPos = Math.min(Math.max(pos, minPos + 20), 11 + 5 * 80);
+        updateRange();
+    });
+
+    return {
+        element: svg
+    };
+}
+
+function loadSavedFavorites() {
+	function loadSuccess(savedFavorites) {
+		// Convert list to dictionary for faster lookup:
+		var dictionary = {};
+		savedFavorites.forEach(function (favorite) {
+			dictionary[favorite.ModelSetTypeId + "::" + favorite.StrategistCode] = true;
+		});
+
+		// Update favorite status on strategies:
+		ServerData.strategies.forEach(function (strategy) {
+			var key = strategy.modelSetTypeId + "::" + strategy.strategistCode;
+			strategy.favorite = dictionary[key] ? true : false;
+		});
+
+		updateStategyList();
+	}
+
+	$.ajax({
+		url: "/api/v1/FavoriteInvestment",
+		dataType: "json",
+		success: loadSuccess
+	});
+}
+
+function addSavedFavorite(strategy) {
+	$.ajax({
+		url: "/api/v1/FavoriteInvestment",
+		type: "POST",
+		dataType: "json",
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify({
+			ModelSetTypeId: strategy.modelSetTypeId,
+			StrategistCode: strategy.strategistCode,
+			Title: strategy.name
+		})
+	});
+}
+
+function removeSavedFavorite(strategy) {
+	$.ajax({
+		url: "/api/v1/FavoriteInvestment/delete",
+		type: "POST",
+		dataType: "json",
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify({
+			ModelSetTypeId: strategy.modelSetTypeId,
+			StrategistCode: strategy.strategistCode,
+			Title: strategy.name
+		})
+	});
+}
+
 function cloneTemplate(query) {
 	var copy = $(query).clone();
 	copy.removeClass("template");
@@ -758,10 +918,12 @@ function updateStategyList() {
 			if (strategy.favorite) {
 				strategy.favorite = false;
 				$(this).removeClass("selected");
+				removeSavedFavorite(strategy);
 			}
 			else {
 				strategy.favorite = true;
 				$(this).addClass("selected");
+				addSavedFavorite(strategy);
 			}
 		});
 
@@ -789,7 +951,8 @@ function createFilterList() {
 					controlItem = cloneTemplate(".filterRiskProfileControl.template");
 					break;
 				case "Fee Control":
-					controlItem = cloneTemplate(".filterFeeControl.template");
+					//controlItem = cloneTemplate(".filterFeeControl.template");
+					controlItem = sliderControl().element;
 					break;
 				case "Checkbox Control":
 					controlItem = cloneTemplate(".filterCheckboxControl.template");
@@ -891,5 +1054,6 @@ $(".strategyListHeader .strategyListColumnStrategy").on('click', toggleSortOrder
 
 createFilterList();
 sortAndUpdateStrategyList();
+loadSavedFavorites();
 
 </script>
