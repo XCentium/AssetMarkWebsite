@@ -75,6 +75,12 @@
 				//bind the fact sheet
 				BindPDF(tempDocument);
 			}
+			else
+			{
+				tempDocument = document.GetListItem("Documents", "Profile Sheet");
+				if (tempDocument != null)
+					BindPDF(tempDocument);
+			}
 		}
 
 		sResearch.Text = "Go to Archived Research";
@@ -85,7 +91,7 @@
 	{
 		var items = new List<Tuple<string, Result>>();
 
-		foreach (Item categoryItem in ContextExtension.CurrentItem.Axes.GetChild("Categories").Children)
+		foreach (Item categoryItem in ContextExtension.CurrentItem.Axes.GetChild("Sidebar").Children)
 		{
 			DateTime dDate;
 
@@ -339,7 +345,7 @@
 <div class="strategyDetail">
 
 	<div class="detailHeader">
-		<div class="detailHeaderBack">&lt; Back</div>
+		<div class="detailHeaderBack" onclick="javascript:window.history.back()">&lt; Back</div>
 		<div class="detailHeaderTitleArea">
 			<div class="detailHeaderTitle">
 				<div class="detailHeaderLine1"><asp:Literal ID="lHeaderTitle" runat="server" /></div>
