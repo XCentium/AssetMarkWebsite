@@ -71,6 +71,30 @@
 						control.name = controlItem["Name"];
 						control.field = field.Item1 + "/" + field.Item2;
 					}
+					else if (controlItem.TemplateName == "Investment Approach Control")
+					{
+						var groups = new JArray();
+						for (int i = 0; i < 3; i++)
+						{
+							string groupTitle = controlItem[String.Format("Title {0}", i + 1)];
+							MultilistField groupList = controlItem.GetField(String.Format("Approach {0}", i + 1));
+
+							var approaches = new JArray();
+							foreach (Item approachItem in groupList.GetItems())
+							{
+								dynamic approach = new JObject();
+								approach.name = approachItem["Title"];
+								approach.rowing = approachItem["Rowing"] == "1";
+								approaches.Add(approach);
+							}
+
+							dynamic approachGroup = new JObject();
+							approachGroup.name = groupTitle;
+							approachGroup.approaches = approaches;
+							groups.Add(approachGroup);
+						}
+						control.groups = groups;
+					}
 					controls.Add(control);
 				}
 
@@ -81,40 +105,55 @@
 		return filterGroups;
 	}
 
-	private List<Tuple<string,string,string>> BuildColumns(Item item)
+	private List<Tuple<string,string,string,string>> BuildColumns(Item item)
 	{
-		var list = new List<Tuple<string,string,string>>();
+		var list = new List<Tuple<string,string,string,string>>();
 
 		foreach (Item column in item.Children)
 		{
 			string name = column["Name"];
-			InternalLinkField fieldLink = column.GetField("Field");
-			var target = fieldLink.TargetItem;
-			if (target == null)
-				continue;
 
-			list.Add(new Tuple<string,string,string>(name, target.Parent.Name, target.Name));
+			/*InternalLinkField typeLink = column.GetField("Visual Appearance");
+			if (typeLink.TargetItem == null)
+				continue;
+			string fieldType = typeLink.TargetItem.Name;
+
+			if (fieldType == "Investment Provider")
+			{
+				list.Add(new Tuple<string,string,string,string>(name, null, null, fieldType));
+			}
+			else*/ string fieldType = "Text";
+			{
+				InternalLinkField fieldLink = column.GetField("Field");
+				var target = fieldLink.TargetItem;
+				if (target == null)
+					continue;
+
+				list.Add(new Tuple<string,string,string,string>(name, target.Parent.Name, target.Name, fieldType));
+			}
 		}
 
 		return list;
 	}
 
-	private JArray BuildColumnHeader(List<Tuple<string,string,string>> columns)
+	private JArray BuildColumnHeader(List<Tuple<string,string,string,string>> columns)
 	{
 		var list = new JArray();
 		foreach (var field in columns)
 		{
-			list.Add(field.Item1);
+			dynamic headerItem = new JObject();
+			headerItem.name = field.Item1;
+			headerItem.type = field.Item4;
+			list.Add(headerItem);
 		}
 		return list;
 	}
 
-	private JObject BuildStrategy(Item item, List<Tuple<string,string,string>> columns, string type)
+	private JObject BuildStrategy(Item item, List<Tuple<string,string,string,string>> columns, bool manager)
 	{
 		dynamic strategy = new JObject();
 		strategy.id = item.ID.ToString();
-		strategy.type = type;
-		strategy.name = item.DisplayName;
+		strategy.name = String.IsNullOrWhiteSpace(item["Strategy Title"]) ? item.DisplayName : item["Strategy Title"];
 		strategy.modelSetTypeId = item["ModelSetTypeId"];
 		strategy.strategistCode = item["StrategistCode"];
 		strategy.columns = new JArray();
@@ -122,7 +161,10 @@
 
 		foreach (var field in columns)
 		{
-			strategy.columns.Add(item.GetField(field.Item2, field.Item3).Value);
+			if (field.Item4 == "Investment Provider")
+				strategy.columns.Add(manager ? "Manager" : "Strategist");
+			else
+				strategy.columns.Add(item.GetField(field.Item2, field.Item3).Value);
 		}
 
 		foreach (var field in filterFields)
@@ -131,6 +173,78 @@
 		}
 
 		return strategy;
+	}
+
+	private void AddStrategists(JArray strategies, Item strategistsItem, List<Tuple<string,string,string,string>> columns)
+	{
+		foreach (Item strategistItem in strategistsItem.Children)
+		{
+			if (strategistItem.TemplateName != "Strategist")
+				continue;
+
+			string strategistName = strategistItem["Name"];
+
+			foreach (Item strategyTypeItem in strategistItem.Children)
+			{
+				if (strategyTypeItem.TemplateName != "Strategy")
+					continue;
+
+				string allocationApproach = strategyTypeItem["Allocation Approach"];
+
+				InternalLinkField fieldLink = strategyTypeItem.GetField("Allocation Approach");
+				var allocationApproachItem = fieldLink.TargetItem;
+				if (allocationApproachItem == null || allocationApproachItem["Display on Strategies Page"] != "1")
+					continue;
+
+				foreach (Item solutionItem in strategyTypeItem.Children)
+				{
+					if (solutionItem.TemplateName != "Solution")
+						continue;
+
+					dynamic strategy = BuildStrategy(solutionItem, columns, false);
+					strategy.strategist = strategistName;
+					strategy.allocationApproach = allocationApproachItem["Title"];
+					strategy.rowing = allocationApproachItem["Rowing"] == "1";
+					strategies.Add(strategy);
+				}
+			}
+		}
+	}
+
+	private bool IsDerivedFromTemplateName(TemplateItem item, string templateName)
+	{
+		if (item.Name == templateName)
+			return true;
+
+		foreach (TemplateItem baseTemplate in item.BaseTemplates)
+		{
+			if (IsDerivedFromTemplateName(baseTemplate, templateName))
+				return true;
+		}
+
+		return false;
+	}
+
+	private void AddManagers(JArray strategies, Item managersItem, List<Tuple<string,string,string,string>> columns)
+	{
+		foreach (Item managerItem in managersItem.Children)
+		{
+			if (managerItem.TemplateName != "Manager")
+				continue;
+
+			string managerName = managerItem["Name"];
+			
+			foreach (Item solutionItem in managerItem.Children)
+			{
+				if (!IsDerivedFromTemplateName(solutionItem.Template, "Manager Strategy"))
+					continue;
+
+				dynamic strategy = BuildStrategy(solutionItem, columns, true);
+				strategy.manager = managerName;
+				strategy.rowing = solutionItem["Rowing"] == "1";
+				strategies.Add(strategy);
+			}
+		}
 	}
 
 	private string ServerData()
@@ -155,15 +269,8 @@
 		var columnHeader = BuildColumnHeader(columns);
 
 		var strategies = new JArray();
-		foreach (Item item in strategistsItem.Axes.SelectItems("descendant::*[@@TemplateName='Solution']"))
-		{
-			strategies.Add(BuildStrategy(item, columns, "strategist"));
-		}
-
-		foreach (Item item in managersItem.Axes.SelectItems("descendant::*[@@TemplateName='Manager Strategy' or @@TemplateName='US Equity' or @@TemplateName='Speciality' or @@TemplateName='International/Global' or @@TemplateName='Fixed Income']"))
-		{
-			strategies.Add(BuildStrategy(item, columns, "manager"));
-		}
+		AddStrategists(strategies, strategistsItem, columns);
+		AddManagers(strategies, managersItem, columns);
 
 		dynamic serverData = new JObject();
 		serverData.detailUrl = detailUrl;
@@ -636,6 +743,14 @@
 	display: inline;
 }
 
+.strategySection .sailing {
+	background-color:rgb(177,214,234);
+}
+
+.strategySection .rowing {
+	background-color:rgb(255,199,112);
+}
+
 </style>
 
 <div class="strategySection">
@@ -674,22 +789,13 @@
 				<div style="clear:both"></div>
 			</div>
 			<div class="filterApproachControl template">
-				<div class="approachColumn">
-					<div class="approachColumnTitle">Core Markets</div>
-					<label class="approachCheckbox" style="background-color:rgb(177,214,234)"><input type="checkbox"> Core Markets</label>
-				</div>
-				<div class="approachColumn">
-					<div class="approachColumnTitle">Tactical Strategies</div>
-					<label class="approachCheckbox" style="background-color:rgb(177,214,234)"><input type="checkbox"> Enhanced Return Focus</label>
-					<label class="approachCheckbox" style="background-color:rgb(255,199,112)"><input type="checkbox"> Loss Limit Focus</label>
-				</div>
-				<div class="approachColumn">
-					<div class="approachColumnTitle">Diversifying Strategies</div>
-					<label class="approachCheckbox" style="background-color:rgb(255,199,112)"><input type="checkbox"> Equity Alternatives</label>
-					<label class="approachCheckbox" style="background-color:rgb(255,199,112)"><input type="checkbox"> Bonds &amp; Bond Alternatives</label>
-				</div>
+				<div class="approachColumns"></div>
 				<div style="clear:both"></div>
 			</div>
+			<div class="approachColumn template">
+				<div class="approachColumnTitle"></div>
+			</div>
+			<label class="approachCheckbox template"><input type="checkbox"> <span class="approachCheckboxLabel"></span></label>
 			<label class="filterCheckboxControl template"><input type="checkbox"> <span class="filterCheckboxLabel"></span></label>
 			<div class="filterRiskProfileControl template">
 				<svg width="450px" height="52px" viewBox="0 0 450 52">
@@ -975,7 +1081,7 @@ function updateStrategyHeader() {
 
 	var index = 0;
 	ServerData.header.forEach(function (item) {
-		$(".strategyListHeader .strategyListColumnCustom" + index).text(item);
+		$(".strategyListHeader .strategyListColumnCustom" + index).text(item.name);
 		index++;
 	});
 
@@ -998,8 +1104,9 @@ function updateStrategyList() {
 		count++;
 
 		var item = cloneTemplate(".strategyListRow.template");
-		$(".strategyListColumnColor", item).attr("style", "background-color:rgb(177,214,234)");
-		//$(".strategyListColumnColor", item).attr("style", "background-color:rgb(255,199,112)");
+		if (strategy.rowing !== undefined) {
+			$(".strategyListColumnColor", item).addClass(strategy.rowing ? "rowing" : "sailing");
+		}
 		$(".strategyDetailLink", item).text(strategy.name);
 		$(".strategyDetailLink", item).attr('href', ServerData.detailUrl + "?Document=" + strategy.id);
 
@@ -1055,6 +1162,45 @@ function createFilterList() {
 				switch (control.type) {
 				case "Investment Approach Control":
 					controlItem = cloneTemplate(".filterApproachControl.template");
+					var approachGroupItems = $(".approachColumns", controlItem);
+					control.groups.forEach(function (approachGroup) {
+						var approachGroupItem = cloneTemplate(".approachColumn.template");
+						$(".approachColumnTitle", approachGroupItem).text(approachGroup.name);
+						approachGroup.approaches.forEach(function (approach) {
+							var approachItem = cloneTemplate(".approachCheckbox.template");
+							$(".approachCheckboxLabel", approachItem).text(approach.name);
+							approachItem.addClass(approach.rowing ? "rowing" : "sailing");
+							approachGroupItem.append(approachItem);
+
+							var checkboxInput = $("input[type='checkbox']", approachItem);
+							var checked = checkboxInput.get(0).checked;
+
+							var activeFilter = {
+								name: approach.name,
+								clear: function() {
+									checkboxInput.get(0).checked = false;
+									checked = false;
+								},
+							};
+
+							checkboxInput.on('change', function () {
+								checked = this.checked;
+								if (checked) {
+									addActiveFilter(activeFilter);
+								}
+								else {
+									removeActiveFilter(activeFilter);
+								}
+								updateStrategyList();
+							});
+
+							strategyFilters.push(function (strategy) {
+								return !checked || strategy.allocationApproach == approach.name;
+							});
+
+						});
+						approachGroupItems.append(approachGroupItem);
+					});
 					break;
 				case "Risk Profile Control":
 					controlItem = cloneTemplate(".filterRiskProfileControl.template");
@@ -1064,22 +1210,80 @@ function createFilterList() {
 					break;
 				case "Strategist List Control":
 					controlItem = $("<div></div>");
+					var strategists = {};
 					ServerData.strategies.forEach(function (strategy) {
-						if (strategy.type != "strategist") return;
-
+						if (strategy.strategist == undefined) return;
+						strategists[strategy.strategist] = true;
+					});
+					Object.keys(strategists).forEach(function (strategist) {
 						var strategistItem = cloneTemplate(".filterCheckboxControl.template");
-						$(".filterCheckboxLabel", strategistItem).text(strategy.name);
+						$(".filterCheckboxLabel", strategistItem).text(strategist);
 						controlItem.append(strategistItem);
+
+						var checkboxInput = $("input[type='checkbox']", strategistItem);
+						var checked = checkboxInput.get(0).checked;
+
+						var activeFilter = {
+							name: strategist,
+							clear: function() {
+								checkboxInput.get(0).checked = false;
+								checked = false;
+							},
+						};
+
+						checkboxInput.on('change', function () {
+							checked = this.checked;
+							if (checked) {
+								addActiveFilter(activeFilter);
+							}
+							else {
+								removeActiveFilter(activeFilter);
+							}
+							updateStrategyList();
+						});
+
+						strategyFilters.push(function (strategy) {
+							return !checked || strategy.strategist == strategist;
+						});
 					});
 					break;
 				case "Manager List Control":
 					controlItem = $("<div></div>");
+					var managers = {};
 					ServerData.strategies.forEach(function (strategy) {
-						if (strategy.type != "manager") return;
-
+						if (strategy.manager == undefined) return;
+						managers[strategy.manager] = true;
+					});
+					Object.keys(managers).forEach(function (manager) {
 						var managerItem = cloneTemplate(".filterCheckboxControl.template");
-						$(".filterCheckboxLabel", managerItem).text(strategy.name);
+						$(".filterCheckboxLabel", managerItem).text(manager);
 						controlItem.append(managerItem);
+
+						var checkboxInput = $("input[type='checkbox']", managerItem);
+						var checked = checkboxInput.get(0).checked;
+
+						var activeFilter = {
+							name: manager,
+							clear: function() {
+								checkboxInput.get(0).checked = false;
+								checked = false;
+							},
+						};
+
+						checkboxInput.on('change', function () {
+							checked = this.checked;
+							if (checked) {
+								addActiveFilter(activeFilter);
+							}
+							else {
+								removeActiveFilter(activeFilter);
+							}
+							updateStrategyList();
+						});
+
+						strategyFilters.push(function (strategy) {
+							return !checked || strategy.manager == manager;
+						});
 					});
 					break;
 				case "Checkbox Control":
