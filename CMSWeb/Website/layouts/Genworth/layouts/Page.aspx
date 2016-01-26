@@ -224,6 +224,7 @@
 		
 		<link href="<%= sBaseUrl %>CMSContent/Styles/main.css?v=1.0" rel="stylesheet" type="text/css" />
 		<link href="<%= sBaseUrl %>CMSContent/Styles/982_12_10.css" rel="stylesheet" type="text/css" />
+		<link href="<%= sBaseUrl %>CMSContent/Styles/Strategies.css" rel="stylesheet" type="text/css" />
 
 		<script type="text/javascript" src="<%= sBaseUrl %>CMSContent/Scripts/main.js?v=1.0"></script>
 		<script type="text/javascript" src="<%= sBaseUrl %>CMSContent/Scripts/GridCommon.js"></script>
@@ -231,6 +232,7 @@
 		<script type="text/javascript" src="<%= sBaseUrl %>CMSContent/Scripts/GridManagerSearch.js"></script>
 		<script type="text/javascript" src="<%= sBaseUrl %>CMSContent/Scripts/GridEvents.js"></script>
 		<script type="text/javascript" src="<%= sBaseUrl %>CMSContent/Scripts/Carousel.js"></script>
+        <script type="text/javascript" src="<%= sBaseUrl %>CMSContent/Scripts/Strategies.js"></script>
 
         <%--Carousel section--%>
 		<link href="<%= sBaseUrl %>CMSContent/Styles/Carousel.css" rel="stylesheet" type="text/css" />

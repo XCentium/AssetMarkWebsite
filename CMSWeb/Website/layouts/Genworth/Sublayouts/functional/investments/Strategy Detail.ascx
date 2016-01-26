@@ -22,6 +22,8 @@
 		}
 	}
 
+	Item StrategyItem = null;
+
 	private void BindData()
 	{
 		// get the allocation approach in case there is one (GPS doesn't have one, for instance)
@@ -30,27 +32,25 @@
 		//	String.Format("&{0}={1}", Genworth.SitecoreExt.Constants.Investments.QueryParameters.AllocationApproach, sAllocationApproach) : String.Empty;
 
 		// Get the document
-		var document = ContextExtension.CurrentDatabase.GetItem((Request.QueryString["Document"] ?? string.Empty).Trim());
-		if (document == null)
+		StrategyItem = ContextExtension.CurrentDatabase.GetItem((Request.QueryString["Document"] ?? string.Empty).Trim());
+		if (StrategyItem == null)
 			return;
 
-		lHeaderTitle.Text = Server.HtmlEncode(document.DisplayName);
-		lHeaderSubTitle.Text = Server.HtmlEncode("Tactical Strategies - Enhanced Return Focus");
+		lHeaderTitle.Text = Server.HtmlEncode(!String.IsNullOrWhiteSpace(StrategyItem["Strategy Title"]) ? StrategyItem["Strategy Title"] : StrategyItem.DisplayName);
+		lHeaderSubTitle.Text = Server.HtmlEncode(StrategyItem["Detail Title"]);
 
 		// Get the manager or strategist associated with this item
 		string sManagerOrStrategistParameter = "";
-		var owner = document.Axes.GetAncestors().GetItemsOfTemplate(new string[] { "Manager", "Strategist" }).FirstOrDefault();
+		var owner = StrategyItem.Axes.GetAncestors().GetItemsOfTemplate(new string[] { "Manager", "Strategist" }).FirstOrDefault();
 		if (owner != null)
 		{
 			//depending on the owner or manager, we need to build out a research object
 			if (owner.InstanceOfTemplate("Manager"))
 			{
-				//create the search
 				var oSearch = new Search(new ItemCache(), true);
 				oSearch.SetFilter(Genworth.SitecoreExt.Constants.Investments.Indexes.Fields.ManagerId, new string[] { owner.ID.ToString() });
 				sManagerOrStrategistParameter = string.Format("manager={0}", owner.GetText("Manager", "Code"));
 				BindResearch(oSearch.ResultDocuments.Select(oTemp => new Result(oTemp)));
-				//h2Title.InnerText = "Manager Detail";
 			}
 			else if (owner.InstanceOfTemplate("Strategist"))
 			{
@@ -58,50 +58,115 @@
 				oSearch.SetFilter(Genworth.SitecoreExt.Constants.Investments.Indexes.Fields.StrategistId, new string[] { owner.ID.ToString() });
 				sManagerOrStrategistParameter = string.Format("strategist={0}", owner.GetText("Strategist", "Code"));
 				BindResearch(oSearch.ResultDocuments.Select(oTemp => new Result(oTemp)));
-				//h2Title.InnerText = "Strategist Detail";
-			}
-		}
-
-		if (document.InstanceOfTemplate("Document Base"))
-		{
-			//bind the document
-			BindPDF(document);
-		}
-		else
-		{
-			var tempDocument = document.GetListItem("Documents", "Fact Sheet");
-			if (tempDocument != null)
-			{
-				//bind the fact sheet
-				BindPDF(tempDocument);
-			}
-			else
-			{
-				tempDocument = document.GetListItem("Documents", "Profile Sheet");
-				if (tempDocument != null)
-					BindPDF(tempDocument);
 			}
 		}
 
 		sResearch.Text = "Go to Archived Research";
 		dResearch.Attributes.Add("data-url", String.Format("{0}?{1}", Genworth.SitecoreExt.Constants.Investments.Items.ResearchItem.GetURL(), sManagerOrStrategistParameter));
+        dResearch.Attributes.Add("data-omniture-event", "GoToArchive");
+
+		BindTable();
+	}
+
+	private void BindTable()
+	{
+		rTable.DataSource = ContextExtension.CurrentItem.Axes.GetChild("Header").Children;
+		rTable.ItemDataBound += new RepeaterItemEventHandler(rTable_ItemDataBound);
+		rTable.DataBind();
+	}
+
+	private void rTable_ItemDataBound(object sender, RepeaterItemEventArgs e)
+	{
+		var item = (Item)e.Item.DataItem;
+		var rTableRow = (Repeater)e.Item.FindControl("rTableRow");
+
+		rTableRow.DataSource = item.Children;
+		rTableRow.ItemDataBound += new RepeaterItemEventHandler(rTableRow_ItemDataBound);
+		rTableRow.DataBind();
+	}
+
+	private void rTableRow_ItemDataBound(object sender, RepeaterItemEventArgs e)
+	{
+		var item = (Item)e.Item.DataItem;
+		var lRowName = (Literal)e.Item.FindControl("lRowName");
+		var lRowValue = (Literal)e.Item.FindControl("lRowValue");
+		MultilistField fields = item.GetField("Fields");
+
+		lRowName.Text = item["Name"];
+
+		foreach (Item f in fields.GetItems())
+		{
+			var v = StrategyItem.GetField(f.Parent.Name, f.Name);
+			if (v == null) continue;
+
+			string text = "";
+			if (v.Type == "Checkbox") text = v.Value == "1" ? f.Name : "";
+			else text = v.Value;
+
+			if (text.Length > 0)
+			{
+				if (lRowValue.Text.Length > 0) lRowValue.Text += "<br/>";
+				lRowValue.Text += Server.HtmlEncode(text);
+			}
+		}
+
+		if (item["Visual Appearance"] == "USD")
+		{
+			lRowValue.Text = String.Format("${0}", lRowValue.Text);
+		}
+		else if (item["Visual Appearance"] == "Percentage")
+		{
+			lRowValue.Text = String.Format("{0}%", lRowValue.Text);
+		}
+	}
+
+	class SidebarItem
+	{
+		public string Name { get; set; }
+		public string Path { get; set; }
+		public string Ext { get; set; }
+        public string OmnitureEvent { get; set; }
 	}
 
 	private void BindResearch(IEnumerable<Result> documents)
 	{
-		var items = new List<Tuple<string, Result>>();
+		var items = new List<SidebarItem>();
 
 		foreach (Item categoryItem in ContextExtension.CurrentItem.Axes.GetChild("Sidebar").Children)
 		{
-			DateTime dDate;
-
 			var categoryName = categoryItem["Name"];
 			var categoryValue = categoryItem["Category"];
-			
-			var categoryDocs = documents.Where(doc => doc.Category == categoryValue);
-			var categoryDoc = categoryDocs.OrderByDescending(oResult => DateTime.TryParse(oResult.Date, out dDate) ? dDate.ToString("yyyyMMddTHHmmss") : string.Empty).FirstOrDefault();
-			if (categoryDoc != null)
-				items.Add(new Tuple<string, Result>(categoryName, categoryDoc));
+            var categoryOmnitureEvent = categoryItem["Omniture Event"];
+
+			if (categoryValue == "Fact Sheets")
+			{
+				Item factSheet = StrategyItem.GetListItem("Documents", "Fact Sheet");
+				if (factSheet == null)
+				{
+					factSheet = StrategyItem.GetListItem("Documents", "Profile Sheet");
+					if (factSheet == null && StrategyItem.InstanceOfTemplate("Document Base"))
+					{
+						factSheet = StrategyItem;
+					}
+				}
+
+				if (factSheet != null)
+				{
+					var url = factSheet.GetImageURL("Document", "File");
+					if (!String.IsNullOrWhiteSpace(url))
+					{
+						items.Add(new SidebarItem { Name = categoryName, Path = factSheet.GetImageURL("Document", "File"), Ext = "pdf", OmnitureEvent = categoryOmnitureEvent });
+					}
+				}
+			}
+			else
+			{
+				DateTime dDate;
+				var categoryDocs = documents.Where(doc => doc.Category == categoryValue);
+				var categoryDoc = categoryDocs.OrderByDescending(oResult => DateTime.TryParse(oResult.Date, out dDate) ? dDate.ToString("yyyyMMddTHHmmss") : string.Empty).FirstOrDefault();
+				if (categoryDoc != null)
+                    items.Add(new SidebarItem { Name = categoryName, Path = string.IsNullOrWhiteSpace(categoryDoc.sUrl) ? categoryDoc.Path : categoryDoc.sUrl, Ext = categoryDoc.Extension, OmnitureEvent = categoryOmnitureEvent });
+			}
 		}
 
 		rCategories.DataSource = items;
@@ -111,239 +176,38 @@
 
 	private void rCategories_ItemDataBound(object sender, RepeaterItemEventArgs e)
 	{
-		var item = (Tuple<string, Result>)e.Item.DataItem;
-		string itemName = item.Item1;
-		string itemPath = string.IsNullOrWhiteSpace(item.Item2.sUrl) ? item.Item2.Path : item.Item2.sUrl;
-		string itemExt = item.Item2.Extension;
+		var item = (SidebarItem)e.Item.DataItem;
 
 		var dCategory = (HtmlGenericControl)e.Item.FindControl("dCategory");
-		dCategory.Attributes.Add("data-url", itemPath);
-		dCategory.Attributes.Add("data-extension", itemExt);
+        dCategory.Attributes.Add("data-url", item.Path);
+        dCategory.Attributes.Add("data-extension", item.Ext);
+        dCategory.Attributes.Add("data-omniture-event", item.OmnitureEvent);
 		if (e.Item.ItemIndex == 0)
+		{
 			dCategory.Attributes["class"] = dCategory.Attributes["class"] + " selected";
 
+            lPDF.Text = string.Format("<object data='{0}' type='application/pdf'> Your browser does not support PDF plugin. You can <a href='{0}'>click here to download the PDF file.</a></object>", item.Path);
+		}
+
 		var sCategory = (Literal)e.Item.FindControl("sCategory");
-		sCategory.Text = Server.HtmlEncode(itemName);
+        sCategory.Text = Server.HtmlEncode(item.Name);
 
 		//Set omniture tag
 		//var contentItem = ContextExtension.CurrentDatabase.GetItem(ItemHelper.FormatId(item.Item2.Id));
 		//contentItem.ConfigureOmnitureControl(ContextExtension.CurrentItem, dCategory);
 	}
 
-	private void BindPDF(Item oDocument)
+	private string StrategyDetailData()
 	{
-		string sPath;
-
-		if (oDocument != null)
-		{
-			//does the document have a file?
-			if (!string.IsNullOrEmpty(sPath = oDocument.GetImageURL("Document", "File")))
-			{
-				lPDF.Text = string.Format("<object data='{0}' type='application/pdf'> Your browser does not support PDF plugin. You can <a href='{0}'>click here to download the PDF file.</a></object>", sPath);
-			}
-		}
+		dynamic StrategyDetailData = new JObject();
+		StrategyDetailData.modelSetTypeId = StrategyItem["ModelSetTypeId"];
+		StrategyDetailData.strategistCode = StrategyItem["StrategistCode"];
+		StrategyDetailData.title = !String.IsNullOrWhiteSpace(StrategyItem["Strategy Title"]) ? StrategyItem["Strategy Title"] : StrategyItem.DisplayName;
+		return ((JObject)StrategyDetailData).ToString();
 	}
 
 </script>
-<style type="text/css">
-
-.strategyDetail {
-}
-
-.strategyDetail .detailHeader {
-	position: relative;
-	margin-left: 150px;
-	padding: 10px 0 30px 0;
-}
-
-.strategyDetail .detailHeaderBack {
-	position: absolute;
-	left: -139px;
-	top: 10px;
-	min-width: 55px;
-	height: 26px;
-	font-size: 11px;
-	line-height: 26px;
-	text-align: center;
-	margin: 0;
-	border: 1px solid rgb(194, 194, 194);
-	border-radius: 2px;
-	padding: 0 15px;
-	color: black;
-	background: linear-gradient(to bottom, #ffffff, rgb(253,253,253) 35%, rgb(250,250,250) 50%, rgb(246,246,246) 75%);
-	whitespace: no-wrap;
-	margin-right: 4px;
-	cursor: pointer;
-}
-
-.strategyDetail .detailHeaderBack:hover {
-	background: linear-gradient(to bottom, #ffffff, rgb(250,250,250) 35%, rgb(247,247,247) 50%, rgb(243,243,243) 75%);
-}
-
-
-.strategyDetail .detailHeaderTitleArea {
-	padding: 0 0 10px 0;
-}
-
-.strategyDetail .detailHeaderTitle {
-	display: inline-block;
-}
-
-.strategyDetail .detailHeaderLine1 {
-	color: rgb(67,67,67);
-	font-size: 18px;
-	font-weight: bold;
-	margin-bottom: 2px;
-}
-
-.strategyDetail .detailHeaderLine2 {
-	color: rgb(144,144,144);
-	font-size: 11px;
-	font-style: italic;
-}
-
-.strategyDetail .detailSavedButton {
-	display: inline-block;
-	vertical-align: top;
-	text-transform: uppercase;
-	background: rgb(2,123,53);
-	color: white;
-	font-size: 10px;
-	line-height: 26px;
-	padding: 0 16px;
-	border-radius: 2px;
-	margin-top: 3px;
-	margin-left: 22px;
-}
-
-.strategyDetail .detailHeaderTableArea {
-}
-
-.strategyDetail .detailHeaderTableArea table {
-	display: inline-table;
-	vertical-align: top;
-	border-spacing: 0;
-	border-collapse: collapse;
-	margin-right: 2px;
-}
-
-.strategyDetail .detailHeaderTableArea tr {
-}
-
-.strategyDetail .detailHeaderTableArea td:first-child {
-	font-size: 9px;
-	line-height: 11px;
-	text-align: right;
-	color: gray;
-	vertical-align: top;
-	border: 1px solid rgb(238,238,238);
-	border-right: none;
-	padding: 6px 20px;
-	padding-right: 6px;
-}
-
-.strategyDetail .detailHeaderTableArea td:last-child {
-	font-size: 9px;
-	line-height: 11px;
-	font-weight: bold;
-	vertical-align: top;
-	border: 1px solid rgb(238,238,238);
-	border-left: none;
-	padding: 6px 20px;
-	padding-left: 0;
-}
-
-.strategyDetail .detailHeaderLinks {
-	position: absolute;
-	right: 15px;
-	bottom: 0px;
-}
-
-.strategyDetail .downloadLink {
-	display: inline-block;
-}
-
-.strategyDetail .printLink {
-	display: inline-block;
-	padding-left: 10px;
-}
-
-.strategyDetail .detailBody {
-	margin: 15px -4px;
-}
-
-.strategyDetail .detailSidebar {
-	float: left;
-	width: 134px;
-	padding: 2px 0;
-}
-
-.strategyDetail .detailDocument {
-	position: relative;
-	margin-left: 150px;
-	margin-right: 20px;
-	height: calc(100vh - 350px);
-	border: 1px solid rgb(238,238,238);
-}
-
-.strategyDetail .detailDocument > iframe,
-.strategyDetail .detailDocument > object {
-	position: absolute;
-	margin: 0;
-	padding: 0;
-	border: none;
-	width: 100%;
-	height: 100%;
-}
-
-.strategyDetail .sidebarRow {
-	padding: 9px 13px;
-	font-size: 10px;
-	line-height: 11px;
-	font-weight: bold;
-	border-bottom: 1px solid rgb(238,238,238);
-	border-right: 1px solid rgb(238,238,238);
-	cursor: pointer;
-	position:relative;
-}
-
-.strategyDetail .sidebarRow:first-child {
-	border-top: 1px solid rgb(238,238,238);
-}
-
-.strategyDetail .sidebarRow:hover {
-	background: #eee;
-}
-
-.strategyDetail .sidebarRow.selected {
-	background: rgb(1,101,161);
-	border-top-color: rgb(1,101,161);
-	border-bottom-color: rgb(1,101,161);
-	border-right-color: rgb(1,101,161);
-	color: white;
-}
-
-.strategyDetail .sidebarRowArrow {
-	display: none;
-	position: absolute;
-	top: -1px;
-	right: -9px;
-	width: 8px;
-	height: calc(100% + 2px);
-	background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjMwIiB2aWV3Qm94PSIwIDAgOCAzMCI+PHBhdGggZmlsbD0icmdiKDEsMTAxLDE2MSkiIGQ9Ik0wIDAgTDggMTUgTCAwIDMwIHoiIC8+PC9zdmc+");
-	background-position: top right;
-	background-size: 8px 100%;
-	background-repeat: no-repeat;
-}
-
-.strategyDetail .sidebarRow.selected .sidebarRowArrow {
-	display: block;
-}
-
-</style>
-
 <div class="strategyDetail">
-
 	<div class="detailHeader">
 		<div class="detailHeaderBack" onclick="javascript:window.history.back()">&lt; Back</div>
 		<div class="detailHeaderTitleArea">
@@ -351,7 +215,6 @@
 				<div class="detailHeaderLine1"><asp:Literal ID="lHeaderTitle" runat="server" /></div>
 				<div class="detailHeaderLine2"><asp:Literal ID="lHeaderSubTitle" runat="server" /></div>
 			</div>
-			<div class="detailSavedButton">Saved</div>
 		</div>
 		<div class="detailHeaderTableArea">
 			<asp:Repeater ID="rTable" runat="server">
@@ -359,52 +222,24 @@
 					<table>
 						<asp:Repeater ID="rTableRow" runat="server">
 							<ItemTemplate>
-								<td><asp:Literal ID="lRowName" runat="server" />:</td>
-								<td><asp:Literal ID="lRowValue" runat="server" /></td>
+								<tr>
+									<td><asp:Literal ID="lRowName" runat="server" />:</td>
+									<td><asp:Literal ID="lRowValue" runat="server" /></td>
+								</tr>
 							</ItemTemplate>
 						</asp:Repeater>
 					</table>
 				</ItemTemplate>
 			</asp:Repeater>
-			<table>
-				<tr>
-					<td>Investment Objective:</td>
-					<td>Growth</td>
-				</tr>
-				<tr>
-					<td>Geographic Focus:</td>
-					<td>Global</td>
-				</tr>
-				<tr>
-					<td>Investment Minimum:</td>
-					<td>$35,000</td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<td>Investment Vehicle Type:</td>
-					<td>Blended ETFs/Mutual Funds<br/>Mutual Funds<br/>Fixed Income</td>
-				</tr>
-				<tr>
-					<td>Platform Fee:</td>
-					<td>0.50%</td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<td>Strategy Features:</td>
-					<td>Tax Sensitive<br/>Personal Values</td>
-				</tr>
-				<tr>
-					<td>Risk Profile:</td>
-					<td>P2, P3, P4</td>
-				</tr>
-			</table>
 		</div>
 		<div style="clear: both"></div>
 		<div class="detailHeaderLinks">
-			<div class="downloadLink">Download</div>
-			<div class="printLink">Print</div>
+			<div class="strategyFavoriteButton">
+				<span class="strategySave">Save</span>
+				<span class="strategySaved">Saved</span>
+			</div>
+			<div class="downloadLink"></div>
+			<div class="printLink"></div>
 		</div>
 	</div>
 	<div class="detailBody">
@@ -426,18 +261,6 @@
 		<div style="clear: both"></div>
 	</div>
 </div>
-
 <script language="javascript" type="text/javascript">
-$(".strategyDetail .sidebarRow").on('click', function (e) {
-	var url = $(this).attr("data-url");
-	var ext = $(this).attr("data-extension");
-	if (ext != undefined && ext.toLowerCase() == "pdf") {
-		$(".strategyDetail .sidebarRow").removeClass("selected");
-		$(this).addClass("selected");
-		$(".detailDocument object").attr("data", url);
-	}
-	else {
-		window.location.href = url;
-	}
-});
+StrategyDetailData = <%= StrategyDetailData() %>;
 </script>

@@ -1,0 +1,697 @@
+﻿
+.strategySection {
+	position: relative;
+}
+
+.strategySection .template {
+	display: none !important;
+}
+
+.strategySection .limitations {
+	position: absolute;
+	right: 10px;
+	top: 0;
+	font-size: 11px;
+}
+
+.strategySection .filterToolbar {
+	margin: 0 10px;
+	padding: 5px 0;
+}
+
+.strategySection .filterToolbarButton {
+	float: left;
+	height: 26px;
+	font-size: 11px;
+	line-height: 26px;
+	text-align: center;
+	margin: 0;
+	margin-bottom: 5px;
+	border: 1px solid rgb(194, 194, 194);
+	border-radius: 2px;
+	padding: 0 15px;
+	color: black;
+	background: linear-gradient(to bottom, #ffffff, rgb(253,253,253) 35%, rgb(250,250,250) 50%, rgb(246,246,246) 75%);
+	white-space: nowrap;
+	margin-right: 4px;
+	cursor: pointer;
+}
+
+.strategySection .filterToolbarButton:hover {
+	background: linear-gradient(to bottom, #ffffff, rgb(250,250,250) 35%, rgb(247,247,247) 50%, rgb(243,243,243) 75%);
+}
+
+.strategySection .filterList {
+	margin-left: 100px;
+}
+
+.strategySection .filterList .filterToolbarButton {
+	border: 1px solid rgb(1,123,56);
+	background: rgb(1,123,56);
+	color: white;
+}
+
+.strategySection .filterList .filterToolbarButton:hover {
+	background: rgb(1,135,61);
+}
+
+.strategySection .filterToolbarButton > svg {
+	display: inline-block;
+	vertical-align: -2px;
+	margin-right: 2px;
+}
+
+.strategySection .filterStrategySplit {
+	position: relative;
+	padding: 10px 0;
+	min-height: calc(100vh - 300px);
+}
+
+.strategySection .filterPanel {
+	margin-left: 10px;
+	margin-right: 415px;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.strategySection .filterStrategySplit.open .filterPanel {
+	opacity: 0.4;
+}
+
+.strategySection .strategyPanel {
+	position: absolute;
+	z-index: 1;
+	top: 5px;
+	right: -4px;
+	width: 397px;
+	height: calc(100% - 30px);
+	-webkit-transition: width 0.5s;
+	transition: width 0.5s;
+}
+
+.strategySection .filterStrategySplit.open .strategyPanel {
+	width: 850px;
+}
+
+.strategySection .strategyPanelContent {
+	width: 100%;
+	height: 100%;
+	box-shadow: -2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.strategySection .strategyOpener {
+	position: absolute;
+	z-index: -1;
+	top: calc(50% - 108px);
+	left: -20px;
+	width: 20px;
+	height: 217px;
+	cursor: pointer;
+}
+
+.strategySection .filterGroupItems {
+}
+
+.strategySection .filterGroup {
+	padding: 5px 0;
+	border-bottom: 1px solid #ddd;
+}
+
+.strategySection .filterTitle {
+	padding: 3px 10px 3px 0;
+	font-size: 10px;
+	line-height: 15px;
+	width: 82px;
+	float: left;
+}
+
+.strategySection .filterTitleInfoIcon {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	vertical-align: -2px;
+	background: url("/Content/Images/infoicon.png") center no-repeat;
+	margin-left: 3px;
+	position: relative;
+}
+
+.strategySection .filterTitleTooltip {
+	position: absolute;
+	bottom: 15px;
+	left: -5px;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+	background: #fafafa;
+	border: 1px solid #cdcdcd;
+	border-radius: 1px;
+	padding: 2px 5px;
+	z-index: 1;
+	opacity: 0;
+	transition: opacity 0.4s;
+	pointer-events: none;
+	white-space: nowrap;
+}
+
+.strategySection .filterTitleTooltip > :first-child {
+	margin-top: 0;
+}
+
+.strategySection .filterTitleTooltip > :last-child {
+	margin-bottom: 0;
+}
+
+.strategySection .filterTitleInfoIcon:hover .filterTitleTooltip {
+	opacity: 1;
+	pointer-events: inherit;
+}
+
+.strategySection .filterRollout {
+}
+
+.strategySection .filterRolloutTitle {
+	font-size: 10px;
+	font-weight: bold;
+	line-height: 15px;
+	padding: 10px 0;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.strategySection .filterRolloutIcon {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.strategySection .filterRolloutIcon g {
+	transform: rotate(180deg);
+	transition: transform 0.5s;
+}
+
+.strategySection .filterRollout.open .filterRolloutIcon g {
+	transform: rotate(0deg);
+}
+
+.strategySection .filterRolloutGroupItems {
+	display: none;
+}
+
+.strategySection .filterControls {
+	float: left;
+	width: calc(100% - 92px);
+}
+
+.strategySection .strategyToolbar {
+	position: relative;
+	padding: 8px 12px 8px 10px;
+	background: rgb(68,68,68);
+	height: 26px;
+	color: white;
+}
+
+.strategySection .strategySummary {
+	display: inline-block;
+	font-size: 13px;
+	line-height: 26px;
+}
+
+.strategySection .strategySearch {
+	position: absolute;
+	top: 9px;
+	right: 15px;
+	height: 24px;
+}
+
+.strategySection .strategySearch input {
+	margin: 0;
+	padding: 0 30px 0 8px;
+	border: none;
+	width: 180px;
+	height: 24px;
+	font-size: 12px;
+	line-height: 24px;
+	color: black;
+	background: url("/Content/Images/searchicon.png") center right 7px no-repeat white;
+}
+
+.strategySection .strategySearch input::-webkit-input-placeholder {
+	font-style: italic;
+}
+.strategySection .strategySearch input::-moz-placeholder {
+	font-style: italic;
+}
+.strategySection .strategySearch input::-ms-input-placeholder {
+	font-style: italic;
+}
+.strategySection .strategySearch input:placeholder-shown {
+	font-style: italic;
+}
+
+.strategySection .strategyList {
+	background: #eee;
+	border: 1px solid #ededed;
+	height: calc(100% - 44px);
+	position: relative;
+	overflow-x: hidden;
+}
+
+.strategySection .strategyListHeader {
+	position: absolute;
+	top: 6px;
+	width: 848px;
+	height: 22px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.strategySection .strategyListScrollArea {
+	position: absolute;
+	top: 28px;
+	width: 100%;
+	height: calc(100% - 28px);
+	overflow-x: hidden;
+	overflow-y: scroll;
+	background: white;
+}
+
+.strategySection .strategyListBody {
+	width: 848px;
+}
+
+.strategySection .strategyListRow {
+	border-bottom: 1px solid #ededed;
+}
+
+.strategySection .strategyListColumn {
+	float: left;
+	font-size: 10px;
+	line-height: 26px;
+	height: 26px;
+}
+
+.strategySection .strategyListHeader .strategyListColumn {
+	line-height: 10px;
+	height: 22px;
+	white-space: pre-wrap;
+}
+
+.strategySection .strategyListColumnColor {
+	width: 12px;
+}
+
+.strategySection .strategyListColumnStrategy {
+	width: 200px;
+	padding: 0 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: pointer;
+}
+
+.strategySection .strategyListColumnFavorite {
+	width: 64px;
+	text-align: right;
+}
+
+.strategySection .strategyListColumnCustom0 {
+	width: 80px;
+	padding: 0 5px;
+	text-align: right;
+	transition: width 0.5s;
+}
+
+.strategySection .filterStrategySplit.open .strategyListColumnCustom0 {
+	width: 100px;
+}
+
+.strategySection .strategyListColumnCustom1 {
+	width: 100px;
+	text-align: right;
+}
+
+.strategySection .strategyListColumnCustom2 {
+	width: 100px;
+	text-align: right;
+}
+
+.strategySection .strategyListColumnCustom3 {
+	width: 100px;
+	text-align: right;
+}
+
+.strategySection .strategyListColumnCustom4 {
+	width: 100px;
+	text-align: right;
+}
+
+.strategySection .strategyListBody .strategyListColumnStrategy {
+	color: rgb(14,117,182);
+}
+
+.strategySection .strategyListHeader .strategyListColumnCustom0 {
+	text-align: right;
+}
+
+.strategySection .strategyListColumnUSD {
+	display: inline-block;
+	min-width: 47px;
+}
+
+.strategySection .filterApproachControl {
+	float: left;
+	width: 100%;
+}
+
+.strategySection .approachColumn {
+	float: left;
+	width: 155px;
+}
+
+.strategySection .approachColumnTitle {
+	padding: 3px 0 2px 0;
+	font-weight: bold;
+	font-size: 10px;
+	line-height: 15px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-transform: uppercase;
+}
+
+.strategySection .approachCheckbox {
+	display: block;
+	margin: 3px 4px 3px 0;
+	padding: 0 5px;
+	font-size: 10px;
+	line-height: 26px;
+	height: 26px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.strategySection .approachCheckbox input[type=checkbox] {
+	vertical-align: -3px;
+	margin: 0 3px 0 0;
+}
+
+.strategySection .filterCheckboxControl {
+	display: inline-block;
+	margin: 0 10px 6px 0;
+	padding: 4px 5px;
+	width: 135px;
+	font-size: 10px;
+	line-height: 17px;
+}
+
+.strategySection .filterCheckboxControl input[type=checkbox] {
+	margin: 2px 3px 0 0;
+	position: absolute;
+}
+
+.strategySection .filterCheckboxLabel {
+	display: inline-block;
+	white-space: pre-wrap;
+	vertical-align: top;
+	padding-left: 17px;
+}
+
+.strategySection .filterRiskProfileControl {
+	float: left;
+	width: 450px;
+}
+
+.strategySection .filterFeeControl {
+	float: left;
+	width: 450px;
+}
+
+.strategySection .strategyFavoriteButton {
+	display: inline-block;
+	background: rgb(206, 206, 206);
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+	width: 36px;
+	font-size: 7px;
+	line-height: 14px;
+	border-radius: 1px;
+	font-weight: bold;
+	margin: 2px 0;
+	cursor: pointer;
+}
+
+.strategySection .strategyFavoriteButton.selected {
+	background: rgb(2, 123, 54);
+}
+
+.strategySection .strategyFavoriteButton .strategySave {
+	display: inline;
+}
+
+.strategySection .strategyFavoriteButton.selected .strategySave {
+	display: none;
+}
+
+.strategySection .strategyFavoriteButton .strategySaved {
+	display: none;
+}
+
+.strategySection .strategyFavoriteButton.selected .strategySaved {
+	display: inline;
+}
+
+.strategySection .sailing {
+	background-color:rgb(177,214,234);
+}
+
+.strategySection .rowing {
+	background-color:rgb(255,199,112);
+}
+
+/***************************************************************************/
+
+.strategyDetail {
+}
+
+.strategyDetail .detailHeader {
+	position: relative;
+	padding: 10px 0 30px 150px;
+    margin: 0 -4px;
+    background: #e7e7e7;
+}
+
+.strategyDetail .detailHeaderBack {
+	position: absolute;
+	left: 11px;
+	top: 10px;
+	min-width: 55px;
+	height: 26px;
+	font-size: 11px;
+	line-height: 26px;
+	text-align: center;
+	margin: 0;
+	border: 1px solid rgb(194, 194, 194);
+	border-radius: 2px;
+	padding: 0 15px;
+	color: black;
+	background: linear-gradient(to bottom, #ffffff, rgb(253,253,253) 35%, rgb(250,250,250) 50%, rgb(246,246,246) 75%);
+	white-space: nowrap;
+	margin-right: 4px;
+	cursor: pointer;
+}
+
+.strategyDetail .detailHeaderBack:hover {
+	background: linear-gradient(to bottom, #ffffff, rgb(250,250,250) 35%, rgb(247,247,247) 50%, rgb(243,243,243) 75%);
+}
+
+
+.strategyDetail .detailHeaderTitleArea {
+	padding: 0 0 10px 0;
+}
+
+.strategyDetail .detailHeaderTitle {
+	display: inline-block;
+}
+
+.strategyDetail .detailHeaderLine1 {
+	color: rgb(67,67,67);
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 2px;
+}
+
+.strategyDetail .detailHeaderLine2 {
+	color: rgb(144,144,144);
+	font-size: 12px;
+	font-style: italic;
+}
+
+.strategyDetail .strategyFavoriteButton {
+	display: inline-block;
+	vertical-align: top;
+	text-transform: uppercase;
+	background: rgb(206, 206, 206);
+	color: white;
+	font-size: 10px;
+	line-height: 24px;
+	padding: 0 16px;
+	border-radius: 2px;
+	margin-top: 3px;
+	margin-left: 22px;
+	cursor: pointer;
+	width:35px;
+	text-align: center;
+}
+
+.strategyDetail .strategyFavoriteButton.selected {
+	background: rgb(2, 123, 54);
+}
+
+.strategyDetail .strategyFavoriteButton .strategySave {
+	display: inline;
+}
+
+.strategyDetail .strategyFavoriteButton.selected .strategySave {
+	display: none;
+}
+
+.strategyDetail .strategyFavoriteButton .strategySaved {
+	display: none;
+}
+
+.strategyDetail .strategyFavoriteButton.selected .strategySaved {
+	display: inline;
+}
+
+.strategyDetail .detailHeaderTableArea {
+}
+
+.strategyDetail .detailHeaderTableArea table {
+	display: inline-table;
+	vertical-align: top;
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin-right: 2px;
+    background: white;
+}
+
+.strategyDetail .detailHeaderTableArea tr {
+}
+
+.strategyDetail .detailHeaderTableArea td:first-child {
+	font-size: 10px;
+	line-height: 12px;
+	text-align: right;
+	color: gray;
+	vertical-align: top;
+	border: 1px solid rgb(238,238,238);
+	border-right: none;
+	padding: 6px 20px;
+	padding-right: 6px;
+}
+
+.strategyDetail .detailHeaderTableArea td:last-child {
+	font-size: 10px;
+	line-height: 12px;
+	font-weight: bold;
+	vertical-align: top;
+	border: 1px solid rgb(238,238,238);
+	border-left: none;
+	padding: 6px 20px;
+	padding-left: 0;
+}
+
+.strategyDetail .detailHeaderLinks {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+}
+
+.strategyDetail .downloadLink {
+	display: inline-block;
+	margin-left: 15px;
+    width: 28px;
+    height: 28px;
+    background: url("/Content/Images/downloadicon.png") center no-repeat;
+    cursor: pointer;
+}
+
+.strategyDetail .printLink {
+	display: inline-block;
+	margin-left: 15px;
+    width: 28px;
+    height: 28px;
+    background: url("/Content/Images/printicon.png") center no-repeat;
+    cursor: pointer;
+}
+
+.strategyDetail .detailBody {
+	margin: 15px -4px;
+}
+
+.strategyDetail .detailSidebar {
+	float: left;
+	width: 134px;
+	padding: 2px 0;
+}
+
+.strategyDetail .detailDocument {
+	position: relative;
+	margin-left: 150px;
+	margin-right: 20px;
+	height: calc(100vh - 455px);
+	border: 1px solid rgb(238,238,238);
+}
+
+.strategyDetail .detailDocument > iframe,
+.strategyDetail .detailDocument > object {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	border: none;
+	width: 100%;
+	height: 100%;
+}
+
+.strategyDetail .sidebarRow {
+	padding: 9px 13px;
+	font-size: 10px;
+	line-height: 11px;
+	font-weight: bold;
+	border-bottom: 1px solid rgb(238,238,238);
+	border-right: 1px solid rgb(238,238,238);
+	cursor: pointer;
+	position:relative;
+}
+
+.strategyDetail .sidebarRow:first-child {
+	border-top: 1px solid rgb(238,238,238);
+}
+
+.strategyDetail .sidebarRow:hover {
+	background: #eee;
+}
+
+.strategyDetail .sidebarRow.selected {
+	background: rgb(1,101,161);
+	border-top-color: rgb(1,101,161);
+	border-bottom-color: rgb(1,101,161);
+	border-right-color: rgb(1,101,161);
+	color: white;
+}
+
+.strategyDetail .sidebarRowArrow {
+	display: none;
+	position: absolute;
+	top: -1px;
+	right: -9px;
+	width: 8px;
+	height: calc(100% + 2px);
+	background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjMwIiB2aWV3Qm94PSIwIDAgOCAzMCI+PHBhdGggZmlsbD0icmdiKDEsMTAxLDE2MSkiIGQ9Ik0wIDAgTDggMTUgTCAwIDMwIHoiIC8+PC9zdmc+");
+	background-position: top right;
+	background-size: 8px 100%;
+	background-repeat: no-repeat;
+}
+
+.strategyDetail .sidebarRow.selected .sidebarRowArrow {
+	display: block;
+}

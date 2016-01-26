@@ -727,6 +727,8 @@
     <Content Include="CMSContent\retirement\js\modernizr.custom.79084.js" />
     <Content Include="CMSContent\retirement\js\PIE.js" />
     <Content Include="CMSContent\retirement\js\site.js" />
+    <Content Include="CMSContent\Scripts\Strategies.js" />
+    <Content Include="CMSContent\Styles\Strategies.css" />
     <Content Include="css\bookblock.css" />
     <Content Include="css\IE7.css" />
     <Content Include="css\IE8.css" />
