@@ -38,6 +38,7 @@
 
 		lHeaderTitle.Text = Server.HtmlEncode(!String.IsNullOrWhiteSpace(StrategyItem["Strategy Title"]) ? StrategyItem["Strategy Title"] : StrategyItem.DisplayName);
 		lHeaderSubTitle.Text = Server.HtmlEncode(StrategyItem["Detail Title"]);
+		lHeaderDescription.Text = StrategyItem["Detail Description"];
 
 		// Get the manager or strategist associated with this item
 		string sManagerOrStrategistParameter = "";
@@ -118,6 +119,10 @@
 		{
 			lRowValue.Text = String.Format("{0}%", lRowValue.Text);
 		}
+		else if (item["Visual Appearance"] == "Yes No")
+		{
+			lRowValue.Text = !String.IsNullOrWhiteSpace(lRowValue.Text) ? "Yes" : "No";
+		}
 	}
 
 	class SidebarItem
@@ -186,7 +191,7 @@
 		{
 			dCategory.Attributes["class"] = dCategory.Attributes["class"] + " selected";
 
-            lPDF.Text = string.Format("<object data='{0}' type='application/pdf'> Your browser does not support PDF plugin. You can <a href='{0}'>click here to download the PDF file.</a></object>", item.Path);
+            lPDF.Text = string.Format("<iframe data-viewer-url-prefix='/CMSContent/pdf.js/web/viewer.html?file=' src='/CMSContent/pdf.js/web/viewer.html?file={0}'></iframe>", item.Path);
 		}
 
 		var sCategory = (Literal)e.Item.FindControl("sCategory");
@@ -216,6 +221,7 @@
 				<div class="detailHeaderLine2"><asp:Literal ID="lHeaderSubTitle" runat="server" /></div>
 			</div>
 		</div>
+		<div class="detailHeaderDescription"><asp:Literal ID="lHeaderDescription" runat="server" /></div>
 		<div class="detailHeaderTableArea">
 			<asp:Repeater ID="rTable" runat="server">
 				<ItemTemplate>

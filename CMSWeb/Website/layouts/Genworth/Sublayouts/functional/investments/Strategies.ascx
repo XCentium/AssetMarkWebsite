@@ -55,7 +55,7 @@
 		public string FieldSection { get; set; }
 		public string FieldName { get; set; }
 		public string VariableName { get { return FieldSection + "/" + FieldName; } }
-        public string OmnitureEvent { get; set; }
+		public string OmnitureEvent { get; set; }
 	}
 
 	private List<FilterField> filterFields;
@@ -87,12 +87,12 @@
 						if (target == null)
 							continue;
 
-                        var field = new FilterField { FieldSection = target.Parent.Name, FieldName = target.Name, OmnitureEvent = controlItem["Omniture Event"] };
+						var field = new FilterField { FieldSection = target.Parent.Name, FieldName = target.Name, OmnitureEvent = controlItem["Omniture Event"] };
 						filterFields.Add(field);
 
 						control.name = controlItem["Name"];
 						control.field = field.VariableName;
-                        control.omnitureEvent = field.OmnitureEvent;
+						control.omnitureEvent = field.OmnitureEvent;
 					}
 					else if (controlItem.TemplateName == "Investment Approach Control")
 					{
@@ -106,9 +106,9 @@
 							foreach (Item approachItem in groupList.GetItems())
 							{
 								dynamic approach = new JObject();
-								approach.name = approachItem["Title"];
+								approach.name = approachItem["Short Title"];
 								approach.rowing = approachItem["Rowing"] == "1";
-                                approach.omnitureEvent = approachItem["Omniture Event"];
+								approach.omnitureEvent = approachItem["Omniture Event"];
 								approaches.Add(approach);
 							}
 
@@ -219,7 +219,7 @@
 				continue;
 
 			string strategistName = strategistItem["Name"];
-            string strategistEvent = strategistItem["Omniture Event"];
+			string strategistEvent = strategistItem["Omniture Event"];
 
 			foreach (Item strategyTypeItem in strategistItem.Children)
 			{
@@ -240,8 +240,8 @@
 
 					dynamic strategy = BuildStrategy(solutionItem, columns, false);
 					strategy.strategist = strategistName;
-                    strategy.strategistEvent = strategistEvent;
-					strategy.allocationApproach = allocationApproachItem["Title"];
+					strategy.strategistEvent = strategistEvent;
+					strategy.allocationApproach = allocationApproachItem["Short Title"];
 					strategy.rowing = allocationApproachItem["Rowing"] == "1";
 					strategies.Add(strategy);
 				}
@@ -271,17 +271,23 @@
 				continue;
 
 			string managerName = managerItem["Name"];
-            string managerEvent = managerItem["Omniture Event"];
+			string managerEvent = managerItem["Omniture Event"];
 			
 			foreach (Item solutionItem in managerItem.Children)
 			{
 				if (!IsDerivedFromTemplateName(solutionItem.Template, "Manager Strategy"))
 					continue;
 
+				InternalLinkField fieldLink = solutionItem.GetField("Allocation Approach");
+				var allocationApproachItem = fieldLink.TargetItem;
+				if (allocationApproachItem == null || allocationApproachItem["Display on Strategies Page"] != "1")
+					continue;
+
 				dynamic strategy = BuildStrategy(solutionItem, columns, true);
 				strategy.manager = managerName;
-                strategy.managerEvent = managerEvent;
-				strategy.rowing = solutionItem["Rowing"] == "1";
+				strategy.managerEvent = managerEvent;
+				strategy.allocationApproach = allocationApproachItem["Short Title"];
+				strategy.rowing = allocationApproachItem["Rowing"] == "1";
 				strategies.Add(strategy);
 			}
 		}
@@ -348,10 +354,10 @@
 			</div>
 			<div class="filterRollout template">
 				<div class="filterRolloutTitle">
-					<span class="filterRolloutTitleText"></span>
 					<svg class="filterRolloutIcon" width="16px" height="8px" viewBox="-8 -4 16 8">
-						<g><path d="M 0 -2 L 4 2 L -4 2 z" fill="rgb(1,125,187)" /></g>
+						<g transform="rotate(90)"><path d="M 0 -2 L 4 2 L -4 2 z" fill="rgb(1,125,187)" /></g>
 					</svg>
+					<span class="filterRolloutTitleText"></span>
 				</div>
 				<div class="filterRolloutGroupItems"></div>
 				<div style="clear:both"></div>
@@ -403,13 +409,13 @@
 			<div class="strategyList">
 				<div class="strategyListHeader">
 					<div class="strategyListColumn strategyListColumnColor"></div>
-					<div class="strategyListColumn strategyListColumnStrategy"><br/>Strategy</div>
-					<div class="strategyListColumn strategyListColumnFavorite"><br/>Favorites</div>
-					<div class="strategyListColumn strategyListColumnCustom0"></div>
-					<div class="strategyListColumn strategyListColumnCustom1"></div>
-					<div class="strategyListColumn strategyListColumnCustom2"></div>
-					<div class="strategyListColumn strategyListColumnCustom3"></div>
-					<div class="strategyListColumn strategyListColumnCustom4"></div>
+					<div class="strategyListColumn strategyListColumnStrategy" data-field="strategy" data-omniture="Strategy"><br/>Strategy</div>
+					<div class="strategyListColumn strategyListColumnFavorite" data-field="favorite" data-omniture="Favorites"><br/>Favorites</div>
+					<div class="strategyListColumn strategyListColumnCustom0" data-field="custom" data-index="0"></div>
+					<div class="strategyListColumn strategyListColumnCustom1" data-field="custom" data-index="1"></div>
+					<div class="strategyListColumn strategyListColumnCustom2" data-field="custom" data-index="2"></div>
+					<div class="strategyListColumn strategyListColumnCustom3" data-field="custom" data-index="3"></div>
+					<div class="strategyListColumn strategyListColumnCustom4" data-field="custom" data-index="4"></div>
 					<div style="clear:both"></div>
 				</div>
 				<div class="strategyListScrollArea">

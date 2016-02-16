@@ -90,7 +90,7 @@
 }
 
 .strategySection .filterStrategySplit.open .strategyPanel {
-	width: 850px;
+	width: 870px;
 }
 
 .strategySection .strategyPanelContent {
@@ -127,10 +127,10 @@
 
 .strategySection .filterTitleInfoIcon {
 	display: inline-block;
-	width: 10px;
-	height: 10px;
+	width: 12px;
+	height: 12px;
 	vertical-align: -2px;
-	background: url("/Content/Images/infoicon.png") center no-repeat;
+	background: url("/Content/Images/i_icon.png") center no-repeat;
 	margin-left: 3px;
 	position: relative;
 }
@@ -181,15 +181,16 @@
 	vertical-align: middle;
 }
 
+/* Not supported by IE 11
 .strategySection .filterRolloutIcon g {
-	transform: rotate(180deg);
+	transform: rotate(90deg);
 	transition: transform 0.5s;
 }
 
 .strategySection .filterRollout.open .filterRolloutIcon g {
-	transform: rotate(0deg);
+	transform: rotate(180deg);
 }
-
+*/
 .strategySection .filterRolloutGroupItems {
 	display: none;
 }
@@ -291,6 +292,7 @@
 	line-height: 10px;
 	height: 22px;
 	white-space: pre-wrap;
+	cursor: pointer;
 }
 
 .strategySection .strategyListColumnColor {
@@ -323,7 +325,7 @@
 }
 
 .strategySection .strategyListColumnCustom1 {
-	width: 100px;
+	width: 120px;
 	text-align: right;
 }
 
@@ -393,6 +395,11 @@
 	margin: 0 3px 0 0;
 }
 
+.strategySection .approachCheckbox:focus,
+.strategySection .approachCheckbox *:focus {
+	outline: none;
+}
+
 .strategySection .filterCheckboxControl {
 	display: inline-block;
 	margin: 0 10px 6px 0;
@@ -400,6 +407,12 @@
 	width: 135px;
 	font-size: 10px;
 	line-height: 17px;
+	vertical-align: top;
+}
+
+.strategySection .filterCheckboxControl:focus,
+.strategySection .filterCheckboxControl *:focus {
+	outline: none;
 }
 
 .strategySection .filterCheckboxControl input[type=checkbox] {
@@ -525,6 +538,19 @@
 	font-style: italic;
 }
 
+.strategyDetail .detailHeaderDescription {
+	font-size: 13px;
+	margin: 0 200px 10px 0;
+}
+
+.strategyDetail .detailHeaderDescription :first-child {
+	margin-top: 0;
+}
+
+.strategyDetail .detailHeaderDescription :last-child {
+	margin-bottom: 0;
+}
+
 .strategyDetail .strategyFavoriteButton {
 	display: inline-block;
 	vertical-align: top;
@@ -563,6 +589,9 @@
 }
 
 .strategyDetail .detailHeaderTableArea {
+	display: inline-block;
+	background: white;
+	padding: 5px 30px 5px 0;
 }
 
 .strategyDetail .detailHeaderTableArea table {
@@ -571,10 +600,13 @@
 	border-spacing: 0;
 	border-collapse: collapse;
 	margin-right: 2px;
-    background: white;
 }
 
 .strategyDetail .detailHeaderTableArea tr {
+}
+
+.strategyDetail .detailHeaderTableArea td {
+	border: none;
 }
 
 .strategyDetail .detailHeaderTableArea td:first-child {
@@ -583,8 +615,8 @@
 	text-align: right;
 	color: gray;
 	vertical-align: top;
-	border: 1px solid rgb(238,238,238);
-	border-right: none;
+	/*border: 1px solid rgb(238,238,238);
+	border-right: none;*/
 	padding: 6px 20px;
 	padding-right: 6px;
 }
@@ -594,8 +626,8 @@
 	line-height: 12px;
 	font-weight: bold;
 	vertical-align: top;
-	border: 1px solid rgb(238,238,238);
-	border-left: none;
+	/*border: 1px solid rgb(238,238,238);
+	border-left: none;*/
 	padding: 6px 20px;
 	padding-left: 0;
 }
@@ -609,10 +641,10 @@
 .strategyDetail .downloadLink {
 	display: inline-block;
 	margin-left: 15px;
-    width: 28px;
-    height: 28px;
-    background: url("/Content/Images/downloadicon.png") center no-repeat;
-    cursor: pointer;
+	width: 28px;
+	height: 28px;
+	background: url("/Content/Images/downloadicon.png") center no-repeat;
+	cursor: pointer;
 }
 
 .strategyDetail .printLink {
@@ -639,6 +671,7 @@
 	margin-left: 150px;
 	margin-right: 20px;
 	height: calc(100vh - 455px);
+	/*min-height: 450px;*/
 	border: 1px solid rgb(238,238,238);
 }
 

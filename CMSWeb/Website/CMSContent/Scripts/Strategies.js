@@ -220,13 +220,44 @@ Strategies = function () {
     var strategyFilters = [];
 
     function sortAndUpdateStrategyList() {
-        var reverse = $(".strategyListHeader .strategyListColumnStrategy").hasClass("reverseOrder");
-
-        if (!reverse) {
-            StrategyData.strategies.sort(function (a, b) { if (a.name < b.name) return -1; else if (a.name > b.name) return 1; else return 0; });
+        var sortColumn = $(".strategyListHeader .strategyListColumn.sortColumn");
+        var reverse = sortColumn.hasClass("reverseOrder");
+        var field = sortColumn.attr("data-field");
+        if (field == "favorite") {
+            if (!reverse) {
+                StrategyData.strategies.sort(function (a, b) { var va = a.favorite ? 1 : 0; var vb = b.favorite ? 1 : 0; if (va < vb) return -1; else if (va > vb) return 1; else return 0; });
+            }
+            else {
+                StrategyData.strategies.sort(function (a, b) { var va = a.favorite ? 1 : 0; var vb = b.favorite ? 1 : 0; if (va > vb) return -1; else if (va < vb) return 1; else return 0; });
+            }
+        }
+        else if (field == "custom") {
+            var index = parseInt(sortColumn.attr("data-index"));
+            var valueType = StrategyData.header[index].type;
+            if (valueType == "Percentage" || valueType == "USD") {
+                if (!reverse) {
+                    StrategyData.strategies.sort(function (a, b) { var va = parseFloat(a.columns[index]); var vb = parseFloat(b.columns[index]); if (va < vb) return -1; else if (va > vb) return 1; else return 0; });
+                }
+                else {
+                    StrategyData.strategies.sort(function (a, b) { var va = parseFloat(a.columns[index]); var vb = parseFloat(b.columns[index]); if (va > vb) return -1; else if (va < vb) return 1; else return 0; });
+                }
+            }
+            else {
+                if (!reverse) {
+                    StrategyData.strategies.sort(function (a, b) { if (a.columns[index] < b.columns[index]) return -1; else if (a.columns[index] > b.columns[index]) return 1; else return 0; });
+                }
+                else {
+                    StrategyData.strategies.sort(function (a, b) { if (a.columns[index] > b.columns[index]) return -1; else if (a.columns[index] < b.columns[index]) return 1; else return 0; });
+                }
+            }
         }
         else {
-            StrategyData.strategies.sort(function (a, b) { if (a.name > b.name) return -1; else if (a.name < b.name) return 1; else return 0; });
+            if (!reverse) {
+                StrategyData.strategies.sort(function (a, b) { if (a.name < b.name) return -1; else if (a.name > b.name) return 1; else return 0; });
+            }
+            else {
+                StrategyData.strategies.sort(function (a, b) { if (a.name > b.name) return -1; else if (a.name < b.name) return 1; else return 0; });
+            }
         }
 
         updateStrategyList();
@@ -306,6 +337,8 @@ Strategies = function () {
     }
 
     function createInvestmentApproachControl(control) {
+        var activeApproachFilters = {};
+
         var controlItem = cloneTemplate(".filterApproachControl.template");
         var approachGroupItems = $(".approachColumns", controlItem);
         control.groups.forEach(function (approachGroup) {
@@ -318,19 +351,19 @@ Strategies = function () {
                 approachGroupItem.append(approachItem);
 
                 var checkboxInput = $("input[type='checkbox']", approachItem);
-                var checked = checkboxInput.get(0).checked;
+                activeApproachFilters[approach.name] = checkboxInput.get(0).checked;
 
                 var activeFilter = {
                     name: approach.name,
                     clear: function () {
                         checkboxInput.get(0).checked = false;
-                        checked = false;
+                        activeApproachFilters[approach.name] = false;
                     },
                 };
 
                 checkboxInput.on('change', function () {
-                    checked = this.checked;
-                    if (checked) {
+                    activeApproachFilters[approach.name] = this.checked;
+                    if (activeApproachFilters[approach.name]) {
                         addActiveFilter(activeFilter);
                     }
                     else {
@@ -341,14 +374,22 @@ Strategies = function () {
                         omnitureTrackEvent(approach.omnitureEvent);
                     }
                 });
-
-                strategyFilters.push(function (strategy) {
-                    return !checked || strategy.allocationApproach == approach.name;
-                });
-
             });
             approachGroupItems.append(approachGroupItem);
         });
+
+        strategyFilters.push(function (strategy) {
+            var anyActive = false;
+            var matchFound = false;
+            for (var approachName in activeApproachFilters) {
+                if (activeApproachFilters[approachName]) {
+                    anyActive = true;
+                    matchFound = matchFound || strategy.allocationApproach == approachName;
+                }
+            }
+            return matchFound || !anyActive;
+        });
+
         return controlItem;
     }
 
@@ -581,6 +622,29 @@ Strategies = function () {
                 $(".filterRolloutTitle", groupRollout).on('click', function () {
                     $(this).parent().toggleClass('open');
                     $(this).parent().find('.filterRolloutGroupItems').slideToggle();
+
+                    var duration = 500;
+                    var fromAngle = 90;
+                    var toAngle = 180;
+                    if (!$(this).parent().hasClass('open')) {
+                        fromAngle = 180;
+                        toAngle = 90;
+                    }
+
+                    var svgElement = $(this).parent().find('.filterRolloutIcon g');
+
+                    var start = null;
+                    var svgAnimation = null;
+                    svgAnimation = function(timestamp) {
+                        if (!start) start = timestamp;
+                        var progress = Math.min((timestamp - start) / duration, 1);
+                        var angle = fromAngle * (1 - progress) + toAngle * progress;
+                        svgElement.attr("transform", "rotate(" + angle + ")");
+                        if (progress < 1) {
+                            window.requestAnimationFrame(svgAnimation);
+                        }
+                    };
+                    window.requestAnimationFrame(svgAnimation);
                 });
                 filterGroup.groups.forEach(function (item) { createFilterGroup(rolloutFilters, item); });
                 filtersDiv.append(groupRollout);
@@ -627,9 +691,20 @@ Strategies = function () {
     }
 
     function toggleSortOrder() {
-        $(this).toggleClass("reverseOrder");
+        var sortColumn = $(this).hasClass("sortColumn");
+        var sortReverse = $(this).hasClass("reverseOrder");
+	$(".strategyListHeader .strategyListColumn").removeClass("sortColumn");
+	$(".strategyListHeader .strategyListColumn").removeClass("reverseOrder");
+
+        $(this).addClass("sortColumn");
+        if (!sortReverse) $(this).addClass("reverseOrder");
+
         sortAndUpdateStrategyList();
-        omnitureTrackEvent("Strategy"); // "Favorites"
+
+        var sortEvent = $(this).attr("data-omniture");
+        if (sortEvent != "" && sortEvent != undefined) {
+            omnitureTrackEvent(sortEvent);
+        }
     }
 
     var searchFieldTrackTimeout = null;
@@ -657,10 +732,12 @@ Strategies = function () {
     }
 
     $(document).ready(function () {
+        if (window.StrategyData == undefined) return;
+
         $("#strategyClearFilters").on('click', clearActiveFilters);
         $("#strategySearchField").on('input', searchFieldInput);
         $("#strategyOpener").on('click', toggleStrategyOpener);
-        $(".strategyListHeader .strategyListColumnStrategy").on('click', toggleSortOrder);
+        $(".strategyListHeader .strategyListColumn").on('click', toggleSortOrder);
 
         createFilterList();
         updateStrategyHeader();
@@ -745,7 +822,8 @@ StrategyDetail = function () {
         if (ext != undefined && ext.toLowerCase() == "pdf") {
             $(".strategyDetail .sidebarRow").removeClass("selected");
             $(this).addClass("selected");
-            $(".detailDocument object").attr("data", url);
+            var iframe = $(".detailDocument iframe");
+            iframe.attr("src", iframe.attr("data-viewer-url-prefix") + url);
         }
         else {
             // Give omniture 500 ms to track the event before navigating
@@ -768,6 +846,8 @@ StrategyDetail = function () {
     }
 
     $(document).ready(function () {
+        if (window.StrategyDetailData == undefined) return;
+
         $(".strategyDetail .sidebarRow").on('click', sidebarClicked);
         $(".strategyDetail .strategyFavoriteButton").on('click', favoriteButtonClicked);
         loadSavedFavorites();
