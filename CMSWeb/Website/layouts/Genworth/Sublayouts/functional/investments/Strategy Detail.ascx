@@ -48,17 +48,45 @@
 			//depending on the owner or manager, we need to build out a research object
 			if (owner.InstanceOfTemplate("Manager"))
 			{
+                sManagerOrStrategistParameter = string.Format("manager={0}", owner.GetText("Manager", "Code"));
+                
 				var oSearch = new Search(new ItemCache(), true);
 				oSearch.SetFilter(Genworth.SitecoreExt.Constants.Investments.Indexes.Fields.ManagerId, new string[] { owner.ID.ToString() });
-				sManagerOrStrategistParameter = string.Format("manager={0}", owner.GetText("Manager", "Code"));
-				BindResearch(oSearch.ResultDocuments.Select(oTemp => new Result(oTemp)));
+                var documents = oSearch.ResultDocuments.Select(oTemp => new Result(oTemp));
+
+                InternalLinkField fieldLink = StrategyItem.GetField("Allocation Approach");
+                var allocationApproachItem = fieldLink.TargetItem;
+                if (allocationApproachItem != null)
+                {
+                    var oApproachSearch = new Search(new ItemCache(), true);
+                    oApproachSearch.SetFilter(Genworth.SitecoreExt.Constants.Investments.Indexes.Fields.AllocationApproachId, new string[] { allocationApproachItem.ID.ToString() });
+                    documents = documents.Concat(oApproachSearch.ResultDocuments.Select(oTemp => new Result(oTemp)));
+                }
+
+                BindResearch(documents);
 			}
 			else if (owner.InstanceOfTemplate("Strategist"))
 			{
+                sManagerOrStrategistParameter = string.Format("strategist={0}", owner.GetText("Strategist", "Code"));
+                
 				var oSearch = new Search(new ItemCache(), true);
 				oSearch.SetFilter(Genworth.SitecoreExt.Constants.Investments.Indexes.Fields.StrategistId, new string[] { owner.ID.ToString() });
-				sManagerOrStrategistParameter = string.Format("strategist={0}", owner.GetText("Strategist", "Code"));
-				BindResearch(oSearch.ResultDocuments.Select(oTemp => new Result(oTemp)));
+				var documents = oSearch.ResultDocuments.Select(oTemp => new Result(oTemp));
+
+                var strategyGroup = StrategyItem.Axes.GetAncestors().GetItemsOfTemplate(new string[] { "Strategy" }).FirstOrDefault();
+                if (strategyGroup != null)
+                {
+                    InternalLinkField fieldLink = strategyGroup.GetField("Allocation Approach");
+                    var allocationApproachItem = fieldLink.TargetItem;
+                    if (allocationApproachItem != null)
+                    {
+                        var oApproachSearch = new Search(new ItemCache(), true);
+                        oApproachSearch.SetFilter(Genworth.SitecoreExt.Constants.Investments.Indexes.Fields.AllocationApproachId, new string[] { allocationApproachItem.ID.ToString() });
+                        documents = documents.Concat(oApproachSearch.ResultDocuments.Select(oTemp => new Result(oTemp)));
+                    }
+                }
+
+                BindResearch(documents);
 			}
 		}
 
