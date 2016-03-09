@@ -17,6 +17,15 @@
 .strategySection .filterToolbar {
 	margin: 0 10px;
 	padding: 5px 0;
+	position: relative;
+	min-height: 43px;
+}
+
+.strategySection .filterTip {
+	font-size: 10px;
+	line-height: 15px;
+	font-style: italic;
+	margin: 0 10px;
 }
 
 .strategySection .filterToolbarButton {
@@ -35,6 +44,10 @@
 	white-space: nowrap;
 	margin-right: 4px;
 	cursor: pointer;
+}
+
+.strategySection #strategyClearFilters {
+	display: none;
 }
 
 .strategySection .filterToolbarButton:hover {
@@ -64,7 +77,7 @@
 .strategySection .filterStrategySplit {
 	position: relative;
 	padding: 10px 0;
-	min-height: calc(100vh - 300px);
+	min-height: calc(100vh - 325px);
 }
 
 .strategySection .filterPanel {
@@ -90,7 +103,7 @@
 }
 
 .strategySection .filterStrategySplit.open .strategyPanel {
-	width: 870px;
+	width: 950px;
 }
 
 .strategySection .strategyPanelContent {
@@ -125,6 +138,10 @@
 	float: left;
 }
 
+.strategySection .filterTitleText {
+	white-space: pre-wrap;
+}
+
 .strategySection .filterTitleInfoIcon {
 	display: inline-block;
 	width: 12px;
@@ -133,22 +150,63 @@
 	background: url("/Content/Images/i_icon.png") center no-repeat;
 	margin-left: 3px;
 	position: relative;
+	cursor: pointer;
 }
 
 .strategySection .filterTitleTooltip {
+	display: none;
 	position: absolute;
-	bottom: 15px;
+	top: -100px;
 	left: -5px;
+	cursor: default;
+	background: #ebf6fa;
+	border: 1px solid #1caede;
 	box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
-	background: #fafafa;
-	border: 1px solid #cdcdcd;
-	border-radius: 1px;
-	padding: 2px 5px;
+	z-index: 1000;
+}
+
+.strategySection .filterTitleTooltipBody {
+	position: relative;
 	z-index: 1;
-	opacity: 0;
-	transition: opacity 0.4s;
-	pointer-events: none;
-	white-space: nowrap;
+	padding: 24px 30px 36px 30px;
+	width: 515px;
+	font-size: 12px;
+	line-height: 1.33;
+	color: #444444;
+	cursor: auto;
+}
+
+.strategySection .filterTitleTooltipBackdrop {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.strategySection .filterTitleTooltip h1,
+.strategySection .filterTitleTooltip h2,
+.strategySection .filterTitleTooltip h3 {
+	color: inherit;
+	font: inherit;
+	margin: 10px 0 -10px 0;
+}
+
+.strategySection .filterTitleTooltip h1 {
+	font-weight: bold;
+}
+
+.strategySection .filterTitleTooltip h2 {
+	font-style: italic;
+}
+
+.strategySection .filterTitleTooltip p,
+.strategySection .filterTitleTooltip ul,
+.strategySection .filterTitleTooltip ol {
+	color: inherit;
+	font: inherit;
+	margin: 15px 0;
 }
 
 .strategySection .filterTitleTooltip > :first-child {
@@ -159,9 +217,14 @@
 	margin-bottom: 0;
 }
 
-.strategySection .filterTitleInfoIcon:hover .filterTitleTooltip {
-	opacity: 1;
-	pointer-events: inherit;
+.strategySection .filterTitleTooltipClose {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	padding: 8px;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
 }
 
 .strategySection .filterRollout {
@@ -256,9 +319,9 @@
 
 .strategySection .strategyListHeader {
 	position: absolute;
-	top: 6px;
-	width: 848px;
-	height: 22px;
+	top: 4px;
+	width: 928px;
+	height: 24px;
 	font-weight: bold;
 	text-transform: uppercase;
 }
@@ -274,7 +337,7 @@
 }
 
 .strategySection .strategyListBody {
-	width: 848px;
+	width: 928px;
 }
 
 .strategySection .strategyListRow {
@@ -283,24 +346,55 @@
 
 .strategySection .strategyListColumn {
 	float: left;
-	font-size: 10px;
+	font-size: 11px;
 	line-height: 26px;
 	height: 26px;
+	padding-right: 16px;
 }
 
 .strategySection .strategyListHeader .strategyListColumn {
 	line-height: 10px;
-	height: 22px;
+	height: 24px;
 	white-space: pre-wrap;
 	cursor: pointer;
+	position: relative;
+}
+
+.strategySection .sortArrow {
+	display: none;
+}
+
+.strategySection .strategyListHeader .strategyListColumn.sortColumn .sortArrow {
+	background: url("/Content/Images/sort_down.png") center no-repeat;
+	position: absolute;
+	right: 3px;
+	bottom: 4px;
+	width: 10px;
+	height: 11px;
+	display: block;
+}
+
+.strategySection .strategyListHeader .strategyListColumn.sortColumn.reverseOrder .sortArrow {
+	background-image: url("/Content/Images/sort_up.png");
+}
+
+.strategySection .strategyListHeader .strategyListColumn.strategyListColumnStrategy.sortColumn .sortArrow {
+	display: inline-block;
+	position: relative;
+	margin-left: 3px;
+	vertical-align: -3px;
+	left: 0;
+	bottom: auto;
+	top: -2px;
 }
 
 .strategySection .strategyListColumnColor {
 	width: 12px;
+	padding-right: 0;
 }
 
 .strategySection .strategyListColumnStrategy {
-	width: 200px;
+	width: 285px;
 	padding: 0 5px;
 	white-space: nowrap;
 	overflow: hidden;
@@ -308,39 +402,43 @@
 	cursor: pointer;
 }
 
+.strategySection .filterStrategySplit.open .strategyListColumnStrategy {
+	width: 300px;
+}
+
 .strategySection .strategyListColumnFavorite {
 	width: 64px;
-	text-align: right;
+	text-align: center;
 }
 
 .strategySection .strategyListColumnCustom0 {
-	width: 80px;
-	padding: 0 5px;
+	width: 74px;
+	padding: 0 16px 0 5px;
 	text-align: right;
 	transition: width 0.5s;
 }
 
 .strategySection .filterStrategySplit.open .strategyListColumnCustom0 {
-	width: 100px;
+	width: 84px;
 }
 
 .strategySection .strategyListColumnCustom1 {
-	width: 120px;
+	width: 64px;
 	text-align: right;
 }
 
 .strategySection .strategyListColumnCustom2 {
-	width: 100px;
+	width: 84px;
 	text-align: right;
 }
 
 .strategySection .strategyListColumnCustom3 {
-	width: 100px;
+	width: 124px;
 	text-align: right;
 }
 
 .strategySection .strategyListColumnCustom4 {
-	width: 100px;
+	width: 84px;
 	text-align: right;
 }
 
@@ -387,12 +485,36 @@
 	height: 26px;
 	white-space: nowrap;
 	overflow: hidden;
-	text-overflow: ellipsis;
+}
+
+.strategySection .approachCheckboxLabel {
+	position: relative;
+	padding-left: 17px;
 }
 
 .strategySection .approachCheckbox input[type=checkbox] {
-	vertical-align: -3px;
-	margin: 0 3px 0 0;
+	position: absolute;
+	left: -9999px;
+}
+
+.strategySection .approachCheckboxLabel:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: -1px;
+	width: 12px;
+	height: 12px;
+	border: 1px solid #afafaf;
+	background: white;
+	border-radius: 1px;
+	font-size: 12px;
+	line-height: 12px;
+	text-align: center;
+	color: rgb(17,132,67);
+}
+
+.strategySection input[type=checkbox]:checked + .approachCheckboxLabel:before {
+	background: url("/Content/Images/checkboxicon.png") center no-repeat white;
 }
 
 .strategySection .approachCheckbox:focus,
@@ -408,6 +530,7 @@
 	font-size: 10px;
 	line-height: 17px;
 	vertical-align: top;
+	min-height: 34px;
 }
 
 .strategySection .filterCheckboxControl:focus,
@@ -415,16 +538,37 @@
 	outline: none;
 }
 
-.strategySection .filterCheckboxControl input[type=checkbox] {
-	margin: 2px 3px 0 0;
-	position: absolute;
-}
-
 .strategySection .filterCheckboxLabel {
 	display: inline-block;
 	white-space: pre-wrap;
 	vertical-align: top;
 	padding-left: 17px;
+	position: relative;
+}
+
+.strategySection .filterCheckboxControl input[type=checkbox] {
+	position: absolute;
+	left: -9999px;
+}
+
+.strategySection .filterCheckboxLabel:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 2px;
+	width: 12px;
+	height: 12px;
+	border: 1px solid #afafaf;
+	background: white;
+	border-radius: 1px;
+	font-size: 12px;
+	line-height: 12px;
+	text-align: center;
+	color: rgb(17,132,67);
+}
+
+.strategySection input[type=checkbox]:checked + .filterCheckboxLabel:before {
+	background: url("/Content/Images/checkboxicon.png") center no-repeat white;
 }
 
 .strategySection .filterRiskProfileControl {
@@ -670,8 +814,8 @@
 	position: relative;
 	margin-left: 150px;
 	margin-right: 20px;
-	height: calc(100vh - 455px);
-	/*min-height: 450px;*/
+	padding-bottom: 100%;
+	/*height: calc(100vh - 455px);*/
 	border: 1px solid rgb(238,238,238);
 }
 

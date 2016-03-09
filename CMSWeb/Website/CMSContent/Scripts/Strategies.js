@@ -86,12 +86,14 @@ Strategies = function () {
         function handleCircleInput(circle, moveBeginHandler, moveHandler) {
             var startValue = 0;
             var delta = 0;
+            var lastClientX = 0;
 
             circle.addEventListener("mousedown", function (e) {
                 function mouseMove(e) {
                     e.stopPropagation();
 
-                    delta += e.movementX;
+                    delta += e.clientX - lastClientX;
+                    lastClientX = e.clientX;
                     moveHandler(startValue + delta);
                 }
 
@@ -107,6 +109,34 @@ Strategies = function () {
                 document.body.addEventListener("mouseup", mouseUp, true);
 
                 delta = 0;
+                lastClientX = e.clientX;
+                startValue = moveBeginHandler();
+            });
+
+            circle.addEventListener("touchstart", function (e) {
+                function touchMove(e) {
+                    e.stopPropagation();
+
+                    delta += e.targetTouches[0].clientX - lastClientX;
+                    lastClientX = e.targetTouches[0].clientX;
+                    moveHandler(startValue + delta);
+                }
+
+                function touchEnd(e) {
+                    e.stopPropagation();
+                    document.body.removeEventListener("touchmove", touchMove, true);
+                    document.body.removeEventListener("touchend", touchEnd, true);
+                    document.body.removeEventListener("touchcancel", touchEnd, true);
+                }
+
+                e.stopPropagation();
+                e.preventDefault();
+                document.body.addEventListener("touchmove", touchMove, true);
+                document.body.addEventListener("touchend", touchEnd, true);
+                document.body.addEventListener("touchcancel", touchEnd, true);
+
+                delta = 0;
+                lastClientX = e.targetTouches[0].clientX;
                 startValue = moveBeginHandler();
             });
         }
@@ -217,6 +247,15 @@ Strategies = function () {
         return text;
     }
 
+    function parseNumber(v) {
+        if ((typeof v) == "string") {
+            return parseFloat(v.replace(/,/g, ""));
+        }
+        else {
+            return parseFloat(v);
+        }
+    }
+
     var strategyFilters = [];
 
     function sortAndUpdateStrategyList() {
@@ -236,10 +275,10 @@ Strategies = function () {
             var valueType = StrategyData.header[index].type;
             if (valueType == "Percentage" || valueType == "USD") {
                 if (!reverse) {
-                    StrategyData.strategies.sort(function (a, b) { var va = parseFloat(a.columns[index]); var vb = parseFloat(b.columns[index]); if (va < vb) return -1; else if (va > vb) return 1; else return 0; });
+                    StrategyData.strategies.sort(function (a, b) { var va = parseNumber(a.columns[index]); var vb = parseNumber(b.columns[index]); if (va < vb) return -1; else if (va > vb) return 1; else return 0; });
                 }
                 else {
-                    StrategyData.strategies.sort(function (a, b) { var va = parseFloat(a.columns[index]); var vb = parseFloat(b.columns[index]); if (va > vb) return -1; else if (va < vb) return 1; else return 0; });
+                    StrategyData.strategies.sort(function (a, b) { var va = parseNumber(a.columns[index]); var vb = parseNumber(b.columns[index]); if (va > vb) return -1; else if (va < vb) return 1; else return 0; });
                 }
             }
             else {
@@ -267,7 +306,7 @@ Strategies = function () {
 
         var index = 0;
         StrategyData.header.forEach(function (item) {
-            $(".strategyListHeader .strategyListColumnCustom" + index).text(item.name);
+            $(".strategyListHeader .strategyListColumnCustom" + index + " .strategyListColumnLabel").text(item.name);
             index++;
         });
 
@@ -281,7 +320,7 @@ Strategies = function () {
 
         var count = 0;
         StrategyData.strategies.forEach(function (strategy) {
-            if (searchText.length > 1 && strategy.name.toLowerCase().indexOf(searchText) == -1) return;
+            if (searchText.length > 0 && strategy.name.toLowerCase().indexOf(searchText) == -1) return;
 
             var skip = false;
             strategyFilters.forEach(function (filter) { if (!filter(strategy)) skip = true; });
@@ -300,11 +339,11 @@ Strategies = function () {
                 var valueDiv = $(".strategyListColumnCustom" + customIndex, item);
                 var valueType = StrategyData.header[customIndex].type;
                 if (valueType == "Percentage") {
-                    customValue = parseFloat(customValue);
+                    customValue = parseNumber(customValue);
                     if (!isNaN(customValue)) valueDiv.text(customValue.toFixed(2) + "%");
                 }
                 else if (valueType == "USD") {
-                    customValue = parseFloat(customValue);
+                    customValue = parseNumber(customValue);
                     if (!isNaN(customValue)) valueDiv.html('$<span class="strategyListColumnUSD">' + toStringWithThousandSep(customValue) + '</span>');
                 }
                 else {
@@ -370,8 +409,15 @@ Strategies = function () {
                         removeActiveFilter(activeFilter);
                     }
                     updateStrategyList();
-                    if (approach.omnitureEvent != "") {
-                        omnitureTrackEvent(approach.omnitureEvent);
+                    if (activeApproachFilters[approach.name]) {
+                        if (approach.omnitureCheckedEvent != "") {
+                            omnitureTrackEvent(approach.omnitureCheckedEvent);
+                        }
+                    }
+                    else {
+                        if (approach.omnitureUncheckedEvent != "") {
+                            omnitureTrackEvent(approach.omnitureUncheckedEvent);
+                        }
                     }
                 });
             });
@@ -454,7 +500,7 @@ Strategies = function () {
         var strategists = {};
         StrategyData.strategies.forEach(function (strategy) {
             if (strategy.strategist == undefined) return;
-            strategists[strategy.strategist] = strategy.strategistEvent;
+            strategists[strategy.strategist] = { checked: strategy.strategistCheckedEvent, unchecked: strategy.strategistUncheckedEvent };
         });
         Object.keys(strategists).forEach(function (strategist) {
             var strategistEvent = strategists[strategist];
@@ -483,7 +529,12 @@ Strategies = function () {
                     removeActiveFilter(activeFilter);
                 }
                 updateStrategyList();
-                omnitureTrackEvent(strategistEvent);
+                if (checked) {
+                    omnitureTrackEvent(strategistEvent.checked);
+                }
+                else {
+                    omnitureTrackEvent(strategistEvent.unchecked);
+                }
             });
 
             strategyFilters.push(function (strategy) {
@@ -498,7 +549,7 @@ Strategies = function () {
         var managers = {};
         StrategyData.strategies.forEach(function (strategy) {
             if (strategy.manager == undefined) return;
-            managers[strategy.manager] = strategy.managerEvent;
+            managers[strategy.manager] = { checked: strategy.managerCheckedEvent, unchecked: strategy.managerUncheckedEvent };
         });
         Object.keys(managers).forEach(function (manager) {
             var managerEvent = managers[manager];
@@ -527,7 +578,12 @@ Strategies = function () {
                     removeActiveFilter(activeFilter);
                 }
                 updateStrategyList();
-                omnitureTrackEvent(managerEvent);
+                if (checked) {
+                    omnitureTrackEvent(managerEvent.checked);
+                }
+                else {
+                    omnitureTrackEvent(managerEvent.unchecked);
+                }
             });
 
             strategyFilters.push(function (strategy) {
@@ -561,8 +617,15 @@ Strategies = function () {
                 removeActiveFilter(activeFilter);
             }
             updateStrategyList();
-            if (control.omnitureEvent != "") {
-                omnitureTrackEvent(control.omnitureEvent);
+            if (checked) {
+                if (control.omnitureCheckedEvent != "") {
+                    omnitureTrackEvent(control.omnitureCheckedEvent);
+                }
+            }
+            else {
+                if (control.omnitureUncheckedEvent != "") {
+                    omnitureTrackEvent(control.omnitureUncheckedEvent);
+                }
             }
         });
 
@@ -580,7 +643,11 @@ Strategies = function () {
                 var groupItem = cloneTemplate(".filterGroup.template");
                 $(".filterTitleText", groupItem).text(filterGroup.name);
                 if (filterGroup.tip && filterGroup.tip.length > 0) {
-                    $(".filterTitleTooltip", groupItem).html(filterGroup.tip);
+                    $(".filterTitleTooltipText", groupItem).html(filterGroup.tip);
+                    $(".filterTitleInfoIcon", groupItem).on('click', function(e) { $('.filterTitleTooltip',this).fadeIn(); e.preventDefault(); e.stopPropagation(); });
+                    $(".filterTitleTooltip", groupItem).on('click', function(e) { e.stopPropagation(); });
+                    $(".filterTitleTooltipBackdrop", groupItem).on('click', function(e) { $(this).parent().fadeOut(); e.preventDefault(); e.stopPropagation(); });
+                    $(".filterTitleTooltipClose", groupItem).on('click', function(e) { $(this).parent().parent().fadeOut(); e.preventDefault(); e.stopPropagation(); });
                 }
                 else {
                     $(".filterTitleInfoIcon", groupItem).hide();
@@ -665,6 +732,7 @@ Strategies = function () {
         filter.button.on('click', function () { removeActiveFilter(filter); });
         $(".filterList").append(filter.button);
         activeFilters.push(filter);
+	$("#strategyClearFilters").fadeIn();
     }
 
     function removeActiveFilter(filter) {
@@ -673,6 +741,7 @@ Strategies = function () {
         }
         var index = activeFilters.indexOf(filter);
         if (index != -1) activeFilters.splice(index, 1);
+	if (activeFilters.length == 0) { $("#strategyClearFilters").fadeOut(); }
         filter.clear();
         updateStrategyList();
     }
@@ -681,6 +750,7 @@ Strategies = function () {
         $(".filterList").empty();
         activeFilters.forEach(function (filter) { filter.clear(); });
         activeFilters = [];
+	$("#strategyClearFilters").fadeOut();
         updateStrategyList();
         omnitureTrackEvent("ClearFilters");
     }
@@ -697,7 +767,7 @@ Strategies = function () {
 	$(".strategyListHeader .strategyListColumn").removeClass("reverseOrder");
 
         $(this).addClass("sortColumn");
-        if (!sortReverse) $(this).addClass("reverseOrder");
+        if (sortColumn && !sortReverse) $(this).addClass("reverseOrder");
 
         sortAndUpdateStrategyList();
 
@@ -754,7 +824,7 @@ StrategyDetail = function () {
 
     function loadSavedFavorites() {
         function loadSuccess(savedFavorites) {
-            var saved = savedFavorites.reduce(function (favorite, lastResult) {
+            var saved = savedFavorites.reduce(function (lastResult, favorite) {
                 return lastResult || (StrategyDetailData.modelSetTypeId == favorite.ModelSetTypeId && StrategyDetailData.strategistCode == favorite.StrategistCode);
             }, false);
 
@@ -822,8 +892,8 @@ StrategyDetail = function () {
         if (ext != undefined && ext.toLowerCase() == "pdf") {
             $(".strategyDetail .sidebarRow").removeClass("selected");
             $(this).addClass("selected");
-            var iframe = $(".detailDocument iframe");
-            iframe.attr("src", iframe.attr("data-viewer-url-prefix") + url);
+            $(".detailDocument").empty();
+            $(".detailDocument").append('<iframe src="' + $(".detailDocument").attr("data-viewer-url-prefix") + url + '"></iframe>');
         }
         else {
             // Give omniture 500 ms to track the event before navigating
@@ -845,11 +915,29 @@ StrategyDetail = function () {
         }
     }
 
+    function getIFrameDocument(query) {
+        var x = $(query).get(0);
+        var y = (x.contentWindow || x.contentDocument);
+        if (y.document) y = y.document;
+        return y;
+    }
+
+    function printClicked() {
+        $(".detailDocument > iframe").get(0).contentWindow.SecondaryToolbar.printClick();
+    }
+
+    function downloadClicked() {
+        $(".detailDocument > iframe").get(0).contentWindow.SecondaryToolbar.downloadClick();
+    }
+
     $(document).ready(function () {
         if (window.StrategyDetailData == undefined) return;
 
         $(".strategyDetail .sidebarRow").on('click', sidebarClicked);
         $(".strategyDetail .strategyFavoriteButton").on('click', favoriteButtonClicked);
+        $(".strategyDetail .printLink").on('click', printClicked);
+        $(".strategyDetail .downloadLink").on('click', downloadClicked);
+
         loadSavedFavorites();
     });
 

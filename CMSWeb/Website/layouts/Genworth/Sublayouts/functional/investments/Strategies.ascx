@@ -55,7 +55,8 @@
 		public string FieldSection { get; set; }
 		public string FieldName { get; set; }
 		public string VariableName { get { return FieldSection + "/" + FieldName; } }
-		public string OmnitureEvent { get; set; }
+		public string OmnitureCheckedEvent { get; set; }
+		public string OmnitureUncheckedEvent { get; set; }
 	}
 
 	private List<FilterField> filterFields;
@@ -87,12 +88,13 @@
 						if (target == null)
 							continue;
 
-						var field = new FilterField { FieldSection = target.Parent.Name, FieldName = target.Name, OmnitureEvent = controlItem["Omniture Event"] };
+						var field = new FilterField { FieldSection = target.Parent.Name, FieldName = target.Name, OmnitureCheckedEvent = controlItem["Omniture Checked Event"], OmnitureUncheckedEvent = controlItem["Omniture Unchecked Event"] };
 						filterFields.Add(field);
 
 						control.name = controlItem["Name"];
 						control.field = field.VariableName;
-						control.omnitureEvent = field.OmnitureEvent;
+						control.omnitureCheckedEvent = field.OmnitureCheckedEvent;
+						control.omnitureUncheckedEvent = field.OmnitureUncheckedEvent;
 					}
 					else if (controlItem.TemplateName == "Investment Approach Control")
 					{
@@ -108,7 +110,8 @@
 								dynamic approach = new JObject();
 								approach.name = approachItem["Short Title"];
 								approach.rowing = approachItem["Rowing"] == "1";
-								approach.omnitureEvent = approachItem["Omniture Event"];
+								approach.omnitureCheckedEvent = approachItem["Omniture Checked Event"];
+								approach.omnitureUncheckEvent = approachItem["Omniture Unchecked Event"];
 								approaches.Add(approach);
 							}
 
@@ -219,7 +222,8 @@
 				continue;
 
 			string strategistName = strategistItem["Name"];
-			string strategistEvent = strategistItem["Omniture Event"];
+			string strategistCheckedEvent = strategistItem["Omniture Checked Event"];
+			string strategistUncheckedEvent = strategistItem["Omniture Unchecked Event"];
 
 			foreach (Item strategyTypeItem in strategistItem.Children)
 			{
@@ -240,7 +244,8 @@
 
 					dynamic strategy = BuildStrategy(solutionItem, columns, false);
 					strategy.strategist = strategistName;
-					strategy.strategistEvent = strategistEvent;
+					strategy.strategistCheckedEvent = strategistCheckedEvent;
+					strategy.strategistUncheckedEvent = strategistUncheckedEvent;
 					strategy.allocationApproach = allocationApproachItem["Short Title"];
 					strategy.rowing = allocationApproachItem["Rowing"] == "1";
 					strategies.Add(strategy);
@@ -271,7 +276,8 @@
 				continue;
 
 			string managerName = managerItem["Name"];
-			string managerEvent = managerItem["Omniture Event"];
+			string managerCheckedEvent = managerItem["Omniture Checked Event"];
+			string managerUncheckedEvent = managerItem["Omniture Unchecked Event"];
 			
 			foreach (Item solutionItem in managerItem.Children)
 			{
@@ -285,7 +291,8 @@
 
 				dynamic strategy = BuildStrategy(solutionItem, columns, true);
 				strategy.manager = managerName;
-				strategy.managerEvent = managerEvent;
+				strategy.managerCheckedEvent = managerCheckedEvent;
+				strategy.managerUncheckedEvent = managerUncheckedEvent;
 				strategy.allocationApproach = allocationApproachItem["Short Title"];
 				strategy.rowing = allocationApproachItem["Rowing"] == "1";
 				strategies.Add(strategy);
@@ -332,7 +339,6 @@
 		<div class="filterToolbarButton" id="strategyClearFilters">Clear Filters</div>
 		<div class="filterList"></div>
 		<div style="clear:both"></div>
-		<!--<div class="filterTip">Search for investments using the filters below</div>-->
 		<div class="filterToolbarButton template">
 			<svg width="12px" height="12px" viewBox="0 0 12 12">
 				<circle cx="6" cy="6" r="6" fill="rgb(115,173,86)" />
@@ -342,12 +348,16 @@
 			<span class="filterToolbarButtonTitle"></span>
 		</div>
 	</div>
+	<div class="filterTip">Search for investments using the filters below</div>
 	<div class="filterStrategySplit">
 		<div class="filterPanel">
 			<div class="filterGroupItems"></div>
 			<div class="filterGroup template">
 				<div class="filterTitle">
-					<span class="filterTitleText"></span><span class="filterTitleInfoIcon"><div class="filterTitleTooltip"></div></span>
+					<span class="filterTitleText"></span><span class="filterTitleInfoIcon"><div class="filterTitleTooltip"><div class="filterTitleTooltipBackdrop"></div><div class="filterTitleTooltipBody">
+						<div class="filterTitleTooltipClose"><svg width="15px" height="15px" viewBox="0 0 15 15"><path d="M 0 2 L 2 0 L 7 5 L 12 0 L 14 2 L 9 7 L 14 12 L 12 14 L 7 9 L 2 14 L 0 12 L 5 7 z" fill="#1caede"/></svg></div>
+						<div class="filterTitleTooltipText"></div>
+					</div></div></span>
 				</div>
 				<div class="filterControls"></div>
 				<div style="clear:both"></div>
@@ -396,9 +406,9 @@
 			<div class="strategyOpener" id="strategyOpener">
 				<svg width="20px" height="217px" viewBox="0 0 40 434">
 					<path d="M 40 0 L 0 40 L 0 394 L 40 434 z" fill="rgb(188,188,188)" />
-					<path d="M 16 127 L 24 119 L 24 135 z" fill="rgb(127,127,127)" />
-					<path d="M 16 304 L 24 296 L 24 312 z" fill="rgb(127,127,127)" />
-					<text x="26" y="215" text-anchor="middle" transform="rotate(-90 26,215)" font-family="Arial" font-size="15" font-weight="bold" fill="rgb(76,76,76)">MORE DETAILS</text>
+					<path d="M 12 106 L 24 94 L 24 118 z" fill="rgb(117,117,117)" />
+					<path d="M 12 328 L 24 316 L 24 340 z" fill="rgb(117,117,117)" />
+					<text x="30" y="220" text-anchor="middle" transform="rotate(-90 26,220)" font-family="Arial" font-size="20" font-weight="bold" fill="rgb(66,66,66)">MORE DETAILS</text>
 				</svg>
 			</div>
 			<div class="strategyPanelContent">
@@ -409,13 +419,13 @@
 			<div class="strategyList">
 				<div class="strategyListHeader">
 					<div class="strategyListColumn strategyListColumnColor"></div>
-					<div class="strategyListColumn strategyListColumnStrategy" data-field="strategy" data-omniture="Strategy"><br/>Strategy</div>
-					<div class="strategyListColumn strategyListColumnFavorite" data-field="favorite" data-omniture="Favorites"><br/>Favorites</div>
-					<div class="strategyListColumn strategyListColumnCustom0" data-field="custom" data-index="0"></div>
-					<div class="strategyListColumn strategyListColumnCustom1" data-field="custom" data-index="1"></div>
-					<div class="strategyListColumn strategyListColumnCustom2" data-field="custom" data-index="2"></div>
-					<div class="strategyListColumn strategyListColumnCustom3" data-field="custom" data-index="3"></div>
-					<div class="strategyListColumn strategyListColumnCustom4" data-field="custom" data-index="4"></div>
+					<div class="strategyListColumn strategyListColumnStrategy sortColumn" data-field="strategy" data-omniture="Strategy"><br/>Strategy<div class="sortArrow"></div></div>
+					<div class="strategyListColumn strategyListColumnFavorite" data-field="favorite" data-omniture="Favorites"><br/>Favorites<div class="sortArrow"></div></div>
+					<div class="strategyListColumn strategyListColumnCustom0" data-field="custom" data-index="0"><span class="strategyListColumnLabel"></span><div class="sortArrow"></div></div>
+					<div class="strategyListColumn strategyListColumnCustom1" data-field="custom" data-index="1"><span class="strategyListColumnLabel"></span><div class="sortArrow"></div></div>
+					<div class="strategyListColumn strategyListColumnCustom2" data-field="custom" data-index="2"><span class="strategyListColumnLabel"></span><div class="sortArrow"></div></div>
+					<div class="strategyListColumn strategyListColumnCustom3" data-field="custom" data-index="3"><span class="strategyListColumnLabel"></span><div class="sortArrow"></div></div>
+					<div class="strategyListColumn strategyListColumnCustom4" data-field="custom" data-index="4"><span class="strategyListColumnLabel"></span><div class="sortArrow"></div></div>
 					<div style="clear:both"></div>
 				</div>
 				<div class="strategyListScrollArea">

@@ -113,11 +113,19 @@
 
 		if (item["Visual Appearance"] == "USD")
 		{
-			lRowValue.Text = String.Format("${0}", lRowValue.Text);
+			double value;
+			if (Double.TryParse(lRowValue.Text, System.Globalization.NumberStyles.Float|System.Globalization.NumberStyles.AllowThousands, System.Globalization.CultureInfo.InvariantCulture, out value))
+				lRowValue.Text = String.Format("${0:n0}", value);
+			else
+				lRowValue.Text = String.Format("${0}", lRowValue.Text);
 		}
 		else if (item["Visual Appearance"] == "Percentage")
 		{
-			lRowValue.Text = String.Format("{0}%", lRowValue.Text);
+			double value;
+			if (Double.TryParse(lRowValue.Text, System.Globalization.NumberStyles.Float|System.Globalization.NumberStyles.AllowThousands, System.Globalization.CultureInfo.InvariantCulture, out value))
+				lRowValue.Text = String.Format("{0:n2}%", value);
+			else
+				lRowValue.Text = String.Format("{0}%", lRowValue.Text);
 		}
 		else if (item["Visual Appearance"] == "Yes No")
 		{
@@ -130,7 +138,7 @@
 		public string Name { get; set; }
 		public string Path { get; set; }
 		public string Ext { get; set; }
-        public string OmnitureEvent { get; set; }
+		public string OmnitureEvent { get; set; }
 	}
 
 	private void BindResearch(IEnumerable<Result> documents)
@@ -141,7 +149,13 @@
 		{
 			var categoryName = categoryItem["Name"];
 			var categoryValue = categoryItem["Category"];
-            var categoryOmnitureEvent = categoryItem["Omniture Event"];
+			var categoryOmnitureEvent = categoryItem["Omniture Event"];
+			string categoryPageNumber = null;
+
+			InternalLinkField fieldLink = categoryItem.GetField("Start Page Field");
+			var target = fieldLink.TargetItem;
+			if (target != null)
+				categoryPageNumber = StrategyItem.GetField(target.Parent.Name, target.Name).Value;
 
 			if (categoryValue == "Fact Sheets")
 			{
@@ -160,7 +174,10 @@
 					var url = factSheet.GetImageURL("Document", "File");
 					if (!String.IsNullOrWhiteSpace(url))
 					{
-						items.Add(new SidebarItem { Name = categoryName, Path = factSheet.GetImageURL("Document", "File"), Ext = "pdf", OmnitureEvent = categoryOmnitureEvent });
+						if (!String.IsNullOrWhiteSpace(categoryPageNumber))
+							url = String.Format("{0}#page={1}", url, categoryPageNumber);
+
+						items.Add(new SidebarItem { Name = categoryName, Path = url, Ext = "pdf", OmnitureEvent = categoryOmnitureEvent });
 					}
 				}
 			}
@@ -170,7 +187,13 @@
 				var categoryDocs = documents.Where(doc => doc.Category == categoryValue);
 				var categoryDoc = categoryDocs.OrderByDescending(oResult => DateTime.TryParse(oResult.Date, out dDate) ? dDate.ToString("yyyyMMddTHHmmss") : string.Empty).FirstOrDefault();
 				if (categoryDoc != null)
-                    items.Add(new SidebarItem { Name = categoryName, Path = string.IsNullOrWhiteSpace(categoryDoc.sUrl) ? categoryDoc.Path : categoryDoc.sUrl, Ext = categoryDoc.Extension, OmnitureEvent = categoryOmnitureEvent });
+				{
+					var url = string.IsNullOrWhiteSpace(categoryDoc.sUrl) ? categoryDoc.Path : categoryDoc.sUrl;
+					if (!String.IsNullOrWhiteSpace(url) && !String.IsNullOrWhiteSpace(categoryPageNumber))
+						url = String.Format("{0}#page={1}", url, categoryPageNumber);
+
+					items.Add(new SidebarItem { Name = categoryName, Path = url, Ext = categoryDoc.Extension, OmnitureEvent = categoryOmnitureEvent });
+				}
 			}
 		}
 
@@ -191,7 +214,7 @@
 		{
 			dCategory.Attributes["class"] = dCategory.Attributes["class"] + " selected";
 
-            lPDF.Text = string.Format("<iframe data-viewer-url-prefix='/CMSContent/pdf.js/web/viewer.html?file=' src='/CMSContent/pdf.js/web/viewer.html?file={0}'></iframe>", item.Path);
+            lPDF.Text = string.Format("<iframe src='/CMSContent/pdf.js/web/viewer.html?file={0}'></iframe>", item.Path);
 		}
 
 		var sCategory = (Literal)e.Item.FindControl("sCategory");
@@ -263,7 +286,7 @@
 				<div class="sidebarRowArrow"></div>
 			</div>
 		</div>
-		<div class="detailDocument"><asp:Literal ID="lPDF" runat="server" /></div>
+		<div class="detailDocument" data-viewer-url-prefix='/CMSContent/pdf.js/web/viewer.html?file='><asp:Literal ID="lPDF" runat="server" /></div>
 		<div style="clear: both"></div>
 	</div>
 </div>
