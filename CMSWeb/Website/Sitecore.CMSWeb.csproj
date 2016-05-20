@@ -309,6 +309,9 @@
       <HintPath>..\..\..\..\packages\Microsoft.WindowsFabric\Microsoft.WindowsFabric.Data.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PdfSharp">
+      <HintPath>..\..\ThirdPartyAssemblies\PdfSharp.dll</HintPath>
+    </Reference>
     <Reference Include="ReqExp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\eWM\GFWM.Shared\ReqExp\$(Configuration)\ReqExp.dll</HintPath>
@@ -3009,6 +3012,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="layouts\Genworth\Sublayouts\functional\investments\PrintPDFRequestHandler.cs" />
     <Compile Include="Models\Navigation\FooterModel.cs" />
     <Compile Include="Models\Navigation\HeaderModel.cs" />
     <Compile Include="Models\Navigation\MenuItem.cs" />

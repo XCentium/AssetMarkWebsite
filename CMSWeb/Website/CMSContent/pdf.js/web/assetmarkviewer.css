@@ -1,0 +1,55 @@
+
+/* Restyle the pdf.js viewer for eWM: */
+
+body {
+	background: white;
+}
+
+html #viewerContainer,
+html[dir="ltr"] #viewerContainer,
+html[dir="rtl"] #viewerContainer {
+	box-shadow: none;
+}
+
+html[dir="ltr"] .findbar {
+	left: 0px;
+}
+
+html[dir="rtl"] .findbar {
+	right: 0px;
+}
+
+#toolbarContainer {
+	box-shadow: none !important;
+	background: rgb(1,101,161);
+}
+
+.dropdownToolbarButton > select > option,
+#toolbarContainer, .findbar, .secondaryToolbar {
+	background: rgb(1,101,161);
+}
+
+.doorHanger, .doorHangerRight {
+	border-color: rgb(1,101,161);
+}
+
+.doorHanger::after, .doorHangerRight::after {
+	border-bottom-color: rgb(1,101,161);
+}
+
+#sidebarToggle, #toolbarViewerRight, #toolbarViewerLeft .toolbarButtonSpacer {
+	display: none;
+}
+
+.pdfViewer .page {
+	border-image: none;
+}
+
+html[dir="ltr"] .outerCenter, html[dir="ltr"] .innerCenter {
+	right: auto;
+}
+
+#loadingBar {
+	background: white;
+	border-bottom: white;
+}

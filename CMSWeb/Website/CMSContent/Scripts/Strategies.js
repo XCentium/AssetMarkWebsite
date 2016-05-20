@@ -181,6 +181,28 @@ Strategies = function () {
         };
     }
 
+    function setSessionCookie(name, data) {
+        document.cookie = name + "=" + encodeURIComponent(JSON.stringify(data));
+    }
+
+    function getSessionCookie(name) {
+        try {
+            name = name + "=";
+            var data = undefined;
+            document.cookie.split(';').forEach(function (c) {
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) {
+                    var value = c.substring(name.length, c.length);
+                    data = JSON.parse(decodeURIComponent(value));
+                }
+            });
+            return data;
+        }
+        catch (e) {
+            return undefined;
+        }
+    }
+
     function loadSavedFavorites() {
         function loadSuccess(savedFavorites) {
             // Convert list to dictionary for faster lookup:
@@ -257,6 +279,7 @@ Strategies = function () {
     }
 
     var strategyFilters = [];
+    var strategistManagerCheckboxes = [];
 
     function sortAndUpdateStrategyList() {
         var sortColumn = $(".strategyListHeader .strategyListColumn.sortColumn");
@@ -420,6 +443,12 @@ Strategies = function () {
                         }
                     }
                 });
+
+                if (wasActiveFilter(activeFilter)) {
+                    checkboxInput.get(0).checked = true;
+                    activeApproachFilters[approach.name] = true;
+                    addActiveFilter(activeFilter);
+                }
             });
             approachGroupItems.append(approachGroupItem);
         });
@@ -478,6 +507,7 @@ Strategies = function () {
 
         feeControl.on('change', function (range) {
             var needFilter = range.min > 0 || range.max < 1.25;
+            saveFilterRange(range);
             if (!feeFilterActive && needFilter) {
                 addActiveFilter(activeFilter);
             }
@@ -491,6 +521,15 @@ Strategies = function () {
         strategyFilters.push(function (strategy) {
             return !feeFilterActive || (strategy.fee !== null && strategy.fee >= feeControl.range().min && strategy.fee <= feeControl.range().max);
         });
+
+        if (wasActiveFilter(activeFilter)) {
+            var range = getSavedFilterRange();
+            if (range != undefined && (range.min > 0 || range.max < 1.25)) {
+                feeControl.range(range.min, range.max);
+                feeFilterActive = true;
+                addActiveFilter(activeFilter);
+            }
+        }
 
         return feeControl.element;
     }
@@ -509,27 +548,30 @@ Strategies = function () {
             $(".filterCheckboxLabel", strategistItem).text(strategist);
             controlItem.append(strategistItem);
 
+            var checkbox = {};
+            strategistManagerCheckboxes.push(checkbox);
+
             var checkboxInput = $("input[type='checkbox']", strategistItem);
-            var checked = checkboxInput.get(0).checked;
+            checkbox.checked = checkboxInput.get(0).checked;
 
             var activeFilter = {
                 name: strategist,
                 clear: function () {
                     checkboxInput.get(0).checked = false;
-                    checked = false;
+                    checkbox.checked = false;
                 },
             };
 
             checkboxInput.on('change', function () {
-                checked = this.checked;
-                if (checked) {
+                checkbox.checked = this.checked;
+                if (checkbox.checked) {
                     addActiveFilter(activeFilter);
                 }
                 else {
                     removeActiveFilter(activeFilter);
                 }
                 updateStrategyList();
-                if (checked) {
+                if (checkbox.checked) {
                     omnitureTrackEvent(strategistEvent.checked);
                 }
                 else {
@@ -537,9 +579,15 @@ Strategies = function () {
                 }
             });
 
-            strategyFilters.push(function (strategy) {
-                return !checked || strategy.strategist == strategist;
-            });
+            checkbox.filter = function (strategy) {
+                return !checkbox.checked || strategy.strategist == strategist;
+            };
+
+            if (wasActiveFilter(activeFilter)) {
+                checkboxInput.get(0).checked = true;
+                checkbox.checked = true;
+                addActiveFilter(activeFilter);
+            }
         });
         return controlItem;
     }
@@ -551,6 +599,7 @@ Strategies = function () {
             if (strategy.manager == undefined) return;
             managers[strategy.manager] = { checked: strategy.managerCheckedEvent, unchecked: strategy.managerUncheckedEvent };
         });
+
         Object.keys(managers).forEach(function (manager) {
             var managerEvent = managers[manager];
 
@@ -558,27 +607,30 @@ Strategies = function () {
             $(".filterCheckboxLabel", managerItem).text(manager);
             controlItem.append(managerItem);
 
+            var checkbox = {};
+            strategistManagerCheckboxes.push(checkbox);
+
             var checkboxInput = $("input[type='checkbox']", managerItem);
-            var checked = checkboxInput.get(0).checked;
+            checkbox.checked = checkboxInput.get(0).checked;
 
             var activeFilter = {
                 name: manager,
                 clear: function () {
                     checkboxInput.get(0).checked = false;
-                    checked = false;
+                    checkbox.checked = false;
                 },
             };
 
             checkboxInput.on('change', function () {
-                checked = this.checked;
-                if (checked) {
+                checkbox.checked = this.checked;
+                if (checkbox.checked) {
                     addActiveFilter(activeFilter);
                 }
                 else {
                     removeActiveFilter(activeFilter);
                 }
                 updateStrategyList();
-                if (checked) {
+                if (checkbox.checked) {
                     omnitureTrackEvent(managerEvent.checked);
                 }
                 else {
@@ -586,38 +638,74 @@ Strategies = function () {
                 }
             });
 
-            strategyFilters.push(function (strategy) {
-                return !checked || strategy.manager == manager;
-            });
+            checkbox.filter = function (strategy) {
+                return !checkbox.checked || strategy.manager == manager;
+            };
+
+            if (wasActiveFilter(activeFilter)) {
+                checkboxInput.get(0).checked = true;
+                checkbox.checked = true;
+                addActiveFilter(activeFilter);
+            }
         });
         return controlItem;
     }
 
-    function createCheckboxControl(control) {
+    function createCheckboxControl(control, filterGroup) {
         var controlItem = cloneTemplate(".filterCheckboxControl.template");
         $(".filterCheckboxLabel", controlItem).text(control.name);
 
-        var checkboxInput = $("input[type='checkbox']", controlItem);
-        var checked = checkboxInput.get(0).checked;
+        if (filterGroup.checkboxes == undefined) {
+            filterGroup.checkboxes = [];
+            strategyFilters.push(function (strategy) {
+                if (filterGroup.checkboxInclusive) {
+                    var anyActive = false;
+                    var matchFound = false;
+                    filterGroup.checkboxes.forEach(function (c) {
+                        if (c.checked) {
+                            anyActive = true;
+                            matchFound = matchFound || c.filter(strategy);
+                        }
+                    });
+                    return matchFound || !anyActive;
+                }
+                else {
+                    var result = true;
+                    filterGroup.checkboxes.forEach(function (c) { result = result && c.filter(strategy); });
+                    return result;
+                }
+            });
+        }
 
-        var activeFilter = {
+        var checkbox = {};
+        filterGroup.checkboxes.push(checkbox);
+
+        var checkboxInput = $("input[type='checkbox']", controlItem);
+        checkbox.checked = checkboxInput.get(0).checked;
+
+        checkbox.activeFilter = {
             name: control.name,
             clear: function () {
                 checkboxInput.get(0).checked = false;
-                checked = false;
+                checkbox.checked = false;
             },
         };
 
         checkboxInput.on('change', function () {
-            checked = this.checked;
-            if (checked) {
-                addActiveFilter(activeFilter);
+            checkbox.checked = this.checked;
+            if (checkbox.checked) {
+                if (filterGroup.checkboxSingle) {
+                    filterGroup.checkboxes.forEach(function (c) {
+                        if (c != checkbox && c.checked) { removeActiveFilter(c.activeFilter); }
+                    });
+                }
+                addActiveFilter(checkbox.activeFilter);
             }
             else {
-                removeActiveFilter(activeFilter);
+                removeActiveFilter(checkbox.activeFilter);
             }
             updateStrategyList();
-            if (checked) {
+            if (checkbox.checked) {
                 if (control.omnitureCheckedEvent != "") {
                     omnitureTrackEvent(control.omnitureCheckedEvent);
                 }
@@ -629,14 +717,34 @@ Strategies = function () {
             }
         });
 
-        strategyFilters.push(function (strategy) {
-            return !checked || strategy.filters[control.field] == "1";
-        });
+        checkbox.filter = function (strategy) {
+            return !checkbox.checked || strategy.filters[control.field] == "1";
+        };
+
+        if (wasActiveFilter(checkbox.activeFilter)) {
+            checkboxInput.get(0).checked = true;
+            checkbox.checked = true;
+            addActiveFilter(checkbox.activeFilter);
+        }
+
         return controlItem;
     }
 
     function createFilterList() {
         strategyFilters = [];
+
+        strategistManagerCheckboxes = [];
+        strategyFilters.push(function (strategy) {
+            var anyActive = false;
+            var matchFound = false;
+            strategistManagerCheckboxes.forEach(function (c) {
+                if (c.checked) {
+                    anyActive = true;
+                    matchFound = matchFound || c.filter(strategy);
+                }
+            });
+            return matchFound || !anyActive;
+        });
 
         function createFilterGroup(filtersDiv, filterGroup) {
             if (filterGroup.controls) {
@@ -672,7 +780,7 @@ Strategies = function () {
                             controlItem = createManagerListControl(control);
                             break;
                         case "Checkbox Control":
-                            controlItem = createCheckboxControl(control);
+                            controlItem = createCheckboxControl(control, filterGroup);
                             break;
                     }
                     if (controlItem != null) {
@@ -724,7 +832,14 @@ Strategies = function () {
         StrategyData.filterGroups.forEach(function (item) { createFilterGroup(filters, item); });
     }
 
+    var savedFilters = getSessionCookie("strategyFilters");
+    if (savedFilters == undefined) savedFilters = {};
+
     var activeFilters = [];
+
+    function wasActiveFilter(filter) {
+        return savedFilters[filter.name] == true;
+    }
 
     function addActiveFilter(filter) {
         filter.button = cloneTemplate(".filterToolbarButton.template");
@@ -733,6 +848,9 @@ Strategies = function () {
         $(".filterList").append(filter.button);
         activeFilters.push(filter);
 	$("#strategyClearFilters").fadeIn();
+
+        savedFilters[filter.name] = true;
+        setSessionCookie("strategyFilters", savedFilters);
     }
 
     function removeActiveFilter(filter) {
@@ -744,6 +862,9 @@ Strategies = function () {
 	if (activeFilters.length == 0) { $("#strategyClearFilters").fadeOut(); }
         filter.clear();
         updateStrategyList();
+
+        delete savedFilters[filter.name];
+        setSessionCookie("strategyFilters", savedFilters);
     }
 
     function clearActiveFilters() {
@@ -753,6 +874,18 @@ Strategies = function () {
 	$("#strategyClearFilters").fadeOut();
         updateStrategyList();
         omnitureTrackEvent("ClearFilters");
+
+        savedFilters = {};
+        setSessionCookie("strategyFilters", savedFilters);
+    }
+
+    function saveFilterRange(range) {
+        savedFilters.feeRange = { min: range.min, max: range.max };
+        setSessionCookie("strategyFilters", savedFilters);
+    }
+
+    function getSavedFilterRange() {
+        return savedFilters.feeRange;
     }
 
     function toggleStrategyOpener() {
@@ -815,7 +948,7 @@ Strategies = function () {
         loadSavedFavorites();
     });
 
-    return {};
+    return { setSessionCookie: setSessionCookie, getSessionCookie: getSessionCookie };
 }();
 
 // Script code for the Strategy Detail sublayout.
@@ -893,7 +1026,15 @@ StrategyDetail = function () {
             $(".strategyDetail .sidebarRow").removeClass("selected");
             $(this).addClass("selected");
             $(".detailDocument").empty();
+            $(".detailDocument").removeClass("video");
             $(".detailDocument").append('<iframe src="' + $(".detailDocument").attr("data-viewer-url-prefix") + url + '"></iframe>');
+        }
+        else if (ext != undefined && ext.toLowerCase() == "embed") {
+            $(".strategyDetail .sidebarRow").removeClass("selected");
+            $(this).addClass("selected");
+            $(".detailDocument").empty();
+            $(".detailDocument").addClass("video");
+            $(".detailDocument").append('<iframe src="' + url + '"></iframe>');
         }
         else {
             // Give omniture 500 ms to track the event before navigating
@@ -923,6 +1064,33 @@ StrategyDetail = function () {
     }
 
     function printClicked() {
+        /* // This is only currently working for Chrome, sadly.
+        function closePrint () {
+            document.body.removeChild(this.__container__);
+        }
+        function setPrint () {
+            this.contentWindow.__container__ = this;
+            this.contentWindow.onbeforeunload = closePrint;
+            this.contentWindow.onafterprint = closePrint;
+            this.contentWindow.focus(); // Required for IE
+            this.contentWindow.print();
+        }
+        function printPage (sURL) {
+            var oHiddFrame = document.createElement("iframe");
+            oHiddFrame.onload = setPrint;
+            oHiddFrame.style.visibility = "hidden";
+            oHiddFrame.style.position = "fixed";
+            oHiddFrame.style.right = "0";
+            oHiddFrame.style.bottom = "0";
+            oHiddFrame.src = sURL;
+            document.body.appendChild(oHiddFrame);
+        }
+
+        var url = $(".strategyDetail .sidebarRow.selected").attr("data-url");
+        printPage(url);
+        */
+
+        $(".detailDocument > iframe").get(0).contentWindow.focus(); // Required for IE
         $(".detailDocument > iframe").get(0).contentWindow.SecondaryToolbar.printClick();
     }
 

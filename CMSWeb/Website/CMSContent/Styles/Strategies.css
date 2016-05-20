@@ -817,6 +817,11 @@
 	padding-bottom: 100%;
 	/*height: calc(100vh - 455px);*/
 	border: 1px solid rgb(238,238,238);
+	transition: padding-bottom linear 0.4s;
+}
+
+.strategyDetail .detailDocument.video {
+	padding-bottom: 47%;
 }
 
 .strategyDetail .detailDocument > iframe,
